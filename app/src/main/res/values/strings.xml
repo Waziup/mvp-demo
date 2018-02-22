@@ -19,5 +19,9 @@
     <string name="title_activity_create_project">CreateProjectActivity</string>
     <string name="project_name">Enter name</string>
     <string name="title_activity_project_det">ProjectDetActivity</string>
+    <string name="project_init_status">initial status</string>
+    <string name="project_description">project description</string>
+    <string name="create_insert_location">locate farm</string>
+    <string name="create_project">create project</string>
 
 </resources>

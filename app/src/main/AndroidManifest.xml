@@ -18,12 +18,21 @@
         android:supportsRtl="true"
         android:theme="@style/app_theme">
         <activity android:name="com.apps.waZiUp.MainActivity">
+
+        </activity>
+
+        <activity android:name="com.apps.waZiUp.ui.create_project.CreateProjectActivity"
+            android:theme="@style/app_theme.no_toolbar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+
+        <activity android:name="com.apps.waZiUp.ui.detail_project.ProjectDetailActivity"
+            android:theme="@style/app_theme"/>
 
         <meta-data
             android:name="com.google.android.gms.version"

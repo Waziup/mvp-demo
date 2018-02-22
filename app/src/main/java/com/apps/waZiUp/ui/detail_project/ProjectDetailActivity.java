@@ -42,8 +42,9 @@ public class ProjectDetailActivity extends BaseActivity {
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
         //TODO: STRINGS HAVE TO BE CHANGED FROM THE RESOURCE VALUE FOLDER - STRING
-//        adapter.addFragment(new FragmentTab(), getResources().getString(R.string.home_tab_0_label));
-//        adapter.addFragment(new FragmentTab(), getResources().getString(R.string.home_tab_1_label));
+        adapter.addFragment(new FragmentDetailTab(), getResources().getString(R.string.home_tab_0_label));
+        adapter.addFragment(new FragmentSensorTab(), getResources().getString(R.string.home_tab_1_label));
+        adapter.addFragment(new FragmentSensorTab(), getResources().getString(R.string.home_tab_1_label));
 
         viewPager.setAdapter(adapter);
     }
