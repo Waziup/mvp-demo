@@ -1,0 +1,57 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+    
+    repositories {
+        google()
+        jcenter()
+        maven {
+            url "http://objectbox.net/beta-repo/"
+        }
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.0.1'
+        classpath "io.objectbox:objectbox-gradle-plugin:1.2.1"
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+        maven {
+            url "http://objectbox.net/beta-repo/"
+        }
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
+
+// Define versions in a single place
+ext{
+    // Sdk and tools
+    minSdkVersion = 17
+    targetSdkVersion = 27
+    compileSdkVersion = 27
+    buildToolsVersion = '26.0.2'
+    // App dependencies
+    supportLibraryVersion = '27.0.2'
+    objectboxVersion = '1.2.1'
+    rxjavaVersion = '2.1.6'
+    rxandroidVersion = '2.0.1'
+    retrofitVersion = '2.3.0'
+    picassoVersion = '2.5.2'
+    circleImageViewVersion = '2.1.0'
+
+
+    //Test dependencies
+    junitVersion = '4.12'
+    espressoVersion = '2.2.2'
+    mockitoVersion = '2.7.1'
+
+}

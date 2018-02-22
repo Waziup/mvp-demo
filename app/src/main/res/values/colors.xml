@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--WHITES AND BLACKS-->
+    <color name="black">#000000</color>
+    <color name="gray">#999999</color>
+    <color name="white">#ffffff</color>
+    <color name="transparent">#00000000</color>
+
+    <color name="blue">#2196F3</color>
+    <color name="blueDark">#1976D2</color>
+    <color name="orange">#FF5722</color>
+    <color name="colorPrimaryLight">#CFD8DC</color>
+
+    <!--Text color-->
+    <color name="colorPrimaryText">#212121</color>
+    <color name="colorSecondaryText">#757575</color>
+
+    <!--Icon Color-->
+    <color name="colorIcons">#FFFFFF</color>
+    <color name="colorDivider">#BDBDBD</color>
+
+    <!--CONTEXT-->
+    <color name="primary">@color/blue</color>
+    <color name="primaryDark">@color/blueDark</color>
+    <color name="accent">@color/orange</color>
+
+</resources>

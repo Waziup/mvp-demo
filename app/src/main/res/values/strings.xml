@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">WaZiUp</string>
+
+    <!--COMMON-->
+    <string name="contentDescription">Image Desc?</string>
+
+    <!--Label-->
+    <string name="username">John Doe</string>
+
+
+    <!--Navigation Item List  label-->
+    <!--Group_One-->
+    <string name="home_list">Home</string>
+    <string name="sensor_list">Sensor</string>
+    <string name="project_list">Project</string>
+    <string name="setting_list">Setting</string>
+
+
+</resources>
