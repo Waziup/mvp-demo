@@ -4,9 +4,12 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
@@ -20,9 +23,6 @@ public class HomeActivity extends BaseActivity implements NavigationView.OnNavig
     private ActionBarDrawerToggle drawerToggle;
     private NavigationView navigationView;
     private Toolbar toolbar;
-
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +44,7 @@ public class HomeActivity extends BaseActivity implements NavigationView.OnNavig
     }
 
     private void setUpToolbar() {
-//        toolbar.setTitle(R.string.app_name);
+        toolbar.setTitle(R.string.app_name);
         setSupportActionBar(toolbar);
     }
 
@@ -107,5 +107,34 @@ public class HomeActivity extends BaseActivity implements NavigationView.OnNavig
             hideDrawer();
         }
         super.onBackPressed();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        getMenuInflater().inflate(R.menu.manu_main, menu);
+
+        MenuItem search = menu.findItem(R.id.search);
+        SearchView searchView = (SearchView) search.getActionView();
+        search(searchView);
+        return true;
+    }
+
+    private void search(SearchView searchView) {
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+
+                // call the adapter filter method
+                return true;
+            }
+        });
     }
 }

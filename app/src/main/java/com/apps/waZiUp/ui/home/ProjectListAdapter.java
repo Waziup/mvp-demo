@@ -4,6 +4,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 
 import com.apps.waZiUp.data.project.Project;
 import com.apps.waZiUp.waziup.R;
@@ -12,7 +14,7 @@ import java.util.List;
 
 
 
-public class ProjectListAdapter extends RecyclerView.Adapter<ProjectViewHolder> {
+public class ProjectListAdapter extends RecyclerView.Adapter<ProjectViewHolder>  implements Filterable {
 
     private List<Project> projects;
     private HomeContract.Presenter presenter;
@@ -32,5 +34,10 @@ public class ProjectListAdapter extends RecyclerView.Adapter<ProjectViewHolder> 
     @Override
     public int getItemCount() {
         return  projects.size();
+    }
+
+    @Override
+    public Filter getFilter() {
+        return null;
     }
 }

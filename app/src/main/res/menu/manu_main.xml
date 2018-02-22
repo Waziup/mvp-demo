@@ -1,9 +1,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.waziup.kidusmamuye.waziup_android.ui.detail_project.ProjectDetActivity">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/action_settings"
+        android:id="@+id/search"
         android:icon="@drawable/ic_search"
         android:title="@string/setting_list"
         app:showAsAction="ifRoom|collapseActionView"
