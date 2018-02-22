@@ -4,7 +4,8 @@
     tools:context="com.waziup.kidusmamuye.waziup_android.ui.detail_project.ProjectDetActivity">
     <item
         android:id="@+id/action_settings"
-        android:orderInCategory="100"
+        android:icon="@drawable/ic_search"
         android:title="@string/setting_list"
-        app:showAsAction="never" />
+        app:showAsAction="ifRoom|collapseActionView"
+        app:actionViewClass="android.support.v7.widget.SearchView"/>
 </menu>

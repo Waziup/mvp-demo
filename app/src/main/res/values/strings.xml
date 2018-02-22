@@ -20,4 +20,8 @@
     <string name="project_name">Enter name</string>
     <string name="title_activity_project_det">ProjectDetActivity</string>
 
+
+    <!--Drawer String values-->
+    <string name="drawer_open">Open</string>
+    <string name="drawer_close">close</string>
 </resources>

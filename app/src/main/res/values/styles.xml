@@ -30,9 +30,26 @@
 
     <!--normal with margin style-->
     <style name="normal.with_margin">
-        <item name="android:layout_marginStart">16dp</item>
-        <item name="android:layout_marginEnd">16dp</item>
+        <item name="android:layout_marginStart">12dp</item>
+        <item name="android:layout_marginEnd">12dp</item>
     </style>
+
+    <!--normal with margin style-->
+    <style name="normal.with_small_margin">
+        <item name="android:layout_marginStart">8dp</item>
+        <item name="android:layout_marginEnd">8dp</item>
+        <item name="android:layout_marginBottom">8dp</item>
+        <item name="android:layout_marginTop">8dp</item>
+    </style>
+
+    <!--Text view style -->
+    <style name="normal.text">
+        <item name="android:layout_marginStart">8dp</item>
+        <item name="android:layout_marginEnd">12dp</item>
+        <item name="android:layout_marginTop">12dp</item>
+        <item name="android:layout_marginBottom">12dp</item>
+    </style>
+
 
 
     <!--white label-->

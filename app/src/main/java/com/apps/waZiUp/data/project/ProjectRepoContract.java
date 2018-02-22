@@ -16,24 +16,24 @@ import io.reactivex.Observable;
 public interface ProjectRepoContract {
 
     /**
-     * Update a post information, such as its status.
+     * Update a project information, such as its status.
      */
     Observable<List<Project>> postProject(Project post);
 
 
     /**
-     * Retrieve a list of all the posts
-     * @return Observable containing a list of all the locally stored posts
+     * Retrieve a list of all the  project
+     * @return Observable containing a list of all the locally stored  projects
      */
-    Observable<List<Project>> getProject(boolean liked);
+    Observable<List<Project>> getProject();
 
     /**
-     * Update a post information, such as its status.
+     * Update a project information, such as its status.
      */
-    Observable<Boolean> updateProject(Project post);
+    Observable<Boolean> updateProject(Project project);
 
     /**
-     * Get posts size (local)
+     * Get project size (local)
      */
     int size();
 }

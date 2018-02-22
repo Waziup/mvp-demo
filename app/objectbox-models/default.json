@@ -1,0 +1,75 @@
+{
+  "_note1": "KEEP THIS FILE! Check it into a version control system (VCS) like git.",
+  "_note2": "ObjectBox manages crucial IDs for your object model. See docs for details.",
+  "_note3": "If you have VCS merge conflicts, you must resolve them according to ObjectBox docs.",
+  "entities": [
+    {
+      "id": "1:937463935315235771",
+      "lastPropertyId": "12:880663632558751838",
+      "name": "Project",
+      "properties": [
+        {
+          "id": "1:5818471467434450197",
+          "name": "id"
+        },
+        {
+          "id": "2:949279669424591251",
+          "indexId": "1:3628751558421157513",
+          "name": "project_id"
+        },
+        {
+          "id": "3:7788873820343746757",
+          "name": "name"
+        },
+        {
+          "id": "4:7789983507692879829",
+          "name": "description"
+        },
+        {
+          "id": "5:4488166714749242974",
+          "name": "image"
+        },
+        {
+          "id": "6:7329842629931917852",
+          "name": "country"
+        },
+        {
+          "id": "7:7073892967730556952",
+          "name": "latitude"
+        },
+        {
+          "id": "8:8648602774413930968",
+          "name": "longtidue"
+        },
+        {
+          "id": "9:3025865054783239528",
+          "name": "type"
+        },
+        {
+          "id": "10:3290022109968390960",
+          "name": "seansors"
+        },
+        {
+          "id": "11:2498843459882367678",
+          "name": "notes"
+        },
+        {
+          "id": "12:880663632558751838",
+          "name": "isPublic"
+        }
+      ],
+      "relations": []
+    }
+  ],
+  "lastEntityId": "1:937463935315235771",
+  "lastIndexId": "1:3628751558421157513",
+  "lastRelationId": "0:0",
+  "lastSequenceId": "0:0",
+  "modelVersion": 4,
+  "modelVersionParserMinimum": 4,
+  "retiredEntityUids": [],
+  "retiredIndexUids": [],
+  "retiredPropertyUids": [],
+  "retiredRelationUids": [],
+  "version": 1
+}

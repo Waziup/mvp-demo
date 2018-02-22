@@ -4,9 +4,6 @@ import java.util.List;
 
 import io.reactivex.Observable;
 
-/**
- * Created by KidusMT on 2/22/2018.
- */
 
 public class ProjectRepo implements ProjectRepoContract {
 
@@ -16,12 +13,12 @@ public class ProjectRepo implements ProjectRepoContract {
     }
 
     @Override
-    public Observable<List<Project>> getProject(boolean liked) {
+    public Observable<List<Project>> getProject() {
         return null;
     }
 
     @Override
-    public Observable<Boolean> updateProject(Project post) {
+    public Observable<Boolean> updateProject(Project project) {
         return null;
     }
 

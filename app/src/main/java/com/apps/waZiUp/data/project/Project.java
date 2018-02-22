@@ -27,5 +27,4 @@ public class Project {
     String seansors;
     String notes;
     boolean isPublic;
-
 }

@@ -5,4 +5,5 @@ package com.apps.waZiUp.data.project.remote;
  */
 
 public interface ProjectService {
+
 }
