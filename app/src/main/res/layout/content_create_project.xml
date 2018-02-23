@@ -24,7 +24,7 @@
         <!--TODO don't forget to validate the user input-->
 
         <EditText
-            android:id="@+id/record_init_status"
+            android:id="@+id/create_init_status"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/project_init_status"
@@ -34,8 +34,15 @@
             android:id="@+id/create_description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
             android:hint="@string/project_description" />
+
+        <EditText
+            android:id="@+id/create_notes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/project_notes"
+            android:inputType="textCapSentences|textMultiLine" />
+
 
         <Button
             android:layout_marginTop="20dp"

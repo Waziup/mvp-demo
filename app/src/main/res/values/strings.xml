@@ -8,6 +8,7 @@
     <string name="username">John Doe</string>
 
 
+
     <!--Navigation Item List  label-->
     <!--Group_One-->
     <string name="home_list">Home</string>
@@ -23,5 +24,8 @@
     <string name="project_description">project description</string>
     <string name="create_insert_location">locate farm</string>
     <string name="create_project">create project</string>
+    <string name="project_notes">enter notes (optional)</string>
+    <string name="sensor_type">type</string>
+    <string name="sensor_name">sensor name</string>
 
 </resources>

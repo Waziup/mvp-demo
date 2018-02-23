@@ -1,104 +1,95 @@
 package com.apps.waZiUp.ui.detail_project;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.gmail.kidusmt.adegareporter.R;
-import com.gmail.kidusmt.adegareporter.base.view.BaseFragment;
-import com.gmail.kidusmt.adegareporter.data.Accident;
-import com.gmail.kidusmt.adegareporter.ui.detail.DetailAccidentActivity;
-import com.gmail.kidusmt.adegareporter.ui.post.PostActivity;
+import com.apps.waZiUp.base.view.BaseFragment;
+import com.apps.waZiUp.data.sensor.Sensor;
+import com.apps.waZiUp.waziup.R;
+import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class FragmentSensorTab extends BaseFragment implements HomeContract.View {
-
-    private HomeContract.Presenter presenter;
+public class FragmentSensorTab extends BaseFragment {
 
     private RecyclerView recyclerView;
-    private AccidentAdapter adapter;
-
-    private FloatingActionButton fab_add;
-
+    private DetailSensorAdapter adapter;
+    List<Sensor> sensorList;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        presenter = new HomePresenter(this);
+
 
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_home,container, false);
+        View v = inflater.inflate(R.layout.fragment_sensors, container, false);
 
-        recyclerView = v.findViewById(R.id.recycler_view_home);
+        recyclerView = v.findViewById(R.id.recycler_view_sensor);
 
-        //The add floating action Button
-        fab_add = v.findViewById(R.id.fab);
-        fab_add.setOnClickListener(u->presenter.onAddAccidentClicked());
-
-        //TODO should initialize the delete button here and call the method in the presenter
-
-//        adapter = new AccidentAdapter(getContext(),accidents);
+        sensorList = new ArrayList<>();
+        adapter = new DetailSensorAdapter(sensorList, getContext());
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(mLayoutManager);
 
         recyclerView.setAdapter(adapter);
 
+        prepareSensors();
         return v;
+    }
+
+    private void prepareSensors() {
+        int[] covers = new int[]{
+                R.drawable.sensor_1,
+                R.drawable.sensor_2,
+                R.drawable.sensor_3,
+                R.drawable.sensor_4,
+                R.drawable.sensor_5,
+                R.drawable.sensor_6};
+
+        Sensor a = new Sensor("PheNode",
+                "PheNode is a tool for researchers, farmers and horticulturists that can monitor environmental conditions and transmits the data to the cloud where growers can track their plants in real-time in order to facilitate data-driven decision support.",
+                "Temprature", covers[0],"40.482450, -75.178184");
+        sensorList.add(a);
+
+        a = new Sensor("PheNode",
+                "PheNode is a tool for researchers, farmers and horticulturists that can monitor environmental conditions and transmits the data to the cloud where growers can track their plants in real-time in order to facilitate data-driven decision support.",
+                "Temprature", covers[1],"40.482450, -75.178184");
+        sensorList.add(a);
+
+        a = new Sensor("PheNode",
+                "PheNode is a tool for researchers, farmers and horticulturists that can monitor environmental conditions and transmits the data to the cloud where growers can track their plants in real-time in order to facilitate data-driven decision support.",
+                "Temprature", covers[2],"40.482450, -75.178184");
+        sensorList.add(a);
+
+        a = new Sensor("PheNode",
+                "PheNode is a tool for researchers, farmers and horticulturists that can monitor environmental conditions and transmits the data to the cloud where growers can track their plants in real-time in order to facilitate data-driven decision support.",
+                "Temprature", covers[3],"40.482450, -75.178184");
+        sensorList.add(a);
+
+        a = new Sensor("PheNode",
+                "PheNode is a tool for researchers, farmers and horticulturists that can monitor environmental conditions and transmits the data to the cloud where growers can track their plants in real-time in order to facilitate data-driven decision support.",
+                "Temprature", covers[4],"40.482450, -75.178184");
+        sensorList.add(a);
+
+        a = new Sensor("PheNode",
+                "PheNode is a tool for researchers, farmers and horticulturists that can monitor environmental conditions and transmits the data to the cloud where growers can track their plants in real-time in order to facilitate data-driven decision support.",
+                "Temprature", covers[5],"40.482450, -75.178184");
+        sensorList.add(a);
     }
 
     @Override
     public void onResume() {
         super.onResume();
-
-        //the same as if calling it in the start() method
-        presenter.start();
-    }
-
-    @Override
-    public void openAddAccidentScreen() {
-        startActivity(new Intent(getActivity(), PostActivity.class));
-    }
-
-    @Override
-    public void showAccidentDetails(Accident accident) {
-        startActivity(new Intent(getActivity(), DetailAccidentActivity.class)
-                .putExtra("accident_id",accident.getId()));
-    }
-
-    @Override
-    public void showAccidents(List<Accident> accidents) {
-        adapter = new AccidentAdapter(accidents, presenter);
-        Log.e("-->FragmentTab",""+accidents.size());
-
-        //This should never be forgotten
-        recyclerView.setAdapter(adapter);
-    }
-
-    @Override
-    public void refreshList() {
-        //TODO to be implemented when i got time with more complications as necessary
         adapter.notifyDataSetChanged();
-    }
-
-    @Override
-    public void showNoRecordsLabel() {
-        //TODO to be implemented when i got time
-    }
-
-    @Override
-    public void hideNoRecordsLabel() {
-        //TODO to be implemented when i got time
     }
 }

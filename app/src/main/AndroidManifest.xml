@@ -21,8 +21,16 @@
 
         </activity>
 
-        <activity android:name="com.apps.waZiUp.ui.create_project.CreateProjectActivity"
+        <activity
+            android:name="com.apps.waZiUp.ui.create_project.CreateProjectActivity"
             android:theme="@style/app_theme.no_toolbar">
+
+        </activity>
+
+
+        <activity
+            android:name="com.apps.waZiUp.ui.detail_project.ProjectDetailActivity"
+            android:theme="@style/app_theme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -31,8 +39,11 @@
         </activity>
 
 
-        <activity android:name="com.apps.waZiUp.ui.detail_project.ProjectDetailActivity"
-            android:theme="@style/app_theme"/>
+        <!--<intent-filter>-->
+        <!--<action android:name="android.intent.action.VIEW" />-->
+        <!--<data android:scheme="geo" />-->
+        <!--<category android:name="android.intent.category.DEFAULT" />-->
+        <!--</intent-filter>-->
 
         <meta-data
             android:name="com.google.android.gms.version"

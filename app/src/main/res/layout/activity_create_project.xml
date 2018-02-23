@@ -33,14 +33,12 @@
                     android:orientation="vertical">
 
                     <fragment xmlns:android="http://schemas.android.com/apk/res/android"
-                        xmlns:map="http://schemas.android.com/apk/res-auto"
                         xmlns:tools="http://schemas.android.com/tools"
-                        android:id="@+id/map"
-                        android:name="com.google.android.gms.maps.SupportMapFragment"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        map:liteMode="true"
-                        tools:context="com.apps.waZiUp.ui.create_project.CreateProjectActivity" />
+                        android:id="@+id/map"
+                        tools:context="com.apps.waZiUp.ui.create_project.CreateProjectActivity"
+                        android:name="com.google.android.gms.maps.SupportMapFragment" />
 
                     <TextView
                         android:textSize="30sp"
@@ -56,30 +54,52 @@
 
                 </RelativeLayout>
 
-
-                <!--<android.support.v7.widget.Toolbar-->
-                <!--android:id="@+id/toolbar"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="?attr/actionBarSize"-->
-                <!--app:layout_collapseMode="pin"-->
-                <!--app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />-->
-
             </android.support.design.widget.CollapsingToolbarLayout>
 
         </android.support.design.widget.AppBarLayout>
+
 
         <include layout="@layout/content_create_project" />
 
     </LinearLayout>
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab_pick_location"
-        android:layout_width="wrap_content"
+
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_margin="@dimen/fab_margin"
         app:layout_anchor="@id/post_appbar"
-        app:layout_anchorGravity="bottom|end"
-        app:srcCompat="@drawable/fab_map" />
+        android:gravity="end|bottom"
+        android:layout_gravity="end"
+        android:layout_alignParentBottom="true"
+        app:layout_anchorGravity="bottom|end">
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab_current_location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/fab_margin"
+            app:srcCompat="@drawable/fab_gps" />
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab_zoom_out_location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/fab_margin"
+            app:srcCompat="@drawable/fab_zoom_out" />
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab_zoom_in_location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="@dimen/fab_margin"
+            app:srcCompat="@drawable/fab_zoom_in" />
+
+    </LinearLayout>
+
+
+
 
 </android.support.design.widget.CoordinatorLayout>

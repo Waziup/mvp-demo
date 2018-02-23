@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AppCompatDelegate;
 import android.support.v7.widget.Toolbar;
 
 import com.apps.waZiUp.base.view.BaseActivity;
@@ -25,6 +26,8 @@ public class ProjectDetailActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_project_detail);
 
+//        AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
+
         //The toolbar
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -41,10 +44,10 @@ public class ProjectDetailActivity extends BaseActivity {
 
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        //TODO: STRINGS HAVE TO BE CHANGED FROM THE RESOURCE VALUE FOLDER - STRING
-        adapter.addFragment(new FragmentDetailTab(), getResources().getString(R.string.home_tab_0_label));
-        adapter.addFragment(new FragmentSensorTab(), getResources().getString(R.string.home_tab_1_label));
-        adapter.addFragment(new FragmentSensorTab(), getResources().getString(R.string.home_tab_1_label));
+
+        adapter.addFragment(new FragmentDetailTab(), "Detail");
+        adapter.addFragment(new FragmentSensorTab(), "Sensors");
+        adapter.addFragment(new FragmentActivityTab(), "Activities");
 
         viewPager.setAdapter(adapter);
     }

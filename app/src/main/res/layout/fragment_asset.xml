@@ -7,7 +7,7 @@
     tools:context="com.apps.waZiUp.ui.detail_project.ProjectDetailActivity">
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/recycler_view_sensor"
+        android:id="@+id/recycler_view_record"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:clipToPadding="false"

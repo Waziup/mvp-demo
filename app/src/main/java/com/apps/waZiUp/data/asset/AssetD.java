@@ -9,7 +9,7 @@ import io.objectbox.annotation.Index;
  */
 
 @Entity
-public class asset {
+public class AssetD {
 
     @Id
     long id;

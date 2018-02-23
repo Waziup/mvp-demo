@@ -1,59 +1,60 @@
 package com.apps.waZiUp.ui.detail_project;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.gmail.kidusmt.adegareporter.R;
-import com.gmail.kidusmt.adegareporter.base.view.BaseFragment;
-import com.gmail.kidusmt.adegareporter.data.Accident;
-import com.gmail.kidusmt.adegareporter.ui.detail.DetailAccidentActivity;
-import com.gmail.kidusmt.adegareporter.ui.post.PostActivity;
+import com.apps.waZiUp.base.view.BaseFragment;
+import com.apps.waZiUp.waziup.R;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapView;
+import com.google.android.gms.maps.MapsInitializer;
+import com.google.android.gms.maps.model.CameraPosition;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 
-import java.util.List;
+public class FragmentDetailTab extends BaseFragment {
 
-public class FragmentDetailTab extends BaseFragment implements HomeContract.View {
-
-    private HomeContract.Presenter presenter;
-
-    private RecyclerView recyclerView;
-    private AccidentAdapter adapter;
-
-    private FloatingActionButton fab_add;
+    MapView mMapView;
+    private GoogleMap googleMap;
 
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        presenter = new HomePresenter(this);
-
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_home,container, false);
+        View v = inflater.inflate(R.layout.fragment_detail, container, false);
 
-        recyclerView = v.findViewById(R.id.recycler_view_home);
+        mMapView = (MapView) v.findViewById(R.id.mapView);
+        mMapView.onCreate(savedInstanceState);
 
-        //The add floating action Button
-        fab_add = v.findViewById(R.id.fab);
-        fab_add.setOnClickListener(u->presenter.onAddAccidentClicked());
+        mMapView.onResume(); // needed to get the map to display immediately
 
-        //TODO should initialize the delete button here and call the method in the presenter
+        try {
+            MapsInitializer.initialize(getActivity().getApplicationContext());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
-//        adapter = new AccidentAdapter(getContext(),accidents);
-        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getContext());
-        recyclerView.setLayoutManager(mLayoutManager);
+        mMapView.getMapAsync(mMap -> {
+            googleMap = mMap;
 
-        recyclerView.setAdapter(adapter);
+            // For dropping a marker at a point on the Map
+            LatLng sydney = new LatLng(-34, 151);
+            googleMap.addMarker(new MarkerOptions().position(sydney)
+                    .title("Marker Title").snippet("Marker Description"));
+
+            // For zooming automatically to the location of the marker
+            CameraPosition cameraPosition = new CameraPosition.Builder().target(sydney).zoom(12).build();
+            googleMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
+        });
 
         return v;
     }
@@ -61,44 +62,25 @@ public class FragmentDetailTab extends BaseFragment implements HomeContract.View
     @Override
     public void onResume() {
         super.onResume();
-
-        //the same as if calling it in the start() method
-        presenter.start();
+        mMapView.onResume();
     }
 
     @Override
-    public void openAddAccidentScreen() {
-        startActivity(new Intent(getActivity(), PostActivity.class));
+    public void onPause() {
+        super.onPause();
+        mMapView.onPause();
     }
 
     @Override
-    public void showAccidentDetails(Accident accident) {
-        startActivity(new Intent(getActivity(), DetailAccidentActivity.class)
-                .putExtra("accident_id",accident.getId()));
+    public void onDestroy() {
+        super.onDestroy();
+        mMapView.onDestroy();
     }
 
     @Override
-    public void showAccidents(List<Accident> accidents) {
-        adapter = new AccidentAdapter(accidents, presenter);
-        Log.e("-->FragmentTab",""+accidents.size());
-
-        //This should never be forgotten
-        recyclerView.setAdapter(adapter);
+    public void onLowMemory() {
+        super.onLowMemory();
+        mMapView.onLowMemory();
     }
 
-    @Override
-    public void refreshList() {
-        //TODO to be implemented when i got time with more complications as necessary
-        adapter.notifyDataSetChanged();
-    }
-
-    @Override
-    public void showNoRecordsLabel() {
-        //TODO to be implemented when i got time
-    }
-
-    @Override
-    public void hideNoRecordsLabel() {
-        //TODO to be implemented when i got time
-    }
 }
