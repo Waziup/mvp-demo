@@ -37,7 +37,6 @@ public class HomeActivity extends BaseActivity implements NavigationView.OnNavig
     // Initialise Activity Data
     private void initialise() {
         toolbar =  findViewById(R.id.toolbar);
-        toolbar.setTitle("Home");
         drawerLayout=  findViewById(R.id.drawer_layout);
         navigationView=  findViewById(R.id.navView);
         navigationView.setNavigationItemSelectedListener(this);
