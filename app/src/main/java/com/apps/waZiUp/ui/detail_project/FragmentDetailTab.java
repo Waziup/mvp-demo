@@ -32,7 +32,7 @@ public class FragmentDetailTab extends BaseFragment {
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_detail, container, false);
 
-        mMapView = (MapView) v.findViewById(R.id.mapView);
+        mMapView = (MapView) v.findViewById(R.id.map_detail);
         mMapView.onCreate(savedInstanceState);
 
         mMapView.onResume(); // needed to get the map to display immediately

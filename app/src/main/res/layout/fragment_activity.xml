@@ -12,6 +12,6 @@
         android:layout_height="wrap_content"
         android:clipToPadding="false"
         android:scrollbars="vertical"
-        tools:listitem="@layout/record_card" />
+        tools:listitem="@layout/card_sensor" />
 
 </RelativeLayout>

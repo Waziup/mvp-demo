@@ -6,12 +6,12 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
-import android.support.v4.view.MenuItemCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 
@@ -48,7 +48,7 @@ public class HomeActivity extends BaseActivity implements NavigationView.OnNavig
     }
 
     private void setUpToolbar() {
-        toolbar.setTitle(R.string.app_name);
+        toolbar.setTitle(getString(R.string.app_name));
         setSupportActionBar(toolbar);
         fab.setOnClickListener(v->startActivity(new Intent(this,
                 CreateProjectActivity.class)));
@@ -118,7 +118,8 @@ public class HomeActivity extends BaseActivity implements NavigationView.OnNavig
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
 
-        getMenuInflater().inflate(R.menu.menu_main, menu);
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_main, menu);
 
         MenuItem search = menu.findItem(R.id.search);
         SearchView searchView = (SearchView) search.getActionView();
