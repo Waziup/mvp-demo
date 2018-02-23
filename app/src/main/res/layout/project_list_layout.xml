@@ -1,15 +1,110 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     app:cardElevation="2dp"
     app:cardUseCompatPadding="true">
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        <LinearLayout
+            android:id="@+id/main_request_detail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            style="@style/normal.with_small_margin">
+            <ImageView
+                android:id="@+id/requested_item_image"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:contentDescription="@string/contentDescription"
+                android:src="@drawable/agri"
+                />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                style="@style/normal.with_margin"
+                android:layout_marginTop="8dp"
+                >
+                <TextView
+                    android:id="@+id/project_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:text="Project Title"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                    />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    >
+                    <TextView
+                        android:id="@+id/location_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="Location : "
+                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+                        style="@style/normal.text"
+                        />
+                    <TextView
+                        android:id="@+id/location_value"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        tools:text="89E76"
+                        android:textColor="@color/primary"
+                        style="@style/normal.text"
+                        />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    >
+                    <TextView
+                        android:id="@+id/country_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="Country : "
+                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+                        style="@style/normal.text"
+                        />
+                    <TextView
+                        android:id="@+id/country_value"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        tools:text="Ethiopia"
+                        style="@style/normal.text"
+                        />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    >
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="30dp"
+                       app:srcCompat="@drawable/ic_map_localization"
+                        android:layout_weight="1"
+                        android:contentDescription="@string/contentDescription"
+                        />
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="30dp"
+                        app:srcCompat="@drawable/ic_edit"
+                        android:layout_weight="1"
+                        android:contentDescription="@string/contentDescription"
+                        />
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="30dp"
+                        app:srcCompat="@drawable/ic_delete"
+                        android:layout_weight="1"
+                        android:contentDescription="@string/contentDescription"
+                        />
+                </LinearLayout>
 
-    </RelativeLayout>
-
+            </LinearLayout>
+        </LinearLayout>
 </android.support.v7.widget.CardView>
 

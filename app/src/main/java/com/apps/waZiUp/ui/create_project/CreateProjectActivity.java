@@ -56,44 +56,39 @@ public class CreateProjectActivity extends BaseActivity implements OnMapReadyCal
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync( this);
 
+        //zoom in
         fab_zoom_in.setOnClickListener(view -> {
 //            locateMap.setVisibility(View.GONE);
             zoomIn();
             Toast.makeText(this, "zoom in", Toast.LENGTH_SHORT).show();
         });
 
+        //zoom out
         fab_zoom_out.setOnClickListener(v->{
             zoomOut();
             Toast.makeText(this, "zoom out", Toast.LENGTH_SHORT).show();
         });
 
+        //for GPS to track the current location
         fab_gps.setOnClickListener(v->{
             zoomOut();
             Toast.makeText(this, "current location", Toast.LENGTH_SHORT).show();
         });
 
-
         btn_close.setOnClickListener(view -> finish());
     }
 
-    /**
-     * The API invokes this callback when the map is ready to be used.
-     * This is where we can add markers or lines, add listeners or move the camera.
-     *
-     * If google play service is not installed then the user will be prompted to update or install
-     * google play service
-     *
-     * @param googleMap
-     */
+    // Include the OnCreate() method here too, as described above.
     @Override
     public void onMapReady(GoogleMap googleMap) {
+        // Add a marker in Sydney, Australia,
+        // and move the map's camera to the same location.
 
         this.googleMap = googleMap;
         LatLng sydney = new LatLng(-33.852, 151.211);
         googleMap.addMarker(new MarkerOptions().position(sydney)
                 .title("Marker in Sydney"));
         googleMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
-
     }
 
     public void zoomIn(){

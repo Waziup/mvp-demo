@@ -47,8 +47,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="5dp"
-                        android:paddingLeft="@dimen/movie_title_padding"
-                        android:paddingRight="@dimen/movie_title_padding"
+                        android:paddingLeft="@dimen/card_title_padding"
+                        android:paddingRight="@dimen/card_title_padding"
                         android:layout_marginTop="5dp"
                         android:textColor="@color/black"
                         android:textSize="@dimen/backdrop_subtitle" />
@@ -72,9 +72,9 @@
                     android:layout_height="wrap_content"
                     android:lines="1"
                     android:layout_marginBottom="5dp"
-                    android:paddingLeft="@dimen/movie_title_padding"
-                    android:paddingRight="@dimen/movie_title_padding"
-                    android:textSize="@dimen/movie_title" />
+                    android:paddingLeft="@dimen/card_title_padding"
+                    android:paddingRight="@dimen/card_title_padding"
+                    android:textSize="@dimen/card_title" />
 
 
             </LinearLayout>
