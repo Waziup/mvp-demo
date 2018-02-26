@@ -6,7 +6,7 @@
     android:fillViewport="true"
     android:orientation="vertical"
     android:padding="10dp"
-    tools:context="com.apps.waZiUp.ui.create_project.CreateProjectActivity"
+    tools:context="com.apps.waziup.ui.create_project.CreateProjectActivity"
     tools:showIn="@layout/activity_create_project">
 
     <LinearLayout
@@ -45,10 +45,10 @@
 
 
         <Button
-            android:layout_marginTop="20dp"
             android:id="@+id/btn_create"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
             android:background="@color/accent"
             android:text="@string/create_project"
             android:textColor="@color/white" />

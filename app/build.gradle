@@ -1,11 +1,25 @@
+
+buildscript {
+    ext.kotlin_version = '1.2.0'
+
+    dependencies {
+        classpath "io.objectbox:objectbox-gradle-plugin:$objectboxVersion"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
+}
+
+
 apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
 apply plugin: 'io.objectbox'
+apply from: "$project.rootDir/config/quality.gradle"
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
     buildToolsVersion rootProject.ext.buildToolsVersion
     defaultConfig {
-        applicationId "waziup.android.com.waziup"
+        applicationId "io.waziup.mvp.demo"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
@@ -14,6 +28,11 @@ android {
         vectorDrawables.useSupportLibrary = true
         resValue "string", "google_maps_key", (project.findProperty("GOOGLE_MAPS_API_KEY") ?: "")
     }
+
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+    }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -24,10 +43,20 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
+    buildTypes.each {
+        it.buildConfigField 'String', 'API_BASE_URL', "\"http://jsonplaceholder.typicode.com\""
+    }
+
+    lintOptions {
+        abortOnError false
+    }
 }
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
+
+
 
     // Android support repository
     implementation "com.android.support:appcompat-v7:$supportLibraryVersion"
@@ -36,11 +65,16 @@ dependencies {
     implementation "com.android.support:design:$supportLibraryVersion"
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
 
-    //Google Maps API
-    implementation 'com.google.android.gms:play-services-maps:11.8.0'
+
 
     // ObjectBox
     implementation "io.objectbox:objectbox-java:$objectboxVersion"
+
+    //Kotlin
+    implementation "io.objectbox:objectbox-android:$objectboxVersion"
+    implementation "io.objectbox:objectbox-kotlin:$objectboxVersion"
+    //kapt "io.objectbox:objectbox-processor:$objectboxVersion"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
 
     // Retrofit and Picasso
     implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
@@ -58,4 +92,69 @@ dependencies {
     // UI Testing
     androidTestImplementation "com.android.support.test.espresso:espresso-core:$rootProject.espressoVersion"
     androidTestImplementation "com.android.support.test.espresso:espresso-intents:$rootProject.espressoVersion"
+
+
+    //Additions by Ali
+
+    // Dagger core
+    annotationProcessor "com.google.dagger:dagger-compiler:$daggerVersion"
+    implementation "com.google.dagger:dagger:$daggerVersion"
+
+    // Dagger Android
+    annotationProcessor "com.google.dagger:dagger-android-processor:$daggerVersion"
+    implementation "com.google.dagger:dagger-android-support:$daggerVersion"
+    // if you are not using support library, include this instead
+    implementation "com.google.dagger:dagger-android:$daggerVersion"
+
+    // ButterKnife
+    implementation "com.jakewharton:butterknife:$butterKnifeVersion"
+    annotationProcessor "com.jakewharton:butterknife-compiler:$butterKnifeVersion"
+
+    // ReactiveX
+    implementation "io.reactivex.rxjava2:rxjava:$rxjavaVersion"
+    implementation "io.reactivex.rxjava2:rxandroid:$rxandroidVersion"
+
+    // Timber
+    implementation "com.jakewharton.timber:timber:$timberVersion"
+
+    // Priority Job Queue
+    implementation "com.birbit:android-priority-jobqueue:$priorityJobQueueVersion"
+
+    //Google Maps API
+    implementation "com.google.android.gms:play-services-maps:$playServicesVersion"
+
+    //GCM Network Manager
+    implementation "com.google.android.gms:play-services-gcm:$playServicesVersion"
+
+    // RecyclerView
+    //implementation "com.android.support:recyclerview-v7:$project.supportLibraryVersion"
+
+    // Retrofit
+    //implementation "com.squareup.retrofit2:retrofit:$project.retrofitVersion"
+
+    // GSON Converter
+    //implementation "com.squareup.retrofit2:converter-gson:$project.retrofitVersion"
+
+    // OkHttp Logging Interceptor
+    implementation "com.squareup.okhttp3:okhttp:$okHttpVersion"
+    implementation "com.squareup.okhttp3:logging-interceptor:$okHttpVersion"
+
+    // Room Database  //We are using ObjectBox
+    //implementation "android.arch.persistence.room:runtime:$project.androidArchVersion"
+    //implementation "android.arch.persistence.room:rxjava2:$project.androidArchVersion"
+    //annotationProcessor "android.arch.persistence.room:compiler:$project.androidArchVersion"
+
+    // Lifecycle
+    implementation "android.arch.lifecycle:runtime:$androidArchVersion"
+    implementation "android.arch.lifecycle:extensions:$androidArchVersion"
+    annotationProcessor "android.arch.lifecycle:compiler:$androidArchVersion"
+
+    // RxRelay
+    implementation "com.jakewharton.rxrelay2:rxrelay:$rxRelayVersion"
+
+    // RxLint
+    implementation "nl.littlerobots.rxlint:rxlint:$rxLintVersion"
+
+    //Reactive objectbox
+    implementation 'io.objectbox:objectbox-rxjava:0.9.8'
 }
