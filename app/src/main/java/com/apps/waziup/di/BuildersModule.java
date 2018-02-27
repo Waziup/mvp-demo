@@ -15,7 +15,7 @@ public abstract class BuildersModule {
 
     @ActivityScope
     @ContributesAndroidInjector(modules = ProjectActivityModule.class)
-    abstract ProjectActivity bindCommentsActivity();
+    abstract ProjectActivity bindProjectActivity();
 
     // Add bindings for other sub-components here
 }

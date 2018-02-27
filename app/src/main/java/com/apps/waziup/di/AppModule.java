@@ -1,6 +1,5 @@
 package com.apps.waziup.di;
 
-import android.app.Application;
 import android.content.Context;
 
 import com.apps.waziup.App;
@@ -11,7 +10,6 @@ import com.apps.waziup.domain.services.jobs.SchedulerJobService;
 
 import javax.inject.Singleton;
 
-import dagger.Binds;
 import dagger.Module;
 import dagger.Provides;
 
@@ -21,29 +19,29 @@ import dagger.Provides;
 @Module
 public abstract class AppModule {
 
-    @Provides
-    @Singleton
-    static Context provideContext(Application application) {
-        return application;
-    }
-
-    @Binds
-    abstract Application application(App app);
-
     //@Provides
-    //Context provideContext(App application) {
-    //    return application.getApplicationContext();
+    //@Singleton
+    //static Context provideContext(Application application) {
+    //    return application;
     //}
 
+    //@Binds
+    //abstract Application application(App app);
+
+    @Provides
+    static Context provideContext(App application) {
+        return application.getApplicationContext();
+    }
+
     @Singleton
     @Provides
-    SchedulerJobService provideSchedulerJobService() {
+    static SchedulerJobService provideSchedulerJobService() {
         return new SchedulerJobService();
     }
 
     @Singleton
     @Provides
-    GcmJobService provideGcmJobService() {
+    static GcmJobService provideGcmJobService() {
         return new GcmJobService();
     }
 
@@ -55,13 +53,13 @@ public abstract class AppModule {
 
     @Singleton
     @Provides
-    LocalProjectRepository provideLocalProjectRepository() {
+    static LocalProjectRepository provideLocalProjectRepository() {
         return null;
     }
 
     @Singleton
     @Provides
-    RemoteProjectRepository provideRemoteCommentRepository() {
+    static RemoteProjectRepository provideRemoteCommentRepository() {
         return null;
     }
 }

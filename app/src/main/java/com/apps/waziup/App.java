@@ -3,6 +3,7 @@ package com.apps.waziup;
 import android.app.Activity;
 import android.app.Application;
 
+import com.apps.waziup.di.DaggerAppComponent;
 import com.apps.waziup.domain.services.jobs.JobManagerFactory;
 import com.apps.waziup.waziup.BuildConfig;
 
@@ -25,11 +26,11 @@ public class App extends Application implements HasActivityInjector {
             Timber.plant(new Timber.DebugTree());
         }
 
-        //DaggerAppComponent
-        //        .builder()
-        //        .application(this)
-        //        .build()
-        //        .inject(this);
+        DaggerAppComponent
+                .builder()
+                //.application(this)
+                .build()
+                .inject(this);
 
         JobManagerFactory.getJobManager(this);
     }

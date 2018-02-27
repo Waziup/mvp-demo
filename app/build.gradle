@@ -94,18 +94,21 @@ dependencies {
     //Additions by Ali
 
     // Dagger core
-    annotationProcessor "com.google.dagger:dagger-compiler:$daggerVersion"
+    //annotationProcessor "com.google.dagger:dagger-compiler:$daggerVersion"
+    kapt "com.google.dagger:dagger-compiler:$daggerVersion"
     implementation "com.google.dagger:dagger:$daggerVersion"
 
     // Dagger Android
-    annotationProcessor "com.google.dagger:dagger-android-processor:$daggerVersion"
+    //annotationProcessor "com.google.dagger:dagger-android-processor:$daggerVersion"
+    kapt "com.google.dagger:dagger-android-processor:$daggerVersion"
     implementation "com.google.dagger:dagger-android-support:$daggerVersion"
     // if you are not using support library, include this instead
-    implementation "com.google.dagger:dagger-android:$daggerVersion"
+    //implementation "com.google.dagger:dagger-android:$daggerVersion"
 
     // ButterKnife
     implementation "com.jakewharton:butterknife:$butterKnifeVersion"
-    annotationProcessor "com.jakewharton:butterknife-compiler:$butterKnifeVersion"
+    //annotationProcessor "com.jakewharton:butterknife-compiler:$butterKnifeVersion"
+    kapt "com.jakewharton:butterknife-compiler:$butterKnifeVersion"
 
     // ReactiveX
     implementation "io.reactivex.rxjava2:rxjava:$rxjavaVersion"
@@ -144,7 +147,8 @@ dependencies {
     // Lifecycle
     implementation "android.arch.lifecycle:runtime:$androidArchVersion"
     implementation "android.arch.lifecycle:extensions:$androidArchVersion"
-    annotationProcessor "android.arch.lifecycle:compiler:$androidArchVersion"
+    //annotationProcessor "android.arch.lifecycle:compiler:$androidArchVersion"
+    kapt "android.arch.lifecycle:compiler:$androidArchVersion"
 
     // RxRelay
     implementation "com.jakewharton.rxrelay2:rxrelay:$rxRelayVersion"
@@ -157,5 +161,6 @@ dependencies {
 
     //Google Arch ViewModel Factory
     implementation "com.github.kakai248.AutoViewModelFactory:annotations:$autoViewModelFactory"
-    annotationProcessor "com.github.kakai248.AutoViewModelFactory:processor:$autoViewModelFactory"
+    //annotationProcessor "com.github.kakai248.AutoViewModelFactory:processor:$autoViewModelFactory"
+    kapt "com.github.kakai248.AutoViewModelFactory:processor:$autoViewModelFactory"
 }
