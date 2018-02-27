@@ -25,11 +25,11 @@ public class App extends Application implements HasActivityInjector {
             Timber.plant(new Timber.DebugTree());
         }
 
-        DaggerAppComponent
-                .builder()
-                .application(this)
-                .build()
-                .inject(this);
+        //DaggerAppComponent
+        //        .builder()
+        //        .application(this)
+        //        .build()
+        //        .inject(this);
 
         JobManagerFactory.getJobManager(this);
     }
@@ -39,8 +39,8 @@ public class App extends Application implements HasActivityInjector {
         return dispatchingAndroidInjector;
     }
 
-    //@Override
-    //protected AndroidInjector<? extends DaggerApplication> applicationInjector() {
-    //    return DaggerApplicationComponent.builder().create(this);
-    //}
+    // @Override
+    // protected AndroidInjector<? extends DaggerApplication> applicationInjector() {
+    //     return DaggerApplicationComponent.builder().create(this);
+    // }
 }

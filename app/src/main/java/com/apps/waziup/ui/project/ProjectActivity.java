@@ -2,7 +2,6 @@ package com.apps.waziup.ui.project;
 
 import android.arch.lifecycle.LifecycleRegistry;
 import android.arch.lifecycle.LifecycleRegistryOwner;
-import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -17,7 +16,6 @@ import java.util.ArrayList;
 
 import javax.inject.Inject;
 
-import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import dagger.android.AndroidInjection;
@@ -26,16 +24,16 @@ import dagger.android.support.DaggerAppCompatActivity;
 
 public class ProjectActivity extends DaggerAppCompatActivity implements LifecycleRegistryOwner {
 
-    @Inject
-    ProjectViewModelFactory viewModelFactory;
+    //@Inject
+    //ProjectViewModelFactory viewModelFactory;
 
     @Inject
     SyncProjectLifecycleObserver syncProjectLifecycleObserver;
 
-    @BindView(R.id.add_project_edittext)
+    //@BindView(R.id.ad_label)
     EditText addProjectEditText;
 
-    @BindView(R.id.projects_recycler_view)
+    //@BindView(R.id.project_title)
     RecyclerView recyclerView;
 
     private ProjectListAdapter recyclerViewAdapter;
@@ -53,7 +51,7 @@ public class ProjectActivity extends DaggerAppCompatActivity implements Lifecycl
     protected void onCreate(Bundle savedInstanceState) {
         AndroidInjection.inject(this);
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.projects_activity);
+        setContentView(R.layout.activity_project_detail);
 
         ButterKnife.bind(this);
 
@@ -61,12 +59,12 @@ public class ProjectActivity extends DaggerAppCompatActivity implements Lifecycl
 
         getLifecycle().addObserver(syncProjectLifecycleObserver);
 
-        viewModel = ViewModelProviders.of(this, viewModelFactory).get(ProjectViewModel.class);
+        //viewModel = ViewModelProviders.of(this, viewModelFactory).get(ProjectViewModel.class);
 
         viewModel.projects().observe(this, recyclerViewAdapter::updateProjectList);
     }
 
-    @OnClick(R.id.add_project_button)
+    @OnClick(R.id.all)
     void onAddProjectButtonClicked() {
 
         hideKeyboard();

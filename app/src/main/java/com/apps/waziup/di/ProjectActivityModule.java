@@ -1,6 +1,16 @@
 package com.apps.waziup.di;
 
 
+import android.support.v7.app.AppCompatActivity;
+
+import com.apps.waziup.di.scopes.ActivityScope;
+import com.apps.waziup.domain.LocalProjectRepository;
+import com.apps.waziup.domain.ProjectUseCase;
+import com.apps.waziup.domain.RemoteProjectRepository;
+import com.apps.waziup.domain.services.SyncProjectLifecycleObserver;
+import com.apps.waziup.ui.project.ProjectActivity;
+
+import dagger.Binds;
 import dagger.Module;
 import dagger.Provides;
 
@@ -8,28 +18,31 @@ import dagger.Provides;
  * Define ProjectActivity-specific dependencies here.
  */
 @Module
-public class ProjectActivityModule {
-    @Provides
-    CommentsViewModelFactory provideCommentsViewModelFactory(GetCommentsUseCase getCommentsUseCase,
-                                                             AddCommentUseCase addCommentUseCase) {
-        return new CommentsViewModelFactory(getCommentsUseCase, addCommentUseCase);
-    }
+public abstract class ProjectActivityModule {
 
     @Provides
-    SyncCommentLifecycleObserver provideSyncCommentLifecycleObserver(UpdateCommentUseCase updateCommentUseCase,
-                                                                     DeleteCommentUseCase deleteCommentUseCase) {
-        return new SyncCommentLifecycleObserver(updateCommentUseCase, deleteCommentUseCase);
+    @ActivityScope
+    static SyncProjectLifecycleObserver provideSyncProjectLifecycleObserver(ProjectUseCase projectUseCase) {
+        return new SyncProjectLifecycleObserver(projectUseCase);
     }
+
+    //@Provides
+    //ProjectsViewModelFactory provideProjectsViewModelFactory(ProjectsUseCase projectsUseCase) {
+    //    return new ProjectsViewModelFactory(projectsUseCase);
+    //}
 
     @Provides
-    AddCommentUseCase provideAddCommentUseCase(LocalCommentRepository localCommentRepository, SyncCommentUseCase syncCommentUseCase) {
-        return new AddCommentUseCase(localCommentRepository, syncCommentUseCase);
+    @ActivityScope
+    static ProjectUseCase provideAddProjectUseCase(LocalProjectRepository localProjectRepository, RemoteProjectRepository remoteProjectRepository) {
+        return new ProjectUseCase(localProjectRepository, remoteProjectRepository);
     }
 
+    @Binds
+    abstract AppCompatActivity activity(ProjectActivity activity);
 
 
-    @Provides
-    SyncCommentUseCase provideSyncCommentUseCase(RemoteCommentRepository remoteCommentRepository) {
-        return new SyncCommentUseCase(remoteCommentRepository);
-    }
+    //@Provides
+    //SyncProjectUseCase provideSyncProjectUseCase(RemoteProjectRepository remoteProjectRepository) {
+    //    return new SyncProjectUseCase(remoteProjectRepository);
+    //}
 }
