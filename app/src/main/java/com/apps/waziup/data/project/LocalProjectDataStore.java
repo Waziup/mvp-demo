@@ -14,11 +14,11 @@ import timber.log.Timber;
 
 public class LocalProjectDataStore implements LocalProjectRepository {
 
-    //private final ProjectDao projectDao; //Not using DAO here
-    private final Box<Project> projectDao;
+    //private final ProjectDao projectBox; //Not using DAO here
+    private final Box<Project> projectBox;
 
-    public LocalProjectDataStore(Box<Project> projectDao) {
-        this.projectDao = projectDao;
+    public LocalProjectDataStore(Box<Project> projectBox) {
+        this.projectBox = projectBox;
     }
 
     /**
@@ -29,7 +29,7 @@ public class LocalProjectDataStore implements LocalProjectRepository {
         Project project = new Project(); //TODO: populate
 
         return Single.fromCallable(() -> {
-            long rowId = projectDao.put(project);
+            long rowId = projectBox.put(project);
             Timber.d("project stored " + rowId);
             return project; //ProjectUtils.clone(project, rowId);
         });
@@ -41,7 +41,7 @@ public class LocalProjectDataStore implements LocalProjectRepository {
     public Completable update(Project project) {
         Timber.d("updating project sync status for project id %s", project.getId());
 
-        return Completable.fromAction(() -> projectDao.put(project));  //TODO: check update
+        return Completable.fromAction(() -> projectBox.put(project));  //TODO: check update
     }
 
     /**
@@ -50,7 +50,7 @@ public class LocalProjectDataStore implements LocalProjectRepository {
     public Completable delete(Project project) {
         Timber.d("deleting project with id %s", project.getId());
 
-        return Completable.fromAction(() -> projectDao.remove(project));
+        return Completable.fromAction(() -> projectBox.remove(project));
     }
 
     /**
@@ -58,7 +58,7 @@ public class LocalProjectDataStore implements LocalProjectRepository {
      */
     public Flowable<List<Project>> getProjects(long userId) {
         Timber.d("getting projects for photo id %s", userId);
-        //return Flowable.just(projectDao.getAll());
+        //return Flowable.just(projectBox.getAll());
         throw new NotImplementedError("TODO: Get flowable list of projects from ObjectBox");
     }
 }
