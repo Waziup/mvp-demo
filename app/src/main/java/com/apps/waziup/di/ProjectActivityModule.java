@@ -5,10 +5,10 @@ import dagger.Module;
 import dagger.Provides;
 
 /**
- * Define CommentsActivity-specific dependencies here.
+ * Define ProjectActivity-specific dependencies here.
  */
 @Module
-public class CommentsActivityModule {
+public class ProjectActivityModule {
     @Provides
     CommentsViewModelFactory provideCommentsViewModelFactory(GetCommentsUseCase getCommentsUseCase,
                                                              AddCommentUseCase addCommentUseCase) {
@@ -26,20 +26,7 @@ public class CommentsActivityModule {
         return new AddCommentUseCase(localCommentRepository, syncCommentUseCase);
     }
 
-    @Provides
-    GetCommentsUseCase provideGetCommentsUseCase(LocalCommentRepository localCommentRepository) {
-        return new GetCommentsUseCase(localCommentRepository);
-    }
 
-    @Provides
-    UpdateCommentUseCase provideUpdateCommentUseCase(LocalCommentRepository localCommentRepository) {
-        return new UpdateCommentUseCase(localCommentRepository);
-    }
-
-    @Provides
-    DeleteCommentUseCase provideDeleteCommentUseCase(LocalCommentRepository localCommentRepository) {
-        return new DeleteCommentUseCase(localCommentRepository);
-    }
 
     @Provides
     SyncCommentUseCase provideSyncCommentUseCase(RemoteCommentRepository remoteCommentRepository) {

@@ -10,8 +10,8 @@ import dagger.android.ContributesAndroidInjector;
 @Module
 public abstract class BuildersModule {
 
-    @ContributesAndroidInjector(modules = CommentsActivityModule.class)
-    abstract CommentsActivity bindCommentsActivity();
+    @ContributesAndroidInjector(modules = ProjectActivityModule.class)
+    abstract ProjectActivity bindCommentsActivity();
 
     // Add bindings for other sub-components here
 }

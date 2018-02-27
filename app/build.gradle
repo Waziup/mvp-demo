@@ -156,5 +156,9 @@ dependencies {
     implementation "nl.littlerobots.rxlint:rxlint:$rxLintVersion"
 
     //Reactive objectbox
-    implementation 'io.objectbox:objectbox-rxjava:0.9.8'
+    implementation "io.objectbox:objectbox-rxjava:$rxjavaObjectbox"
+
+    //Google Arch ViewModel Factory
+    implementation "com.github.kakai248.AutoViewModelFactory:annotations:$autoViewModelFactory"
+    annotationProcessor "com.github.kakai248.AutoViewModelFactory:processor:$autoViewModelFactory"
 }

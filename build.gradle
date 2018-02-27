@@ -39,6 +39,7 @@ allprojects {
         maven {
             url "http://objectbox.net/beta-repo/"
         }
+        maven { url "https://jitpack.io" }
     }
 }
 
@@ -73,7 +74,9 @@ ext{
     okHttpVersion = "3.9.1"
     rxRelayVersion = "2.0.0"
     rxLintVersion = "1.6"
-    //objectboxVersion = "1.4.1"
+    rxjavaObjectbox = "0.9.8"
+
+    autoViewModelFactory = "0.1.2"
 
     //Test dependencies
     junitVersion = '4.12'
@@ -83,6 +86,7 @@ ext{
 }
 repositories {
     mavenCentral()
+
 }
 dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
