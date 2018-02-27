@@ -1,4 +1,4 @@
-package com.apps.waZiUp.ui.detail_project;
+package com.apps.waZiUp.ui.project.detail;
 
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -10,7 +10,6 @@ import android.view.ViewGroup;
 import com.apps.waZiUp.base.view.BaseFragment;
 import com.apps.waZiUp.data.sensor.Sensor;
 import com.apps.waZiUp.waziup.R;
-import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;

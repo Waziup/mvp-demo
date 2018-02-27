@@ -1,5 +1,6 @@
 package com.apps.waZiUp.ui.home;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -14,9 +15,13 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
+import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.apps.waZiUp.base.view.BaseActivity;
-import com.apps.waZiUp.ui.create_project.CreateProjectActivity;
+import com.apps.waZiUp.ui.project.create.CreateProjectActivity;
 import com.apps.waZiUp.waziup.R;
 
 
@@ -50,8 +55,28 @@ public class HomeActivity extends BaseActivity implements NavigationView.OnNavig
     private void setUpToolbar() {
         toolbar.setTitle(getString(R.string.app_name));
         setSupportActionBar(toolbar);
-        fab.setOnClickListener(v->startActivity(new Intent(this,
-                CreateProjectActivity.class)));
+        fab.setOnClickListener(v->startActivity(new Intent(this, CreateProjectActivity.class)));
+    }
+
+    public void createDialog(){
+        // custom dialog
+        final Dialog dialog = new Dialog(this);
+        //Hides the title of dialog
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.fragment_create_project);
+
+        // set the custom dialog components - text, image and button
+        TextView btnClose = dialog.findViewById(R.id.tv_create_close);
+        btnClose.setOnClickListener(v1 -> dialog.dismiss());
+
+        Button btnCreate = dialog.findViewById(R.id.btn_create_project);
+        // if button is clicked, close the custom dialog
+        btnCreate.setOnClickListener(u-> {
+            Toast.makeText(this, "project created", Toast.LENGTH_SHORT).show();
+            dialog.dismiss();
+        });
+
+        dialog.show();
     }
 
 
@@ -76,12 +101,7 @@ public class HomeActivity extends BaseActivity implements NavigationView.OnNavig
         };
         drawerLayout.addDrawerListener(drawerToggle);
 
-        drawerLayout.post(new Runnable() {
-            @Override
-            public void run() {
-                drawerToggle.syncState();
-            }
-        });
+        drawerLayout.post(() -> drawerToggle.syncState());
 
     }
     @Override

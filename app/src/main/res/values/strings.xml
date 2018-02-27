@@ -23,10 +23,18 @@
     <string name="title_activity_project_det">ProjectDetActivity</string>
     <string name="project_init_status">initial status</string>
     <string name="project_description">project description</string>
-    <string name="create_insert_location">locate farm</string>
+    <string name="create_insert_location">project location</string>
     <string name="create_project">create project</string>
     <string name="project_notes">enter notes (optional)</string>
     <string name="sensor_type">type</string>
     <string name="sensor_name">sensor name</string>
+    <string name="btn_create">create</string>
+    <string name="hing_create_enter_name">project name</string>
+    <string name="create_project_title">Set Project Name</string>
+    <string name="close">X</string>
+    <string name="btn_close">close</string>
+    <string name="pick_place">Pick Project Locatioin</string>
+    <string name="default_info_title">default marker title</string>
+    <string name="default_info_snippet">default marker snippet</string>
 
 </resources>

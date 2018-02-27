@@ -8,6 +8,7 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
 
     <application
         android:allowBackup="true"
@@ -25,10 +26,10 @@
             </intent-filter>
         </activity>
 
-        <activity android:name="com.apps.waZiUp.ui.create_project.CreateProjectActivity"
+        <activity android:name="com.apps.waZiUp.ui.project.create.CreateProjectActivity"
             android:theme="@style/app_theme.no_toolbar"/>
 
-        <activity android:name="com.apps.waZiUp.ui.detail_project.ProjectDetailActivity"
+        <activity android:name="com.apps.waZiUp.ui.project.detail.ProjectDetailActivity"
             android:theme="@style/app_theme">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
