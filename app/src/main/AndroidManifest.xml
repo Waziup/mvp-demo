@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.apps.waZiUp.waziup">
+    package="com.apps.waziup.waziup">
 
     <uses-feature
         android:glEsVersion="0x00020000"
@@ -16,7 +16,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/app_theme">
-        <activity android:name="com.apps.waZiUp.ui.home.HomeActivity">
+
+        <activity android:name="com.apps.waziup.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <!--
+        <activity android:name="com.apps.waziup.ui.home.HomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -24,6 +33,30 @@
             </intent-filter>
         </activity>
 
+        <activity
+            android:name="com.apps.waziup.ui.create_project.CreateProjectActivity"
+            android:theme="@style/app_theme.no_toolbar"/>
+
+        <activity
+            android:name="com.apps.waziup.ui.detail_project.ProjectDetailActivity"
+            android:theme="@style/app_theme">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <data android:scheme="geo" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        -->
+
+        <activity
+            android:name="com.apps.waziup.ui.project.ProjectActivity"
+            android:theme="@style/app_theme">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <data android:scheme="geo" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />

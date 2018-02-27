@@ -50,8 +50,6 @@
         <item name="android:layout_marginBottom">12dp</item>
     </style>
 
-
-
     <!--white label-->
     <style name="normal.white">
         <item name="android:textColor">@color/white</item>

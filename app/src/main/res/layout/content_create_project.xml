@@ -6,7 +6,7 @@
     android:fillViewport="true"
     android:orientation="vertical"
     android:padding="10dp"
-    tools:context="com.apps.waZiUp.ui.create_project.CreateProjectActivity"
+    tools:context="com.apps.waziup.ui.create_project.CreateProjectActivity"
     tools:showIn="@layout/activity_create_project">
 
     <LinearLayout
@@ -15,39 +15,42 @@
         android:orientation="vertical">
 
         <EditText
-            android:id="@+id/creat_name"
+            android:id="@+id/create_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:hint="@string/project_name" />
+
+        <!--TODO don't forget to validate the user input-->
+
+        <EditText
+            android:id="@+id/create_init_status"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/project_init_status"
+            android:inputType="textCapSentences|textMultiLine" />
 
         <EditText
             android:id="@+id/create_description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:hint="@string/project_name" />
+            android:hint="@string/project_description" />
 
         <EditText
-            android:id="@+id/create_country"
+            android:id="@+id/create_notes"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="plate number" />
-
-        <EditText
-            android:id="@+id/record_description"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="top|left"
-            android:hint="description"
+            android:hint="@string/project_notes"
             android:inputType="textCapSentences|textMultiLine" />
 
+
         <Button
-            android:id="@+id/btn_record"
+            android:id="@+id/btn_create"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
             android:background="@color/accent"
-            android:text="SAVE RECORD"
+            android:text="@string/create_project"
             android:textColor="@color/white" />
 
     </LinearLayout>

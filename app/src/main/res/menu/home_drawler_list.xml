@@ -10,17 +10,39 @@
             android:title="@string/home_list"
             />
         <item
-            android:id="@+id/sensor_list"
+            android:id="@+id/field_list"
             android:icon="@drawable/ic_redeem_black_48dp"
-            android:title="@string/sensor_list" />
+            android:title="@string/field_list" />
+        <item android:id="@+id/weather_list"
+            android:icon="@drawable/ic_redeem_black_48dp"
+            android:title="@string/weather_list"/>
         <item
-            android:id="@+id/project_list"
+            android:id="@+id/activity_list"
             android:icon="@drawable/ic_redeem_black_48dp"
-            android:title="@string/project_list" />
+            android:title="@string/activity_list" />
+    </group>
+    <group
+        android:id="@+id/group_two"
+        android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/notification_list"
+            android:icon="@drawable/ic_redeem_black_48dp"
+            android:title="@string/notification_list" />
+        <item
+            android:id="@+id/profile_list"
+            android:icon="@drawable/ic_redeem_black_48dp"
+            android:title="@string/profile_list" />
+
         <item
             android:id="@+id/setting_lsit"
             android:icon="@drawable/ic_redeem_black_48dp"
             android:title="@string/setting_list" />
+        <item
+            android:id="@+id/about_list"
+            android:icon="@drawable/ic_redeem_black_48dp"
+            android:title="@string/about_list" />
     </group>
+
 
 </menu>

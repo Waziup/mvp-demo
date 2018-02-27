@@ -7,21 +7,56 @@
     <!--Label-->
     <string name="username">John Doe</string>
 
+    <!--Login  Activity-->
+    <string name="hint_username">Username</string>
+    <string name="hint_password">password</string>
+    <string name="login_button">Login</string>
+    <string name="register_link">No account yet? Create one</string>
 
-    <!--Navigation Item List  label-->
+
+    <!--Drawer String values-->
+    <string name="drawer_open">Open</string>
+    <string name="drawer_close">close</string>
+
     <!--Group_One-->
     <string name="home_list">Home</string>
-    <string name="sensor_list">Sensor</string>
-    <string name="project_list">Project</string>
+    <string name="field_list">Field</string>
+    <string name="weather_list">Weather</string>
+    <string name="activity_list">Activity</string>
+    <string name="notification_list">Notification</string>
+    <string name="profile_list">Profile</string>
+    <string name="about_list">About</string>
+
     <string name="setting_list">Setting</string>
     <!--CREATE PROJECT ACTIVITY-->
     <string name="section_format">Hello World from section: %1$d</string>
     <string name="title_activity_create_project">CreateProjectActivity</string>
     <string name="project_name">Enter name</string>
     <string name="title_activity_project_det">ProjectDetActivity</string>
+    <string name="project_init_status">initial status</string>
+    <string name="project_description">projectOld description</string>
+    <string name="create_insert_location">locate farm</string>
+    <string name="create_project">create projectOld</string>
+    <string name="project_notes">enter notes (optional)</string>
+    <string name="sensor_type">type</string>
+    <string name="sensor_name">sensor name</string>
 
 
-    <!--Drawer String values-->
-    <string name="drawer_open">Open</string>
-    <string name="drawer_close">close</string>
+    <!--Font  icons-->
+
+    <string name="fontello_logo">&#xe8ad;</string>
+    <string name="fontello_search">&#xea01;</string>
+    <string name="fontello_x_mark">&#xe887;</string>
+    <string name="fontello_x_mark_masked">&#xe885;</string>
+    <string name="fontello_microfon">&#xea18;</string>
+    <string name="fontello_user">&#xe800;</string>
+    <string name="fontello_password">&#xe9df;</string>
+    <string name="fontello_upload">&#xeb30;</string>
+    <string name="fontello_play">&#xea7d;</string>
+    <string name="fontello_heart_empty">&#xe9b5;</string>
+    <string name="fontello_heart_full">&#xe9b6;</string>
+    <string name="fontello_drag_and_drop">&#xe988;</string>
+
+
+
 </resources>
