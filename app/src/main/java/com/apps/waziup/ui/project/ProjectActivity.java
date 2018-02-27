@@ -24,8 +24,8 @@ import dagger.android.support.DaggerAppCompatActivity;
 
 public class ProjectActivity extends DaggerAppCompatActivity implements LifecycleRegistryOwner {
 
-    @Inject
-    ProjectViewModelFactory viewModelFactory;
+    /*@Inject
+    ProjectViewModelFactory viewModelFactory;*/
 
     @Inject
     SyncProjectLifecycleObserver syncProjectLifecycleObserver;
@@ -38,7 +38,7 @@ public class ProjectActivity extends DaggerAppCompatActivity implements Lifecycl
 
     private ProjectListAdapter recyclerViewAdapter;
 
-    private ProjectViewModel viewModel;
+    //private ProjectViewModel viewModel;
 
     private LifecycleRegistry registry = new LifecycleRegistry(this);
 
@@ -61,7 +61,7 @@ public class ProjectActivity extends DaggerAppCompatActivity implements Lifecycl
 
         //viewModel = ViewModelProviders.of(this, viewModelFactory).get(ProjectViewModel.class);
 
-        viewModel.projects().observe(this, recyclerViewAdapter::updateProjectList);
+//        viewModel.projects().observe(this, recyclerViewAdapter::updateProjectList);
     }
 
     @OnClick(R.id.all)
@@ -70,7 +70,7 @@ public class ProjectActivity extends DaggerAppCompatActivity implements Lifecycl
         hideKeyboard();
 
         // TODO add project validation
-        viewModel.addProject(addProjectEditText.getText().toString());
+//        viewModel.addProject(addProjectEditText.getText().toString());
 
         clearEditText();
     }

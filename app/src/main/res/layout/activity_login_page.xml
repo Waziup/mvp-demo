@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:layout_marginTop="20dp"
-        android:src="@drawable/WAZI_UP_logo"
+        android:src="@drawable/aazi_up_logo"
         android:contentDescription="@string/contentDescription"
         />
     <LinearLayout
@@ -26,14 +26,14 @@
         android:layout_marginTop="16dp"
         >
 
-        <com.apps.waziup.fonts.MaterialDesignIconsTextView
+       <!-- <com.apps.waziup.fonts.MaterialDesignIconsTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
             android:text="@string/fontello_user"
             android:textColor="@color/main_color_grey_600"
             android:textSize="16dp"
-            tools:ignore="SpUsage" />
+            tools:ignore="SpUsage" />-->
         <android.support.design.widget.TextInputLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -62,14 +62,14 @@
         android:layout_marginEnd="32dp"
         android:gravity="center_vertical"
         >
-        <com.apps.waziup.fonts.MaterialDesignIconsTextView
+       <!-- <com.apps.waziup.fonts.MaterialDesignIconsTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
             android:text="@string/fontello_password"
             android:textColor="@color/main_color_grey_600"
             android:textSize="16dp"
-            tools:ignore="SpUsage" />
+            tools:ignore="SpUsage" />-->
 
         <android.support.design.widget.TextInputLayout
             android:layout_width="0dp"

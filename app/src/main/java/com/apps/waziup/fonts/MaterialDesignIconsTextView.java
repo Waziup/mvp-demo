@@ -3,8 +3,13 @@ package com.apps.waziup.fonts;
 import android.content.Context;
 import android.graphics.Typeface;
 import android.util.AttributeSet;
+import android.widget.TextView;
 
-public class MaterialDesignIconsTextView extends android.support.v7.widget.AppCompatTextView {
+/**
+* Created by Ceddy Muhoza
+**/
+
+public class MaterialDesignIconsTextView extends TextView {
 	
 	private static Typeface sMaterialDesignIcons;
 
@@ -24,7 +29,7 @@ public class MaterialDesignIconsTextView extends android.support.v7.widget.AppCo
 	
 	private void setTypeface() {
 		if (sMaterialDesignIcons == null) {
-			sMaterialDesignIcons = Typeface.createFromAsset(getContext().getAssets(), "fonts/MaterialDesignIcons.ttf");
+			sMaterialDesignIcons = Typeface.createFromAsset(getContext().getAssets(), "app/src/app-asset/MaterialDesignIcons.ttf");
 		}
 		setTypeface(sMaterialDesignIcons);
 	}
