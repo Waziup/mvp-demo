@@ -17,6 +17,7 @@
         android:supportsRtl="true"
         android:theme="@style/app_theme">
 
+        <!--
         <activity android:name="com.apps.waziup.ui.home.HomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -38,7 +39,17 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+        -->
 
+        <activity
+            android:name="com.apps.waziup.ui.project.ProjectActivity"
+            android:theme="@style/app_theme">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <data android:scheme="geo" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />

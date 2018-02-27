@@ -51,7 +51,7 @@ public class ProjectActivity extends DaggerAppCompatActivity implements Lifecycl
     protected void onCreate(Bundle savedInstanceState) {
         AndroidInjection.inject(this);
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_project_detail);
+        setContentView(R.layout.activity_home);
 
         ButterKnife.bind(this);
 
