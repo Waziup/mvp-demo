@@ -4,9 +4,9 @@ package com.apps.waziup.di;
 import android.support.v7.app.AppCompatActivity;
 
 import com.apps.waziup.di.scopes.ActivityScope;
-import com.apps.waziup.domain.LocalProjectRepository;
-import com.apps.waziup.domain.ProjectUseCase;
-import com.apps.waziup.domain.RemoteProjectRepository;
+import com.apps.waziup.domain.project.LocalProjectRepository;
+import com.apps.waziup.domain.project.ProjectUseCase;
+import com.apps.waziup.domain.project.RemoteProjectRepository;
 import com.apps.waziup.domain.services.SyncProjectLifecycleObserver;
 import com.apps.waziup.ui.project.ProjectActivity;
 
@@ -26,6 +26,7 @@ public abstract class ProjectActivityModule {
         return new SyncProjectLifecycleObserver(projectUseCase);
     }
 
+    //AutoViewFactory will generate the Factory a dn it will be injected
     //@Provides
     //ProjectsViewModelFactory provideProjectsViewModelFactory(ProjectsUseCase projectsUseCase) {
     //    return new ProjectsViewModelFactory(projectsUseCase);
