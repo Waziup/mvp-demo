@@ -33,16 +33,16 @@ public class FragmentSensorTab extends BaseFragment {
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_sensors, container, false);
 
-        recyclerView = v.findViewById(R.id.recycler_view_sensor);
-
-        sensorList = new ArrayList<>();
-        adapter = new DetailSensorAdapter(sensorList, getContext());
-        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getContext());
-        recyclerView.setLayoutManager(mLayoutManager);
-
-        recyclerView.setAdapter(adapter);
-
-        prepareSensors();
+//        recyclerView = v.findViewById(R.id.recycler_view_sensor);
+//
+//        sensorList = new ArrayList<>();
+//        adapter = new DetailSensorAdapter(sensorList, getContext());
+//        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getContext());
+//        recyclerView.setLayoutManager(mLayoutManager);
+//
+//        recyclerView.setAdapter(adapter);
+//
+//        prepareSensors();
         return v;
     }
 
@@ -89,6 +89,6 @@ public class FragmentSensorTab extends BaseFragment {
     @Override
     public void onResume() {
         super.onResume();
-        adapter.notifyDataSetChanged();
+//        adapter.notifyDataSetChanged();
     }
 }

@@ -37,4 +37,9 @@
     <string name="default_info_title">default marker title</string>
     <string name="default_info_snippet">default marker snippet</string>
 
+    <!-- Content description strings -->
+    <string name="cd_background_image">background image</string>
+    <string name="cd_main_image">main image</string>
+    <string name="lorem">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.</string>
+
 </resources>

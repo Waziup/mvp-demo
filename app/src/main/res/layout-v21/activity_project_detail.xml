@@ -7,26 +7,29 @@
     android:orientation="vertical">
 
     <LinearLayout
+        android:elevation="3dp"
         android:layout_width="match_parent"
-        android:layout_height="210dp"
+        android:layout_height="250dp"
         android:background="@color/primary"
         android:orientation="vertical">
 
         <TextView
+            android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
             android:fontFamily="sans-serif-condensed"
             android:gravity="center"
             android:text="Project Name"
             android:textColor="@color/white"
-            android:textSize="20sp"/>
+            android:textSize="25sp"/>
 
         <RelativeLayout
             android:layout_marginEnd="10dp"
             android:layout_marginStart="10dp"
             android:layout_width="match_parent"
-            android:layout_height="140dp">
+            android:layout_height="155dp">
 
             <LinearLayout
                 android:layout_marginTop="5dp"
@@ -37,7 +40,7 @@
 
                 <TextView
                     android:gravity="center|start"
-                    android:layout_weight="0.3"
+                    android:layout_weight="0.33"
                     android:id="@+id/tv_project_detail_location_title"
                     android:textSize="18sp"
                     android:text="Location"
@@ -50,19 +53,20 @@
                     android:layout_weight="0.6"
                     android:id="@+id/tv_project_detail_location_value"
                     android:textSize="18sp"
-                    android:text="LatLng Location"
+                    android:text="Location"
                     android:textColor="@color/white"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content" />
 
                 <ImageView
-                    app:srcCompat="@drawable/marker"
-                    android:gravity="center|end"
-                    android:layout_weight="0.1"
                     android:id="@+id/iv_project_detail_location_map"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.1"
+                    android:elevation="5sp"
+                    android:gravity="center|end"
                     android:textSize="18sp"
-                    android:layout_width="0dp"
-                    android:layout_height="25dp" />
+                    app:srcCompat="@drawable/marker" />
 
             </LinearLayout>
 
@@ -89,7 +93,7 @@
                     android:layout_weight="0.7"
                     android:id="@+id/tv_project_detail_status_value"
                     android:textSize="18sp"
-                    android:text="Status value"
+                    android:text="Location"
                     android:textColor="@color/white"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content" />
@@ -102,7 +106,7 @@
                 android:orientation="horizontal"
                 android:id="@+id/third_row"
                 android:layout_width="match_parent"
-                android:layout_height="65dp">
+                android:layout_height="85dp">
 
                 <TextView
                     android:gravity="start"
@@ -117,11 +121,11 @@
                 <TextView
                     android:gravity="start"
                     android:layout_weight="0.7"
-                    android:maxLines="2"
-                    android:ellipsize="end"
+                    android:maxLines="3"
+                    android:ellipsize="marquee"
                     android:id="@+id/tv_project_description_value"
                     android:textSize="18sp"
-                    android:text="Location"
+                    android:text="@string/lorem"
                     android:textColor="@color/white"
                     android:layout_width="0dp"
                     android:layout_height="match_parent" />
@@ -132,10 +136,11 @@
 
         <android.support.design.widget.TabLayout
             android:id="@+id/tabs"
-            app:tabTextColor="@color/white"
+            app:tabSelectedTextColor="@color/white"
+            app:tabTextColor="#f2f2f2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:tabIndicatorHeight="2.8dp"
+            app:tabIndicatorHeight="2.5dp"
             app:tabMode="fixed" />
 
     </LinearLayout>

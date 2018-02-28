@@ -18,7 +18,7 @@
         android:supportsRtl="true"
         android:theme="@style/app_theme">
 
-        <activity android:name="com.apps.waZiUp.ui.home.HomeActivity">
+        <activity android:name="com.apps.waZiUp.ui.project.detail.ProjectDetailActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -29,14 +29,14 @@
         <activity android:name="com.apps.waZiUp.ui.project.create.CreateProjectActivity"
             android:theme="@style/app_theme.no_toolbar"/>
 
-        <activity android:name="com.apps.waZiUp.ui.project.detail.ProjectDetailActivity"
-            android:theme="@style/app_theme">
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
-                <data android:scheme="geo" />
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
+        <activity android:name="com.apps.waZiUp.ui.home.HomeActivity"
+            android:theme="@style/app_theme"/>
+
+        <!--<intent-filter>-->
+            <!--<action android:name="android.intent.action.VIEW" />-->
+            <!--<data android:scheme="geo" />-->
+            <!--<category android:name="android.intent.category.DEFAULT" />-->
+        <!--</intent-filter>-->
 
         <meta-data
             android:name="com.google.android.gms.version"

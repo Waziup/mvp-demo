@@ -19,6 +19,11 @@ public class ProjectDetailActivity extends BaseActivity {
 
     private TabLayout tabLayout;
     private ViewPager viewPager;
+    //TODO replace with proper icons
+//    private int[] tabIcons = {
+//            R.drawable.ic_tab_accident,
+//            R.drawable.ic_tab_records
+//    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +37,7 @@ public class ProjectDetailActivity extends BaseActivity {
         setSupportActionBar(toolbar);
 
         //sets the viewpager
-        viewPager = findViewById(R.id.viewpager);
+        viewPager = findViewById(R.id.activity_tab_project_detail);
         setupViewPager(viewPager);
 
         //attaches the viewpager on the tabLayout
@@ -41,12 +46,18 @@ public class ProjectDetailActivity extends BaseActivity {
 
     }
 
+    //TODO replace with proper image icons
+//    private void setupTabIcons() {
+//        tabLayout.getTabAt(0).setIcon(tabIcons[0]);
+//        tabLayout.getTabAt(1).setIcon(tabIcons[1]);
+//    }
+
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
 
-        adapter.addFragment(new FragmentDetailTab(), "Detail");
-        adapter.addFragment(new FragmentSensorTab(), "Sensors");
-        adapter.addFragment(new FragmentActivityTab(), "Activities");
+        adapter.addFragment(new FragmentSensorTab(), "sensors");
+        adapter.addFragment(new FragmentActivityTab(), "activities");
+        adapter.addFragment(new FragmentActivityTab(), "assets");
 
         viewPager.setAdapter(adapter);
     }
