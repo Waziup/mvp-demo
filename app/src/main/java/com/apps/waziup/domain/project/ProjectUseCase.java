@@ -1,4 +1,4 @@
-package com.apps.waziup.domain;
+package com.apps.waziup.domain.project;
 
 import com.apps.waziup.model.ModelConstants;
 import com.apps.waziup.model.Project;
