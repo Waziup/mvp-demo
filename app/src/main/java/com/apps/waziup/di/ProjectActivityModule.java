@@ -34,7 +34,7 @@ public abstract class ProjectActivityModule {
 
     @Provides
     @ActivityScope
-    static ProjectUseCase provideAddProjectUseCase(LocalProjectRepository localProjectRepository, RemoteProjectRepository remoteProjectRepository) {
+    static ProjectUseCase provideProjectUseCase(LocalProjectRepository localProjectRepository, RemoteProjectRepository remoteProjectRepository) {
         return new ProjectUseCase(localProjectRepository, remoteProjectRepository);
     }
 
