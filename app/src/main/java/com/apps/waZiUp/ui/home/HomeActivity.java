@@ -63,7 +63,7 @@ public class HomeActivity extends BaseActivity implements NavigationView.OnNavig
         final Dialog dialog = new Dialog(this);
         //Hides the title of dialog
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        dialog.setContentView(R.layout.fragment_dialog_create_project);
+        dialog.setContentView(R.layout.dialog_fragment_create_project);
 
         // set the custom dialog components - text, image and button
         TextView btnClose = dialog.findViewById(R.id.tv_create_close);

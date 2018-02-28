@@ -8,7 +8,7 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <application
         android:allowBackup="true"
@@ -17,34 +17,34 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/app_theme">
-
-        <activity android:name="com.apps.waZiUp.ui.project.detail.ProjectDetailActivity">
+        <activity android:name="com.apps.waZiUp.ui.project.detail.ProjectDetailActivity"></activity>
+        <activity
+            android:name="com.apps.waZiUp.ui.project.create.CreateProjectActivity"
+            android:theme="@style/app_theme.no_toolbar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="com.apps.waZiUp.ui.home.HomeActivity"
+            android:theme="@style/app_theme" />
 
-        <activity android:name="com.apps.waZiUp.ui.project.create.CreateProjectActivity"
-            android:theme="@style/app_theme.no_toolbar"/>
-
-        <activity android:name="com.apps.waZiUp.ui.home.HomeActivity"
-            android:theme="@style/app_theme"/>
-
-        <!--<intent-filter>-->
-            <!--<action android:name="android.intent.action.VIEW" />-->
-            <!--<data android:scheme="geo" />-->
-            <!--<category android:name="android.intent.category.DEFAULT" />-->
-        <!--</intent-filter>-->
+        <!-- <intent-filter> -->
+        <!-- <action android:name="android.intent.action.VIEW" /> -->
+        <!-- <data android:scheme="geo" /> -->
+        <!-- <category android:name="android.intent.category.DEFAULT" /> -->
+        <!-- </intent-filter> -->
 
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
-
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
+
+        <activity android:name="com.apps.waZiUp.ui.project.registration.RegistrationActivity"></activity>
     </application>
 
 </manifest>

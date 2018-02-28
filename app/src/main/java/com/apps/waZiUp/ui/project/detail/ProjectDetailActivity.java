@@ -1,56 +1,75 @@
 package com.apps.waZiUp.ui.project.detail;
 
 import android.os.Bundle;
+import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AppCompatDelegate;
 import android.support.v7.widget.Toolbar;
+import android.widget.ImageView;
 
 import com.apps.waZiUp.base.view.BaseActivity;
 import com.apps.waZiUp.waziup.R;
 
-
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class ProjectDetailActivity extends BaseActivity {
 
-    private TabLayout tabLayout;
-    private ViewPager viewPager;
-    //TODO replace with proper icons
-//    private int[] tabIcons = {
-//            R.drawable.ic_tab_accident,
-//            R.drawable.ic_tab_records
-//    };
+    private Toolbar toolbar;
+    private ImageView imageView, tabBg;
+    private CollapsingToolbarLayout collapsingToolbar;
+    private ViewPager mViewPager;
+    private TabLayout mTabLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_project_detail);
 
-//        AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
+        AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
 
-        //The toolbar
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        tabBg = findViewById(R.id.tabBg);
+        collapsingToolbar = findViewById(R.id.collapsing_toolbar);
 
         //sets the viewpager
-        viewPager = findViewById(R.id.activity_tab_project_detail);
-        setupViewPager(viewPager);
+        mViewPager = findViewById(R.id.viewpager);
+        setupViewPager(mViewPager);
 
         //attaches the viewpager on the tabLayout
-        tabLayout = findViewById(R.id.tabs);
-        tabLayout.setupWithViewPager(viewPager);
+        mTabLayout = findViewById(R.id.detail_tabs);
+        mTabLayout.setupWithViewPager(mViewPager);
+
+        mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+//                if(position==0){
+//                    Glide.with(this).load(R.drawable.onet).into(imageView);
+//                    Glide.with(this).load(R.drawable.oneb).into(tabBg);
+//                } else {
+//                    Glide.with(MainActivity.this).load(R.drawable.twot).into(imageView);
+//                    Glide.with(MainActivity.this).load(R.drawable.twob).into(tabBg);
+//                }
+
+//                imageView.invalidate();
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
 
     }
-
-    //TODO replace with proper image icons
-//    private void setupTabIcons() {
-//        tabLayout.getTabAt(0).setIcon(tabIcons[0]);
-//        tabLayout.getTabAt(1).setIcon(tabIcons[1]);
-//    }
 
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
@@ -63,13 +82,14 @@ public class ProjectDetailActivity extends BaseActivity {
     }
 
     //CONTROLS THE SELECTION AND SWIPE FOR THE TABS
-    public class ViewPagerAdapter extends FragmentPagerAdapter {
+    class ViewPagerAdapter extends FragmentStatePagerAdapter {
 
         private final List<Fragment> mFragmentList = new ArrayList<>();
         private final List<String> mFragmentTitleList = new ArrayList<>();
 
-        public ViewPagerAdapter(FragmentManager manager){
-            super(manager);
+
+        public ViewPagerAdapter(FragmentManager fm) {
+            super(fm);
         }
 
         @Override
@@ -93,3 +113,5 @@ public class ProjectDetailActivity extends BaseActivity {
         }
     }
 }
+
+
