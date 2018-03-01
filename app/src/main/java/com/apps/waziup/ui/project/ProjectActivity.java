@@ -61,8 +61,6 @@ public class ProjectActivity extends DaggerAppCompatActivity implements Lifecycl
 
         getLifecycle().addObserver(syncProjectLifecycleObserver);
 
-        viewModel = ViewModelProviders.of(this, viewModelFactory).get(ProjectViewModel.class);
-
 //        viewModel.projects().observe(this, recyclerViewAdapter::updateProjectList);
     }
 
