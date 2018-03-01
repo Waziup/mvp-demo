@@ -1,6 +1,7 @@
 package com.apps.waziup.data.project;
 
-import com.apps.waziup.domain.LocalProjectRepository;
+import com.apps.waziup.data.BoxStoreProvider;
+import com.apps.waziup.domain.project.LocalProjectRepository;
 import com.apps.waziup.model.Project;
 
 import java.util.List;
@@ -17,8 +18,12 @@ public class LocalProjectDataStore implements LocalProjectRepository {
     //private final ProjectDao projectBox; //Not using DAO here
     private final Box<Project> projectBox;
 
-    public LocalProjectDataStore(Box<Project> projectBox) {
-        this.projectBox = projectBox;
+    //public LocalProjectDataStore(Box<Project> projectBox) {
+    //    this.projectBox = projectBox;
+    //}
+
+    public LocalProjectDataStore() {
+        this.projectBox = BoxStoreProvider.getStore().boxFor(Project.class);
     }
 
     /**

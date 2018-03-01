@@ -4,7 +4,7 @@ import android.arch.lifecycle.Lifecycle;
 import android.arch.lifecycle.LifecycleObserver;
 import android.arch.lifecycle.OnLifecycleEvent;
 
-import com.apps.waziup.domain.ProjectUseCase;
+import com.apps.waziup.domain.project.ProjectUseCase;
 import com.apps.waziup.model.Project;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
