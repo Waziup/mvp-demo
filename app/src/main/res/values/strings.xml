@@ -22,9 +22,6 @@
     <string name="project_name">Enter name</string>
     <string name="title_activity_project_det">ProjectDetActivity</string>
     <string name="project_init_status">initial status</string>
-    <string name="project_description">project description</string>
-    <string name="create_insert_location">project location</string>
-    <string name="create_project">create project</string>
     <string name="project_notes">enter notes (optional)</string>
     <string name="sensor_type">type</string>
     <string name="sensor_name">sensor name</string>
@@ -48,5 +45,8 @@
     <string name="hint_last_name">last name</string>
     <string name="hint_mobile">mobile</string>
     <string name="hint_email">email</string>
+    <string name="create_project">Create Project</string>
+    <string name="project_description">project description</string>
+    <string name="create_insert_location">locate project</string>
 
 </resources>

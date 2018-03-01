@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.apps.waZiUp.waziup">
+    package="com.apps.waziup.waziup">
 
     <uses-feature
         android:glEsVersion="0x00020000"
@@ -17,9 +17,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/app_theme">
-        <activity android:name="com.apps.waZiUp.ui.project.detail.ProjectDetailActivity"></activity>
+        <activity android:name="com.apps.waziup.ui.project.detail.ProjectDetailActivity"/>
         <activity
-            android:name="com.apps.waZiUp.ui.project.create.CreateProjectActivity"
+            android:name="com.apps.waziup.ui.project.create.CreateProjectActivity"
             android:theme="@style/app_theme.no_toolbar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -28,7 +28,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.apps.waZiUp.ui.home.HomeActivity"
+            android:name="com.apps.waziup.ui.home.HomeActivity"
             android:theme="@style/app_theme" />
 
         <!-- <intent-filter> -->
@@ -44,7 +44,7 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
-        <activity android:name="com.apps.waZiUp.ui.project.registration.RegistrationActivity"></activity>
+        <activity android:name="com.apps.waziup.ui.registration.RegistrationActivity"></activity>
     </application>
 
 </manifest>
