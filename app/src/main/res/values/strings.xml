@@ -60,6 +60,7 @@
     <string name="create_project">Create Project</string>
     <string name="project_description">project description</string>
     <string name="create_insert_location">locate project</string>
+    <string name="login_redirect">have an account? Login</string>
 
 
     <!--Font  icons-->
