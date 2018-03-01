@@ -93,6 +93,9 @@ dependencies {
     androidTestImplementation "com.android.support.test.espresso:espresso-intents:$rootProject.espressoVersion"
 
 
+    // Keycloak - authorization with AEROGEAR
+    implementation 'org.jboss.aerogear:aerogear-android-auth:3.0.0'
+
     //Additions by Ali
 
     // Dagger core
