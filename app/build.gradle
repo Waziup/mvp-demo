@@ -163,4 +163,6 @@ dependencies {
     implementation "com.github.kakai248.AutoViewModelFactory:annotations:$autoViewModelFactory"
     //annotationProcessor "com.github.kakai248.AutoViewModelFactory:processor:$autoViewModelFactory"
     kapt "com.github.kakai248.AutoViewModelFactory:processor:$autoViewModelFactory"
+
+    //testCompile 'org.junit.jupiter:junit-jupiter-api'
 }
