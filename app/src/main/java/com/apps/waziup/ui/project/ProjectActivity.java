@@ -2,7 +2,6 @@ package com.apps.waziup.ui.project;
 
 import android.arch.lifecycle.LifecycleRegistry;
 import android.arch.lifecycle.LifecycleRegistryOwner;
-import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -25,8 +24,8 @@ import dagger.android.support.DaggerAppCompatActivity;
 
 public class ProjectActivity extends DaggerAppCompatActivity implements LifecycleRegistryOwner {
 
-//    @Inject
-//    ProjectViewModelFactory viewModelFactory;
+    @Inject
+    ProjectViewModelFactory viewModelFactory;
 
     @Inject
     SyncProjectLifecycleObserver syncProjectLifecycleObserver;
