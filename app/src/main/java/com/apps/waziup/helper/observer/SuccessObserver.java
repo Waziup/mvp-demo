@@ -1,6 +1,6 @@
 package com.apps.waziup.helper.observer;
 
-import rx.Observer;
+import io.reactivex.Observer;
 
 /**
  * This observable is not using onCompleted or onError
@@ -9,7 +9,7 @@ import rx.Observer;
  */
 public abstract class SuccessObserver<T> implements Observer<T> {
 
-    @Override
+    //@Override
     public void onCompleted() {
     }
 

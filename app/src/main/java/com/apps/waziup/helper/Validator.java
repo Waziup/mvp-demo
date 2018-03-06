@@ -1,9 +1,10 @@
 package com.apps.waziup.helper;
 
-import com.google.common.base.Strings;
+
 
 import java.util.Collection;
 import java.util.UUID;
+
 
 public class Validator {
 
@@ -30,7 +31,7 @@ public class Validator {
     }
 
     public static void requireNotNullNotEmpty(String obj, String message) throws IllegalArgumentException {
-        if (Strings.isNullOrEmpty(obj)) throw new IllegalArgumentException(message);
+        if (obj == null || obj.isEmpty()) throw new IllegalArgumentException(message);
     }
 
     public static void requireNotNullNotEmpty(Collection obj, String message) throws IllegalArgumentException {

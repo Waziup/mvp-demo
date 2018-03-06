@@ -1,15 +1,16 @@
 package com.apps.waziup.helper.observer;
 
-import rx.Observer;
+
+import io.reactivex.Observer;
 
 /**
  * This observable is not using onCompleted
  *
  * @param <T>
  */
-public class EmptyObserver<T> implements Observer<T> {
+public abstract class EmptyObserver<T> implements Observer<T> {
 
-    @Override
+    //@Override
     public void onCompleted() {
     }
 

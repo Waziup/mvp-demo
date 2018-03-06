@@ -1,11 +1,11 @@
 package com.apps.waziup.helper.observer;
 
-import retrofit.client.Response;
-import rx.Observer;
+import io.reactivex.Observer;
+import retrofit2.Response;
 
 public abstract class ResponseObserver implements Observer<Response> {
 
-    @Override
+    //@Override
     public void onCompleted() {
     }
 
@@ -16,7 +16,7 @@ public abstract class ResponseObserver implements Observer<Response> {
 
     @Override
     public void onNext(Response o) {
-        next(o.getStatus());
+        next(o.code());
     }
 
     public abstract void error(Throwable e);

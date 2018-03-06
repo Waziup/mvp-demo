@@ -1,6 +1,7 @@
 package com.apps.waziup.helper.observer;
 
-import rx.Observer;
+
+import io.reactivex.Observer;
 
 /**
  * This observable reacts on onNext or onComplete only once
@@ -9,7 +10,7 @@ public abstract class BooleanObserver<T> implements Observer<T> {
 
     private boolean successSent = false;
 
-    @Override
+    //@Override
     public void onCompleted() {
         if (!successSent) onNext(null);
     }

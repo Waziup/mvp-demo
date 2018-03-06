@@ -15,8 +15,7 @@ data class Asset(
         var name: String? = null,
         var description: String? = null,
         var position: Int = 0,
-        var latitude: Short? = null,
-        var longitude: Short? = null,
+        //var location: Location? = null,
         var data: String? = null,
         var date: Date? = null,
 
