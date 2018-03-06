@@ -46,12 +46,12 @@ allprojects {
 ext{
     // Sdk and tools
     minSdkVersion = 21
-    targetSdkVersion = 27
-    compileSdkVersion = 27
+    targetSdkVersion = 26
+    compileSdkVersion = 26
     buildToolsVersion = '26.0.2'
 
     // App dependencies
-    supportLibraryVersion = '27.0.2'
+    supportLibraryVersion = '26.1.0'
     objectboxVersion = '1.2.1'
     rxjavaVersion = '2.1.6'
     rxandroidVersion = '2.0.1'
