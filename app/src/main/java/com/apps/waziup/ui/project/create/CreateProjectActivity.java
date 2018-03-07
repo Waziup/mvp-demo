@@ -80,7 +80,6 @@ public class CreateProjectActivity extends BaseActivity implements OnMapReadyCal
 //            mCurrentLocation = savedInstanceState.getParcelable(KEY_LOCATION);
 //            mCameraPosition = savedInstanceState.getParcelable(KEY_CAMERA_POSITION);
 //        }
-
         //hides the keyboard till the user selects to an edit text
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
 

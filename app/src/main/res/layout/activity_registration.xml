@@ -7,12 +7,12 @@
     android:orientation="vertical">
 
     <ImageView
-        android:layout_marginTop="30dp"
-        android:scaleType="centerCrop"
         android:id="@+id/logo_image"
         android:layout_width="match_parent"
         android:layout_height="100dp"
+        android:layout_marginTop="30dp"
         android:contentDescription="@string/contentDescription"
+        android:scaleType="centerCrop"
         app:srcCompat="@drawable/waziup_logo" />
 
     <LinearLayout
@@ -42,6 +42,7 @@
         </android.support.design.widget.TextInputLayout>
 
     </LinearLayout>
+
     <LinearLayout
         android:id="@+id/last_name_container"
         android:layout_width="match_parent"
@@ -69,6 +70,7 @@
         </android.support.design.widget.TextInputLayout>
 
     </LinearLayout>
+
     <LinearLayout
         android:id="@+id/mobile_phone_container"
         android:layout_width="match_parent"
@@ -96,6 +98,7 @@
         </android.support.design.widget.TextInputLayout>
 
     </LinearLayout>
+
     <LinearLayout
         android:id="@+id/email_container"
         android:layout_width="match_parent"
@@ -123,6 +126,7 @@
         </android.support.design.widget.TextInputLayout>
 
     </LinearLayout>
+
     <LinearLayout
         android:id="@+id/password_container"
         android:layout_width="match_parent"
@@ -149,6 +153,7 @@
                 android:inputType="textPassword" />
         </android.support.design.widget.TextInputLayout>
     </LinearLayout>
+
     <LinearLayout
         android:id="@+id/confirm_password_container"
         android:layout_width="match_parent"
@@ -175,6 +180,7 @@
                 android:inputType="textPassword" />
         </android.support.design.widget.TextInputLayout>
     </LinearLayout>
+
     <Button
         android:id="@+id/btn_sign_up"
         android:layout_width="match_parent"
@@ -182,11 +188,11 @@
         android:layout_marginBottom="24dp"
         android:layout_marginEnd="48dp"
         android:layout_marginStart="48dp"
-        android:textColor="@color/white"
         android:layout_marginTop="24dp"
         android:background="@color/accent"
         android:padding="12dp"
-        android:text="@string/signup_button" />
+        android:text="@string/signup_button"
+        android:textColor="@color/white" />
 
     <LinearLayout
         android:id="@+id/login_container"
@@ -197,15 +203,17 @@
         android:layout_marginTop="16dp"
         android:gravity="center_vertical">
 
-
         <TextView
-            android:onClick="toLogin"
-            android:text="@string/login_redirect"
+            android:id="@+id/to_login"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
             android:layout_marginStart="16dp"
-            android:layout_weight="1"/>
+            android:layout_weight="1"
+            android:onClick="toLogin"
+            android:text="@string/login_redirect"
+            android:textAlignment="center"
+            android:textSize="20sp" />
     </LinearLayout>
 
     <!--TODO don't for get the "HAVE AN ACCOUNT? LOGIN" textview for sing in-->
