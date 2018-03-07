@@ -2,17 +2,17 @@ package com.apps.waziup.ui.project.create;
 
 import android.content.DialogInterface;
 import android.content.pm.PackageManager;
+import android.location.Address;
+import android.location.Geocoder;
 import android.location.Location;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
-import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
-import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,7 +25,6 @@ import com.google.android.gms.location.places.PlaceDetectionClient;
 import com.google.android.gms.location.places.PlaceLikelihood;
 import com.google.android.gms.location.places.PlaceLikelihoodBufferResponse;
 import com.google.android.gms.location.places.Places;
-import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -35,13 +34,18 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.Task;
 
+import java.io.IOException;
+import java.util.List;
+import java.util.Locale;
+
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import timber.log.Timber;
 
 public class CreateProjectActivity extends BaseActivity implements OnMapReadyCallback {
 
-    int DEFAULT_ZOOM = 10;
+    int DEFAULT_ZOOM = 8;
 
     boolean mLocationPermissionGranted;
 
@@ -59,7 +63,7 @@ public class CreateProjectActivity extends BaseActivity implements OnMapReadyCal
     private Location mLastKnownLocation;
 
     private static final String KEY_CAMERA_POSITION = "camera_position";
-    private static final String KEY_LOCATION = "location";
+    private static final String KEY_LOCATION = "btnLocation";
 
     public int M_MAX_ENTRIES = 5;
     public String[] mLikelyPlaceNames;
@@ -67,16 +71,21 @@ public class CreateProjectActivity extends BaseActivity implements OnMapReadyCal
     public String[] mLikelyPlaceAttributions;
     public LatLng[] mLikelyPlaceLatLngs;
 
+    @BindView(R.id.create_location)
+    EditText btnLocation;
+
+    Geocoder geocoder;
+
     private FusedLocationProviderClient mFusedLocationProviderClient;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        // Retrieve the content view that renders the map.
         setContentView(R.layout.activity_create_project);
 
         ButterKnife.bind(this);
+
+        geocoder = new Geocoder(this, Locale.getDefault());
 
 //        if (savedInstanceState != null) {
 //            mCurrentLocation = savedInstanceState.getParcelable(KEY_LOCATION);
@@ -85,13 +94,10 @@ public class CreateProjectActivity extends BaseActivity implements OnMapReadyCal
         //hides the keyboard till the user selects to an edit text
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
 
-        /**
-         * for getting the current location place and address of the location from google map
-         */
+        //for getting the current btnLocation place and address of the btnLocation from google map
         mGeoDataClient = Places.getGeoDataClient(this, null);
         mPlaceDetectionClient = Places.getPlaceDetectionClient(this, null);
         mFusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
-
 
         // Get the SupportMapFragment and request notification
         // when the map is ready to be used.
@@ -103,7 +109,8 @@ public class CreateProjectActivity extends BaseActivity implements OnMapReadyCal
 
     }
 
-    @OnClick(R.id.btn_create) void createProject(){
+    @OnClick(R.id.btn_create)
+    void createProject() {
         Toast.makeText(this, "Created Project", Toast.LENGTH_SHORT).show();
         finish();
     }
@@ -111,7 +118,8 @@ public class CreateProjectActivity extends BaseActivity implements OnMapReadyCal
     /**
      * for zooming out with a floating action button click
      */
-    @OnClick(R.id.fab_zoom_out_location) void onZoomOut(){
+    @OnClick(R.id.fab_zoom_out_location)
+    void onZoomOut() {
 //        Toast.makeText(this, "zoomOut", Toast.LENGTH_SHORT).show();
         googleMap.animateCamera(CameraUpdateFactory.zoomOut());
     }
@@ -119,26 +127,28 @@ public class CreateProjectActivity extends BaseActivity implements OnMapReadyCal
     /**
      * for zooming in with a floating action button click
      */
-    @OnClick(R.id.fab_zoom_in_location) void onZoomIn(){
+    @OnClick(R.id.fab_zoom_in_location)
+    void onZoomIn() {
 //        Toast.makeText(this, "zoomOut", Toast.LENGTH_SHORT).show();
         googleMap.animateCamera(CameraUpdateFactory.zoomIn());
     }
 
     /**
-     * method to get a list of likely places at the device's current location:
+     * method to get a list of likely places at the device's current btnLocation:
      */
-    @OnClick(R.id.fab_current_location) void currentLocation(){
+    @OnClick(R.id.fab_current_location)
+    void currentLocation() {
 //        Toast.makeText(this, "Current Location", Toast.LENGTH_SHORT).show();
         getDeviceLocation();
     }
 
     /**
-     * asks for the user to accept the request permission for accessing using the location of
+     * asks for the user to accept the request permission for accessing using the btnLocation of
      * the user/device for manipulation
      */
     private void getLocationPermission() {
     /*
-     * Request location permission, so that we can get the location of the
+     * Request btnLocation permission, so that we can get the btnLocation of the
      * device. The result of the permission request is handled by a callback,
      * onRequestPermissionsResult.
      */
@@ -183,7 +193,7 @@ public class CreateProjectActivity extends BaseActivity implements OnMapReadyCal
         // Turn on the My Location layer and the related control on the map.
         updateLocationUI();
 
-        // Get the current location of the device and set the position of the map.
+        // Get the current btnLocation of the device and set the position of the map.
         getDeviceLocation();
 
         // Do other setup activities here too, as described elsewhere in this tutorial.
@@ -210,7 +220,7 @@ public class CreateProjectActivity extends BaseActivity implements OnMapReadyCal
             }
         });
 
-        googleMap.setOnMapClickListener(v -> showCurrentPlace());
+        googleMap.setOnMapClickListener(latLng -> openPlacesDialog());
 
     }
 
@@ -221,8 +231,9 @@ public class CreateProjectActivity extends BaseActivity implements OnMapReadyCal
 
         if (mLocationPermissionGranted) {
             // Get the likely places - that is, the businesses and other points of interest that
-            // are the best match for the device's current location.
-            @SuppressWarnings("MissingPermission") final Task<PlaceLikelihoodBufferResponse> placeResult =
+            // are the best match for the device's current btnLocation.
+            @SuppressWarnings("MissingPermission")
+            final Task<PlaceLikelihoodBufferResponse> placeResult =
                     mPlaceDetectionClient.getCurrentPlace(null);
             placeResult.addOnCompleteListener
                     (task -> {
@@ -266,12 +277,12 @@ public class CreateProjectActivity extends BaseActivity implements OnMapReadyCal
                             openPlacesDialog();
 
                         } else {
-                            Timber.e("Exception: "+task.getException());
+                            Timber.e("Exception: " + task.getException());
                         }
                     });
         } else {
             // The user has not granted permission.
-            Timber.i("The user did not grant location permission.");
+            Timber.i("The user did not grant btnLocation permission.");
 
             // Add a default marker, because the user hasn't selected a place.
             googleMap.addMarker(new MarkerOptions()
@@ -285,7 +296,7 @@ public class CreateProjectActivity extends BaseActivity implements OnMapReadyCal
     }
 
     /**
-     * update the location ui in a googleMap according to the current location and configuration
+     * update the btnLocation ui in a googleMap according to the current btnLocation and configuration
      */
     private void updateLocationUI() {
         if (googleMap == null) {
@@ -307,35 +318,38 @@ public class CreateProjectActivity extends BaseActivity implements OnMapReadyCal
     }
 
     /**
-     * for tracking the location of the mobile for showing the current location of the user on map
+     * for tracking the btnLocation of the mobile for showing the current btnLocation of the user on map
      */
     private void getDeviceLocation() {
     /*
-     * Get the best and most recent location of the device, which may be null in rare
-     * cases when a location is not available.
+     * Get the best and most recent btnLocation of the device, which may be null in rare
+     * cases when a btnLocation is not available.
      */
         try {
             if (mLocationPermissionGranted) {
                 Task locationResult = mFusedLocationProviderClient.getLastLocation();
                 locationResult.addOnCompleteListener(this, task -> {
                     if (task.isSuccessful()) {
-                        // Set the map's camera position to the current location of the device.
+                        // Set the map's camera position to the current btnLocation of the device.
                         mLastKnownLocation = (Location) task.getResult();
 //                        addMarker(googleMap, mLastKnownLocation.getLatitude(), mLastKnownLocation.getLongitude(),
 //                                mLastKnownLocation.getProvider().);
-                        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(
-                                new LatLng(mLastKnownLocation.getLatitude(),
-                                        mLastKnownLocation.getLongitude()), DEFAULT_ZOOM));
+//                        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(
+//                                new LatLng(mLastKnownLocation.getLatitude(),
+//                                        mLastKnownLocation.getLongitude()), DEFAULT_ZOOM));
                         //CameraUpdateFactory.zoomIn()
-                        googleMap.animateCamera(CameraUpdateFactory.zoomTo(10), 2000, null);
+                        googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(mLastKnownLocation.getLatitude(),
+                                mLastKnownLocation.getLongitude()),10), 2000, null);
 
                     } else {
-                        Timber.d("Current location is null. Using defaults.");
-                        Timber.e("Exception:"+task.getException());
-                        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(mDefaultLocation,
-                                DEFAULT_ZOOM));
+                        Timber.d("Current btnLocation is null. Using defaults.");
+                        Timber.e("Exception:" + task.getException());
+//                        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(mDefaultLocation,
+//                                DEFAULT_ZOOM));
                         //animate the camera slowly
-                        googleMap.animateCamera(CameraUpdateFactory.zoomTo(10), 2000, null);
+                        googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(mLastKnownLocation.getLatitude(),
+                                mLastKnownLocation.getLongitude()),10), 2000, null);
+//                        googleMap.animateCamera(CameraUpdateFactory.zoomTo(10), 2000, null);
                         googleMap.getUiSettings().setMyLocationButtonEnabled(false);
                     }
                 });
@@ -380,20 +394,29 @@ public class CreateProjectActivity extends BaseActivity implements OnMapReadyCal
                     .position(markerLatLng)
                     .snippet(markerSnippet));
 
-            // Position the map's camera at the location of the marker.
-            googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(markerLatLng,
-                    DEFAULT_ZOOM));
+            try {
+                List<Address> addresses = geocoder.getFromLocation(markerLatLng.latitude, markerLatLng.longitude, 1);
+                btnLocation.setText(addresses.get(0).toString());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+
+            // Position the map's camera at the btnLocation of the marker.
+            googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(markerLatLng,DEFAULT_ZOOM), 1000, null);
+//            googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(markerLatLng, DEFAULT_ZOOM));
         };
 
         // Display the dialog.
-        AlertDialog dialog = new AlertDialog.Builder(this)
+//        AlertDialog dialog =
+        new AlertDialog.Builder(this)
                 .setTitle(R.string.pick_place)
                 .setItems(mLikelyPlaceNames, listener)
                 .show();
     }
 
     /**
-     * for saving the camera and location setting for the current view before the activity
+     * for saving the camera and btnLocation setting for the current view before the activity
      * is destroyed or get back to a background for next time retrieving and displaying from
      * where the user has left of the map
      *
@@ -407,5 +430,4 @@ public class CreateProjectActivity extends BaseActivity implements OnMapReadyCal
             super.onSaveInstanceState(outState);
         }
     }
-
 }

@@ -25,7 +25,9 @@
             layout="@layout/content_create_project"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/map" />
+            android:layout_alignParentEnd="true"
+            android:layout_below="@+id/map"
+            android:layout_marginEnd="6dp" />
 
         <LinearLayout
             android:layout_width="match_parent"

@@ -22,6 +22,16 @@
             android:maxLines="1"
             android:singleLine="true" />
 
+        <EditText
+            android:id="@+id/create_location"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:hint="@string/project_location"
+            android:inputType="text"
+            android:maxLines="1"
+            android:singleLine="true" />
+
         <!--TODO don't forget to validate the user input-->
 
         <EditText
