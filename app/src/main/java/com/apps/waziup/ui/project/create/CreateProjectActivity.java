@@ -220,7 +220,7 @@ public class CreateProjectActivity extends BaseActivity implements OnMapReadyCal
             }
         });
 
-        googleMap.setOnMapClickListener(latLng -> openPlacesDialog());
+        googleMap.setOnMapClickListener(latLng -> showCurrentPlace());
 
     }
 
@@ -396,11 +396,10 @@ public class CreateProjectActivity extends BaseActivity implements OnMapReadyCal
 
             try {
                 List<Address> addresses = geocoder.getFromLocation(markerLatLng.latitude, markerLatLng.longitude, 1);
-                btnLocation.setText(addresses.get(0).toString());
+                btnLocation.setText(addresses.get(0).getAddressLine(0).toString());
             } catch (IOException e) {
                 e.printStackTrace();
             }
-
 
             // Position the map's camera at the btnLocation of the marker.
             googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(markerLatLng,DEFAULT_ZOOM), 1000, null);
