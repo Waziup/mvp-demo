@@ -25,6 +25,7 @@ import com.google.android.gms.location.places.PlaceDetectionClient;
 import com.google.android.gms.location.places.PlaceLikelihood;
 import com.google.android.gms.location.places.PlaceLikelihoodBufferResponse;
 import com.google.android.gms.location.places.Places;
+import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -34,7 +35,9 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.Task;
 
+import butterknife.ButterKnife;
 import butterknife.OnClick;
+import timber.log.Timber;
 
 public class CreateProjectActivity extends BaseActivity implements OnMapReadyCallback {
 
@@ -73,6 +76,8 @@ public class CreateProjectActivity extends BaseActivity implements OnMapReadyCal
         // Retrieve the content view that renders the map.
         setContentView(R.layout.activity_create_project);
 
+        ButterKnife.bind(this);
+
 //        if (savedInstanceState != null) {
 //            mCurrentLocation = savedInstanceState.getParcelable(KEY_LOCATION);
 //            mCameraPosition = savedInstanceState.getParcelable(KEY_CAMERA_POSITION);
@@ -80,21 +85,21 @@ public class CreateProjectActivity extends BaseActivity implements OnMapReadyCal
         //hides the keyboard till the user selects to an edit text
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
 
-        // Construct a GeoDataClient.
+        /**
+         * for getting the current location place and address of the location from google map
+         */
         mGeoDataClient = Places.getGeoDataClient(this, null);
-
-        // Construct a PlaceDetectionClient.
         mPlaceDetectionClient = Places.getPlaceDetectionClient(this, null);
-
-        // Construct a FusedLocationProviderClient.
         mFusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
+
+
         // Get the SupportMapFragment and request notification
         // when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
-        mDefaultLocation = new LatLng(35.140162, -88.565590);
+        mDefaultLocation = new LatLng(43.887294, -88.310586);
 
     }
 
@@ -107,6 +112,7 @@ public class CreateProjectActivity extends BaseActivity implements OnMapReadyCal
      * for zooming out with a floating action button click
      */
     @OnClick(R.id.fab_zoom_out_location) void onZoomOut(){
+//        Toast.makeText(this, "zoomOut", Toast.LENGTH_SHORT).show();
         googleMap.animateCamera(CameraUpdateFactory.zoomOut());
     }
 
@@ -114,6 +120,7 @@ public class CreateProjectActivity extends BaseActivity implements OnMapReadyCal
      * for zooming in with a floating action button click
      */
     @OnClick(R.id.fab_zoom_in_location) void onZoomIn(){
+//        Toast.makeText(this, "zoomOut", Toast.LENGTH_SHORT).show();
         googleMap.animateCamera(CameraUpdateFactory.zoomIn());
     }
 
@@ -121,6 +128,7 @@ public class CreateProjectActivity extends BaseActivity implements OnMapReadyCal
      * method to get a list of likely places at the device's current location:
      */
     @OnClick(R.id.fab_current_location) void currentLocation(){
+//        Toast.makeText(this, "Current Location", Toast.LENGTH_SHORT).show();
         getDeviceLocation();
     }
 
@@ -177,7 +185,6 @@ public class CreateProjectActivity extends BaseActivity implements OnMapReadyCal
 
         // Get the current location of the device and set the position of the map.
         getDeviceLocation();
-
 
         // Do other setup activities here too, as described elsewhere in this tutorial.
         googleMap.setInfoWindowAdapter(new GoogleMap.InfoWindowAdapter() {
@@ -259,12 +266,12 @@ public class CreateProjectActivity extends BaseActivity implements OnMapReadyCal
                             openPlacesDialog();
 
                         } else {
-                            Log.e(TAG, "Exception: %s", task.getException());
+                            Timber.e("Exception: "+task.getException());
                         }
                     });
         } else {
             // The user has not granted permission.
-            Log.i(TAG, "The user did not grant location permission.");
+            Timber.i("The user did not grant location permission.");
 
             // Add a default marker, because the user hasn't selected a place.
             googleMap.addMarker(new MarkerOptions()
@@ -295,7 +302,7 @@ public class CreateProjectActivity extends BaseActivity implements OnMapReadyCal
                 getLocationPermission();
             }
         } catch (SecurityException e) {
-            Log.e("Exception: %s", e.getMessage());
+            Timber.e(e.getMessage());
         }
     }
 
@@ -319,17 +326,22 @@ public class CreateProjectActivity extends BaseActivity implements OnMapReadyCal
                         googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(
                                 new LatLng(mLastKnownLocation.getLatitude(),
                                         mLastKnownLocation.getLongitude()), DEFAULT_ZOOM));
+                        //CameraUpdateFactory.zoomIn()
+                        googleMap.animateCamera(CameraUpdateFactory.zoomTo(10), 2000, null);
+
                     } else {
-                        Log.d(TAG, "Current location is null. Using defaults.");
-                        Log.e(TAG, "Exception: %s", task.getException());
+                        Timber.d("Current location is null. Using defaults.");
+                        Timber.e("Exception:"+task.getException());
                         googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(mDefaultLocation,
                                 DEFAULT_ZOOM));
+                        //animate the camera slowly
+                        googleMap.animateCamera(CameraUpdateFactory.zoomTo(10), 2000, null);
                         googleMap.getUiSettings().setMyLocationButtonEnabled(false);
                     }
                 });
             }
         } catch (SecurityException e) {
-            Log.e("Exception: %s", e.getMessage());
+            Timber.e(e.getMessage());
         }
     }
 
