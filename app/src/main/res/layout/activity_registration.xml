@@ -204,6 +204,7 @@
         android:gravity="center_vertical">
 
         <TextView
+            android:textColor="@color/colorPrimaryText"
             android:id="@+id/to_login"
             android:layout_width="0dp"
             android:layout_height="wrap_content"

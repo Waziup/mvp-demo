@@ -2,7 +2,6 @@ package com.apps.waziup.ui.project;
 
 import android.arch.lifecycle.LifecycleRegistry;
 import android.arch.lifecycle.LifecycleRegistryOwner;
-import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -35,7 +34,7 @@ public class ProjectActivity extends DaggerAppCompatActivity implements Lifecycl
     //@BindView(R.id.ad_label)
     EditText addProjectEditText;
 
-    //@BindView(R.id.project_title)
+//    @BindView(R.id.project_title)
     RecyclerView recyclerView;
 
     private ProjectListAdapter recyclerViewAdapter;
