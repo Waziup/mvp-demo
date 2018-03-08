@@ -5,8 +5,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.Toast;
 
 import com.apps.waziup.waziup.R;
+
+import butterknife.BindView;
+import butterknife.OnClick;
 
 public class RegistrationActivity extends AppCompatActivity {
 
@@ -18,6 +22,10 @@ public class RegistrationActivity extends AppCompatActivity {
         //hides the keyboard till the user selects to an edit text
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
 
+    }
+    @OnClick(R.id.to_login) void openLogin(){
+//        startActivity(new Intent(this, LoginActivity.class));
+        Toast.makeText(this, "to login", Toast.LENGTH_SHORT).show();
     }
 
 //    public void toLogin(View v){

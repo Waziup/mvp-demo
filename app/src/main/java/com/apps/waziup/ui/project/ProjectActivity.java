@@ -34,7 +34,7 @@ public class ProjectActivity extends DaggerAppCompatActivity implements Lifecycl
     //@BindView(R.id.ad_label)
     EditText addProjectEditText;
 
-    //@BindView(R.id.project_title)
+//    @BindView(R.id.project_title)
     RecyclerView recyclerView;
 
     private ProjectListAdapter recyclerViewAdapter;
