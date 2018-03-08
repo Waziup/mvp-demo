@@ -1,5 +1,5 @@
 buildscript {
-    ext.kotlin_version = '1.2.21'
+    ext.kotlin_version = '1.2.30'
 
     dependencies {
         classpath "io.objectbox:objectbox-gradle-plugin:$objectboxVersion"
@@ -10,29 +10,29 @@ buildscript {
 
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'io.objectbox'
 apply from: "$project.rootDir/config/quality.gradle"
 
 android {
-    kapt { generateStubs = true }
-    compileSdkVersion rootProject.ext.compileSdkVersion
-    buildToolsVersion rootProject.ext.buildToolsVersion
+    //kapt { generateStubs = true }
+    compileSdkVersion 26
+    buildToolsVersion '26.0.2'
     defaultConfig {
         applicationId "io.waziup.mvp.demo"
-        minSdkVersion rootProject.ext.minSdkVersion
+        minSdkVersion 23
         targetSdkVersion rootProject.ext.targetSdkVersion
+        multiDexEnabled true
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
         resValue "string", "google_maps_key", (project.findProperty("GOOGLE_MAPS_API_KEY") ?: "")
     }
-
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
     }
-
     buildTypes {
         release {
             minifyEnabled false
@@ -43,18 +43,34 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
-
     buildTypes.each {
         it.buildConfigField 'String', 'API_BASE_URL', "\"http://jsonplaceholder.typicode.com\""
     }
-
     lintOptions {
         abortOnError false
+    }
+    dexOptions {
+        incremental true
+    }
+    productFlavors {
+    }
+
+    packagingOptions {
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/license.txt'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/NOTICE.txt'
+        exclude 'META-INF/notice.txt'
+        exclude 'META-INF/ASL2.0'
     }
 }
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
+
+    implementation 'com.android.support:multidex:1.0.1'
 
     // Android support repository
     implementation "com.android.support:appcompat-v7:$supportLibraryVersion"
@@ -76,14 +92,15 @@ dependencies {
     implementation "io.objectbox:objectbox-kotlin:$objectboxVersion"
     kapt "io.objectbox:objectbox-processor:$objectboxVersion"
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
-//    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+
+    //    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
 
     // Retrofit and Picasso
     implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
     implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofitVersion"
+    implementation "com.squareup.retrofit2:converter-scalars:$retrofitVersion"
     implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
     implementation "com.squareup.picasso:picasso:$picassoVersion"
-
 
     // Circle image View
     implementation "de.hdodenhof:circleimageview:$circleImageViewVersion"
@@ -92,26 +109,30 @@ dependencies {
     androidTestImplementation "com.android.support.test.espresso:espresso-core:$rootProject.espressoVersion"
     androidTestImplementation "com.android.support.test.espresso:espresso-intents:$rootProject.espressoVersion"
 
-
     // Keycloak - authorization with AEROGEAR
     implementation 'org.jboss.aerogear:aerogear-android-auth:3.0.0'
 
     //Additions by Ali
 
     // Dagger core
+
     //annotationProcessor "com.google.dagger:dagger-compiler:$daggerVersion"
     kapt "com.google.dagger:dagger-compiler:$daggerVersion"
     implementation "com.google.dagger:dagger:$daggerVersion"
 
     // Dagger Android
+
     //annotationProcessor "com.google.dagger:dagger-android-processor:$daggerVersion"
     kapt "com.google.dagger:dagger-android-processor:$daggerVersion"
     implementation "com.google.dagger:dagger-android-support:$daggerVersion"
+
     // if you are not using support library, include this instead
+
     //implementation "com.google.dagger:dagger-android:$daggerVersion"
 
     // ButterKnife
     implementation "com.jakewharton:butterknife:$butterKnifeVersion"
+
     //annotationProcessor "com.jakewharton:butterknife-compiler:$butterKnifeVersion"
     kapt "com.jakewharton:butterknife-compiler:$butterKnifeVersion"
 
@@ -132,12 +153,15 @@ dependencies {
     implementation "com.google.android.gms:play-services-gcm:$playServicesVersion"
 
     // RecyclerView
+
     //implementation "com.android.support:recyclerview-v7:$project.supportLibraryVersion"
 
     // Retrofit
+
     //implementation "com.squareup.retrofit2:retrofit:$project.retrofitVersion"
 
     // GSON Converter
+
     //implementation "com.squareup.retrofit2:converter-gson:$project.retrofitVersion"
 
     // OkHttp Logging Interceptor
@@ -145,13 +169,17 @@ dependencies {
     implementation "com.squareup.okhttp3:logging-interceptor:$okHttpVersion"
 
     // Room Database  //We are using ObjectBox
+
     //implementation "android.arch.persistence.room:runtime:$project.androidArchVersion"
+
     //implementation "android.arch.persistence.room:rxjava2:$project.androidArchVersion"
+
     //annotationProcessor "android.arch.persistence.room:compiler:$project.androidArchVersion"
 
     // Lifecycle
     implementation "android.arch.lifecycle:runtime:$androidArchVersion"
     implementation "android.arch.lifecycle:extensions:$androidArchVersion"
+
     //annotationProcessor "android.arch.lifecycle:compiler:$androidArchVersion"
     kapt "android.arch.lifecycle:compiler:$androidArchVersion"
 
@@ -166,8 +194,16 @@ dependencies {
 
     //Google Arch ViewModel Factory
     implementation "com.github.kakai248.AutoViewModelFactory:annotations:$autoViewModelFactory"
+
     //annotationProcessor "com.github.kakai248.AutoViewModelFactory:processor:$autoViewModelFactory"
     kapt "com.github.kakai248.AutoViewModelFactory:processor:$autoViewModelFactory"
 
     //testCompile 'org.junit.jupiter:junit-jupiter-api'
+
+    // https://mvnrepository.com/artifact/io.swagger/swagger-jaxrs
+    implementation 'io.swagger:swagger-jaxrs:1.5.15'
+    implementation 'org.apache.oltu.oauth2:org.apache.oltu.oauth2.client:1.0.1'
+    implementation 'io.gsonfire:gson-fire:1.8.0'
+    implementation 'org.threeten:threetenbp:1.3.5'
 }
+
