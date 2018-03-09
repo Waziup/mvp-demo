@@ -2,15 +2,13 @@ package com.apps.waziup.fonts;
 
 import android.content.Context;
 import android.graphics.Typeface;
-import android.support.v7.widget.AppCompatEditText;
-import android.support.v7.widget.AppCompatTextView;
 import android.util.AttributeSet;
 
 /**
-* Created by Ceddy Muhoza
-**/
+ * Created by KidusMT on 3/09/2017.
+ */
 
-public class MaterialDesignIconsEditText extends AppCompatEditText {
+public class MaterialDesignIconsEditText extends android.support.v7.widget.AppCompatEditText {
 
 	private static Typeface sMaterialDesignIcons;
 

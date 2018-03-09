@@ -48,7 +48,7 @@ public class SampleFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View convertView = inflater.inflate(R.layout.fragment_sample, container, false);
+        View convertView = inflater.inflate(R.layout.fragment_summary, container, false);
 //        tabText= (TextView) convertView.findViewById(R.id.tabText);
 //        tabText.setText("Tab Layout No "+mParam1);
         return convertView;

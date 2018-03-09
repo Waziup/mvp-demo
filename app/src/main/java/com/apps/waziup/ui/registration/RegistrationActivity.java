@@ -1,15 +1,12 @@
 package com.apps.waziup.ui.registration;
 
-import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
+import android.support.v7.app.AppCompatActivity;
 import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.apps.waziup.waziup.R;
 
-import butterknife.BindView;
 import butterknife.OnClick;
 
 public class RegistrationActivity extends AppCompatActivity {

@@ -17,10 +17,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/app_theme">
-        <activity android:name="com.apps.waziup.ui.project.detail.ProjectDetailActivity" />
-        <activity
-            android:name="com.apps.waziup.ui.project.create.CreateProjectActivity"
-            android:theme="@style/app_theme.no_toolbar">
+        <activity android:name="com.apps.waziup.ui.project.detail.ProjectDetailActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -28,14 +25,21 @@
             </intent-filter>
         </activity>
         <activity
+            android:name="com.apps.waziup.ui.project.create.CreateProjectActivity"
+            android:theme="@style/app_theme.no_toolbar">
+        </activity>
+        <activity
             android:name="com.apps.waziup.ui.home.HomeActivity"
             android:theme="@style/app_theme" />
 
-        <!-- <intent-filter> -->
-        <!-- <action android:name="android.intent.action.VIEW" /> -->
-        <!-- <data android:scheme="geo" /> -->
-        <!-- <category android:name="android.intent.category.DEFAULT" /> -->
-        <!-- </intent-filter> -->
+        <activity
+            android:name="com.apps.waziup.ui.registration.RegistrationActivity"
+            android:theme="@style/app_theme.no_toolbar" />
+        <activity android:name="com.apps.waziup.ui.login.LoginActivity"
+            android:theme="@style/app_theme.no_toolbar"/>
+
+        <activity android:name="com.apps.waziup.ui.login.ResetPasswordActivity"
+            android:theme="@style/app_theme.no_toolbar"/>
 
         <meta-data
             android:name="com.google.android.gms.version"
@@ -44,11 +48,6 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
-        <activity
-            android:name="com.apps.waziup.ui.registration.RegistrationActivity"
-            android:theme="@style/app_theme.no_toolbar" />
-        <activity android:name="com.apps.waziup.ui.login.LoginActivity" />
-        <activity android:name="com.apps.waziup.ui.login.ResetPasswordActivity"></activity>
     </application>
 
 </manifest>

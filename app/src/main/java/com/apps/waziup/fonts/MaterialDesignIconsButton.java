@@ -10,7 +10,7 @@ import android.util.AttributeSet;
 * Created by Ceddy Muhoza
 **/
 
-public class MaterialDesignIconsButton extends AppCompatButton {
+public class MaterialDesignIconsButton extends android.support.v7.widget.AppCompatButton {
 
 	private static Typeface sMaterialDesignIcons;
 
