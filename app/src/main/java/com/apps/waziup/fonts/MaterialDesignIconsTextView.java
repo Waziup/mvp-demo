@@ -30,7 +30,7 @@ public class MaterialDesignIconsTextView extends AppCompatTextView {
 	private void setTypeface() {
 		if (sMaterialDesignIcons == null) {
 			sMaterialDesignIcons = Typeface.createFromAsset(getContext().getAssets(),
-					"app/src/app-asset/MaterialDesignIcons.ttf");
+					"fonts/MaterialDesignIcons.ttf");
 		}
 		setTypeface(sMaterialDesignIcons);
 	}

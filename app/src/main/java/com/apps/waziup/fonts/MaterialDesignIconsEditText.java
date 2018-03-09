@@ -31,7 +31,7 @@ public class MaterialDesignIconsEditText extends AppCompatEditText {
 	private void setTypeface() {
 		if (sMaterialDesignIcons == null) {
 			sMaterialDesignIcons = Typeface.createFromAsset(getContext().getAssets(),
-					"app/src/app-asset/MaterialDesignIcons.ttf");
+					"fonts/MaterialDesignIcons.ttf");
 		}
 		setTypeface(sMaterialDesignIcons);
 	}
