@@ -2,14 +2,14 @@ package com.apps.waziup.fonts;
 
 import android.content.Context;
 import android.graphics.Typeface;
+import android.support.v7.widget.AppCompatTextView;
 import android.util.AttributeSet;
-import android.widget.TextView;
 
 /**
 * Created by Ceddy Muhoza
 **/
 
-public class MaterialDesignIconsTextView extends TextView {
+public class MaterialDesignIconsTextView extends AppCompatTextView {
 	
 	private static Typeface sMaterialDesignIcons;
 
@@ -29,7 +29,8 @@ public class MaterialDesignIconsTextView extends TextView {
 	
 	private void setTypeface() {
 		if (sMaterialDesignIcons == null) {
-			sMaterialDesignIcons = Typeface.createFromAsset(getContext().getAssets(), "app/src/app-asset/MaterialDesignIcons.ttf");
+			sMaterialDesignIcons = Typeface.createFromAsset(getContext().getAssets(),
+					"app/src/app-asset/MaterialDesignIcons.ttf");
 		}
 		setTypeface(sMaterialDesignIcons);
 	}
