@@ -77,6 +77,10 @@
     <string name="fontello_drag_and_drop">&#xe988;</string>
     <string name="project_location">location</string>
     <string name="login_forgot_password">Forgot Password?</string>
+    <string name="reset_password_redirect_to_login">Back to Login</string>
+    <string name="signin_button">login</string>
+    <string name="button_reset_password">reset password</string>
+    <string name="forgot_password_title">Forgot Password?</string>
 
 
 </resources>

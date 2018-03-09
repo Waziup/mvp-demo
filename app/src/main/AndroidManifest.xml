@@ -46,8 +46,9 @@
 
         <activity
             android:name="com.apps.waziup.ui.registration.RegistrationActivity"
-            android:theme="@style/app_theme.no_toolbar"></activity>
-        <activity android:name="com.apps.waziup.ui.login.LoginActivity"></activity>
+            android:theme="@style/app_theme.no_toolbar" />
+        <activity android:name="com.apps.waziup.ui.login.LoginActivity" />
+        <activity android:name="com.apps.waziup.ui.login.ResetPasswordActivity"></activity>
     </application>
 
 </manifest>
