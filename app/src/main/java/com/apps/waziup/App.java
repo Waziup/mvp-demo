@@ -1,7 +1,7 @@
 package com.apps.waziup;
 
 import android.app.Activity;
-import android.app.Application;
+import android.support.multidex.MultiDexApplication;
 
 import com.apps.waziup.di.DaggerAppComponent;
 import com.apps.waziup.domain.services.jobs.JobManagerFactory;
@@ -14,7 +14,7 @@ import dagger.android.DispatchingAndroidInjector;
 import dagger.android.HasActivityInjector;
 import timber.log.Timber;
 
-public class App extends Application implements HasActivityInjector {
+public class App extends MultiDexApplication implements HasActivityInjector {
     @Inject
     DispatchingAndroidInjector<Activity> dispatchingAndroidInjector;
 
@@ -44,4 +44,12 @@ public class App extends Application implements HasActivityInjector {
     // protected AndroidInjector<? extends DaggerApplication> applicationInjector() {
     //     return DaggerApplicationComponent.builder().create(this);
     // }
+
+    //If Cannot extend MultidexApplication
+    //@Override
+    //protected void attachBaseContext(Context base) {
+    //    super.attachBaseContext(base);
+    //    MultiDex.install(this);
+    //}
+
 }
