@@ -76,6 +76,7 @@
     <string name="fontello_heart_full">&#xe9b6;</string>
     <string name="fontello_drag_and_drop">&#xe988;</string>
     <string name="project_location">location</string>
+    <string name="login_forgot_password">Forgot Password?</string>
 
 
 </resources>
