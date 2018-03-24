@@ -96,7 +96,8 @@
             android:layout_marginStart="32dp"
             android:layout_marginTop="16dp"
             android:baselineAligned="false"
-            android:gravity="center_vertical">
+            android:gravity="center_vertical"
+            android:weightSum="1">
 
 
             <android.support.design.widget.TextInputLayout
@@ -105,15 +106,34 @@
                 android:layout_marginEnd="16dp"
                 android:layout_marginStart="16dp"
                 android:layout_weight="1"
-                android:labelFor="@id/mobile_number">
+                android:orientation="horizontal">
 
-                <EditText
-                    android:id="@+id/mobile_number"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/hint_mobile"
-                    android:inputType="number" />
+                    android:orientation="horizontal">
+
+                    <com.rilixtech.CountryCodePicker
+                        android:id="@+id/ccp"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.4"
+                        android:gravity="center"
+                        app:ccp_defaultNameCode="us" />
+
+                    <EditText
+                        android:id="@+id/phone_number_edt"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.6"
+                        android:hint="@string/phone_number"
+                        android:inputType="phone" />
+
+                </LinearLayout>
+
+
             </android.support.design.widget.TextInputLayout>
+
 
         </LinearLayout>
 
@@ -219,9 +239,9 @@
             android:id="@+id/login_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
             android:layout_marginEnd="32dp"
             android:layout_marginStart="32dp"
-            android:layout_marginBottom="24dp"
             android:layout_marginTop="24dp"
             android:gravity="center_vertical">
 

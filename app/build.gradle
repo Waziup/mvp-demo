@@ -79,6 +79,9 @@ dependencies {
     implementation "com.android.support:design:$supportLibraryVersion"
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
 
+    //Country code picker
+    implementation 'com.github.joielechong:countrycodepicker:2.1.5'
+
     //Google Maps API
     implementation 'com.google.android.gms:play-services-maps:11.8.0'
     implementation 'com.google.android.gms:play-services-location:11.8.0'

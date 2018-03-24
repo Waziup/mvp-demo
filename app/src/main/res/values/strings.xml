@@ -7,6 +7,9 @@
     <!--Label-->
     <string name="username">John Doe</string>
 
+    <!--Registration Activity-->
+    <string name="phone_number">202-555-0125</string>
+
     <!--Login  Activity-->
     <string name="hint_username">Username</string>
     <string name="hint_password">password</string>
@@ -59,6 +62,7 @@
     <string name="project_description">project description</string>
     <string name="create_insert_location">locate project</string>
     <string name="login_redirect">have an account? Login</string>
+
 
 
     <!--Font  icons-->
