@@ -15,8 +15,6 @@
         android:scaleType="centerCrop"
         app:srcCompat="@drawable/waziup_logo" />
 
-
-
     <LinearLayout
         android:id="@+id/email_container"
         android:layout_width="match_parent"
@@ -25,7 +23,6 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="16dp"
         android:gravity="center_vertical">
-
 
         <android.support.design.widget.TextInputLayout
             android:layout_width="0dp"
@@ -54,7 +51,6 @@
         android:layout_marginTop="0dp"
         android:gravity="center_vertical">
 
-
         <android.support.design.widget.TextInputLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -71,7 +67,6 @@
                 android:inputType="textPassword" />
         </android.support.design.widget.TextInputLayout>
     </LinearLayout>
-
 
     <Button
         android:id="@+id/btn_sign_in"

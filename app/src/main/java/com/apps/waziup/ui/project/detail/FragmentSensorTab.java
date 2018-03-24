@@ -22,6 +22,8 @@ public class FragmentSensorTab extends BaseFragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+
+
     }
 
     @Override
@@ -42,10 +44,6 @@ public class FragmentSensorTab extends BaseFragment {
         return v;
     }
 
-    /**
-     * This is a static data values for showing the UI of the app. Just a mock data
-     * for the recyclerViews.
-     */
     private void prepareSensors() {
         int[] covers = new int[]{
                 R.drawable.sensor_1,

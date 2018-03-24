@@ -24,8 +24,8 @@ import dagger.android.support.DaggerAppCompatActivity;
 
 public class ProjectActivity extends DaggerAppCompatActivity implements LifecycleRegistryOwner {
 
-//    @Inject
-//    ProjectViewModelFactory viewModelFactory;
+    @Inject
+    ProjectViewModelFactory viewModelFactory;
 
     @Inject
     SyncProjectLifecycleObserver syncProjectLifecycleObserver;
