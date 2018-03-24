@@ -41,7 +41,6 @@
             android:baselineAligned="false"
             android:gravity="center_vertical">
 
-
             <android.support.design.widget.TextInputLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -222,7 +221,8 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="32dp"
             android:layout_marginStart="32dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginBottom="24dp"
+            android:layout_marginTop="24dp"
             android:gravity="center_vertical">
 
             <TextView
@@ -235,7 +235,7 @@
                 android:onClick="toLogin"
                 android:text="@string/login_redirect"
                 android:textAlignment="center"
-                android:textColor="@color/colorPrimaryText"
+                android:textColor="@color/primaryDark"
                 android:textSize="20sp" />
         </LinearLayout>
     </LinearLayout>
