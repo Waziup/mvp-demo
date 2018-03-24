@@ -1,7 +1,9 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
 buildscript {
-    
+    ext.kotlin_version = '1.2.30'
+    ext.objectboxVersion = '1.4.2'
+
     repositories {
         google()
         jcenter()
@@ -11,36 +13,45 @@ buildscript {
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.0.1'
-        classpath "io.objectbox:objectbox-gradle-plugin:1.2.1"
+        classpath "io.objectbox:objectbox-gradle-plugin:$objectboxVersion"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
 }
+apply plugin: 'kotlin'
 
 allprojects {
+
+    buildscript {
+        repositories {
+            maven { url "http://objectbox.net/beta-repo/" }
+            jcenter()
+            mavenCentral()
+            google()
+        }
+    }
+
     repositories {
         google()
         jcenter()
-        maven {
-            url "http://objectbox.net/beta-repo/"
-        }
+        maven { url "http://objectbox.net/beta-repo/" }
+        maven { url "https://jitpack.io" }
     }
 }
 
-task clean(type: Delete) {
-    delete rootProject.buildDir
-}
 
 // Define versions in a single place
 ext{
     // Sdk and tools
-    minSdkVersion = 17
-    targetSdkVersion = 27
-    compileSdkVersion = 27
+    minSdkVersion = 21
+    targetSdkVersion = 26
+    compileSdkVersion = 26
     buildToolsVersion = '26.0.2'
+
     // App dependencies
-    supportLibraryVersion = '27.0.2'
+    supportLibraryVersion = '26.1.0'
     objectboxVersion = '1.2.1'
     rxjavaVersion = '2.1.6'
     rxandroidVersion = '2.0.1'
@@ -48,10 +59,41 @@ ext{
     picassoVersion = '2.5.2'
     circleImageViewVersion = '2.2.0'
 
+    //extra
+    androidArchVersion = "1.0.0"
+    daggerVersion = "2.11"
+    butterKnifeVersion = "8.8.1"
+    timberVersion = "4.6.1"
+    priorityJobQueueVersion = "2.0.1"
+    playServicesVersion = "11.8.0"
+    okHttpVersion = "3.9.1"
+    rxRelayVersion = "2.0.0"
+    rxLintVersion = "1.6"
+    rxjavaObjectbox = "0.9.8"
+
+    autoViewModelFactory = "0.1.2"
 
     //Test dependencies
     junitVersion = '4.12'
     espressoVersion = '2.2.2'
     mockitoVersion = '2.7.1'
 
+}
+
+repositories {
+    mavenCentral()
+
+}
+dependencies {
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+}
+compileKotlin {
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+}
+compileTestKotlin {
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
 }

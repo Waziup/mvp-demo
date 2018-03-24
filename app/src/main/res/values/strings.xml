@@ -7,14 +7,26 @@
     <!--Label-->
     <string name="username">John Doe</string>
 
+    <!--Login  Activity-->
+    <string name="hint_username">Username</string>
+    <string name="hint_password">password</string>
+    <string name="login_button">Login</string>
+    <string name="register_link">No account yet? Create one</string>
+
+
     <!--Drawer String values-->
     <string name="drawer_open">Open</string>
     <string name="drawer_close">close</string>
 
     <!--Group_One-->
     <string name="home_list">Home</string>
-    <string name="sensor_list">Sensor</string>
-    <string name="project_list">Project</string>
+    <string name="field_list">Field</string>
+    <string name="weather_list">Weather</string>
+    <string name="activity_list">Activity</string>
+    <string name="notification_list">Notification</string>
+    <string name="profile_list">Profile</string>
+    <string name="about_list">About</string>
+
     <string name="setting_list">Setting</string>
     <!--CREATE PROJECT ACTIVITY-->
     <string name="section_format">Hello World from section: %1$d</string>
@@ -22,9 +34,6 @@
     <string name="project_name">Enter name</string>
     <string name="title_activity_project_det">ProjectDetActivity</string>
     <string name="project_init_status">initial status</string>
-    <string name="project_description">project description</string>
-    <string name="create_insert_location">project location</string>
-    <string name="create_project">create project</string>
     <string name="project_notes">enter notes (optional)</string>
     <string name="sensor_type">type</string>
     <string name="sensor_name">sensor name</string>
@@ -36,5 +45,43 @@
     <string name="pick_place">Pick Project Locatioin</string>
     <string name="default_info_title">default marker title</string>
     <string name="default_info_snippet">default marker snippet</string>
+
+    <!-- Content description strings -->
+    <string name="cd_background_image">background image</string>
+    <string name="cd_main_image">main image</string>
+    <string name="min_lorem">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.</string>
+    <string name="lorem">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc,</string>
+    <string name="signup_button">register</string>
+    <string name="hint_first_name">first name</string>
+    <string name="hint_last_name">last name</string>
+    <string name="hint_mobile">mobile</string>
+    <string name="hint_email">email</string>
+    <string name="create_project">Create Project</string>
+    <string name="project_description">project description</string>
+    <string name="create_insert_location">locate project</string>
+    <string name="login_redirect">have an account? Login</string>
+
+
+    <!--Font  icons-->
+
+    <string name="fontello_logo">&#xe8ad;</string>
+    <string name="fontello_search">&#xea01;</string>
+    <string name="fontello_x_mark">&#xe887;</string>
+    <string name="fontello_x_mark_masked">&#xe885;</string>
+    <string name="fontello_microfon">&#xea18;</string>
+    <string name="fontello_user">&#xe800;</string>
+    <string name="fontello_password">&#xe9df;</string>
+    <string name="fontello_upload">&#xeb30;</string>
+    <string name="fontello_play">&#xea7d;</string>
+    <string name="fontello_heart_empty">&#xe9b5;</string>
+    <string name="fontello_heart_full">&#xe9b6;</string>
+    <string name="fontello_drag_and_drop">&#xe988;</string>
+    <string name="project_location">location</string>
+    <string name="login_forgot_password">Forgot Password?</string>
+    <string name="reset_password_redirect_to_login">Back to Login</string>
+    <string name="signin_button">login</string>
+    <string name="button_reset_password">reset password</string>
+    <string name="forgot_password_title">Forgot Password?</string>
+
 
 </resources>

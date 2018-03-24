@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:padding="10dp"
-    tools:context="com.apps.waZiUp.ui.project.create.CreateProjectActivity"
+    tools:context="com.apps.waziup.ui.project.create.CreateProjectActivity"
     tools:showIn="@layout/activity_create_project">
 
     <LinearLayout
@@ -17,7 +17,20 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:hint="@string/project_name" />
+            android:hint="@string/project_name"
+            android:inputType="text"
+            android:maxLines="1"
+            android:singleLine="true" />
+
+        <EditText
+            android:id="@+id/create_location"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:hint="@string/project_location"
+            android:inputType="text"
+            android:maxLines="1"
+            android:singleLine="true" />
 
         <!--TODO don't forget to validate the user input-->
 
@@ -26,26 +39,31 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/project_init_status"
-            android:inputType="textCapSentences|textMultiLine" />
+            android:inputType="text"
+            android:maxLines="1"
+            android:singleLine="true" />
 
         <EditText
             android:id="@+id/create_description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/project_description" />
+            android:hint="@string/project_description"
+            android:inputType="text"
+            android:maxLines="1" />
 
         <EditText
             android:id="@+id/create_notes"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/project_notes"
-            android:inputType="textCapSentences|textMultiLine" />
+            android:inputType="text"
+            android:maxLines="1" />
 
         <Button
-            android:layout_gravity="bottom"
             android:id="@+id/btn_create"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
             android:layout_marginTop="30dp"
             android:background="@color/accent"
             android:text="@string/create_project"

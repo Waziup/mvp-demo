@@ -25,4 +25,15 @@
     <color name="primaryDark">@color/blueDark</color>
     <color name="accent">@color/orange</color>
 
+
+
+    <color name="main_color_grey_50">@color/material_grey_50</color>
+    <color name="main_color_grey_100">@color/material_grey_100</color>
+
+    <color name="main_color_grey_300">@color/material_grey_300</color>
+    <color name="main_color_grey_600">@color/material_grey_600</color>
+
+    <color name="main_color_grey_800">@color/material_grey_800</color>
+    <color name="main_color_grey_900">@color/material_grey_900</color>
+
 </resources>
