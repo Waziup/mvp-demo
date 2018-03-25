@@ -16,8 +16,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.apps.waziup.R;
 import com.apps.waziup.base.view.BaseActivity;
-import com.apps.waziup.waziup.R;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.location.places.GeoDataClient;
@@ -45,37 +45,25 @@ import timber.log.Timber;
 
 public class CreateProjectActivity extends BaseActivity implements OnMapReadyCallback {
 
-    int DEFAULT_ZOOM = 8;
-
-    boolean mLocationPermissionGranted;
-
-    GoogleMap googleMap;
-
-    LatLng mDefaultLocation;
-
-    GeoDataClient mGeoDataClient;
-    PlaceDetectionClient mPlaceDetectionClient;
-
     public static final String TAG = "CREATE.PROJECT.ACTIVITY";
-
     public static final int PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 99;
-
-    private Location mLastKnownLocation;
-
     private static final String KEY_CAMERA_POSITION = "camera_position";
     private static final String KEY_LOCATION = "btnLocation";
-
     public int M_MAX_ENTRIES = 5;
     public String[] mLikelyPlaceNames;
     public String[] mLikelyPlaceAddresses;
     public String[] mLikelyPlaceAttributions;
     public LatLng[] mLikelyPlaceLatLngs;
-
+    int DEFAULT_ZOOM = 8;
+    boolean mLocationPermissionGranted;
+    GoogleMap googleMap;
+    LatLng mDefaultLocation;
+    GeoDataClient mGeoDataClient;
+    PlaceDetectionClient mPlaceDetectionClient;
     @BindView(R.id.create_location)
     EditText btnLocation;
-
     Geocoder geocoder;
-
+    private Location mLastKnownLocation;
     private FusedLocationProviderClient mFusedLocationProviderClient;
 
     @Override

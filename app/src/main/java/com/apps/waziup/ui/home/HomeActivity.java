@@ -20,9 +20,9 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.apps.waziup.R;
 import com.apps.waziup.base.view.BaseActivity;
 import com.apps.waziup.ui.project.create.CreateProjectActivity;
-import com.apps.waziup.waziup.R;
 
 
 public class HomeActivity extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener{

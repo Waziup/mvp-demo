@@ -6,8 +6,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.apps.waziup.R;
 import com.apps.waziup.base.view.BaseFragment;
-import com.apps.waziup.waziup.R;
 
 public class FragmentActivityTab extends BaseFragment {
 

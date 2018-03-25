@@ -91,7 +91,6 @@
         android:gravity="center_vertical">
 
         <com.apps.waziup.fonts.MaterialDesignIconsTextView
-            android:textColor="@color/primaryDark"
             android:id="@+id/login_forgot_password"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -101,6 +100,7 @@
             android:onClick="toLogin"
             android:text="@string/login_forgot_password"
             android:textAlignment="center"
+            android:textColor="@color/primaryDark"
             android:textSize="20sp" />
     </LinearLayout>
 

@@ -11,8 +11,8 @@ import android.support.v7.app.AppCompatDelegate;
 import android.support.v7.widget.Toolbar;
 import android.widget.ImageView;
 
+import com.apps.waziup.R;
 import com.apps.waziup.base.view.BaseActivity;
-import com.apps.waziup.waziup.R;
 
 import java.util.ArrayList;
 import java.util.List;

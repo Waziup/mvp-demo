@@ -2,6 +2,7 @@ package com.apps.waziup.ui.project;
 
 import android.arch.lifecycle.LifecycleRegistry;
 import android.arch.lifecycle.LifecycleRegistryOwner;
+import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -9,8 +10,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 
+import com.apps.waziup.R;
 import com.apps.waziup.domain.services.SyncProjectLifecycleObserver;
-import com.apps.waziup.waziup.R;
 
 import java.util.ArrayList;
 
@@ -34,12 +35,12 @@ public class ProjectActivity extends DaggerAppCompatActivity implements Lifecycl
     //@BindView(R.id.ad_label)
     EditText addProjectEditText;
 
-//    @BindView(R.id.project_title)
+    //@BindView(R.id.project_title)
     RecyclerView recyclerView;
 
     private ProjectListAdapter recyclerViewAdapter;
 
-//    private ProjectViewModel viewModel;
+    private ProjectViewModel viewModel;
 
     private LifecycleRegistry registry = new LifecycleRegistry(this);
 
@@ -59,8 +60,8 @@ public class ProjectActivity extends DaggerAppCompatActivity implements Lifecycl
         initRecyclerView();
 
         getLifecycle().addObserver(syncProjectLifecycleObserver);
-
-//        viewModel.projects().observe(this, recyclerViewAdapter::updateProjectList);
+        viewModel = ViewModelProviders.of(this, viewModelFactory).get(ProjectViewModel.class);
+        viewModel.projects().observe(this, recyclerViewAdapter::updateProjectList);
     }
 
     @OnClick(R.id.all)
@@ -69,7 +70,7 @@ public class ProjectActivity extends DaggerAppCompatActivity implements Lifecycl
         hideKeyboard();
 
         // TODO add project validation
-//        viewModel.addProject(addProjectEditText.getText().toString());
+        viewModel.addProject(addProjectEditText.getText().toString());
 
         clearEditText();
     }

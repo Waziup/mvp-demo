@@ -11,9 +11,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-
+import com.apps.waziup.R;
 import com.apps.waziup.data.sensor.Sensor;
-import com.apps.waziup.waziup.R;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -25,8 +24,8 @@ import java.util.Locale;
 
 public class DetailSensorAdapter extends RecyclerView.Adapter<DetailSensorAdapter.MyViewHolder> {
 
-    private List<Sensor> sensorList;
     public Context context;
+    private List<Sensor> sensorList;
 
     public DetailSensorAdapter(List<Sensor> sensorList, Context context) {
         this.sensorList = sensorList;

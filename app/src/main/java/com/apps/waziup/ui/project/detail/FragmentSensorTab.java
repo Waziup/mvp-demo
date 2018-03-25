@@ -6,17 +6,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.apps.waziup.R;
 import com.apps.waziup.base.view.BaseFragment;
 import com.apps.waziup.data.sensor.Sensor;
-import com.apps.waziup.waziup.R;
 
 import java.util.List;
 
 public class FragmentSensorTab extends BaseFragment {
 
+    List<Sensor> sensorList;
     private RecyclerView recyclerView;
     private DetailSensorAdapter adapter;
-    List<Sensor> sensorList;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

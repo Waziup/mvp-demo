@@ -1,8 +1,8 @@
 package com.apps.waziup.domain.services.networking;
 
 
+import com.apps.waziup.BuildConfig;
 import com.apps.waziup.model.Project;
-import com.apps.waziup.waziup.BuildConfig;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 

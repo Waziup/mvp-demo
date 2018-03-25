@@ -11,7 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.apps.waziup.waziup.R;
+import com.apps.waziup.R;
 
 public class SampleFragment extends Fragment {
 
