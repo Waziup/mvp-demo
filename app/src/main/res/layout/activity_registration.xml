@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:fillViewport="true">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_gravity="center_horizontal"
         android:orientation="vertical">
 
@@ -20,17 +20,6 @@
             android:scaleType="centerCrop"
             app:srcCompat="@drawable/waziup_logo" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginStart="16dp"
-            android:layout_weight="1"
-            android:text="@string/registration_text"
-            android:textAlignment="center"
-            android:textColor="@color/primaryDark"
-            android:textSize="22sp" />
-
         <LinearLayout
             android:id="@+id/first_name_container"
             android:layout_width="match_parent"
@@ -38,8 +27,8 @@
             android:layout_marginEnd="32dp"
             android:layout_marginStart="32dp"
             android:layout_marginTop="16dp"
-            android:baselineAligned="false"
             android:gravity="center_vertical">
+
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="0dp"
@@ -66,7 +55,6 @@
             android:layout_marginEnd="32dp"
             android:layout_marginStart="32dp"
             android:layout_marginTop="16dp"
-            android:baselineAligned="false"
             android:gravity="center_vertical">
 
 
@@ -95,9 +83,7 @@
             android:layout_marginEnd="32dp"
             android:layout_marginStart="32dp"
             android:layout_marginTop="16dp"
-            android:baselineAligned="false"
-            android:gravity="center_vertical"
-            android:weightSum="1">
+            android:gravity="center_vertical">
 
 
             <android.support.design.widget.TextInputLayout
@@ -106,34 +92,15 @@
                 android:layout_marginEnd="16dp"
                 android:layout_marginStart="16dp"
                 android:layout_weight="1"
-                android:orientation="horizontal">
+                android:labelFor="@id/mobile_number">
 
-                <LinearLayout
+                <EditText
+                    android:id="@+id/mobile_number"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <com.rilixtech.CountryCodePicker
-                        android:id="@+id/ccp"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="0.4"
-                        android:gravity="center"
-                        app:ccp_defaultNameCode="us" />
-
-                    <EditText
-                        android:id="@+id/phone_number_edt"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="0.6"
-                        android:hint="@string/phone_number"
-                        android:inputType="phone" />
-
-                </LinearLayout>
-
-
+                    android:hint="@string/hint_mobile"
+                    android:inputType="text" />
             </android.support.design.widget.TextInputLayout>
-
 
         </LinearLayout>
 
@@ -144,7 +111,6 @@
             android:layout_marginEnd="32dp"
             android:layout_marginStart="32dp"
             android:layout_marginTop="16dp"
-            android:baselineAligned="false"
             android:gravity="center_vertical">
 
 
@@ -161,7 +127,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/hint_email"
-                    android:inputType="textEmailAddress" />
+                    android:inputType="text" />
             </android.support.design.widget.TextInputLayout>
 
         </LinearLayout>
@@ -173,7 +139,6 @@
             android:layout_marginEnd="32dp"
             android:layout_marginStart="32dp"
             android:layout_marginTop="0dp"
-            android:baselineAligned="false"
             android:gravity="center_vertical">
 
 
@@ -201,7 +166,6 @@
             android:layout_marginEnd="32dp"
             android:layout_marginStart="32dp"
             android:layout_marginTop="0dp"
-            android:baselineAligned="false"
             android:gravity="center_vertical">
 
 
@@ -239,10 +203,9 @@
             android:id="@+id/login_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="24dp"
             android:layout_marginEnd="32dp"
             android:layout_marginStart="32dp"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="16dp"
             android:gravity="center_vertical">
 
             <TextView
@@ -255,8 +218,11 @@
                 android:onClick="toLogin"
                 android:text="@string/login_redirect"
                 android:textAlignment="center"
-                android:textColor="@color/primaryDark"
+                android:textColor="@color/colorPrimaryText"
                 android:textSize="20sp" />
         </LinearLayout>
+
+        <!--TODO don't for get the "HAVE AN ACCOUNT? LOGIN" textview for sing in-->
+
     </LinearLayout>
 </ScrollView>
