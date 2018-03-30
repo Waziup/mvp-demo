@@ -12,6 +12,6 @@ android:fitsSystemWindows="true">
     <include layout="@layout/toolbar" />
 </android.support.design.widget.AppBarLayout>
 
-<include layout="@layout/home_layout" />
+<include layout="@layout/home_dashboard_layout" />
 
 </android.support.design.widget.CoordinatorLayout>

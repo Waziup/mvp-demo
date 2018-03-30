@@ -49,13 +49,13 @@ public class HomeActivity extends BaseActivity implements NavigationView.OnNavig
         drawerLayout=  findViewById(R.id.drawer_layout);
         navigationView=  findViewById(R.id.navView);
         navigationView.setNavigationItemSelectedListener(this);
-        fab = findViewById(R.id.fab);
+//        fab = findViewById(R.id.fab);
     }
 
     private void setUpToolbar() {
         toolbar.setTitle(getString(R.string.app_name));
         setSupportActionBar(toolbar);
-        fab.setOnClickListener(v->startActivity(new Intent(this, CreateProjectActivity.class)));
+//        fab.setOnClickListener(v->startActivity(new Intent(this, CreateProjectActivity.class)));
     }
 
     public void createDialog(){
