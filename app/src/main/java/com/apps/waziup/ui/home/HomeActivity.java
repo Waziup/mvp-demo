@@ -24,19 +24,32 @@ import com.apps.waziup.base.view.BaseActivity;
 import com.apps.waziup.ui.project.create.CreateProjectActivity;
 import com.apps.waziup.waziup.R;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 
 public class HomeActivity extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener{
 
-    private DrawerLayout drawerLayout;
     private ActionBarDrawerToggle drawerToggle;
-    private NavigationView navigationView;
-    private Toolbar toolbar;
+
     private FloatingActionButton fab;
+
+    @BindView(R.id.drawer_layout)
+    DrawerLayout drawerLayout;
+
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
+
+    @BindView(R.id.navView)
+    NavigationView navigationView;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+        ButterKnife.bind(this);
         initialise();
         setUpToolbar();
         setUpDrawer();
