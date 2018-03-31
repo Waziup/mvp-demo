@@ -7,6 +7,9 @@
     <!--Label-->
     <string name="username">John Doe</string>
 
+    <!--Registration Activity-->
+    <string name="phone_number">202-555-0125</string>
+
     <!--Login  Activity-->
     <string name="hint_username">Username</string>
     <string name="hint_password">password</string>
@@ -61,6 +64,7 @@
     <string name="login_redirect">have an account? Login</string>
 
 
+
     <!--Font  icons-->
 
     <string name="fontello_logo">&#xe8ad;</string>
@@ -76,6 +80,7 @@
     <string name="fontello_heart_full">&#xe9b6;</string>
     <string name="fontello_drag_and_drop">&#xe988;</string>
     <string name="project_location">location</string>
+    <string name="registration_text">Registration</string>
 
 
 </resources>
