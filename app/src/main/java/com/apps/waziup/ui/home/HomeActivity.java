@@ -4,7 +4,6 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -26,13 +25,12 @@ import com.apps.waziup.waziup.R;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 
-public class HomeActivity extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener{
+public class HomeActivity extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private ActionBarDrawerToggle drawerToggle;
-
-    private FloatingActionButton fab;
 
     @BindView(R.id.drawer_layout)
     DrawerLayout drawerLayout;
@@ -43,8 +41,6 @@ public class HomeActivity extends BaseActivity implements NavigationView.OnNavig
     @BindView(R.id.navView)
     NavigationView navigationView;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,25 +49,27 @@ public class HomeActivity extends BaseActivity implements NavigationView.OnNavig
         initialise();
         setUpToolbar();
         setUpDrawer();
-
     }
 
     // Initialise Activity Data
     private void initialise() {
-        toolbar =  findViewById(R.id.toolbar);
-        drawerLayout=  findViewById(R.id.drawer_layout);
-        navigationView=  findViewById(R.id.navView);
+        toolbar = findViewById(R.id.toolbar);
+        drawerLayout = findViewById(R.id.drawer_layout);
+        navigationView = findViewById(R.id.navView);
         navigationView.setNavigationItemSelectedListener(this);
-//        fab = findViewById(R.id.fab);
     }
 
     private void setUpToolbar() {
         toolbar.setTitle(getString(R.string.app_name));
         setSupportActionBar(toolbar);
-//        fab.setOnClickListener(v->startActivity(new Intent(this, CreateProjectActivity.class)));
     }
 
-    public void createDialog(){
+    @OnClick(R.id.fab)
+    void OnFabClicked() {
+        startActivity(new Intent(this, CreateProjectActivity.class));
+    }
+
+    public void createDialog() {
         // custom dialog
         final Dialog dialog = new Dialog(this);
         //Hides the title of dialog
@@ -84,7 +82,7 @@ public class HomeActivity extends BaseActivity implements NavigationView.OnNavig
 
         Button btnCreate = dialog.findViewById(R.id.btn_create_project);
         // if button is clicked, close the custom dialog
-        btnCreate.setOnClickListener(u-> {
+        btnCreate.setOnClickListener(u -> {
             Toast.makeText(this, "project created", Toast.LENGTH_SHORT).show();
             dialog.dismiss();
         });
@@ -93,10 +91,8 @@ public class HomeActivity extends BaseActivity implements NavigationView.OnNavig
     }
 
 
-    private void  setUpDrawer()
-    {
-        drawerToggle=new ActionBarDrawerToggle(this,drawerLayout,toolbar, R.string.drawer_open,R.string.drawer_close)
-        {
+    private void setUpDrawer() {
+        drawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.drawer_open, R.string.drawer_close) {
             @Override
             public void onDrawerOpened(View drawerView) {
                 super.onDrawerOpened(drawerView);
@@ -117,9 +113,10 @@ public class HomeActivity extends BaseActivity implements NavigationView.OnNavig
         drawerLayout.post(() -> drawerToggle.syncState());
 
     }
+
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        String itemName= (String) item.getTitle();
+        String itemName = (String) item.getTitle();
 
 //        Toast.makeText(this,itemName,Toast.LENGTH_SHORT).show();
         hideDrawer();
@@ -127,22 +124,20 @@ public class HomeActivity extends BaseActivity implements NavigationView.OnNavig
         return true;
 
     }
+
     //open drawer
-    private void showDrawer()
-    {
+    private void showDrawer() {
         drawerLayout.openDrawer(GravityCompat.START);
     }
 
     // close drawer
-    private void hideDrawer()
-    {
+    private void hideDrawer() {
         drawerLayout.closeDrawer(GravityCompat.START);
     }
 
     @Override
     public void onBackPressed() {
-        if(drawerLayout.isDrawerOpen(GravityCompat.START))
-        {
+        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
             hideDrawer();
         }
         super.onBackPressed();
