@@ -28,7 +28,7 @@ public class TabSensorAdapter extends RecyclerView.Adapter<TabSensorViewHolder> 
 
     @Override
     public TabSensorViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View itemView = LayoutInflater.from(parent.getContext())
+        View itemView = LayoutInflater.from(context)
                 .inflate(R.layout.card_sensor, parent, false);
         return new TabSensorViewHolder(itemView);
     }
@@ -36,10 +36,10 @@ public class TabSensorAdapter extends RecyclerView.Adapter<TabSensorViewHolder> 
     @Override
     public void onBindViewHolder(TabSensorViewHolder holder, int position) {
 
-        SensorMock sensor = sensors.get(position);
-//        holder.sensorReading.setText(String.valueOf(sensor.position));
-//        holder.sensorName.setText(sensor.name);
-//        holder.sensorType.setText(sensor.type);
+        SensorMock sensor = this.sensors.get(position);
+        holder.sensorReading.setText(String.valueOf(sensor.position));
+        holder.sensorName.setText(sensor.name);
+        holder.sensorType.setText(sensor.type);
 //        Picasso.with(context).load(sensor.image).into(holder.sensorImg);
     }
 

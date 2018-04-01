@@ -22,7 +22,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class ProjectDetailActivity extends BaseActivity implements ProjectDetailContract.View{
+public class ProjectDetailActivity extends BaseActivity implements ProjectDetailContract.View {
 
     @BindView(R.id.detail_toolbar)
     Toolbar toolbar;
@@ -30,6 +30,10 @@ public class ProjectDetailActivity extends BaseActivity implements ProjectDetail
     ViewPager mViewPager;
     @BindView(R.id.detail_tabs)
     TabLayout mTabLayout;
+
+    static {
+        AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +45,6 @@ public class ProjectDetailActivity extends BaseActivity implements ProjectDetail
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
         setupViewPager(mViewPager);
         mTabLayout.setupWithViewPager(mViewPager);
 

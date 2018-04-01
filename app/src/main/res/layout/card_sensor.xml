@@ -27,7 +27,8 @@
                 android:layout_gravity="center"
                 android:contentDescription="@string/contentDescription"
                 android:scaleType="centerCrop"
-                android:src="@drawable/sensor_2" />
+                android:padding="2dp"
+                app:srcCompat="@drawable/ic_sensor"/>
 
             <LinearLayout
                 android:layout_width="match_parent"

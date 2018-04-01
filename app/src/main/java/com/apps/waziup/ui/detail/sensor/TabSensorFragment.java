@@ -47,6 +47,7 @@ public class TabSensorFragment extends BaseFragment {
         recyclerView.setAdapter(adapter);
 
         prepareSensors();
+
         return v;
     }
 
@@ -88,6 +89,8 @@ public class TabSensorFragment extends BaseFragment {
                 "PheNode is a tool for researchers, farmers and horticulturists that can monitor environmental conditions and transmits the data to the cloud where growers can track their plants in real-time in order to facilitate data-driven decision support.",
                 "Temprature", covers[5], "40.482450, -75.178184");
         sensorList.add(a);
+
+        adapter.notifyDataSetChanged();
     }
 
     @Override

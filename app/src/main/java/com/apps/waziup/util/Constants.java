@@ -1,8 +1,5 @@
 package com.apps.waziup.util;
 
-/**
- * Created by yehuala on 2/22/18.
- */
 
 public class Constants {
     // View State

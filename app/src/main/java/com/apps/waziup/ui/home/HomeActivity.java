@@ -46,6 +46,7 @@ public class HomeActivity extends BaseActivity implements NavigationView.OnNavig
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         ButterKnife.bind(this);
+
         initialise();
         setUpToolbar();
         setUpDrawer();
@@ -62,6 +63,8 @@ public class HomeActivity extends BaseActivity implements NavigationView.OnNavig
     private void setUpToolbar() {
         toolbar.setTitle(getString(R.string.app_name));
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setLogo(R.drawable.humberger);
     }
 
     @OnClick(R.id.fab)

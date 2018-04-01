@@ -82,7 +82,6 @@ public class CreateProjectActivity extends BaseActivity implements OnMapReadyCal
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_project);
-
         ButterKnife.bind(this);
 
         geocoder = new Geocoder(this, Locale.getDefault());
