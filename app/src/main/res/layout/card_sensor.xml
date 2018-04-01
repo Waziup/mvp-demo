@@ -36,21 +36,39 @@
                 android:layout_gravity="center"
                 android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/tv_sensor_card_title"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="5dp"
-                    android:layout_marginTop="5dp"
-                    android:maxLines="1"
-                    android:paddingLeft="@dimen/card_title_padding"
-                    android:paddingRight="@dimen/card_title_padding"
-                    android:text="@string/sensor_name"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/backdrop_subtitle" />
-
                 <LinearLayout
                     android:id="@+id/first_info"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="1">
+
+                    <TextView
+                        android:layout_weight="0.8"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="5dp"
+                        android:layout_marginTop="5dp"
+                        android:maxLines="1"
+                        android:paddingLeft="@dimen/card_title_padding"
+                        android:paddingRight="@dimen/card_title_padding"
+                        android:text="@string/sensor_name"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/backdrop_subtitle" />
+
+                    <ImageView
+                        android:id="@+id/sensor_status"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="0.2"
+                        android:contentDescription="@string/contentDescription"
+                        app:srcCompat="@drawable/online" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/second_info"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
