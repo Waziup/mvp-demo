@@ -10,10 +10,13 @@ import com.apps.waziup.base.mvp.BaseView;
 public interface LoginContract {
 
     interface View extends BaseView<Presenter> {
-
+        void openHome();
+        void showValidationError();
+        void openRegistration();
     }
 
     interface Presenter extends BasePresenter<View> {
-
+        void loginClicked();
+        void registrationClicked();
     }
 }

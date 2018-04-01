@@ -1,4 +1,4 @@
-package com.apps.waziup.data.sensor;
+package com.apps.waziup.data.model;
 
 /**
  * Created by KidusMT on 4/1/2018.

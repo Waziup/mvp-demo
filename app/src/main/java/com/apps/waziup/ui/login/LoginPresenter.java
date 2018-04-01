@@ -5,6 +5,9 @@ package com.apps.waziup.ui.login;
  */
 
 public class LoginPresenter implements LoginContract.Presenter {
+
+
+
     @Override
     public void start() {
 
@@ -23,5 +26,15 @@ public class LoginPresenter implements LoginContract.Presenter {
     @Override
     public LoginContract.View getView() {
         return null;
+    }
+
+    @Override
+    public void loginClicked() {
+
+    }
+
+    @Override
+    public void registrationClicked() {
+
     }
 }

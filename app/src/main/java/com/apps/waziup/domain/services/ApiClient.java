@@ -35,7 +35,7 @@ public class ApiClient {
     private JSON json;
 
     public ApiClient() {
-        apiAuthorizations = new LinkedHashMap<String, Interceptor>();
+        apiAuthorizations = new LinkedHashMap<>();
         createDefaultAdapter();
     }
 

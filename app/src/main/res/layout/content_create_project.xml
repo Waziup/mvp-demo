@@ -32,7 +32,7 @@
             android:maxLines="1"
             android:singleLine="true" />
 
-        <!--TODO don't forget to validate the user input-->
+        <!--TODO don't forget to validate Useruser input-->
 
         <EditText
             android:id="@+id/create_init_status"

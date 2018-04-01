@@ -1,4 +1,4 @@
-package com.apps.waziup.data.asset;
+package com.apps.waziup.data.model;
 
 import io.objectbox.annotation.Entity;
 import io.objectbox.annotation.Id;
@@ -9,7 +9,7 @@ import io.objectbox.annotation.Index;
  */
 
 @Entity
-public class AssetD {
+public class Asset {
 
     @Id
     long id;

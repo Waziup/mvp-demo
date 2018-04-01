@@ -1,6 +1,6 @@
 package com.apps.waziup.domain.services.api;
 
-import com.apps.waziup.data.sensor.Sensor;
+import com.apps.waziup.data.model.Sensor;
 import com.apps.waziup.domain.services.model.Location;
 import com.apps.waziup.domain.services.model.Measurement;
 import com.apps.waziup.domain.services.model.MeasurementValue;

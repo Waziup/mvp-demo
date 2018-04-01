@@ -47,4 +47,19 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
     public void close() {
         finish();
     }
+
+    @Override
+    public void openHome() {
+
+    }
+
+    @Override
+    public void showValidationError() {
+
+    }
+
+    @Override
+    public void openRegistration() {
+
+    }
 }

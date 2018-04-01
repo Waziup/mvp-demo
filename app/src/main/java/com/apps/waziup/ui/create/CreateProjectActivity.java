@@ -90,7 +90,7 @@ public class CreateProjectActivity extends BaseActivity implements OnMapReadyCal
 //            mCurrentLocation = savedInstanceState.getParcelable(KEY_LOCATION);
 //            mCameraPosition = savedInstanceState.getParcelable(KEY_CAMERA_POSITION);
 //        }
-        //hides the keyboard till the user selects to an edit text
+        //hides the keyboard till the User selects to an edit text
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
 
         //for getting the current btnLocation place and address of the btnLocation from google map
@@ -139,8 +139,8 @@ public class CreateProjectActivity extends BaseActivity implements OnMapReadyCal
     }
 
     /**
-     * asks for the user to accept the request permission for accessing using the btnLocation of
-     * the user/device for manipulation
+     * asks for the User to accept the request permission for accessing using the btnLocation of
+     * the User/device for manipulation
      */
     private void getLocationPermission() {
     /*
@@ -251,7 +251,7 @@ public class CreateProjectActivity extends BaseActivity implements OnMapReadyCal
                             mLikelyPlaceLatLngs = new LatLng[count];
 
                             for (PlaceLikelihood placeLikelihood : likelyPlaces) {
-                                // Build a list of likely places to show the user.
+                                // Build a list of likely places to show the User.
                                 mLikelyPlaceNames[i] = (String) placeLikelihood.getPlace().getName();
                                 mLikelyPlaceAddresses[i] = (String) placeLikelihood.getPlace()
                                         .getAddress();
@@ -268,7 +268,7 @@ public class CreateProjectActivity extends BaseActivity implements OnMapReadyCal
                             // Release the place likelihood buffer, to avoid memory leaks.
                             likelyPlaces.release();
 
-                            // Show a dialog offering the user the list of likely places, and add a
+                            // Show a dialog offering the User the list of likely places, and add a
                             // marker at the selected place.
                             openPlacesDialog();
 
@@ -277,16 +277,16 @@ public class CreateProjectActivity extends BaseActivity implements OnMapReadyCal
                         }
                     });
         } else {
-            // The user has not granted permission.
-            Timber.i("The user did not grant btnLocation permission.");
+            // The User has not granted permission.
+            Timber.i("The User did not grant btnLocation permission.");
 
-            // Add a default marker, because the user hasn't selected a place.
+            // Add a default marker, because the User hasn't selected a place.
             googleMap.addMarker(new MarkerOptions()
                     .title(getString(R.string.default_info_title))
                     .position(mDefaultLocation)
                     .snippet(getString(R.string.default_info_snippet)));
 
-            // Prompt the user for permission.
+            // Prompt the User for permission.
             getLocationPermission();
         }
     }
@@ -314,7 +314,7 @@ public class CreateProjectActivity extends BaseActivity implements OnMapReadyCal
     }
 
     /**
-     * for tracking the btnLocation of the mobile for showing the current btnLocation of the user on map
+     * for tracking the btnLocation of the mobile for showing the current btnLocation of the User on map
      */
     private void getDeviceLocation() {
     /*
@@ -371,10 +371,10 @@ public class CreateProjectActivity extends BaseActivity implements OnMapReadyCal
     }
 
     /**
-     * method to display a form allowing the user to select a place from a list of likely places.
+     * method to display a form allowing the User to select a place from a list of likely places.
      */
     private void openPlacesDialog() {
-        // Ask the user to choose the place where they are now.
+        // Ask the User to choose the place where they are now.
         DialogInterface.OnClickListener listener = (dialog, which) -> {
             // The "which" argument contains the position of the selected item.
             LatLng markerLatLng = mLikelyPlaceLatLngs[which];
@@ -413,7 +413,7 @@ public class CreateProjectActivity extends BaseActivity implements OnMapReadyCal
     /**
      * for saving the camera and btnLocation setting for the current view before the activity
      * is destroyed or get back to a background for next time retrieving and displaying from
-     * where the user has left of the map
+     * where the User has left of the map
      *
      * @param outState
      */
