@@ -9,14 +9,17 @@ import android.view.ViewGroup;
 import com.apps.waziup.base.view.BaseFragment;
 import com.apps.waziup.waziup.R;
 
-public class FragmentActivityTab extends BaseFragment {
+/**
+ * Created by KidusMT on 3/31/2018.
+ */
+
+public class TabActivityFragment extends BaseFragment {
 
     private RecyclerView recyclerView;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
     }
 
     @Override

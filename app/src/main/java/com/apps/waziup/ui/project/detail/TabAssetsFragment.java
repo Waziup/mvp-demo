@@ -10,7 +10,7 @@ import com.apps.waziup.waziup.R;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
 
-public class FragmentAssetTab extends BaseFragment {
+public class TabAssetsFragment extends BaseFragment {
 
     MapView mMapView;
     private GoogleMap googleMap;

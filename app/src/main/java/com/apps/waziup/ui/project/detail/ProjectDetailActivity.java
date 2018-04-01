@@ -17,7 +17,6 @@ import com.apps.waziup.waziup.R;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class ProjectDetailActivity extends BaseActivity {
 
     private Toolbar toolbar;
@@ -47,25 +46,14 @@ public class ProjectDetailActivity extends BaseActivity {
         mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
             }
 
             @Override
             public void onPageSelected(int position) {
-//                if(position==0){
-//                    Glide.with(this).load(R.drawable.onet).into(imageView);
-//                    Glide.with(this).load(R.drawable.oneb).into(tabBg);
-//                } else {
-//                    Glide.with(MainActivity.this).load(R.drawable.twot).into(imageView);
-//                    Glide.with(MainActivity.this).load(R.drawable.twob).into(tabBg);
-//                }
-
-//                imageView.invalidate();
             }
 
             @Override
             public void onPageScrollStateChanged(int state) {
-
             }
         });
 
@@ -73,10 +61,10 @@ public class ProjectDetailActivity extends BaseActivity {
 
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-
-        adapter.addFragment(new FragmentSensorTab(), "sensors");
-        adapter.addFragment(new FragmentActivityTab(), "activities");
-        adapter.addFragment(new FragmentActivityTab(), "assets");
+        adapter.addFragment(new TabSummaryFragment(), "summary");
+        adapter.addFragment(new TabSensorFragment(), "sensors");
+        adapter.addFragment(new TabActivityFragment(), "activities");
+        adapter.addFragment(new TabAssetsFragment(), "assets");
 
         viewPager.setAdapter(adapter);
     }
@@ -86,7 +74,6 @@ public class ProjectDetailActivity extends BaseActivity {
 
         private final List<Fragment> mFragmentList = new ArrayList<>();
         private final List<String> mFragmentTitleList = new ArrayList<>();
-
 
         public ViewPagerAdapter(FragmentManager fm) {
             super(fm);

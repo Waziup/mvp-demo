@@ -1,11 +1,10 @@
-package com.apps.waziup.data.sensor;
+package com.apps.waziup.ui.project.detail;
 
 /**
- * Created by KidusMT on 2/22/2018.
+ * Created by KidusMT on 4/1/2018.
  */
 
-public class Sensor {
-
+public class SensorMock {
     public String name;
     public String description;
     public int image;
@@ -19,12 +18,11 @@ public class Sensor {
     public String note;
     public String isPublic;
 
-    public Sensor(String name, String description, String type, int image, String position) {
+    public SensorMock(String name, String description, String type, int image, String position) {
         this.name = name;
         this.description = description;
         this.type = type;
         this.image = image;
         this.position = position;
     }
-
 }

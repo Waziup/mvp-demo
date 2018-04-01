@@ -20,7 +20,6 @@
             android:layout_height="350dp"
             tools:context="com.apps.waziup.ui.project.create.CreateProjectActivity" />
 
-
         <include
             layout="@layout/content_create_project"
             android:layout_width="match_parent"

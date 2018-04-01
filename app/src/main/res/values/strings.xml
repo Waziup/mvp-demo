@@ -81,6 +81,10 @@
     <string name="fontello_drag_and_drop">&#xe988;</string>
     <string name="project_location">location</string>
     <string name="registration_text">Registration</string>
+    <string name="detail_location">Location</string>
+    <string name="detail_status">Status</string>
+    <string name="detail_detail">Description</string>
+    <string name="sensor_reading">reading</string>
 
 
 </resources>

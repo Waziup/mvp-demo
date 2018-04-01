@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.apps.waziup.ui.project.detail.ProjectDetailActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/activity_horizontal_margin"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/card_margin"
+            android:text="@string/detail_location"
+            android:textColor="@color/colorPrimaryText"
+            android:textSize="20sp" />
+
+        <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/map"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            tools:context="com.apps.waziup.ui.project.create.CreateProjectActivity" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/card_margin"
+            android:layout_marginTop="@dimen/card_margin"
+            android:text="@string/detail_status"
+            android:textColor="@color/colorPrimaryText"
+            android:textSize="20sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/card_margin"
+            android:layout_marginTop="@dimen/card_margin"
+            android:ellipsize="marquee"
+            android:maxLines="5"
+            android:text="@string/lorem"
+            android:textColor="@color/colorPrimaryText" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/card_margin"
+            android:layout_marginTop="@dimen/card_margin"
+            android:text="@string/detail_detail"
+            android:textColor="@color/colorPrimaryText"
+            android:textSize="20sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/card_margin"
+            android:layout_marginTop="@dimen/card_margin"
+            android:ellipsize="marquee"
+            android:maxLines="10"
+            android:text="@string/lorem"
+            android:textColor="@color/colorPrimaryText" />
+
+    </LinearLayout>
+
+</FrameLayout>
