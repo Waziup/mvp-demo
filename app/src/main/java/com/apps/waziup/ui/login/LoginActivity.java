@@ -17,7 +17,7 @@ import butterknife.OnClick;
 /**
  * Created by yehuala on 3/30/18
  */
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity implements LoginContract.View {
 
     @BindView(R.id.link_signup)
     TextView singup;
@@ -38,4 +38,13 @@ public class LoginActivity extends AppCompatActivity {
         finish();
     }
 
+    @Override
+    public void attachPresenter(LoginContract.Presenter presenter) {
+
+    }
+
+    @Override
+    public void close() {
+        finish();
+    }
 }
