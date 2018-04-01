@@ -120,7 +120,6 @@ public class CreateProjectActivity extends BaseActivity implements OnMapReadyCal
      */
     @OnClick(R.id.fab_zoom_out_location)
     void onZoomOut() {
-//        Toast.makeText(this, "zoomOut", Toast.LENGTH_SHORT).show();
         googleMap.animateCamera(CameraUpdateFactory.zoomOut());
     }
 
@@ -129,7 +128,6 @@ public class CreateProjectActivity extends BaseActivity implements OnMapReadyCal
      */
     @OnClick(R.id.fab_zoom_in_location)
     void onZoomIn() {
-//        Toast.makeText(this, "zoomOut", Toast.LENGTH_SHORT).show();
         googleMap.animateCamera(CameraUpdateFactory.zoomIn());
     }
 
@@ -138,7 +136,6 @@ public class CreateProjectActivity extends BaseActivity implements OnMapReadyCal
      */
     @OnClick(R.id.fab_current_location)
     void currentLocation() {
-//        Toast.makeText(this, "Current Location", Toast.LENGTH_SHORT).show();
         getDeviceLocation();
     }
 

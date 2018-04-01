@@ -18,12 +18,8 @@
         android:supportsRtl="true"
         android:theme="@style/app_theme">
 
-        <activity android:name="com.apps.waziup.ui.detail.ProjectDetailActivity" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+        <activity android:name="com.apps.waziup.ui.detail.ProjectDetailActivity">
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name="com.apps.waziup.ui.create.CreateProjectActivity"
@@ -32,7 +28,13 @@
         </activity>
         <activity
             android:name="com.apps.waziup.ui.home.HomeActivity"
-            android:theme="@style/app_theme" />
+            android:theme="@style/app_theme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
 
         <activity
             android:name="com.apps.waziup.ui.registration.RegistrationActivity"
