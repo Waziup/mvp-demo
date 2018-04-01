@@ -18,19 +18,8 @@
         android:supportsRtl="true"
         android:theme="@style/app_theme">
 
-        <activity android:name="com.apps.waziup.ui.project.detail.ProjectDetailActivity" />
-        <activity
-            android:name="com.apps.waziup.ui.project.create.CreateProjectActivity"
-            android:theme="@style/app_theme.no_toolbar">
-
-        </activity>
-        <activity
-            android:name="com.apps.waziup.ui.home.HomeActivity"
-            android:theme="@style/app_theme" />
-
-        <activity
-            android:name="com.apps.waziup.ui.registration.RegistrationActivity"
-            android:screenOrientation="portrait"
+        <activity android:name="com.apps.waziup.ui.project.detail.ProjectDetailActivity"/>
+        <activity android:name="com.apps.waziup.ui.login.LoginActivity"
             android:theme="@style/app_theme.no_toolbar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -53,6 +42,10 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
+        <activity android:name="com.apps.waziup.ui.registration.RegistrationActivity"
+            android:theme="@style/app_theme.no_toolbar">
+
+        </activity>
     </application>
 
 </manifest>

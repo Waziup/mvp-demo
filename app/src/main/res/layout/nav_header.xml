@@ -8,6 +8,7 @@
     android:orientation="vertical"
     app:theme="@style/ThemeOverlay.AppCompat.Dark">
 
+    <!--todo   change-->
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/userPhoto"
         android:layout_width="120dp"
