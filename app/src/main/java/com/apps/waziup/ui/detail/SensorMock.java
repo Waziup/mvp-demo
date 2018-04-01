@@ -1,4 +1,4 @@
-package com.apps.waziup.ui.project.detail;
+package com.apps.waziup.ui.detail;
 
 /**
  * Created by KidusMT on 4/1/2018.

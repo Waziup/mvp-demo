@@ -24,11 +24,11 @@ import dagger.android.support.DaggerAppCompatActivity;
 
 public class ProjectActivity extends DaggerAppCompatActivity implements LifecycleRegistryOwner {
 
-    @Inject
-    ProjectViewModelFactory viewModelFactory;
+//    @Inject
+//    ProjectViewModelFactory viewModelFactory;
 
-    @Inject
-    SyncProjectLifecycleObserver syncProjectLifecycleObserver;
+//    @Inject
+//    SyncProjectLifecycleObserver syncProjectLifecycleObserver;
 
     //TODO: Change to proper layout items using ButterKnife
     //@BindView(R.id.ad_label)
@@ -58,7 +58,7 @@ public class ProjectActivity extends DaggerAppCompatActivity implements Lifecycl
 
         initRecyclerView();
 
-        getLifecycle().addObserver(syncProjectLifecycleObserver);
+//        getLifecycle().addObserver(syncProjectLifecycleObserver);
 
 //        viewModel.projects().observe(this, recyclerViewAdapter::updateProjectList);
     }

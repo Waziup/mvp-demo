@@ -1,4 +1,4 @@
-package com.apps.waziup.ui.project.create;
+package com.apps.waziup.ui.create;
 
 import android.content.DialogInterface;
 import android.content.pm.PackageManager;
@@ -43,7 +43,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import timber.log.Timber;
 
-public class CreateProjectActivity extends BaseActivity implements OnMapReadyCallback {
+public class CreateProjectActivity extends BaseActivity implements OnMapReadyCallback, CreateProjectContract.View{
 
     int DEFAULT_ZOOM = 8;
 
@@ -428,5 +428,15 @@ public class CreateProjectActivity extends BaseActivity implements OnMapReadyCal
             outState.putParcelable(KEY_LOCATION, mLastKnownLocation);
             super.onSaveInstanceState(outState);
         }
+    }
+
+    @Override
+    public void attachPresenter(CreateProjectContract.Presenter presenter) {
+
+    }
+
+    @Override
+    public void close() {
+        finish();
     }
 }

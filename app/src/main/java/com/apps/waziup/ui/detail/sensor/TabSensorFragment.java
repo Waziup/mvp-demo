@@ -1,4 +1,4 @@
-package com.apps.waziup.ui.project.detail;
+package com.apps.waziup.ui.detail.sensor;
 
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -8,16 +8,24 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.apps.waziup.base.view.BaseFragment;
+import com.apps.waziup.ui.detail.SensorMock;
 import com.apps.waziup.waziup.R;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.Unbinder;
+
 public class TabSensorFragment extends BaseFragment {
 
-    private RecyclerView recyclerView;
-    private DetailAdapter adapter;
+    @BindView(R.id.recycler_view_sensor)
+    RecyclerView recyclerView;
+    TabSensorAdapter adapter;
     List<SensorMock> sensorList;
+
+    Unbinder unbinder;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -29,10 +37,10 @@ public class TabSensorFragment extends BaseFragment {
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_sensors, container, false);
 
-        recyclerView = v.findViewById(R.id.recycler_view_sensor);
+        unbinder = ButterKnife.bind(this, v);
 
         sensorList = new ArrayList<>();
-        adapter = new DetailAdapter(sensorList, getContext());
+        adapter = new TabSensorAdapter(sensorList, getContext());
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(mLayoutManager);
 

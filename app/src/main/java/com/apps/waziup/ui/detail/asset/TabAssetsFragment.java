@@ -1,4 +1,4 @@
-package com.apps.waziup.ui.project.detail;
+package com.apps.waziup.ui.detail.asset;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,8 +12,8 @@ import com.google.android.gms.maps.MapView;
 
 public class TabAssetsFragment extends BaseFragment {
 
-    MapView mMapView;
-    private GoogleMap googleMap;
+//    MapView mMapView;
+//    private GoogleMap googleMap;
 
 
     @Override

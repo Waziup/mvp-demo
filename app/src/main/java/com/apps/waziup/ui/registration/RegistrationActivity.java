@@ -4,8 +4,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.WindowManager;
-import android.widget.Toast;
 
+import com.apps.waziup.ui.home.HomeActivity;
+import com.apps.waziup.util.Utils;
 import com.apps.waziup.waziup.R;
 
 import butterknife.ButterKnife;
@@ -24,9 +25,11 @@ public class RegistrationActivity extends AppCompatActivity implements Registrat
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
 
     }
-    @OnClick(R.id.to_login) void openLogin(){
-//        startActivity(new Intent(this, LoginActivity.class));
-        Toast.makeText(this, "to login", Toast.LENGTH_SHORT).show();
+
+    @OnClick(R.id.to_login)
+    void openLogin() {
+        //TODO not the correct implementation . has to be changed
+        showLoginActivity();
     }
 
     @Override
@@ -41,12 +44,12 @@ public class RegistrationActivity extends AppCompatActivity implements Registrat
 
     @Override
     public void showHomeActivity() {
-
+        startActivity(new Intent(this, HomeActivity.class));
     }
 
     @Override
     public void showLoginActivity() {
-
+        Utils.e(this.getClass().getSimpleName(), "activity has not been made");
 //        startActivity(new Intent(this, LoginActivity.class));
     }
 }

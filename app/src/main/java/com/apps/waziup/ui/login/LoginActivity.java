@@ -28,13 +28,7 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login_page);
         ButterKnife.bind(this);
 
-        singup.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(LoginActivity.this, RegistrationActivity.class));
-
-            }
-        });
+        singup.setOnClickListener(v -> startActivity(new Intent(LoginActivity.this, RegistrationActivity.class)));
 
     }
 

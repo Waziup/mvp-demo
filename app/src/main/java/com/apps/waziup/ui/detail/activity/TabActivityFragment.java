@@ -1,4 +1,4 @@
-package com.apps.waziup.ui.project.detail;
+package com.apps.waziup.ui.detail.activity;
 
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
@@ -7,15 +7,16 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.apps.waziup.base.view.BaseFragment;
+import com.apps.waziup.ui.create.CreateProjectContract;
 import com.apps.waziup.waziup.R;
 
 /**
  * Created by KidusMT on 3/31/2018.
  */
 
-public class TabActivityFragment extends BaseFragment {
+public class TabActivityFragment extends BaseFragment implements TabActivityContract.View {
 
-    private RecyclerView recyclerView;
+//    private RecyclerView recyclerView;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -44,4 +45,13 @@ public class TabActivityFragment extends BaseFragment {
         super.onResume();
     }
 
+    @Override
+    public void attachPresenter(CreateProjectContract.Presenter presenter) {
+
+    }
+
+    @Override
+    public void close() {
+        getActivity().finish();
+    }
 }

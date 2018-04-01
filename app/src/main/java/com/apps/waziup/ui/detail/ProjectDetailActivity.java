@@ -1,7 +1,6 @@
-package com.apps.waziup.ui.project.detail;
+package com.apps.waziup.ui.detail;
 
 import android.os.Bundle;
-import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -9,38 +8,41 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatDelegate;
 import android.support.v7.widget.Toolbar;
-import android.widget.ImageView;
 
 import com.apps.waziup.base.view.BaseActivity;
+import com.apps.waziup.ui.detail.activity.TabActivityFragment;
+import com.apps.waziup.ui.detail.asset.TabAssetsFragment;
+import com.apps.waziup.ui.detail.sensor.TabSensorFragment;
+import com.apps.waziup.ui.detail.summary.TabSummaryFragment;
 import com.apps.waziup.waziup.R;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProjectDetailActivity extends BaseActivity {
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
-    private Toolbar toolbar;
-    private ImageView imageView, tabBg;
-    private CollapsingToolbarLayout collapsingToolbar;
-    private ViewPager mViewPager;
-    private TabLayout mTabLayout;
+public class ProjectDetailActivity extends BaseActivity implements ProjectDetailContract.View{
+
+    @BindView(R.id.detail_toolbar)
+    Toolbar toolbar;
+    @BindView(R.id.viewpager)
+    ViewPager mViewPager;
+    @BindView(R.id.detail_tabs)
+    TabLayout mTabLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_project_detail);
 
+        ButterKnife.bind(this);
+
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
-
-        tabBg = findViewById(R.id.tabBg);
-        collapsingToolbar = findViewById(R.id.collapsing_toolbar);
-
-        //sets the viewpager
-        mViewPager = findViewById(R.id.viewpager);
         setupViewPager(mViewPager);
-
-        //attaches the viewpager on the tabLayout
-        mTabLayout = findViewById(R.id.detail_tabs);
         mTabLayout.setupWithViewPager(mViewPager);
 
         mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
@@ -56,7 +58,6 @@ public class ProjectDetailActivity extends BaseActivity {
             public void onPageScrollStateChanged(int state) {
             }
         });
-
     }
 
     private void setupViewPager(ViewPager viewPager) {
@@ -67,6 +68,16 @@ public class ProjectDetailActivity extends BaseActivity {
         adapter.addFragment(new TabAssetsFragment(), "assets");
 
         viewPager.setAdapter(adapter);
+    }
+
+    @Override
+    public void attachPresenter(ProjectDetailContract.Presenter presenter) {
+
+    }
+
+    @Override
+    public void close() {
+        finish();
     }
 
     //CONTROLS THE SELECTION AND SWIPE FOR THE TABS

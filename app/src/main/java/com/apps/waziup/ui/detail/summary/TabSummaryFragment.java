@@ -1,4 +1,4 @@
-package com.apps.waziup.ui.project.detail;
+package com.apps.waziup.ui.detail.summary;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

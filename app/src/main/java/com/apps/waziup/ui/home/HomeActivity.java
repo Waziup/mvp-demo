@@ -21,7 +21,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.apps.waziup.base.view.BaseActivity;
-import com.apps.waziup.ui.project.create.CreateProjectActivity;
+import com.apps.waziup.ui.create.CreateProjectActivity;
 import com.apps.waziup.waziup.R;
 
 import butterknife.BindView;

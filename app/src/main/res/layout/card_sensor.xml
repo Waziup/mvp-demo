@@ -25,7 +25,6 @@
                 android:layout_width="80dp"
                 android:layout_height="80dp"
                 android:layout_gravity="center"
-                android:clickable="true"
                 android:contentDescription="@string/contentDescription"
                 android:scaleType="centerCrop"
                 android:src="@drawable/sensor_2" />
@@ -38,11 +37,11 @@
 
                 <TextView
                     android:id="@+id/tv_sensor_card_title"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="5dp"
                     android:layout_marginTop="5dp"
-                    android:lines="1"
+                    android:maxLines="1"
                     android:paddingLeft="@dimen/card_title_padding"
                     android:paddingRight="@dimen/card_title_padding"
                     android:text="@string/sensor_name"

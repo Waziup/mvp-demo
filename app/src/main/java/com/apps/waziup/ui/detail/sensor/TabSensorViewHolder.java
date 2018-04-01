@@ -1,4 +1,4 @@
-package com.apps.waziup.ui.project.detail;
+package com.apps.waziup.ui.detail.sensor;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -14,12 +14,13 @@ import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.Unbinder;
 
 /**
  * Created by KidusMT on 4/1/2018.
  */
 
-public class DetailViewHolder extends RecyclerView.ViewHolder {
+public class TabSensorViewHolder extends RecyclerView.ViewHolder {
 
     @BindView(R.id.tv_sensor_card_reading)
     TextView sensorReading;
@@ -32,10 +33,11 @@ public class DetailViewHolder extends RecyclerView.ViewHolder {
     @BindView(R.id.iv_sensor_card_img)
     ImageView sensorImg;
 
+    Unbinder unbinder;
 
-    public DetailViewHolder(View itemView) {
+    public TabSensorViewHolder(View itemView) {
         super(itemView);
-        ButterKnife.bind(this, itemView);
+        unbinder = ButterKnife.bind(this, itemView);
         sensorImg.setOnClickListener(
                 v -> Toast.makeText(itemView.getContext(), "Sensor detail", Toast.LENGTH_SHORT).show());
         //40.482450, -75.178184
