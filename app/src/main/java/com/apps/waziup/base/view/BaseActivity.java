@@ -8,7 +8,7 @@ import com.apps.waziup.util.Utils;
 
 
 /**
- * BaseActivity for supporting the rest of the Activity classes, providing common functionality
+ * BaseActivity for supporting the rest of the ActivityM classes, providing common functionality
  */
 public class BaseActivity extends AppCompatActivity {
 

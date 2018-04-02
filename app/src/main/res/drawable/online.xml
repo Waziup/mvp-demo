@@ -2,13 +2,10 @@
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
     android:width="24dp"
     android:height="24dp"
-    android:viewportWidth="480"
-    android:viewportHeight="480">
+    android:viewportHeight="480"
+    android:viewportWidth="480">
 
     <path
         android:fillColor="#00FF00"
         android:pathData="M 240 20 C 361.502644963 20 460 118.497355037 460 240 C 460 361.502644963 361.502644963 460 240 460 C 118.497355037 460 20 361.502644963 20 240 C 20 118.497355037 118.497355037 20 240 20 Z" />
-    <path
-        android:fillColor="url(#lgt)"
-        android:pathData="M 240 40 C 350.456949966 40 440 129.543050034 440 240 C 440 350.456949966 350.456949966 440 240 440 C 129.543050034 440 40 350.456949966 40 240 C 40 129.543050034 129.543050034 40 240 40 Z" />
 </vector>

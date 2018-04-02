@@ -7,10 +7,10 @@
     <!--Label-->
     <string name="username">John Doe</string>
 
-    <!--Registration Activity-->
+    <!--RegistratActivityMvity-->
     <string name="phone_number">202-555-0125</string>
 
-    <!--Login  Activity-->
+    <!--LogActivityMvity-->
     <string name="hint_username">Username</string>
     <string name="hint_password">password</string>
     <string name="login_button">Login</string>
