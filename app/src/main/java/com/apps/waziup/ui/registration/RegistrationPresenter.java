@@ -6,6 +6,12 @@ package com.apps.waziup.ui.registration;
 
 public class RegistrationPresenter implements RegistrationContract.Presenter {
 
+
+
+    public RegistrationPresenter(){
+
+    }
+
     @Override
     public void start() {
 

@@ -69,7 +69,6 @@
             android:baselineAligned="false"
             android:gravity="center_vertical">
 
-
             <android.support.design.widget.TextInputLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -98,7 +97,6 @@
             android:baselineAligned="false"
             android:gravity="center_vertical"
             android:weightSum="1">
-
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="0dp"
@@ -174,7 +172,6 @@
             android:baselineAligned="false"
             android:gravity="center_vertical">
 
-
             <android.support.design.widget.TextInputLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -201,7 +198,6 @@
             android:layout_marginTop="0dp"
             android:baselineAligned="false"
             android:gravity="center_vertical">
-
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="0dp"
