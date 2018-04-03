@@ -4,6 +4,8 @@ import android.content.Context;
 
 import com.apps.waziup.data.repo.user.remote.UserService;
 import com.apps.waziup.util.Constants;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import java.util.concurrent.TimeUnit;
 
@@ -30,8 +32,12 @@ public class BaseRemote {
 
         cache = new Cache(context.getApplicationContext().getCacheDir(), cacheSize);
 
+        Gson gson = new GsonBuilder()
+                .setLenient()
+                .create();
+
         final Retrofit retrofit = new Retrofit.Builder()
-                .addConverterFactory(GsonConverterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create(gson))
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .baseUrl(Constants.BASE_URL)
                 .client(createClient())

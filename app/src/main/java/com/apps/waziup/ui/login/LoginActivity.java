@@ -112,7 +112,7 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
 
     @Override
     public void onUnknownError(String error) {
-        Utils.toast(this,"unknown error");
+        Utils.toast(this,error);
     }
 
     @Override
@@ -137,7 +137,7 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
 
     @Override
     public void openHome() {
-        startActivity(new Intent(this, ProjectDetailActivity.class));
+        startActivity(new Intent(this, HomeActivity.class));
         close();
     }
 
