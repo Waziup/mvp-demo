@@ -14,7 +14,7 @@ import retrofit2.http.POST;
 public interface UserService {
 
     @Headers("Content-Type: application/json")
-    @POST("/auth/token")
+    @POST("/api/v1/auth/token")
     Observable<String> login(@Body AuthBody authBody);
 
 }

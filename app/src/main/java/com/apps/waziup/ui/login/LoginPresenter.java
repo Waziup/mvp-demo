@@ -4,9 +4,14 @@ import com.apps.waziup.data.model.AuthBody;
 import com.apps.waziup.data.repo.user.UserRepoContract;
 import com.apps.waziup.util.ActivityState;
 
+import java.io.IOException;
+import java.net.SocketTimeoutException;
+
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.observers.DisposableObserver;
 import io.reactivex.schedulers.Schedulers;
+import okhttp3.ResponseBody;
+import retrofit2.HttpException;
 
 /**
  * Created by KidusMT on 4/1/2018.
@@ -68,12 +73,24 @@ public class LoginPresenter implements LoginContract.Presenter {
                         if (view == null) return;
                         view.showLoading();
 
+                        if (e instanceof HttpException) {
+                            ResponseBody responseBody = ((HttpException) e).response().errorBody();
+                            view.onUnknownError(responseBody.toString());
+                        } else if (e instanceof SocketTimeoutException) {
+                            view.onTimeout();
+                        } else if (e instanceof IOException) {
+                            view.onNetworkError();
+                        } else {
+                            view.onUnknownError(e.getMessage());
+                        }
+
                         e.printStackTrace();
+
                     }
 
                     @Override
                     public void onComplete() {
-                        view.openHome();
+
                     }
                 });
     }

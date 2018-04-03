@@ -82,7 +82,6 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
         if (validateUserInput(usernameField, passwordField)) {
             authBody = new AuthBody(usernameValue, passwordValue);
             presenter.loginClicked(authBody);
-            close();
         }
     }
 
@@ -113,17 +112,17 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
 
     @Override
     public void onUnknownError(String error) {
-
+        Utils.toast(this,"unknown error");
     }
 
     @Override
     public void onTimeout() {
-
+        Utils.toast(this,"timeout, retry!");
     }
 
     @Override
     public void onNetworkError() {
-
+        Utils.toast(this,"network error");
     }
 
     @Override
@@ -133,12 +132,13 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
 
     @Override
     public void onConnectionError() {
-
+        Utils.toast(this, "connection error");
     }
 
     @Override
     public void openHome() {
         startActivity(new Intent(this, ProjectDetailActivity.class));
+        close();
     }
 
     @Override
