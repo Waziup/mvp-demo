@@ -19,11 +19,7 @@
         android:theme="@style/app_theme">
 
         <activity android:name="com.apps.waziup.ui.detail.ProjectDetailActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name="com.apps.waziup.ui.create.CreateProjectActivity"
@@ -42,11 +38,14 @@
 
         </activity>
 
-        <!-- <intent-filter> -->
-        <!-- <action android:name="android.intent.action.VIEW" /> -->
-        <!-- <data android:scheme="geo" /> -->
-        <!-- <category android:name="android.intent.category.DEFAULT" /> -->
-        <!-- </intent-filter> -->
+        <activity android:name="com.apps.waziup.ui.login.LoginActivity"
+            android:theme="@style/app_theme.no_toolbar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
 
         <meta-data
             android:name="com.google.android.gms.version"

@@ -22,6 +22,11 @@ public class UserRepo implements UserRepoContract {
 
     @Override
     public Observable<String> createUser(AuthBody request) {
-        return remote.getToken(request);
+        return this.remote.getToken(request);
+    }
+
+    @Override
+    public Observable<Boolean> saveToken(String token) {
+        return local.saveToken(token);
     }
 }

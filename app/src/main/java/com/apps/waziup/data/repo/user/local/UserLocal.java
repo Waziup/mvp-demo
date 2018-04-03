@@ -7,6 +7,7 @@ import com.apps.waziup.data.model.User;
 import java.util.ArrayList;
 import java.util.List;
 
+import io.objectbox.Box;
 import io.reactivex.Observable;
 
 /**
@@ -15,6 +16,7 @@ import io.reactivex.Observable;
 
 public class UserLocal implements UserLocalContract {
 
+    private Box<User> box;
     private List<User> users = new ArrayList<>();
 
     public UserLocal(Context context){
@@ -27,7 +29,7 @@ public class UserLocal implements UserLocalContract {
     }
 
     @Override
-    public Observable<Boolean> saveToken() {
+    public Observable<Boolean> saveToken(String token) {
         return null;
     }
 

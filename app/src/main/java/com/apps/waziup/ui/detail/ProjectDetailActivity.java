@@ -83,6 +83,46 @@ public class ProjectDetailActivity extends BaseActivity implements ProjectDetail
         finish();
     }
 
+    @Override
+    public void showLoading(String message) {
+
+    }
+
+    @Override
+    public void showLoading() {
+
+    }
+
+    @Override
+    public void hideLoading() {
+
+    }
+
+    @Override
+    public void onUnknownError(String error) {
+
+    }
+
+    @Override
+    public void onTimeout() {
+
+    }
+
+    @Override
+    public void onNetworkError() {
+
+    }
+
+    @Override
+    public boolean isNetworkConnected() {
+        return false;
+    }
+
+    @Override
+    public void onConnectionError() {
+
+    }
+
     //CONTROLS THE SELECTION AND SWIPE FOR THE TABS
     class ViewPagerAdapter extends FragmentStatePagerAdapter {
 

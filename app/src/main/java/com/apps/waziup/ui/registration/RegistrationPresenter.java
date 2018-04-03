@@ -20,16 +20,17 @@ public class RegistrationPresenter implements RegistrationContract.Presenter {
 
     @Override
     public void start() {
+        view.hideLoading();
     }
 
     @Override
     public void attachView(RegistrationContract.View view) {
-
+        this.view = view;
     }
 
     @Override
     public void detachView() {
-
+        this.view = null;
     }
 
     @Override

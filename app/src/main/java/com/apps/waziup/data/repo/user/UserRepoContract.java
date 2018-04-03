@@ -12,4 +12,6 @@ public interface UserRepoContract {
 
     Observable<String> createUser(AuthBody request);
 
+    Observable<Boolean> saveToken(String token);
+
 }

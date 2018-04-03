@@ -16,7 +16,7 @@ public interface UserLocalContract {
      * saves user in db and returns true if saved and false if not
      * @return boolean
      */
-    Observable<Boolean> saveToken();
+    Observable<Boolean> saveToken(String token);
 
     int size();
 }

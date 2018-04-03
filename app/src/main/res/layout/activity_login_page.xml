@@ -1,11 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_gravity="center_horizontal"
     android:gravity="center"
-    android:layout_gravity="center_horizontal">
+    android:orientation="vertical">
+
+    <com.pnikosis.materialishprogress.ProgressWheel
+        android:id="@+id/login_progress_wheel"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_centerInParent="true"
+        app:matProg_barColor="@color/primary"
+        app:matProg_progressIndeterminate="true" />
 
     <ImageView
         android:id="@+id/logo_image"
@@ -17,14 +25,14 @@
         app:srcCompat="@drawable/waziup_logo" />
 
     <LinearLayout
-        android:layout_below="@id/logo_image"
+        android:id="@+id/user_name_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_vertical"
-        android:id="@+id/user_name_container"
-        android:layout_marginStart="32dp"
+        android:layout_below="@id/logo_image"
         android:layout_marginEnd="32dp"
-        android:layout_marginTop="16dp">
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:gravity="center_vertical">
 
         <!--<com.apps.waziup.fonts.MaterialDesignIconsTextView
             android:layout_width="wrap_content"
@@ -37,17 +45,17 @@
         <android.support.design.widget.TextInputLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
-            android:labelFor="@id/user_name"
-            android:layout_weight="1">
+            android:layout_marginStart="16dp"
+            android:layout_weight="1"
+            android:labelFor="@id/user_name">
+
             <EditText
                 android:id="@+id/user_name"
-                android:inputType="text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/hint_username"
-                />
+                android:inputType="text" />
         </android.support.design.widget.TextInputLayout>
 
     </LinearLayout>
@@ -57,11 +65,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/user_name_container"
-        android:layout_marginTop="0dp"
-        android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
-        android:gravity="center_vertical"
-        >
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="0dp"
+        android:gravity="center_vertical">
         <!--<com.apps.waziup.fonts.MaterialDesignIconsTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -74,43 +81,44 @@
         <android.support.design.widget.TextInputLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
-            android:labelFor="@id/password"
-            android:layout_weight="1">
+            android:layout_marginStart="16dp"
+            android:layout_weight="1"
+            android:labelFor="@id/password">
 
             <EditText
                 android:id="@+id/password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/hint_password"
-                android:inputType="textPassword"
-                />
+                android:inputType="textPassword" />
         </android.support.design.widget.TextInputLayout>
     </LinearLayout>
+
     <android.support.v7.widget.AppCompatButton
         android:id="@+id/btn_login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/white"
-        android:background="@color/accent"
         android:layout_below="@id/password_container"
-        android:layout_marginTop="24dp"
         android:layout_marginBottom="24dp"
         android:layout_marginEnd="48dp"
         android:layout_marginStart="48dp"
+        android:layout_marginTop="24dp"
+        android:background="@color/accent"
         android:padding="12dp"
-        android:text="@string/login_button"/>
+        android:text="@string/login_button"
+        android:textColor="@color/white" />
 
-    <TextView android:id="@+id/link_signup"
+    <TextView
+        android:id="@+id/link_signup"
         android:layout_width="fill_parent"
-        android:textColor="@color/primaryDark"
         android:layout_height="wrap_content"
         android:layout_below="@id/btn_login"
         android:layout_marginBottom="24dp"
-        android:text="@string/register_link"
         android:gravity="center"
-        android:textSize="16sp"/>
+        android:text="@string/register_link"
+        android:textColor="@color/primaryDark"
+        android:textSize="16sp" />
 
 
 </RelativeLayout>

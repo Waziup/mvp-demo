@@ -31,4 +31,9 @@ public class AuthBody {
         this.password = password;
     }
 
+    public AuthBody(String username, String password){
+        this.username = username;
+        this.password = password;
+    }
 }
+
