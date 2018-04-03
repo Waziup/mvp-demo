@@ -54,4 +54,44 @@ public class TabActivityFragment extends BaseFragment implements TabActivityCont
     public void close() {
         getActivity().finish();
     }
+
+    @Override
+    public void showLoading(String message) {
+
+    }
+
+    @Override
+    public void showLoading() {
+
+    }
+
+    @Override
+    public void hideLoading() {
+
+    }
+
+    @Override
+    public void onUnknownError(String error) {
+
+    }
+
+    @Override
+    public void onTimeout() {
+
+    }
+
+    @Override
+    public void onNetworkError() {
+
+    }
+
+    @Override
+    public boolean isNetworkConnected() {
+        return false;
+    }
+
+    @Override
+    public void onConnectionError() {
+
+    }
 }

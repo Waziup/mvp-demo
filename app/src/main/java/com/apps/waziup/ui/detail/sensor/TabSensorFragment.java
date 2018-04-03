@@ -8,7 +8,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.apps.waziup.base.view.BaseFragment;
+import com.apps.waziup.ui.create.CreateProjectContract;
 import com.apps.waziup.ui.detail.SensorMock;
+import com.apps.waziup.ui.detail.asset.TabAssetsContract;
 import com.apps.waziup.waziup.R;
 
 import java.util.ArrayList;
@@ -18,7 +20,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
-public class TabSensorFragment extends BaseFragment {
+public class TabSensorFragment extends BaseFragment implements TabAssetsContract.View{
 
     @BindView(R.id.recycler_view_sensor)
     RecyclerView recyclerView;
@@ -97,5 +99,55 @@ public class TabSensorFragment extends BaseFragment {
     public void onResume() {
         super.onResume();
         adapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void attachPresenter(CreateProjectContract.Presenter presenter) {
+
+    }
+
+    @Override
+    public void close() {
+
+    }
+
+    @Override
+    public void showLoading(String message) {
+
+    }
+
+    @Override
+    public void showLoading() {
+
+    }
+
+    @Override
+    public void hideLoading() {
+
+    }
+
+    @Override
+    public void onUnknownError(String error) {
+
+    }
+
+    @Override
+    public void onTimeout() {
+
+    }
+
+    @Override
+    public void onNetworkError() {
+
+    }
+
+    @Override
+    public boolean isNetworkConnected() {
+        return false;
+    }
+
+    @Override
+    public void onConnectionError() {
+
     }
 }

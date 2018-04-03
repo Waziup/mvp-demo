@@ -1,7 +1,7 @@
 package com.apps.waziup.data.repo.user.remote;
 
+import com.apps.waziup.data.model.AuthBody;
 import com.apps.waziup.data.repo.BaseRemote;
-import com.apps.waziup.domain.services.model.AuthBody;
 
 import io.reactivex.Observable;
 
