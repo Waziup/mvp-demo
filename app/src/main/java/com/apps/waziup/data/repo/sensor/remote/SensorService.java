@@ -23,6 +23,4 @@ public interface SensorService {
     @POST("/api/v1/domains/{domain}/sensors")
     Observable<String> createSensor(@Path("domain") String domain, @Body Sensor sensor);
 
-
-
 }
