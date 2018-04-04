@@ -16,9 +16,18 @@ import retrofit2.http.POST;
 
 public interface DomainService {
 
+    /**
+     * for getting all the domains from the API
+     * @return
+     */
     @GET("/api/v1/domains")
     Observable<List<Domain>> getDomains();
 
+    /**
+     * for creating a domain
+     * @param domain
+     * @return
+     */
     @Headers("Content-Type: application/json")
     @POST("/api/v1/domains")
     Observable<String> createSensor(@Body Domain domain);

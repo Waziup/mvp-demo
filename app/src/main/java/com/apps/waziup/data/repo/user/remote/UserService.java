@@ -13,6 +13,11 @@ import retrofit2.http.POST;
 
 public interface UserService {
 
+    /**
+     * for authenticating the user to the services: for letting the user in to the app
+     * @param authBody
+     * @return
+     */
     @Headers("Content-Type: application/json")
     @POST("/api/v1/auth/token")
     Observable<String> login(@Body AuthBody authBody);

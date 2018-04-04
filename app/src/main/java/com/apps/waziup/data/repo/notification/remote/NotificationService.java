@@ -15,9 +15,20 @@ import retrofit2.http.Path;
 
 public interface NotificationService {
 
+    /**
+     * for getting list of notifications for a domain
+     * @param domain
+     * @return
+     */
     @GET("/api/v1/domains/{domain}/notifications")
     Observable<List<Notification>> getNotifications(@Path("domain") String domain);
 
+    /**
+     * for getting a single notification detail for a specific domain
+     * @param domain
+     * @param id
+     * @return
+     */
     @GET("/api/v1/domains/{domain}/notifications/{notif_id}")
     Observable<Notification> getNotification(@Path("domain") String domain,@Path("notif_id") String id);
 
