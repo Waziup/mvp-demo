@@ -3,6 +3,7 @@ package com.apps.waziup.ui.login;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.EditText;
@@ -14,6 +15,7 @@ import com.apps.waziup.data.repo.user.UserRepo;
 import com.apps.waziup.data.repo.user.local.UserLocal;
 import com.apps.waziup.data.repo.user.remote.UserRemote;
 import com.apps.waziup.ui.home.HomeActivity;
+import com.apps.waziup.ui.registration.RegistrationActivity;
 import com.apps.waziup.util.Utils;
 import com.apps.waziup.waziup.R;
 import com.pnikosis.materialishprogress.ProgressWheel;
@@ -22,6 +24,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
+import static com.apps.waziup.util.Constants.ACTIVITY;
 import static com.apps.waziup.util.Constants.APP_NAME;
 import static com.apps.waziup.util.Constants.VERIFIED;
 
@@ -48,6 +51,9 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
 
     private LoginContract.Presenter presenter;
 
+    // Create a Handler instance on the main thread
+    Handler handler;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,11 +64,12 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
 
         pref = getSharedPreferences(APP_NAME, MODE_PRIVATE);
+        handler = new Handler();
 
         presenter = new LoginPresenter(new UserRepo(
                 new UserLocal(this),
                 new UserRemote(this)
-        ));
+        ), handler);
 
         singup.setOnClickListener(v -> presenter.registrationClicked());
     }
@@ -152,12 +159,14 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
 
     @Override
     public void showValidationError() {
-
+        Utils.toast(this,"validation error");
     }
 
     @Override
     public void openRegistration() {
-
+        Intent intent = new Intent(LoginActivity.this, RegistrationActivity.class);
+        intent.putExtra(ACTIVITY, "login");
+        startActivity(intent);
     }
 
     @Override
@@ -183,5 +192,11 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
     protected void onPause() {
         presenter.detachView();
         super.onPause();
+    }
+
+    @Override
+    protected void onDestroy() {
+        handler.removeCallbacksAndMessages(null);
+        super.onDestroy();
     }
 }

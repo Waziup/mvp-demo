@@ -1,11 +1,14 @@
 package com.apps.waziup.ui.login;
 
+import android.os.Handler;
 import android.util.Log;
-import android.widget.Toast;
 
 import com.apps.waziup.data.model.AuthBody;
 import com.apps.waziup.data.repo.user.UserRepoContract;
 import com.apps.waziup.util.ActivityState;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.IOException;
 import java.net.SocketTimeoutException;
@@ -25,10 +28,12 @@ public class LoginPresenter implements LoginContract.Presenter {
     private UserRepoContract repository;
     private ActivityState state;
     LoginContract.View view;
+    Handler handler;
 
-    public LoginPresenter(UserRepoContract repository) {
+    public LoginPresenter(UserRepoContract repository, Handler handler) {
         this.repository = repository;
         state = ActivityState.getInstance();
+        this.handler = handler;
     }
 
     @Override
@@ -65,7 +70,7 @@ public class LoginPresenter implements LoginContract.Presenter {
                         state.setCompleted();
                         if (view == null) return;
                         view.hideLoading();
-                        Log.e("----->>",s.toString());
+                        Log.e("----->>", s.toString());
                         state.reset();
                     }
 
@@ -76,19 +81,30 @@ public class LoginPresenter implements LoginContract.Presenter {
                         if (view == null) return;
                         view.showLoading();
 
-                        if (e instanceof HttpException) {
-                            ResponseBody responseBody = ((HttpException) e).response().errorBody();
-                            view.onUnknownError(responseBody.toString());
-                        } else if (e instanceof SocketTimeoutException) {
+                        if (e instanceof SocketTimeoutException) {
                             view.onTimeout();
                         } else if (e instanceof IOException) {
                             view.onNetworkError();
+                        } else if (e instanceof HttpException) {
+                            int code = ((HttpException) e).response().code();
+                            if (code >= 400 && code < 404) {
+                                view.onUnknownError("Invalid credential! retry.");
+                            } else {
+                                ResponseBody responseBody = ((HttpException) e).response().errorBody();
+                                try {//should display the correct error message form the http protocol
+                                    if (responseBody != null) {
+                                        JSONObject jObjError = new JSONObject(responseBody.toString());
+                                        view.onUnknownError(jObjError.toString());
+                                    }
+                                } catch (JSONException e1) {
+                                    e1.printStackTrace();
+                                }
+                            }
                         } else {
                             view.onUnknownError(e.getMessage());
                         }
-
                         e.printStackTrace();
-
+                        view.hideLoading();
                     }
 
                     @Override

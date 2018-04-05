@@ -13,4 +13,6 @@ public class Constants {
     public static final String VERIFIED = "VERIFIED";
 
     public static final String APP_NAME = "WAZIUP";
+
+    public static final String ACTIVITY = "activity";
 }

@@ -1,15 +1,15 @@
 package com.apps.waziup.util;
 
+import static com.apps.waziup.util.Constants.STATE_COMPLETED;
+import static com.apps.waziup.util.Constants.STATE_ERROR;
+import static com.apps.waziup.util.Constants.STATE_IDLE;
+import static com.apps.waziup.util.Constants.STATE_LOADING;
+
 /**
  * Created by KidusMT on 4/3/2018.
  */
 
 public class ActivityState {
-
-    public static final int STATE_IDLE = 0;
-    public static final int STATE_LOADING = 1;
-    public static final int STATE_COMPLETED = 2;
-    public static final int STATE_ERROR = 2;
 
     private static ActivityState instance;
 
