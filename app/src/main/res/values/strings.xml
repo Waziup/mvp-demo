@@ -85,6 +85,7 @@
     <string name="detail_detail">Description</string>
     <string name="sensor_reading">reading</string>
     <string name="splash_loading">loading...</string>
+    <string name="logout_list">Logout</string>
 
 
 </resources>

@@ -42,6 +42,10 @@
             android:id="@+id/about_list"
             android:icon="@drawable/ic_redeem_black_48dp"
             android:title="@string/about_list" />
+        <item
+            android:id="@+id/logout_list"
+            android:icon="@drawable/ic_redeem_black_48dp"
+            android:title="@string/logout_list" />
     </group>
 
 

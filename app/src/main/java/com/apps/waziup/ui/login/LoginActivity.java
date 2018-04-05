@@ -26,6 +26,7 @@ import butterknife.OnClick;
 
 import static com.apps.waziup.util.Constants.ACTIVITY;
 import static com.apps.waziup.util.Constants.APP_NAME;
+import static com.apps.waziup.util.Constants.USER_TOKEN;
 import static com.apps.waziup.util.Constants.VERIFIED;
 
 /**
@@ -64,12 +65,11 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
 
         pref = getSharedPreferences(APP_NAME, MODE_PRIVATE);
-        handler = new Handler();
 
         presenter = new LoginPresenter(new UserRepo(
                 new UserLocal(this),
                 new UserRemote(this)
-        ), handler);
+        ));
 
         singup.setOnClickListener(v -> presenter.registrationClicked());
     }
@@ -170,9 +170,10 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
     }
 
     @Override
-    public void savePrefs() {
+    public void savePrefs(String token) {
         editor = pref.edit();
         editor.putBoolean(VERIFIED, true);
+        editor.putString(USER_TOKEN, token);
         editor.apply();
     }
 

@@ -14,7 +14,7 @@ public interface LoginContract {
         void openHome();
         void showValidationError();
         void openRegistration();
-        void savePrefs();
+        void savePrefs(String token);
     }
 
     interface Presenter extends BasePresenter<View> {

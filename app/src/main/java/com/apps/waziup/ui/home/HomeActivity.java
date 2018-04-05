@@ -2,6 +2,7 @@ package com.apps.waziup.ui.home;
 
 import android.app.Dialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -21,11 +22,15 @@ import android.widget.Toast;
 
 import com.apps.waziup.base.view.BaseActivity;
 import com.apps.waziup.ui.create.CreateProjectActivity;
+import com.apps.waziup.ui.login.LoginActivity;
 import com.apps.waziup.waziup.R;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+
+import static com.apps.waziup.util.Constants.APP_NAME;
+import static com.apps.waziup.util.Constants.USER_TOKEN;
 
 
 public class HomeActivity extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -40,12 +45,16 @@ public class HomeActivity extends BaseActivity implements NavigationView.OnNavig
 
     @BindView(R.id.navView)
     NavigationView navigationView;
+    public SharedPreferences pref;
+    public SharedPreferences.Editor editor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         ButterKnife.bind(this);
+
+        pref = getSharedPreferences(APP_NAME, MODE_PRIVATE);
 
         initialise();
         setUpToolbar();
@@ -122,6 +131,15 @@ public class HomeActivity extends BaseActivity implements NavigationView.OnNavig
         String itemName = (String) item.getTitle();
 
 //        Toast.makeText(this,itemName,Toast.LENGTH_SHORT).show();
+
+        //FOR THE LOGOUT BUTTON
+        if (item.getItemId() == R.id.logout_list) {
+            editor = pref.edit();
+            editor.remove(USER_TOKEN);
+            editor.apply();
+            startActivity(new Intent(HomeActivity.this, LoginActivity.class));
+            finish();
+        }
         hideDrawer();
 
         return true;
