@@ -3,7 +3,6 @@ package com.apps.waziup.ui.login;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.os.Handler;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.EditText;
@@ -51,9 +50,6 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
     public SharedPreferences.Editor editor;
 
     private LoginContract.Presenter presenter;
-
-    // Create a Handler instance on the main thread
-    Handler handler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -159,7 +155,7 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
 
     @Override
     public void showValidationError() {
-        Utils.toast(this,"validation error");
+        Utils.toast(this, "validation error");
     }
 
     @Override
@@ -197,7 +193,6 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
 
     @Override
     protected void onDestroy() {
-        handler.removeCallbacksAndMessages(null);
         super.onDestroy();
     }
 }
