@@ -10,6 +10,7 @@ import com.apps.waziup.data.repo.user.UserRepo;
 import com.apps.waziup.data.repo.user.local.UserLocal;
 import com.apps.waziup.data.repo.user.remote.UserRemote;
 import com.apps.waziup.ui.home.HomeActivity;
+import com.apps.waziup.ui.login.LoginActivity;
 import com.apps.waziup.util.Utils;
 import com.apps.waziup.waziup.R;
 import com.pnikosis.materialishprogress.ProgressWheel;
@@ -122,7 +123,6 @@ public class RegistrationActivity extends AppCompatActivity implements Registrat
 
     @Override
     public void showLoginActivity() {
-        Utils.e(this.getClass().getSimpleName(), "activity has not been made");
-//        startActivity(new Intent(this, LoginActivity.class));
+        startActivity(new Intent(this, LoginActivity.class));
     }
 }
