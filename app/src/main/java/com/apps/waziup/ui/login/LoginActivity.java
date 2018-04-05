@@ -79,11 +79,11 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
         passwordValue = password.getText().toString().trim();
         if (usernameValue.equals("")) {
             userName.setError("username is required");
-            userName.setFocusable(true);
+            password.requestFocus();
             return false;
         } else if (passwordValue.equals("")) {
             password.setError("password is required");
-            password.setFocusable(true);
+            password.requestFocus();
             return false;
         } else if (!usernameValue.equals("") && !passwordValue.equals("")) {
             return true;
