@@ -14,10 +14,12 @@ public interface LoginContract {
         void openHome();
         void showValidationError();
         void openRegistration();
+        void savePrefs();
     }
 
     interface Presenter extends BasePresenter<View> {
         void loginClicked(AuthBody authBody);
         void registrationClicked();
+
     }
 }

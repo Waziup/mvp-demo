@@ -64,7 +64,6 @@
     <string name="login_redirect">have an account? Login</string>
 
 
-
     <!--Font  icons-->
 
     <string name="fontello_logo">&#xe8ad;</string>
@@ -85,6 +84,7 @@
     <string name="detail_status">Status</string>
     <string name="detail_detail">Description</string>
     <string name="sensor_reading">reading</string>
+    <string name="splash_loading">loading...</string>
 
 
 </resources>

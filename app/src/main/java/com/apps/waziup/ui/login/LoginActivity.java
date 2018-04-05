@@ -1,6 +1,7 @@
 package com.apps.waziup.ui.login;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
@@ -12,7 +13,6 @@ import com.apps.waziup.data.model.AuthBody;
 import com.apps.waziup.data.repo.user.UserRepo;
 import com.apps.waziup.data.repo.user.local.UserLocal;
 import com.apps.waziup.data.repo.user.remote.UserRemote;
-import com.apps.waziup.ui.detail.ProjectDetailActivity;
 import com.apps.waziup.ui.home.HomeActivity;
 import com.apps.waziup.util.Utils;
 import com.apps.waziup.waziup.R;
@@ -21,6 +21,9 @@ import com.pnikosis.materialishprogress.ProgressWheel;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+
+import static com.apps.waziup.util.Constants.APP_NAME;
+import static com.apps.waziup.util.Constants.VERIFIED;
 
 /**
  * Created by yehuala on 3/30/18
@@ -40,6 +43,8 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
     String passwordValue = "";
 
     AuthBody authBody;
+    public SharedPreferences pref;
+    public SharedPreferences.Editor editor;
 
     private LoginContract.Presenter presenter;
 
@@ -51,6 +56,8 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
 
         //hides the keyboard till the User selects to an edit text
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+
+        pref = getSharedPreferences(APP_NAME, MODE_PRIVATE);
 
         presenter = new LoginPresenter(new UserRepo(
                 new UserLocal(this),
@@ -65,14 +72,16 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
         passwordValue = password.getText().toString().trim();
         if (usernameValue.equals("")) {
             userName.setError("username is required");
+            userName.setFocusable(true);
             return false;
         } else if (passwordValue.equals("")) {
             password.setError("password is required");
+            password.setFocusable(true);
             return false;
         } else if (!usernameValue.equals("") && !passwordValue.equals("")) {
             return true;
         } else {
-            Utils.toast(this, "something is wrong");
+            Utils.toast(this, "something is wrong, check your credential!");
             return false;
         }
     }
@@ -112,17 +121,17 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
 
     @Override
     public void onUnknownError(String error) {
-        Utils.toast(this,error);
+        Utils.toast(this, error);
     }
 
     @Override
     public void onTimeout() {
-        Utils.toast(this,"timeout, retry!");
+        Utils.toast(this, "timeout, retry!");
     }
 
     @Override
     public void onNetworkError() {
-        Utils.toast(this,"network error");
+        Utils.toast(this, "network error");
     }
 
     @Override
@@ -149,6 +158,13 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
     @Override
     public void openRegistration() {
 
+    }
+
+    @Override
+    public void savePrefs() {
+        editor = pref.edit();
+        editor.putBoolean(VERIFIED, true);
+        editor.apply();
     }
 
     @Override

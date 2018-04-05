@@ -1,5 +1,8 @@
 package com.apps.waziup.ui.login;
 
+import android.util.Log;
+import android.widget.Toast;
+
 import com.apps.waziup.data.model.AuthBody;
 import com.apps.waziup.data.repo.user.UserRepoContract;
 import com.apps.waziup.util.ActivityState;
@@ -62,7 +65,7 @@ public class LoginPresenter implements LoginContract.Presenter {
                         state.setCompleted();
                         if (view == null) return;
                         view.hideLoading();
-
+                        Log.e("----->>",s.toString());
                         state.reset();
                     }
 
@@ -90,6 +93,7 @@ public class LoginPresenter implements LoginContract.Presenter {
 
                     @Override
                     public void onComplete() {
+                        view.savePrefs();
                         view.openHome();
                     }
                 });

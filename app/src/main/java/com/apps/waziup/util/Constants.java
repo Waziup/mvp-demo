@@ -9,4 +9,8 @@ public class Constants {
     public static final int STATE_ERROR = 2;
 
     public static final String BASE_URL = "http://dev.waziup.io:80/";
+
+    public static final String VERIFIED = "VERIFIED";
+
+    public static final String APP_NAME = "WAZIUP";
 }
