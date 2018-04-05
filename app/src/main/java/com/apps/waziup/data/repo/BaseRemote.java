@@ -28,7 +28,7 @@ public class BaseRemote {
 
     public BaseRemote(Context context, String identifier) {
 
-        int cacheSize = 10 * 1024 * 1024;
+        int cacheSize = 10 * 1024 * 1024;//10MB for the cache size
 
         cache = new Cache(context.getApplicationContext().getCacheDir(), cacheSize);
 
