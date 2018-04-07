@@ -6,9 +6,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.apps.waziup.R;
 import com.apps.waziup.ui.detail.SensorMock;
-import com.apps.waziup.waziup.R;
-import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -18,8 +17,8 @@ import java.util.List;
 
 public class TabSensorAdapter extends RecyclerView.Adapter<TabSensorViewHolder> {
 
-    private List<SensorMock> sensors;
     public Context context;
+    private List<SensorMock> sensors;
 
     public TabSensorAdapter(List<SensorMock> sensorList, Context context) {
         this.sensors = sensorList;

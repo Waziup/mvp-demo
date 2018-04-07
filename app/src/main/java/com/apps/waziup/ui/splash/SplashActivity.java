@@ -7,10 +7,10 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 
+import com.apps.waziup.R;
 import com.apps.waziup.base.view.BaseActivity;
 import com.apps.waziup.ui.home.HomeActivity;
 import com.apps.waziup.ui.login.LoginActivity;
-import com.apps.waziup.waziup.R;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -20,10 +20,9 @@ import static com.apps.waziup.util.Constants.VERIFIED;
 
 public class SplashActivity extends BaseActivity implements SplashContract.View {
 
+    public SharedPreferences pref;
     @BindView(R.id.splashLogo)
     ImageView splashLogo;
-
-    public SharedPreferences pref;
     SplashContract.Presenter presenter;
 
     @Override

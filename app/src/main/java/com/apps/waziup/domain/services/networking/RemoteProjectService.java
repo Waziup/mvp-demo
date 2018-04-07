@@ -1,6 +1,7 @@
 package com.apps.waziup.domain.services.networking;
 
 
+import com.apps.waziup.BuildConfig;
 import com.apps.waziup.domain.services.api.DomainsApi;
 import com.apps.waziup.domain.services.api.SensorsApi;
 import com.apps.waziup.domain.services.auth.ApiKeyAuth;
@@ -10,7 +11,6 @@ import com.apps.waziup.domain.services.model.Sensor;
 import com.apps.waziup.helper.ResponseUtil;
 import com.apps.waziup.model.Device;
 import com.apps.waziup.model.Project;
-import com.apps.waziup.waziup.BuildConfig;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 

@@ -8,7 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 
-import com.apps.waziup.waziup.R;
+import com.apps.waziup.R;
 
 import java.util.ArrayList;
 

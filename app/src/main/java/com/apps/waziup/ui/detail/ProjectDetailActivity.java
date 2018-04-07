@@ -9,12 +9,12 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatDelegate;
 import android.support.v7.widget.Toolbar;
 
+import com.apps.waziup.R;
 import com.apps.waziup.base.view.BaseActivity;
 import com.apps.waziup.ui.detail.activity.TabActivityFragment;
 import com.apps.waziup.ui.detail.asset.TabAssetsFragment;
 import com.apps.waziup.ui.detail.sensor.TabSensorFragment;
 import com.apps.waziup.ui.detail.summary.TabSummaryFragment;
-import com.apps.waziup.waziup.R;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,16 +24,16 @@ import butterknife.ButterKnife;
 
 public class ProjectDetailActivity extends BaseActivity implements ProjectDetailContract.View {
 
+    static {
+        AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
+    }
+
     @BindView(R.id.detail_toolbar)
     Toolbar toolbar;
     @BindView(R.id.viewpager)
     ViewPager mViewPager;
     @BindView(R.id.detail_tabs)
     TabLayout mTabLayout;
-
-    static {
-        AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

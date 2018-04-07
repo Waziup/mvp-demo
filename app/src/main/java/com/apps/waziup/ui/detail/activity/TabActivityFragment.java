@@ -1,14 +1,13 @@
 package com.apps.waziup.ui.detail.activity;
 
 import android.os.Bundle;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.apps.waziup.R;
 import com.apps.waziup.base.view.BaseFragment;
 import com.apps.waziup.ui.create.CreateProjectContract;
-import com.apps.waziup.waziup.R;
 
 /**
  * Created by KidusMT on 3/31/2018.

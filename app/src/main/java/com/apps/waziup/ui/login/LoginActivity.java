@@ -8,6 +8,7 @@ import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.apps.waziup.R;
 import com.apps.waziup.base.view.BaseActivity;
 import com.apps.waziup.data.model.AuthBody;
 import com.apps.waziup.data.repo.user.UserRepo;
@@ -16,7 +17,6 @@ import com.apps.waziup.data.repo.user.remote.UserRemote;
 import com.apps.waziup.ui.home.HomeActivity;
 import com.apps.waziup.ui.registration.RegistrationActivity;
 import com.apps.waziup.util.Utils;
-import com.apps.waziup.waziup.R;
 import com.pnikosis.materialishprogress.ProgressWheel;
 
 import butterknife.BindView;
@@ -33,6 +33,8 @@ import static com.apps.waziup.util.Constants.VERIFIED;
  */
 public class LoginActivity extends BaseActivity implements LoginContract.View {
 
+    public SharedPreferences pref;
+    public SharedPreferences.Editor editor;
     @BindView(R.id.link_signup)
     TextView singup;
     @BindView(R.id.login_progress_wheel)
@@ -41,14 +43,9 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
     EditText usernameField;
     @BindView(R.id.password)
     EditText passwordField;
-
     String usernameValue = "";
     String passwordValue = "";
-
     AuthBody authBody;
-    public SharedPreferences pref;
-    public SharedPreferences.Editor editor;
-
     private LoginContract.Presenter presenter;
 
     @Override

@@ -8,7 +8,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.apps.waziup.waziup.R;
+import com.apps.waziup.R;
 
 import java.util.Locale;
 

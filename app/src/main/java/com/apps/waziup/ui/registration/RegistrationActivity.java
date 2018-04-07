@@ -6,13 +6,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.WindowManager;
 
+import com.apps.waziup.R;
 import com.apps.waziup.data.repo.user.UserRepo;
 import com.apps.waziup.data.repo.user.local.UserLocal;
 import com.apps.waziup.data.repo.user.remote.UserRemote;
 import com.apps.waziup.ui.home.HomeActivity;
 import com.apps.waziup.ui.login.LoginActivity;
-import com.apps.waziup.util.Utils;
-import com.apps.waziup.waziup.R;
 import com.pnikosis.materialishprogress.ProgressWheel;
 
 import butterknife.BindView;
@@ -21,9 +20,9 @@ import butterknife.OnClick;
 
 public class RegistrationActivity extends AppCompatActivity implements RegistrationContract.View {
 
-    private RegistrationContract.Presenter presenter;
     @BindView(R.id.registration_progress_wheel)
     ProgressWheel progressWheel;
+    private RegistrationContract.Presenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

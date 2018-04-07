@@ -20,10 +20,10 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.apps.waziup.R;
 import com.apps.waziup.base.view.BaseActivity;
 import com.apps.waziup.ui.create.CreateProjectActivity;
 import com.apps.waziup.ui.login.LoginActivity;
-import com.apps.waziup.waziup.R;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -35,18 +35,15 @@ import static com.apps.waziup.util.Constants.USER_TOKEN;
 
 public class HomeActivity extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener {
 
-    private ActionBarDrawerToggle drawerToggle;
-
-    @BindView(R.id.drawer_layout)
-    DrawerLayout drawerLayout;
-
-    @BindView(R.id.toolbar)
-    Toolbar toolbar;
-
-    @BindView(R.id.navView)
-    NavigationView navigationView;
     public SharedPreferences pref;
     public SharedPreferences.Editor editor;
+    @BindView(R.id.drawer_layout)
+    DrawerLayout drawerLayout;
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
+    @BindView(R.id.navView)
+    NavigationView navigationView;
+    private ActionBarDrawerToggle drawerToggle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
