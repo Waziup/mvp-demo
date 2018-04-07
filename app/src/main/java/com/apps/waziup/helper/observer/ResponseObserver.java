@@ -4,8 +4,8 @@ import io.reactivex.Observer;
 import retrofit2.Response;
 
 public abstract class ResponseObserver implements Observer<Response> {
-
     //@Override
+
     public void onCompleted() {
     }
 

@@ -6,6 +6,8 @@ import com.apps.waziup.domain.services.model.UserUpdateBody;
 import java.util.List;
 
 import io.reactivex.Observable;
+import io.reactivex.Single;
+import retrofit2.Response;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
 import retrofit2.http.GET;
@@ -41,7 +43,7 @@ public interface UsersApi {
             "Content-Type:application/json"
     })
     @POST("domains/{domain}/users/")
-    Observable<Void> domainsDomainUsersPost(
+    Single<Response<Void>> domainsDomainUsersPost(
             @Path("domain") String domain, @Body User user
     );
 
@@ -68,7 +70,7 @@ public interface UsersApi {
             "Content-Type:application/json"
     })
     @DELETE("domains/{domain}/users/{userid}")
-    Observable<Void> domainsDomainUsersUseridDelete(
+    Single<Response<Void>> domainsDomainUsersUseridDelete(
             @Path("domain") String domain, @Path("userid") String userid
     );
 
@@ -95,7 +97,7 @@ public interface UsersApi {
             "Content-Type:application/json"
     })
     @PUT("domains/{domain}/users/{userid}")
-    Observable<Void> domainsDomainUsersUseridPut(
+    Single<Response<Void>> domainsDomainUsersUseridPut(
             @Path("domain") String domain, @Path("userid") String userid, @Body UserUpdateBody data
     );
 

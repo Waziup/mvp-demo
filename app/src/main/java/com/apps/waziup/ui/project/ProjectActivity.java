@@ -1,7 +1,6 @@
 package com.apps.waziup.ui.project;
 
 import android.arch.lifecycle.LifecycleRegistry;
-import android.arch.lifecycle.LifecycleRegistryOwner;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -9,12 +8,9 @@ import android.support.v7.widget.RecyclerView;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 
-import com.apps.waziup.domain.services.SyncProjectLifecycleObserver;
 import com.apps.waziup.waziup.R;
 
 import java.util.ArrayList;
-
-import javax.inject.Inject;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -22,7 +18,7 @@ import dagger.android.AndroidInjection;
 import dagger.android.support.DaggerAppCompatActivity;
 
 
-public class ProjectActivity extends DaggerAppCompatActivity implements LifecycleRegistryOwner {
+public class ProjectActivity extends DaggerAppCompatActivity {
 
 //    @Inject
 //    ProjectViewModelFactory viewModelFactory;

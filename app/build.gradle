@@ -20,7 +20,7 @@ android {
     buildToolsVersion '27.0.3'
     defaultConfig {
         applicationId "io.waziup.mvp.demo"
-        minSdkVersion 19
+        minSdkVersion 24
         targetSdkVersion rootProject.ext.targetSdkVersion
         multiDexEnabled true
         versionCode 1
@@ -48,9 +48,7 @@ android {
     lintOptions {
         abortOnError false
     }
-    dexOptions {
-        incremental true
-    }
+
     productFlavors {
     }
 

@@ -14,12 +14,12 @@ import com.birbit.android.jobqueue.RetryConstraint;
 
 import timber.log.Timber;
 
-public class SyncProjectJob extends Job {
+public class SyncSensorJob extends Job {
 
-    private static final String TAG = SyncProjectJob.class.getCanonicalName();
+    private static final String TAG = SyncSensorJob.class.getCanonicalName();
     private final Project project;
 
-    public SyncProjectJob(Project project) {
+    public SyncSensorJob(Project project) {
         super(new Params(JobPriority.MID)
                 .requireNetwork()
                 .groupBy(TAG)

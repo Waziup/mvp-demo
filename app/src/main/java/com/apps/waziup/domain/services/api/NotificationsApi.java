@@ -4,6 +4,8 @@ package com.apps.waziup.domain.services.api;
 import com.apps.waziup.domain.services.model.Notification;
 
 import io.reactivex.Observable;
+import io.reactivex.Single;
+import retrofit2.Response;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
 import retrofit2.http.GET;
@@ -68,7 +70,7 @@ public interface NotificationsApi {
             "Content-Type:application/json"
     })
     @POST("domains/{domain}/notifications")
-    Observable<Void> domainsDomainNotificationsPost(
+    Single<Response<Void>> domainsDomainNotificationsPost(
             @Path("domain") String domain, @Body Notification data
     );
 

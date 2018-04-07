@@ -1,7 +1,10 @@
 package com.apps.waziup.model
 
+import com.apps.waziup.util.BigDecimalConverter
+import io.objectbox.annotation.Convert
 import io.objectbox.annotation.Entity
 import io.objectbox.annotation.Id
+import java.math.BigDecimal
 import java.util.*
 
 /**
@@ -15,8 +18,10 @@ data class Device(
         var name: String? = null,
         var description: String? = null,
         var position: Int = 0,
-        var latitude: Short? = null,
-        var longitude: Short? = null,
+        @Convert(dbType = String::class, converter = BigDecimalConverter::class)
+        var latitude: BigDecimal? = null,
+        @Convert(dbType = String::class, converter = BigDecimalConverter::class)
+        var longitude: BigDecimal? = null,
         var data: String? = null,
         var date: Date? = null,
 
