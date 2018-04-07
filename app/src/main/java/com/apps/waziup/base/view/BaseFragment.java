@@ -2,15 +2,16 @@ package com.apps.waziup.base.view;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 
 import com.apps.waziup.util.Utils;
+
+import dagger.android.support.DaggerFragment;
 
 
 /**
  * Base class for all Fragments
  */
-public class BaseFragment extends Fragment {
+public class BaseFragment extends DaggerFragment {
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {

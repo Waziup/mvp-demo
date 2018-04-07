@@ -21,8 +21,8 @@ public class SyncProjectRxBus {
         return instance;
     }
 
-    public void post(SyncResponseEventType eventType, Project comment) {
-        relay.accept(new SyncProjectResponse(eventType, comment));
+    public void post(SyncResponseEventType eventType, Project project) {
+        relay.accept(new SyncProjectResponse(eventType, project));
     }
 
     public Observable<SyncProjectResponse> toObservable() {

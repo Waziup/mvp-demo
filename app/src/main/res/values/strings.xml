@@ -7,7 +7,10 @@
     <!--Label-->
     <string name="username">John Doe</string>
 
-    <!--Login  Activity-->
+    <!--RegistratActivityMvity-->
+    <string name="phone_number">202-555-0125</string>
+
+    <!--LogActivityMvity-->
     <string name="hint_username">Username</string>
     <string name="hint_password">password</string>
     <string name="login_button">Login</string>
@@ -82,6 +85,13 @@
     <string name="signin_button">login</string>
     <string name="button_reset_password">reset password</string>
     <string name="forgot_password_title">Forgot Password?</string>
+    <string name="registration_text">Registration</string>
+    <string name="detail_location">Location</string>
+    <string name="detail_status">Status</string>
+    <string name="detail_detail">Description</string>
+    <string name="sensor_reading">reading</string>
+    <string name="splash_loading">loading...</string>
+    <string name="logout_list">Logout</string>
 
 
 </resources>

@@ -1,6 +1,8 @@
 package com.apps.waziup.util;
 
+import android.content.Context;
 import android.util.Log;
+import android.widget.Toast;
 
 /**
  * Common class for functionality such as logging.
@@ -65,5 +67,9 @@ public class Utils {
         } else {
             Log.d(TAG, output);
         }
+    }
+
+    public static void toast(Context context, String message){
+        Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
     }
 }

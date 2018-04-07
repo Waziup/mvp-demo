@@ -6,7 +6,7 @@ import android.support.annotation.Nullable;
 import com.apps.waziup.domain.services.SyncProjectRxBus;
 import com.apps.waziup.domain.services.SyncResponseEventType;
 import com.apps.waziup.domain.services.networking.RemoteException;
-import com.apps.waziup.domain.services.networking.RemoteWaziupService;
+import com.apps.waziup.domain.services.networking.RemoteProjectService;
 import com.apps.waziup.model.Project;
 import com.birbit.android.jobqueue.Job;
 import com.birbit.android.jobqueue.Params;
@@ -37,11 +37,11 @@ public class SyncProjectJob extends Job {
         Timber.d("Executing onRun() for project " + project);
 
         // if any exception is thrown, it will be handled by shouldReRunOnThrowable()
-        RemoteWaziupService.getInstance().addProject(project);
+        Project updatedProject = RemoteProjectService.getInstance().addProjectDomain(project);
 
         //TODO: Clone the updated project!
         // remote call was successful--the ProjectOld will be updated locally to reflect that sync is no longer pending
-        Project updatedProject = project;  //ProjectUtils.clone(project, false);
+        //Project updatedProject = project;  //ProjectUtils.clone(project, false);
         SyncProjectRxBus.getInstance().post(SyncResponseEventType.SUCCESS, updatedProject);
     }
 

@@ -9,7 +9,7 @@ import android.widget.TextView;
 * Created by Ceddy Muhoza
 **/
 
-public class MaterialDesignIconsTextView extends TextView {
+public class MaterialDesignIconsTextView extends android.support.v7.widget.AppCompatTextView {
 	
 	private static Typeface sMaterialDesignIcons;
 

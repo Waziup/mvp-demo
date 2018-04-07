@@ -8,6 +8,8 @@ import com.apps.waziup.domain.services.model.EntityWithCurrentAttr;
 import java.util.List;
 
 import io.reactivex.Observable;
+import io.reactivex.Single;
+import retrofit2.Response;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
 import retrofit2.http.GET;
@@ -104,7 +106,7 @@ public interface EntitiesApi {
             "Content-Type:application/json"
     })
     @PUT("domains/{domain}/entities/{entity_type}/{entity_id}/{entity_attribute}")
-    Observable<Void> domainsDomainEntitiesEntityTypeEntityIdEntityAttributePut(
+    Single<Response<Void>> domainsDomainEntitiesEntityTypeEntityIdEntityAttributePut(
             @Path("domain") String domain, @Path("entity_type") String entityType, @Path("entity_id") String entityId, @Path("entity_attribute") String entityAttribute, @Body List<EntityAttr> body
     );
 
@@ -151,7 +153,7 @@ public interface EntitiesApi {
             "Content-Type:application/json"
     })
     @POST("domains/{domain}/entities")
-    Observable<Void> domainsDomainEntitiesPost(
+    Single<Response<Void>> domainsDomainEntitiesPost(
             @Body EntityWithAttr body, @Path("domain") String domain
     );
 

@@ -1,8 +1,6 @@
 package com.apps.waziup.ui.project;
 
 import android.arch.lifecycle.LifecycleRegistry;
-import android.arch.lifecycle.LifecycleRegistryOwner;
-import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -11,11 +9,8 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 
 import com.apps.waziup.R;
-import com.apps.waziup.domain.services.SyncProjectLifecycleObserver;
 
 import java.util.ArrayList;
-
-import javax.inject.Inject;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -23,24 +18,24 @@ import dagger.android.AndroidInjection;
 import dagger.android.support.DaggerAppCompatActivity;
 
 
-public class ProjectActivity extends DaggerAppCompatActivity implements LifecycleRegistryOwner {
+public class ProjectActivity extends DaggerAppCompatActivity {
 
-    @Inject
-    ProjectViewModelFactory viewModelFactory;
+//    @Inject
+//    ProjectViewModelFactory viewModelFactory;
 
-    @Inject
-    SyncProjectLifecycleObserver syncProjectLifecycleObserver;
+//    @Inject
+//    SyncProjectLifecycleObserver syncProjectLifecycleObserver;
 
     //TODO: Change to proper layout items using ButterKnife
     //@BindView(R.id.ad_label)
     EditText addProjectEditText;
 
-    //@BindView(R.id.project_title)
+//    @BindView(R.id.project_title)
     RecyclerView recyclerView;
 
     private ProjectListAdapter recyclerViewAdapter;
 
-    private ProjectViewModel viewModel;
+//    private ProjectViewModel viewModel;
 
     private LifecycleRegistry registry = new LifecycleRegistry(this);
 
@@ -59,9 +54,9 @@ public class ProjectActivity extends DaggerAppCompatActivity implements Lifecycl
 
         initRecyclerView();
 
-        getLifecycle().addObserver(syncProjectLifecycleObserver);
-        viewModel = ViewModelProviders.of(this, viewModelFactory).get(ProjectViewModel.class);
-        viewModel.projects().observe(this, recyclerViewAdapter::updateProjectList);
+//        getLifecycle().addObserver(syncProjectLifecycleObserver);
+
+//        viewModel.projects().observe(this, recyclerViewAdapter::updateProjectList);
     }
 
     @OnClick(R.id.all)
@@ -70,7 +65,7 @@ public class ProjectActivity extends DaggerAppCompatActivity implements Lifecycl
         hideKeyboard();
 
         // TODO add project validation
-        viewModel.addProject(addProjectEditText.getText().toString());
+//        viewModel.addProject(addProjectEditText.getText().toString());
 
         clearEditText();
     }

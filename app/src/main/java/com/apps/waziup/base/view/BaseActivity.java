@@ -2,15 +2,16 @@ package com.apps.waziup.base.view;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 
 import com.apps.waziup.util.Utils;
 
+import dagger.android.support.DaggerAppCompatActivity;
+
 
 /**
- * BaseActivity for supporting the rest of the Activity classes, providing common functionality
+ * BaseActivity for supporting the rest of the ActivityM classes, providing common functionality
  */
-public class BaseActivity extends AppCompatActivity {
+public class BaseActivity extends DaggerAppCompatActivity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

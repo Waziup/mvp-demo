@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:padding="10dp"
-    tools:context="com.apps.waziup.ui.project.create.CreateProjectActivity"
+    tools:context="com.apps.waziup.ui.create.CreateProjectActivity"
     tools:showIn="@layout/activity_create_project">
 
     <LinearLayout
@@ -32,7 +32,7 @@
             android:maxLines="1"
             android:singleLine="true" />
 
-        <!--TODO don't forget to validate the user input-->
+        <!--TODO don't forget to validate Useruser input-->
 
         <EditText
             android:id="@+id/create_init_status"
