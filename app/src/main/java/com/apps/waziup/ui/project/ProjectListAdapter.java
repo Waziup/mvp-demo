@@ -6,8 +6,8 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.apps.waziup.R;
 import com.apps.waziup.model.Project;
-import com.apps.waziup.waziup.R;
 
 import java.util.List;
 

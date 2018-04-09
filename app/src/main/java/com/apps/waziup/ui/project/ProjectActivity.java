@@ -1,7 +1,6 @@
 package com.apps.waziup.ui.project;
 
 import android.arch.lifecycle.LifecycleRegistry;
-import android.arch.lifecycle.LifecycleRegistryOwner;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -9,12 +8,9 @@ import android.support.v7.widget.RecyclerView;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 
-import com.apps.waziup.domain.services.SyncProjectLifecycleObserver;
-import com.apps.waziup.waziup.R;
+import com.apps.waziup.R;
 
 import java.util.ArrayList;
-
-import javax.inject.Inject;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -22,13 +18,13 @@ import dagger.android.AndroidInjection;
 import dagger.android.support.DaggerAppCompatActivity;
 
 
-public class ProjectActivity extends DaggerAppCompatActivity implements LifecycleRegistryOwner {
+public class ProjectActivity extends DaggerAppCompatActivity {
 
-    @Inject
-    ProjectViewModelFactory viewModelFactory;
+//    @Inject
+//    ProjectViewModelFactory viewModelFactory;
 
-    @Inject
-    SyncProjectLifecycleObserver syncProjectLifecycleObserver;
+//    @Inject
+//    SyncProjectLifecycleObserver syncProjectLifecycleObserver;
 
     //TODO: Change to proper layout items using ButterKnife
     //@BindView(R.id.ad_label)
@@ -58,7 +54,7 @@ public class ProjectActivity extends DaggerAppCompatActivity implements Lifecycl
 
         initRecyclerView();
 
-        getLifecycle().addObserver(syncProjectLifecycleObserver);
+//        getLifecycle().addObserver(syncProjectLifecycleObserver);
 
 //        viewModel.projects().observe(this, recyclerViewAdapter::updateProjectList);
     }

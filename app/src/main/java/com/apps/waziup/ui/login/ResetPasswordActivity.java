@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
-import com.apps.waziup.waziup.R;
+import com.apps.waziup.R;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -20,7 +20,7 @@ public class ResetPasswordActivity extends AppCompatActivity {
     }
 
     @OnClick(R.id.btn_reset_password)
-    void OnBackToLogin(){
+    void OnBackToLogin() {
         startActivity(new Intent(this, LoginActivity.class));
         finish();
     }

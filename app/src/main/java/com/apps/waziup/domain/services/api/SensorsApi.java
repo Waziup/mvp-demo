@@ -1,13 +1,18 @@
 package com.apps.waziup.domain.services.api;
 
-import com.apps.waziup.data.sensor.Sensor;
+
+//import com.apps.waziup.data.model.Sensor;
+
 import com.apps.waziup.domain.services.model.Location;
 import com.apps.waziup.domain.services.model.Measurement;
 import com.apps.waziup.domain.services.model.MeasurementValue;
+import com.apps.waziup.domain.services.model.Sensor;
 
 import java.util.List;
 
 import io.reactivex.Observable;
+import io.reactivex.Single;
+import retrofit2.Response;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
 import retrofit2.http.GET;
@@ -48,7 +53,7 @@ public interface SensorsApi {
             "Content-Type:application/json"
     })
     @POST("domains/{domain}/sensors")
-    Observable<Void> domainsDomainSensorsPost(
+    Single<Response<Void>> domainsDomainSensorsPost(
             @Body Sensor body, @Path("domain") String domain
     );
 
@@ -63,7 +68,7 @@ public interface SensorsApi {
             "Content-Type:application/json"
     })
     @DELETE("domains/{domain}/sensors/{sensor_id}")
-    Observable<Void> domainsDomainSensorsSensorIdDelete(
+    Single<Response<Void>> domainsDomainSensorsSensorIdDelete(
             @Path("domain") String domain, @Path("sensor_id") String sensorId
     );
 
@@ -78,7 +83,7 @@ public interface SensorsApi {
             "Content-Type:application/json"
     })
     @GET("domains/{domain}/sensors/{sensor_id}")
-    Observable<Sensor> domainsDomainSensorsSensorIdGet(
+    Single<Sensor> domainsDomainSensorsSensorIdGet(
             @Path("domain") String domain, @Path("sensor_id") String sensorId
     );
 
@@ -94,7 +99,7 @@ public interface SensorsApi {
             "Content-Type:application/json"
     })
     @PUT("domains/{domain}/sensors/{sensor_id}/location")
-    Observable<Void> domainsDomainSensorsSensorIdLocationPut(
+    Single<Response<Void>> domainsDomainSensorsSensorIdLocationPut(
             @Path("domain") String domain, @Path("sensor_id") String sensorId, @Body Location body
     );
 
@@ -247,7 +252,7 @@ public interface SensorsApi {
             "Content-Type:application/json"
     })
     @POST("domains/{domain}/sensors/{sensor_id}/measurements/{measurement_id}/values")
-    Observable<Void> domainsDomainSensorsSensorIdMeasurementsMeasurementIdValuesPost(
+    Single<Response<Void>> domainsDomainSensorsSensorIdMeasurementsMeasurementIdValuesPost(
             @Path("domain") String domain, @Path("sensor_id") String sensorId, @Path("measurement_id") String measurementId, @Body MeasurementValue body
     );
 
@@ -263,7 +268,7 @@ public interface SensorsApi {
             "Content-Type:application/json"
     })
     @POST("domains/{domain}/sensors/{sensor_id}/measurements")
-    Observable<Void> domainsDomainSensorsSensorIdMeasurementsPost(
+    Single<Response<Void>> domainsDomainSensorsSensorIdMeasurementsPost(
             @Path("domain") String domain, @Path("sensor_id") String sensorId, @Body Measurement body
     );
 
@@ -279,7 +284,7 @@ public interface SensorsApi {
             "Content-Type:text/plain"
     })
     @PUT("domains/{domain}/sensors/{sensor_id}/name")
-    Observable<Void> domainsDomainSensorsSensorIdNamePut(
+    Single<Response<Void>> domainsDomainSensorsSensorIdNamePut(
             @Path("domain") String domain, @Path("sensor_id") String sensorId, @Body String body
     );
 
@@ -295,7 +300,7 @@ public interface SensorsApi {
             "Content-Type:text/plain"
     })
     @PUT("domains/{domain}/sensors/{sensor_id}/owner")
-    Observable<Void> domainsDomainSensorsSensorIdOwnerPut(
+    Single<Response<Void>> domainsDomainSensorsSensorIdOwnerPut(
             @Path("domain") String domain, @Path("sensor_id") String sensorId, @Body String body
     );
 

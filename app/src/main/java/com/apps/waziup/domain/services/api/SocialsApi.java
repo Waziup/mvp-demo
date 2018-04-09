@@ -5,6 +5,8 @@ import com.apps.waziup.domain.services.model.SocialMessage;
 import com.apps.waziup.domain.services.model.SocialMessageBatch;
 
 import io.reactivex.Observable;
+import io.reactivex.Single;
+import retrofit2.Response;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
 import retrofit2.http.GET;
@@ -25,7 +27,7 @@ public interface SocialsApi {
             "Content-Type:application/json"
     })
     @POST("domains/{domain}/socials/batch")
-    Observable<Void> domainsDomainSocialsBatchPost(
+    Single<Response<Void>> domainsDomainSocialsBatchPost(
             @Path("domain") String domain, @Body SocialMessageBatch data
     );
 
@@ -84,7 +86,7 @@ public interface SocialsApi {
             "Content-Type:application/json"
     })
     @POST("domains/{domain}/socials")
-    Observable<Void> domainsDomainSocialsPost(
+    Single<Response<Void>> domainsDomainSocialsPost(
             @Path("domain") String domain, @Body SocialMessage data
     );
 

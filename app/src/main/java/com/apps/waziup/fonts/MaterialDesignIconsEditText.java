@@ -10,27 +10,27 @@ import android.util.AttributeSet;
 
 public class MaterialDesignIconsEditText extends android.support.v7.widget.AppCompatEditText {
 
-	private static Typeface sMaterialDesignIcons;
+    private static Typeface sMaterialDesignIcons;
 
-	public MaterialDesignIconsEditText(Context context) {
-		this(context, null);
-	}
+    public MaterialDesignIconsEditText(Context context) {
+        this(context, null);
+    }
 
-	public MaterialDesignIconsEditText(Context context, AttributeSet attrs) {
-		this(context, attrs, 0);
-	}
+    public MaterialDesignIconsEditText(Context context, AttributeSet attrs) {
+        this(context, attrs, 0);
+    }
 
-	public MaterialDesignIconsEditText(Context context, AttributeSet attrs, int defStyle) {
-		super(context, attrs, defStyle);
-		if (isInEditMode()) return;//Won't work in Eclipse graphical layout
-		setTypeface();
-	}
-	
-	private void setTypeface() {
-		if (sMaterialDesignIcons == null) {
-			sMaterialDesignIcons = Typeface.createFromAsset(getContext().getAssets(),
-					"fonts/MaterialDesignIcons.ttf");
-		}
-		setTypeface(sMaterialDesignIcons);
-	}
+    public MaterialDesignIconsEditText(Context context, AttributeSet attrs, int defStyle) {
+        super(context, attrs, defStyle);
+        if (isInEditMode()) return;//Won't work in Eclipse graphical layout
+        setTypeface();
+    }
+
+    private void setTypeface() {
+        if (sMaterialDesignIcons == null) {
+            sMaterialDesignIcons = Typeface.createFromAsset(getContext().getAssets(),
+                    "fonts/MaterialDesignIcons.ttf");
+        }
+        setTypeface(sMaterialDesignIcons);
+    }
 }

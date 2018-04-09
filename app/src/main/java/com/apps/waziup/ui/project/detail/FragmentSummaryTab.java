@@ -6,8 +6,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.apps.waziup.R;
 import com.apps.waziup.base.view.BaseFragment;
-import com.apps.waziup.waziup.R;
 
 public class FragmentSummaryTab extends BaseFragment {
 
@@ -22,7 +22,7 @@ public class FragmentSummaryTab extends BaseFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_activity,container, false);
+        View v = inflater.inflate(R.layout.fragment_activity, container, false);
 
 //        recyclerView = v.findViewById(R.id.recycler_view_home);
 //

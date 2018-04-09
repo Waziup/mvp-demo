@@ -5,6 +5,8 @@ import com.apps.waziup.domain.services.model.Domain;
 import java.util.List;
 
 import io.reactivex.Observable;
+import io.reactivex.Single;
+import retrofit2.Response;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
 import retrofit2.http.GET;
@@ -38,7 +40,7 @@ public interface DomainsApi {
             "Content-Type:application/json"
     })
     @GET("domains/{domain}")
-    Observable<Domain> domainsDomainGet(
+    Single<Response<Domain>> domainsDomainGet(
             @Path("domain") String domain
     );
 
@@ -51,7 +53,7 @@ public interface DomainsApi {
             "Content-Type:application/json"
     })
     @GET("domains")
-    Observable<List<Domain>> domainsGet();
+    Observable<Response<List<Domain>>> domainsGet();
 
 
     /**
@@ -64,7 +66,7 @@ public interface DomainsApi {
             "Content-Type:application/json"
     })
     @POST("domains")
-    Observable<Void> domainsPost(
+    Single<Response<Domain>> domainsPost(
             @Body Domain body
     );
 

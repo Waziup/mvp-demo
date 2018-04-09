@@ -5,7 +5,6 @@ import android.support.multidex.MultiDexApplication;
 
 import com.apps.waziup.di.DaggerAppComponent;
 import com.apps.waziup.domain.services.jobs.JobManagerFactory;
-import com.apps.waziup.waziup.BuildConfig;
 
 import javax.inject.Inject;
 

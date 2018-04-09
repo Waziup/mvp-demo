@@ -8,7 +8,7 @@ import java.util.*
  * Immutable POJO that represents a ProjectOld
  * Created by askia on 2/25/2018.
  */
-@Entity
+
 data class Asset(
         @Id var id: Long = 0,
         var type: String? = "Farm",
