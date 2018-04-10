@@ -1,0 +1,361 @@
+{
+  "_note1": "KEEP THIS FILE! Check it into a version control system (VCS) like git.",
+  "_note2": "ObjectBox manages crucial IDs for your object model. See docs for details.",
+  "_note3": "If you have VCS merge conflicts, you must resolve them according to ObjectBox docs.",
+  "entities": [
+    {
+      "id": "1:5938284634266789133",
+      "lastPropertyId": "13:7207009474859467623",
+      "name": "Activity",
+      "properties": [
+        {
+          "id": "1:3198172875423918899",
+          "name": "id"
+        },
+        {
+          "id": "2:2023560319054626535",
+          "indexId": "1:464921162224987321",
+          "name": "activity_id"
+        },
+        {
+          "id": "3:853943470477498932",
+          "name": "name"
+        },
+        {
+          "id": "4:5912882137373156119",
+          "name": "type"
+        },
+        {
+          "id": "5:459745401703413119",
+          "name": "detail"
+        },
+        {
+          "id": "6:5719894857978004061",
+          "name": "project_id"
+        },
+        {
+          "id": "7:7180522787663071708",
+          "name": "image"
+        },
+        {
+          "id": "8:2703935344858887630",
+          "name": "video"
+        },
+        {
+          "id": "9:6206106044600329300",
+          "name": "tags"
+        },
+        {
+          "id": "10:5962239516406509770",
+          "name": "time"
+        },
+        {
+          "id": "11:5618579229663770681",
+          "name": "location"
+        },
+        {
+          "id": "12:5379708001081954827",
+          "name": "duration"
+        },
+        {
+          "id": "13:7207009474859467623",
+          "name": "expense"
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "2:2994707887826501961",
+      "lastPropertyId": "14:915117002297197102",
+      "name": "Asset",
+      "properties": [
+        {
+          "id": "1:4743877268925775285",
+          "name": "id"
+        },
+        {
+          "id": "2:1565050743121044540",
+          "indexId": "2:8958009276205864022",
+          "name": "asset_id"
+        },
+        {
+          "id": "3:425699751674764578",
+          "name": "name"
+        },
+        {
+          "id": "4:112873644865574253",
+          "name": "description"
+        },
+        {
+          "id": "5:5896183528223319167",
+          "name": "image"
+        },
+        {
+          "id": "6:7494221072048831551",
+          "name": "type"
+        },
+        {
+          "id": "7:3157795900412460368",
+          "name": "unit"
+        },
+        {
+          "id": "8:4696750730078974249",
+          "name": "position"
+        },
+        {
+          "id": "9:2263370293735100451",
+          "name": "latitude"
+        },
+        {
+          "id": "10:4255542207408453640",
+          "name": "longitude"
+        },
+        {
+          "id": "11:1459593335932180272",
+          "name": "group"
+        },
+        {
+          "id": "12:3035797244235273149",
+          "name": "association"
+        },
+        {
+          "id": "13:8710540042244996881",
+          "name": "note"
+        },
+        {
+          "id": "14:915117002297197102",
+          "name": "isPublic"
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "3:7999838903694647363",
+      "lastPropertyId": "12:7387179601810160599",
+      "name": "ProjectOld",
+      "properties": [
+        {
+          "id": "1:1206863845540319350",
+          "name": "id"
+        },
+        {
+          "id": "2:8984179978128075934",
+          "indexId": "3:5628804410273844633",
+          "name": "project_id"
+        },
+        {
+          "id": "3:5333434854020122542",
+          "name": "name"
+        },
+        {
+          "id": "4:2541315767509600466",
+          "name": "description"
+        },
+        {
+          "id": "5:5323155982437819704",
+          "name": "image"
+        },
+        {
+          "id": "6:7094897054373375788",
+          "name": "country"
+        },
+        {
+          "id": "7:24302034118799858",
+          "name": "latitude"
+        },
+        {
+          "id": "8:427498614198164372",
+          "name": "longtidue"
+        },
+        {
+          "id": "9:4568738733098606360",
+          "name": "type"
+        },
+        {
+          "id": "10:6814201943825697713",
+          "name": "seansors"
+        },
+        {
+          "id": "11:4868201140284724455",
+          "name": "notes"
+        },
+        {
+          "id": "12:7387179601810160599",
+          "name": "isPublic"
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "4:3232192445974664763",
+      "lastPropertyId": "10:4182116212168451510",
+      "name": "Device",
+      "properties": [
+        {
+          "id": "1:4901527138661301749",
+          "name": "id"
+        },
+        {
+          "id": "2:1477457204074567084",
+          "name": "type"
+        },
+        {
+          "id": "3:922295436662783816",
+          "name": "name"
+        },
+        {
+          "id": "4:2522766553875689250",
+          "name": "description"
+        },
+        {
+          "id": "5:764528432658168165",
+          "name": "position"
+        },
+        {
+          "id": "6:3483057059695757810",
+          "name": "latitude"
+        },
+        {
+          "id": "7:8339470417647154198",
+          "name": "longitude"
+        },
+        {
+          "id": "8:7684668279396221054",
+          "name": "data"
+        },
+        {
+          "id": "9:1074535041084153703",
+          "name": "date"
+        },
+        {
+          "id": "10:4182116212168451510",
+          "name": "isPublic"
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "5:4693111674305471485",
+      "lastPropertyId": "12:242049579402490904",
+      "name": "Project",
+      "properties": [
+        {
+          "id": "1:3250515959009585249",
+          "name": "id"
+        },
+        {
+          "id": "2:5582722334707258981",
+          "name": "type"
+        },
+        {
+          "id": "3:4733487864974805056",
+          "name": "name"
+        },
+        {
+          "id": "4:486211816654053135",
+          "name": "description"
+        },
+        {
+          "id": "5:190193346637334866",
+          "name": "featureImage"
+        },
+        {
+          "id": "6:6885973406157600925",
+          "name": "country"
+        },
+        {
+          "id": "7:5391874986784715751",
+          "name": "latitude"
+        },
+        {
+          "id": "8:3180782602502288671",
+          "name": "longitude"
+        },
+        {
+          "id": "9:4214851280632996935",
+          "name": "owner"
+        },
+        {
+          "id": "10:2934105939312531736",
+          "name": "date"
+        },
+        {
+          "id": "11:8181453993685820668",
+          "name": "waziupDomainId"
+        },
+        {
+          "id": "12:242049579402490904",
+          "name": "isPublic"
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "6:5130821455097380434",
+      "lastPropertyId": "12:2548798772225495000",
+      "name": "ProjectResource",
+      "properties": [
+        {
+          "id": "1:2463945197413985409",
+          "name": "id"
+        },
+        {
+          "id": "2:3874999529728328934",
+          "name": "type"
+        },
+        {
+          "id": "3:6411563654581781751",
+          "name": "name"
+        },
+        {
+          "id": "4:4738084877196025583",
+          "name": "description"
+        },
+        {
+          "id": "5:8454856571374069359",
+          "name": "featureImage"
+        },
+        {
+          "id": "6:8946126161036751547",
+          "name": "country"
+        },
+        {
+          "id": "7:5814564044902981595",
+          "name": "latitude"
+        },
+        {
+          "id": "8:8599304227061598884",
+          "name": "longitude"
+        },
+        {
+          "id": "9:5878569791868775268",
+          "name": "owner"
+        },
+        {
+          "id": "10:5266603566297296556",
+          "name": "date"
+        },
+        {
+          "id": "11:6152372110705541001",
+          "name": "waziupDomainId"
+        },
+        {
+          "id": "12:2548798772225495000",
+          "name": "isPublic"
+        }
+      ],
+      "relations": []
+    }
+  ],
+  "lastEntityId": "6:5130821455097380434",
+  "lastIndexId": "3:5628804410273844633",
+  "lastRelationId": "0:0",
+  "lastSequenceId": "0:0",
+  "modelVersion": 4,
+  "modelVersionParserMinimum": 4,
+  "retiredEntityUids": [],
+  "retiredIndexUids": [],
+  "retiredPropertyUids": [],
+  "retiredRelationUids": [],
+  "version": 1
+}
