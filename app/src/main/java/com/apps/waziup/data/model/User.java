@@ -7,7 +7,14 @@ package com.apps.waziup.data.model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import io.objectbox.annotation.*;
+import io.objectbox.annotation.Entity;
+
+@Entity
 public class User {
+
+    @Id
+    public long id;
 
     @SerializedName("username")
     @Expose
@@ -31,5 +38,6 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
+
 
 }

@@ -1,6 +1,5 @@
 package com.apps.waziup.ui.home;
 
-import android.app.Dialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -17,14 +16,13 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.Window;
 import android.widget.Button;
-import android.widget.TextView;
-import android.widget.Toast;
+import android.widget.EditText;
 
 import com.apps.waziup.base.view.BaseActivity;
 import com.apps.waziup.ui.create.CreateProjectActivity;
 import com.apps.waziup.ui.login.LoginActivity;
+import com.apps.waziup.util.Utils;
 import com.apps.waziup.waziup.R;
 
 import butterknife.BindView;
@@ -33,7 +31,6 @@ import butterknife.OnClick;
 
 import static com.apps.waziup.util.Constants.APP_NAME;
 import static com.apps.waziup.util.Constants.USER_TOKEN;
-
 
 public class HomeActivity extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener, HomeContract.View {
 
@@ -80,45 +77,21 @@ public class HomeActivity extends BaseActivity implements NavigationView.OnNavig
 
     @OnClick(R.id.fab)
     void OnFabClicked() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        // Get the layout inflater
-        LayoutInflater inflater = getLayoutInflater();
 
-        // Inflate and set the layout for the dialog
-        // Pass null as the parent view because its going in the dialog layout
-        builder.setView(inflater.inflate(R.layout.dialog_fragment_create_project, null))
-                // Add action buttons
-                .setPositiveButton("OK",
-                        (dialog, id) -> {
-                            
-                            startActivity(new Intent(this, CreateProjectActivity.class));
-                        })
-                .setNegativeButton("CANCEL", (dialog, id) -> dialog.dismiss());
-        builder.create();
+        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
+        LayoutInflater inflater = this.getLayoutInflater();
+        View dialogView = inflater.inflate(R.layout.dialog_fragment_create_project, null);
+        dialogBuilder.setView(dialogView);
+
+        EditText editText = dialogView.findViewById(R.id.dialog_project_name);
+        Button cancel = dialogView.findViewById(R.id.btn_dialog_cancel);
+        Button ok = dialogView.findViewById(R.id.btn_dialog_ok);
+        cancel.setOnClickListener(v -> this.close());
+        ok.setOnClickListener(v -> Utils.toast(HomeActivity.this, editText.getText().toString().trim()));
+        AlertDialog alertDialog = dialogBuilder.create();
+        alertDialog.show();
 
     }
-
-    public void createDialog() {
-        // custom dialog
-        final Dialog dialog = new Dialog(this);
-        //Hides the title of dialog
-        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        dialog.setContentView(R.layout.dialog_fragment_create_project);
-
-        // set the custom dialog components - text, image and button
-        TextView btnClose = dialog.findViewById(R.id.tv_create_close);
-        btnClose.setOnClickListener(v1 -> dialog.dismiss());
-
-        Button btnCreate = dialog.findViewById(R.id.btn_create_project);
-        // if button is clicked, close the custom dialog
-        btnCreate.setOnClickListener(u -> {
-            Toast.makeText(this, "project created", Toast.LENGTH_SHORT).show();
-            dialog.dismiss();
-        });
-
-        dialog.show();
-    }
-
 
     private void setUpDrawer() {
         drawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.drawer_open, R.string.drawer_close) {

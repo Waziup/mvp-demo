@@ -2,6 +2,7 @@ package com.apps.waziup.data.repo;
 
 import android.content.Context;
 
+import com.apps.waziup.data.repo.domain.remote.DomainService;
 import com.apps.waziup.data.repo.user.remote.UserService;
 import com.apps.waziup.util.Constants;
 import com.google.gson.Gson;
@@ -23,6 +24,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class BaseRemote {
 
     public static UserService userService;
+
+    public static DomainService domainService;
 
     private Cache cache;
 
@@ -52,6 +55,9 @@ public class BaseRemote {
                 break;
             case "user":
                 userService = retrofit.create(UserService.class);
+                break;
+            case "domain":
+                domainService = retrofit.create(DomainService.class);
                 break;
         }
     }
