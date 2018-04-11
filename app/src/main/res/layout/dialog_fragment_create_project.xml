@@ -4,7 +4,6 @@
     android:orientation="vertical">
 
     <TextView
-
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/create_project"
@@ -19,14 +18,13 @@
         android:layout_marginLeft="4dp"
         android:layout_marginRight="4dp"
         android:layout_marginTop="16dp"
-        android:hint="project name"
+        android:hint="@string/product_name"
         android:inputType="textEmailAddress" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:background="@color/colorSecondaryText"
         android:orientation="horizontal">
 
         <Button
@@ -34,17 +32,13 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
-            android:background="@color/colorDivider"
-            android:text="cancel"
-            android:textColor="@color/white" />
+            android:text="@string/dialog_cancel" />
 
         <Button
             android:id="@+id/btn_dialog_ok"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
-            android:background="@color/colorDivider"
-            android:text="ok"
-            android:textColor="@color/white" />
+            android:text="@string/dialog_ok" />
     </LinearLayout>
 </LinearLayout>

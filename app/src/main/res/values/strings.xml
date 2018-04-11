@@ -86,6 +86,9 @@
     <string name="sensor_reading">reading</string>
     <string name="splash_loading">loading...</string>
     <string name="logout_list">Logout</string>
+    <string name="product_name">project name</string>
+    <string name="dialog_cancel">cancel</string>
+    <string name="dialog_ok">ok</string>
 
 
 </resources>

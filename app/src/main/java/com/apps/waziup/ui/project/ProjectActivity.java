@@ -30,7 +30,6 @@ public class ProjectActivity extends DaggerAppCompatActivity implements Lifecycl
 //    @Inject
 //    SyncProjectLifecycleObserver syncProjectLifecycleObserver;
 
-    //TODO: Change to proper layout items using ButterKnife
     //@BindView(R.id.ad_label)
     EditText addProjectEditText;
 
@@ -68,7 +67,6 @@ public class ProjectActivity extends DaggerAppCompatActivity implements Lifecycl
 
         hideKeyboard();
 
-        // TODO add project validation
 //        viewModel.addProject(addProjectEditText.getText().toString());
 
         clearEditText();

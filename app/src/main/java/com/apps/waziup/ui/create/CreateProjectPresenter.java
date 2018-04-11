@@ -6,6 +6,11 @@ package com.apps.waziup.ui.create;
 
 public class CreateProjectPresenter implements CreateProjectContract.Presenter {
 
+    CreateProjectContract.View view;
+
+    public CreateProjectPresenter(){
+
+    }
 
     @Override
     public void start() {
@@ -14,16 +19,36 @@ public class CreateProjectPresenter implements CreateProjectContract.Presenter {
 
     @Override
     public void attachView(CreateProjectContract.View view) {
-
+        this.view = view;
     }
 
     @Override
     public void detachView() {
-
+        this.view = null;
     }
 
     @Override
     public CreateProjectContract.View getView() {
-        return null;
+        return this.view;
+    }
+
+    @Override
+    public void onCreateProjectClicked() {
+
+    }
+
+    @Override
+    public void onZoomInClicked() {
+        view.showZoomIn();
+    }
+
+    @Override
+    public void onZoomOutClicked() {
+        view.showZoomOut();
+    }
+
+    @Override
+    public void onCurrentLocationClicked() {
+        view.showCurrentLocation();
     }
 }

@@ -3,7 +3,6 @@ package com.apps.waziup.data.repo.domain.remote;
 import android.content.Context;
 
 import com.apps.waziup.data.model.Domain;
-import com.apps.waziup.data.model.DomainResponse;
 import com.apps.waziup.data.repo.BaseRemote;
 
 import java.util.List;
@@ -21,7 +20,7 @@ public class DomainRemote extends BaseRemote implements DomainRemoteContract {
     }
 
     @Override
-    public Observable<DomainResponse> createDomain(Domain domain) {
+    public Observable<String> createDomain(Domain domain) {
         return BaseRemote.domainService.createDomain(domain);
     }
 

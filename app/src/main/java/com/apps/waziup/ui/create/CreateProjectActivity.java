@@ -17,6 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.apps.waziup.base.view.BaseActivity;
+import com.apps.waziup.util.Utils;
 import com.apps.waziup.waziup.R;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
@@ -33,6 +34,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.Task;
+import com.pnikosis.materialishprogress.ProgressWheel;
 
 import java.io.IOException;
 import java.util.List;
@@ -56,8 +58,6 @@ public class CreateProjectActivity extends BaseActivity implements OnMapReadyCal
     GeoDataClient mGeoDataClient;
     PlaceDetectionClient mPlaceDetectionClient;
 
-    public static final String TAG = "CREATE.PROJECT.ACTIVITY";
-
     public static final int PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 99;
 
     private Location mLastKnownLocation;
@@ -73,16 +73,21 @@ public class CreateProjectActivity extends BaseActivity implements OnMapReadyCal
 
     @BindView(R.id.create_location)
     EditText btnLocation;
+    @BindView(R.id.create_project_progressWheel)
+    ProgressWheel progressWheel;
 
     Geocoder geocoder;
 
     private FusedLocationProviderClient mFusedLocationProviderClient;
+    CreateProjectContract.Presenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_project);
         ButterKnife.bind(this);
+
+        presenter = new CreateProjectPresenter();
 
         geocoder = new Geocoder(this, Locale.getDefault());
 
@@ -119,7 +124,7 @@ public class CreateProjectActivity extends BaseActivity implements OnMapReadyCal
      */
     @OnClick(R.id.fab_zoom_out_location)
     void onZoomOut() {
-        googleMap.animateCamera(CameraUpdateFactory.zoomOut());
+
     }
 
     /**
@@ -427,6 +432,22 @@ public class CreateProjectActivity extends BaseActivity implements OnMapReadyCal
     }
 
     @Override
+    protected void onPause() {
+        super.onPause();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
+
+    @Override
     public void attachPresenter(CreateProjectContract.Presenter presenter) {
 
     }
@@ -438,32 +459,32 @@ public class CreateProjectActivity extends BaseActivity implements OnMapReadyCal
 
     @Override
     public void showLoading(String message) {
-
+        progressWheel.setVisibility(View.VISIBLE);
     }
 
     @Override
     public void showLoading() {
-
+        progressWheel.setVisibility(View.VISIBLE);
     }
 
     @Override
     public void hideLoading() {
-
+        progressWheel.setVisibility(View.VISIBLE);
     }
 
     @Override
     public void onUnknownError(String error) {
-
+        Utils.toast(this, error);
     }
 
     @Override
     public void onTimeout() {
-
+        Utils.toast(this, "connection timeout");
     }
 
     @Override
     public void onNetworkError() {
-
+        Utils.toast(this, "network error");
     }
 
     @Override
@@ -473,6 +494,26 @@ public class CreateProjectActivity extends BaseActivity implements OnMapReadyCal
 
     @Override
     public void onConnectionError() {
+        Utils.toast(this, "connection error");
+    }
 
+    @Override
+    public void openProjectList() {
+
+    }
+
+    @Override
+    public void showCurrentLocation() {
+
+    }
+
+    @Override
+    public void showZoomIn() {
+
+    }
+
+    @Override
+    public void showZoomOut() {
+        googleMap.animateCamera(CameraUpdateFactory.zoomOut());
     }
 }

@@ -14,7 +14,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:scrollbars="none"
-        tools:listitem="@layout/project_list_layout" />
+        tools:listitem="@layout/card_project_list" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"

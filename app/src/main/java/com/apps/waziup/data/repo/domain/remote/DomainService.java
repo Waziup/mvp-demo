@@ -1,7 +1,6 @@
 package com.apps.waziup.data.repo.domain.remote;
 
 import com.apps.waziup.data.model.Domain;
-import com.apps.waziup.data.model.DomainResponse;
 
 import java.util.List;
 
@@ -31,6 +30,6 @@ public interface DomainService {
      */
     @Headers("Content-Type: application/json")
     @POST("/api/v1/domains")
-    Observable<DomainResponse> createDomain(@Body Domain domain);
+    Observable<String> createDomain(@Body Domain domain);
 
 }
