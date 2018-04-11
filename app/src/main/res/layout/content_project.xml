@@ -1,0 +1,24 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="com.apps.waziup.ui.project.ProjectActivity">
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/project_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clipToPadding="false"
+        android:scrollbars="vertical"
+        tools:listitem="@layout/card_project_list" />
+
+    <com.pnikosis.materialishprogress.ProgressWheel
+        android:id="@+id/project_progress_wheel"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_centerInParent="true"
+        app:matProg_barColor="@color/primary"
+        app:matProg_progressIndeterminate="true" />
+
+</RelativeLayout>

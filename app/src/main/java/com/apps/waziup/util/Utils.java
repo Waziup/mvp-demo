@@ -1,7 +1,9 @@
 package com.apps.waziup.util;
 
+import android.app.Activity;
 import android.content.Context;
 import android.util.Log;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
 
 /**
@@ -69,7 +71,28 @@ public class Utils {
         }
     }
 
+    /**
+     * for displaying a toast message to the user that stays short period
+     * @param context (required)
+     * @param message (required)
+     */
     public static void toast(Context context, String message){
         Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
+    }
+
+    /**
+     * for displaying a toast message that stays longer period
+     * @param context (required)
+     * @param message (required)
+     */
+    public static void toastLong(Context context, String message){
+        Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
+    }
+
+    public static void hideKeyboard(Activity activity) {
+        InputMethodManager imm = (InputMethodManager) activity.getSystemService(Context.INPUT_METHOD_SERVICE);
+        if (activity.getCurrentFocus() != null) {
+            imm.hideSoftInputFromWindow(activity.getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+        }
     }
 }
