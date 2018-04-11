@@ -82,13 +82,13 @@ public class HomeActivity extends BaseActivity implements NavigationView.OnNavig
         LayoutInflater inflater = this.getLayoutInflater();
         View dialogView = inflater.inflate(R.layout.dialog_fragment_create_project, null);
         dialogBuilder.setView(dialogView);
+        AlertDialog alertDialog = dialogBuilder.create();
 
         EditText editText = dialogView.findViewById(R.id.dialog_project_name);
         Button cancel = dialogView.findViewById(R.id.btn_dialog_cancel);
         Button ok = dialogView.findViewById(R.id.btn_dialog_ok);
-        cancel.setOnClickListener(v -> this.close());
+        cancel.setOnClickListener(v -> alertDialog.dismiss());
         ok.setOnClickListener(v -> Utils.toast(HomeActivity.this, editText.getText().toString().trim()));
-        AlertDialog alertDialog = dialogBuilder.create();
         alertDialog.show();
 
     }
