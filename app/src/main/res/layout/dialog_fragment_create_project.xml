@@ -4,73 +4,43 @@
     android:layout_height="wrap_content">
 
     <LinearLayout
-        android:gravity="center"
         android:id="@+id/top"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:layout_marginEnd="10dp"
         android:layout_marginStart="10dp"
+        android:gravity="center"
         android:orientation="horizontal">
 
         <TextView
-            android:gravity="center|start"
-            android:textSize="25sp"
             android:id="@+id/tv_create_title"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:layout_weight="0.9"
+            android:gravity="center|start"
             android:text="@string/create_project_title"
-            android:textColor="@color/colorSecondaryText" />
-
-        <TextView
-            android:id="@+id/tv_create_close"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="5dp"
-            android:layout_weight="0.1"
-            android:gravity="center|end"
-            android:text="@string/close"
-            android:textSize="25sp"
-            android:textColor="@color/colorSecondaryText" />
+            android:textAlignment="center"
+            android:textColor="@color/colorSecondaryText"
+            android:textSize="25sp" />
 
     </LinearLayout>
 
     <EditText
-        android:layout_marginTop="25dp"
         android:id="@+id/create_project_name"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_below="@id/top"
-        android:paddingStart="10dp"
-        android:paddingEnd="10dp"
         android:layout_marginEnd="10dp"
-        android:textSize="22sp"
-        android:background="@drawable/rounded_edit_text"
         android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/rounded_edit_text"
         android:hint="@string/hing_create_enter_name"
+        android:paddingEnd="10dp"
+        android:paddingStart="10dp"
         android:textColor="@color/colorPrimaryText"
-        android:textColorHint="@color/colorSecondaryText" />
-
-
-    <LinearLayout
-        android:layout_marginTop="20dp"
-        android:background="@color/colorSecondaryText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/create_project_name"
-        android:orientation="horizontal">
-
-        <Button
-            android:background="@color/colorDivider"
-            android:id="@+id/btn_create_project"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.5"
-            android:text="@string/btn_create"
-            android:textColor="@color/white" />
-    </LinearLayout>
+        android:textColorHint="@color/colorSecondaryText"
+        android:textSize="22sp" />
 
 
 </RelativeLayout>

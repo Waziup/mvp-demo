@@ -69,7 +69,7 @@ android {
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
 
-    implementation 'com.android.support:multidex:1.0.1'
+    implementation 'com.android.support:multidex:1.0.3'
 
     // Android support repository
     implementation "com.android.support:appcompat-v7:$supportLibraryVersion"
@@ -84,6 +84,9 @@ dependencies {
 
     //Country code picker
     implementation 'com.github.joielechong:countrycodepicker:2.1.5'
+
+    //Floating action Button
+    implementation 'com.github.clans:fab:1.6.4'
 
     //Google Maps API
     implementation 'com.google.android.gms:play-services-maps:11.8.0'

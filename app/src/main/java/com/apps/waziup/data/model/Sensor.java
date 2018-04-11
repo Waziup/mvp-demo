@@ -22,15 +22,21 @@ public class Sensor {
     @SerializedName("owner")
     @Expose
     private String owner;
-    @SerializedName("measurements")
-    @Expose
-    private List<Measurement> measurements = null;
     @SerializedName("location")
     @Expose
     private Location location;
+    @SerializedName("dateCreated")
+    @Expose
+    private String dateCreated;
+    @SerializedName("dateModified")
+    @Expose
+    private String dateModified;
     @SerializedName("domain")
     @Expose
     private String domain;
+    @SerializedName("measurements")
+    @Expose
+    private List<Measurement> measurements = null;
 
     public String getId() {
         return id;
@@ -64,14 +70,6 @@ public class Sensor {
         this.owner = owner;
     }
 
-    public List<Measurement> getMeasurements() {
-        return measurements;
-    }
-
-    public void setMeasurements(List<Measurement> measurements) {
-        this.measurements = measurements;
-    }
-
     public Location getLocation() {
         return location;
     }
@@ -80,12 +78,36 @@ public class Sensor {
         this.location = location;
     }
 
+    public String getDateCreated() {
+        return dateCreated;
+    }
+
+    public void setDateCreated(String dateCreated) {
+        this.dateCreated = dateCreated;
+    }
+
+    public String getDateModified() {
+        return dateModified;
+    }
+
+    public void setDateModified(String dateModified) {
+        this.dateModified = dateModified;
+    }
+
     public String getDomain() {
         return domain;
     }
 
     public void setDomain(String domain) {
         this.domain = domain;
+    }
+
+    public List<Measurement> getMeasurements() {
+        return measurements;
+    }
+
+    public void setMeasurements(List<Measurement> measurements) {
+        this.measurements = measurements;
     }
 
 }

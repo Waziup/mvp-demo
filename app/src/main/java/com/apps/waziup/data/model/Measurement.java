@@ -4,7 +4,6 @@ package com.apps.waziup.data.model;
  * Created by KidusMT on 4/4/2018.
  */
 
-import java.util.List;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
@@ -13,15 +12,15 @@ public class Measurement {
     @SerializedName("id")
     @Expose
     private String id;
-    @SerializedName("name")
-    @Expose
-    private String name;
     @SerializedName("last_value")
     @Expose
-    private Integer lastValue;
+    private Double lastValue;
     @SerializedName("timestamp")
     @Expose
     private String timestamp;
+    @SerializedName("name")
+    @Expose
+    private String name;
     @SerializedName("sensing_device")
     @Expose
     private String sensingDevice;
@@ -31,9 +30,6 @@ public class Measurement {
     @SerializedName("unit")
     @Expose
     private String unit;
-    @SerializedName("values")
-    @Expose
-    private List<Value> values = null;
 
     public String getId() {
         return id;
@@ -43,19 +39,11 @@ public class Measurement {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Integer getLastValue() {
+    public Double getLastValue() {
         return lastValue;
     }
 
-    public void setLastValue(Integer lastValue) {
+    public void setLastValue(Double lastValue) {
         this.lastValue = lastValue;
     }
 
@@ -65,6 +53,14 @@ public class Measurement {
 
     public void setTimestamp(String timestamp) {
         this.timestamp = timestamp;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getSensingDevice() {
@@ -89,14 +85,6 @@ public class Measurement {
 
     public void setUnit(String unit) {
         this.unit = unit;
-    }
-
-    public List<Value> getValues() {
-        return values;
-    }
-
-    public void setValues(List<Value> values) {
-        this.values = values;
     }
 
 }

@@ -42,7 +42,7 @@
     <string name="sensor_name">sensor name</string>
     <string name="btn_create">create</string>
     <string name="hing_create_enter_name">project name</string>
-    <string name="create_project_title">Set Project Name</string>
+    <string name="create_project_title">Create Project</string>
     <string name="close">X</string>
     <string name="btn_close">close</string>
     <string name="pick_place">Pick Project Locatioin</string>

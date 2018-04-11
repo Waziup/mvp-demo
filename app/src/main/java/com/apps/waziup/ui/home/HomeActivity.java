@@ -9,8 +9,10 @@ import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -33,7 +35,7 @@ import static com.apps.waziup.util.Constants.APP_NAME;
 import static com.apps.waziup.util.Constants.USER_TOKEN;
 
 
-public class HomeActivity extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class HomeActivity extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener, HomeContract.View {
 
     private ActionBarDrawerToggle drawerToggle;
 
@@ -78,7 +80,22 @@ public class HomeActivity extends BaseActivity implements NavigationView.OnNavig
 
     @OnClick(R.id.fab)
     void OnFabClicked() {
-        startActivity(new Intent(this, CreateProjectActivity.class));
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        // Get the layout inflater
+        LayoutInflater inflater = getLayoutInflater();
+
+        // Inflate and set the layout for the dialog
+        // Pass null as the parent view because its going in the dialog layout
+        builder.setView(inflater.inflate(R.layout.dialog_fragment_create_project, null))
+                // Add action buttons
+                .setPositiveButton("OK",
+                        (dialog, id) -> {
+                            
+                            startActivity(new Intent(this, CreateProjectActivity.class));
+                        })
+                .setNegativeButton("CANCEL", (dialog, id) -> dialog.dismiss());
+        builder.create();
+
     }
 
     public void createDialog() {
@@ -192,5 +209,70 @@ public class HomeActivity extends BaseActivity implements NavigationView.OnNavig
                 return true;
             }
         });
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
+
+    @Override
+    public void attachPresenter(HomeContract.Presenter presenter) {
+
+    }
+
+    @Override
+    public void close() {
+
+    }
+
+    @Override
+    public void showLoading(String message) {
+
+    }
+
+    @Override
+    public void showLoading() {
+
+    }
+
+    @Override
+    public void hideLoading() {
+
+    }
+
+    @Override
+    public void onUnknownError(String error) {
+
+    }
+
+    @Override
+    public void onTimeout() {
+
+    }
+
+    @Override
+    public void onNetworkError() {
+
+    }
+
+    @Override
+    public boolean isNetworkConnected() {
+        return false;
+    }
+
+    @Override
+    public void onConnectionError() {
+
     }
 }
