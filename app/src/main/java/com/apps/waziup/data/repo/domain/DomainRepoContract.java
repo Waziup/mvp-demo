@@ -15,9 +15,9 @@ public interface DomainRepoContract {
 
     Observable<List<Domain>> getDomains();
 
-    Observable<String> deleteDomain(Domain domain);
+    Observable<Void> deleteDomain(String domain);
 
-    Observable<String> createDomain(Domain domain);
+    Observable<Void> createDomain(Domain domain);
 
     int size();
 }

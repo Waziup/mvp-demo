@@ -33,9 +33,8 @@ public class ProjectListAdapter extends RecyclerView.Adapter<ProjectViewHolder> 
     @Override
     public void onBindViewHolder(ProjectViewHolder holder, int position) {
         final Domain project = projects.get(position);
-        holder.projectTitle.setText(project.id);
-        holder.location.setText(project.type);
-//        Picasso.with(holder.projectImg.getContext()).load(project.imge).into(holder.projectImg);
+        holder.update(projects);
+        Timber.d("Got new projects " + projects.size());
         holder.projectDelete.setOnClickListener(v -> presenter.onDomainDeleteClicked(project));
         holder.projectEdit.setOnClickListener(v -> presenter.onDomainEditClicked(project));
         holder.projectMarkerLocation.setOnClickListener(v -> presenter.onDomainMarkerClicked(project));
@@ -48,8 +47,6 @@ public class ProjectListAdapter extends RecyclerView.Adapter<ProjectViewHolder> 
     }
 
     public void updateProjectList(List<Domain> newProjects) {
-        Timber.d("Got new projects " + newProjects.size());
-        //TODO get back here and fix this mess here
         this.projects.clear();
         this.projects.addAll(newProjects);
         notifyDataSetChanged();

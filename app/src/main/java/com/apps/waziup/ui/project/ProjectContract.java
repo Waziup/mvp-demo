@@ -17,7 +17,7 @@ public interface ProjectContract {
         void showDomainDetail(Domain domain);
         void showDomainONMap(Domain domain);
         void showEditDomainActivity(Domain domain);
-        boolean showDeleteDomain();
+        void showDeleteDomain(Domain domain);
     }
 
     interface Presenter extends BasePresenter<View>{

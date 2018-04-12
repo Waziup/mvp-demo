@@ -14,7 +14,6 @@ import io.objectbox.annotation.Index;
 @Entity
 public class Domain {
 
-    //TODO should be changed
     @Id
     public long _id;
 

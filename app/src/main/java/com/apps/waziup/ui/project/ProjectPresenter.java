@@ -120,61 +120,63 @@ public class ProjectPresenter implements ProjectContract.Presenter {
 
     @Override
     public void onDomainDeleteClicked(Domain domain) {
-        //nothing happens until the user clicks ok to the dialog
-        if (view.showDeleteDomain()) {
-            view.showLoading();
-            repository.deleteDomain(domain)
-                    .subscribeOn(Schedulers.io())
-                    .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe(new DisposableObserver<String>() {
-                        @Override
-                        public void onNext(String s) {
-                            state.setCompleted();
-                            if (view == null) return;
-                            loadDomains();
-                            state.reset();
-                        }
+        view.showDeleteDomain(domain);
+    }
 
-                        @Override
-                        public void onError(Throwable e) {
-                            state.setError(e);
-                            if (view == null) return;
+    public void deleteDomain(Domain domain) {
+        view.showLoading();
+        repository.deleteDomain(domain.id)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new DisposableObserver<Void>() {
+                    @Override
+                    public void onNext(Void aVoid) {
+                        state.setCompleted();
+                        if (view == null) return;
+                        loadDomains();
+                        state.reset();
+                    }
 
-                            if (e instanceof SocketTimeoutException) {
-                                view.onTimeout();
-                            } else if (e instanceof IOException) {
-                                view.onNetworkError();
-                            } else if (e instanceof HttpException) {
-                                int code = ((HttpException) e).response().code();
-                                if (code >= 400 && code < 404) {
-                                    view.onUnknownError("Unauthorized! Login again.");
-                                } else {
-                                    ResponseBody responseBody = ((HttpException) e).response().errorBody();
-                                    try {//should display the correct error message form the http protocol
-                                        if (responseBody != null) {
-                                            JSONObject jObjError = new JSONObject(responseBody.toString());
-                                            view.onUnknownError(jObjError.toString());
-                                        }
-                                    } catch (JSONException e1) {
-                                        e1.printStackTrace();
-                                    }
-                                }
+                    @Override
+                    public void onError(Throwable e) {
+                        state.setError(e);
+                        if (view == null) return;
+
+                        if (e instanceof SocketTimeoutException) {
+                            view.onTimeout();
+                        } else if (e instanceof IOException) {
+                            view.onNetworkError();
+                        } else if (e instanceof HttpException) {
+                            int code = ((HttpException) e).response().code();
+                            if (code >= 400 && code < 404) {
+                                view.onUnknownError("Unauthorized! Login again.");
                             } else {
-                                view.onUnknownError(e.getMessage());
+                                ResponseBody responseBody = ((HttpException) e).response().errorBody();
+                                try {//should display the correct error message form the http protocol
+                                    if (responseBody != null) {
+                                        JSONObject jObjError = new JSONObject(responseBody.toString());
+                                        view.onUnknownError(jObjError.toString());
+                                    }
+                                } catch (JSONException e1) {
+                                    e1.printStackTrace();
+                                }
                             }
-                            e.printStackTrace();
+                        } else {
+                            view.onUnknownError(e.getMessage());
                         }
+                        e.printStackTrace();
+                    }
 
-                        @Override
-                        public void onComplete() {
-                            view.hideLoading();
-                        }
-                    });
-        }
+                    @Override
+                    public void onComplete() {
+                        view.hideLoading();
+                    }
+                });
     }
 
     @Override
     public void onDomainClicked(Domain domain) {
         view.showDomainDetail(domain);
     }
+
 }

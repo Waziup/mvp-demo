@@ -18,10 +18,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 
 import com.apps.waziup.base.view.BaseActivity;
-import com.apps.waziup.ui.create.CreateProjectActivity;
 import com.apps.waziup.ui.login.LoginActivity;
+import com.apps.waziup.ui.project.ProjectActivity;
 import com.apps.waziup.util.Utils;
 import com.apps.waziup.waziup.R;
 
@@ -46,6 +47,7 @@ public class HomeActivity extends BaseActivity implements NavigationView.OnNavig
     NavigationView navigationView;
     public SharedPreferences pref;
     public SharedPreferences.Editor editor;
+    LinearLayout linearLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +57,9 @@ public class HomeActivity extends BaseActivity implements NavigationView.OnNavig
 
         pref = getSharedPreferences(APP_NAME, MODE_PRIVATE);
 
+        linearLayout = findViewById(R.id.top_layout);
+        linearLayout.setOnClickListener(v ->
+                startActivity(new Intent(HomeActivity.this, ProjectActivity.class)));
         initialise();
         setUpToolbar();
         setUpDrawer();
@@ -206,7 +211,7 @@ public class HomeActivity extends BaseActivity implements NavigationView.OnNavig
 
     @Override
     public void close() {
-
+        finish();
     }
 
     @Override

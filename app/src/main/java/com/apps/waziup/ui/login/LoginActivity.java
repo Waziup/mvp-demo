@@ -183,6 +183,7 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
     @Override
     protected void onResume() {
         super.onResume();
+        presenter.attachView(this);
         presenter.start();
     }
 

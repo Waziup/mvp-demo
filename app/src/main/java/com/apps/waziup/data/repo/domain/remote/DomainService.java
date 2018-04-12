@@ -11,6 +11,7 @@ import retrofit2.http.GET;
 import retrofit2.http.Headers;
 import retrofit2.http.POST;
 import retrofit2.http.Part;
+import retrofit2.http.Path;
 
 /**
  * Created by KidusMT on 4/4/2018.
@@ -32,7 +33,7 @@ public interface DomainService {
      */
     @Headers("Content-Type: application/json")
     @POST("/api/v1/domains")
-    Observable<String> createDomain(@Body Domain domain);
+    Observable<Void> createDomain(@Body Domain domain);
 
     /**
      * for deleting a specific domain from the domain list on remote
@@ -41,6 +42,6 @@ public interface DomainService {
      */
     @Headers("Content-Type: application/json")
     @DELETE("/api/v1/domains/{domain}")
-    Observable<String> deleteDomain(@Part Domain domain);
+    Observable<Void> deleteDomain(@Path("domain") String domain);
 
 }

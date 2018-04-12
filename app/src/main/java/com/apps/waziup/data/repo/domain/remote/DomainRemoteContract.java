@@ -12,9 +12,9 @@ import io.reactivex.Observable;
 
 public interface DomainRemoteContract {
 
-    Observable<String> createDomain(Domain domain);
+    Observable<Void> createDomain(Domain domain);
 
-    Observable<String> deleteDomain(Domain domain);
+    Observable<Void> deleteDomain(String domain);
 
     Observable<List<Domain>> getDomains();
 }

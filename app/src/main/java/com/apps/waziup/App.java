@@ -20,12 +20,14 @@ import timber.log.Timber;
 public class App extends MultiDexApplication implements HasActivityInjector {
     @Inject
     DispatchingAndroidInjector<Activity> dispatchingAndroidInjector;
-
+    static Context context;
     @Override
     public void onCreate() {
         super.onCreate();
 
         BoxStoreProvider.create(this);
+
+        context = getApplicationContext();
 
         if (BuildConfig.DEBUG) {
             Timber.plant(new Timber.DebugTree());
@@ -55,6 +57,10 @@ public class App extends MultiDexApplication implements HasActivityInjector {
     protected void attachBaseContext(Context base) {
         super.attachBaseContext(base);
         MultiDex.install(this);
+    }
+
+    public static Context getContext(){
+        return context;
     }
 
 }

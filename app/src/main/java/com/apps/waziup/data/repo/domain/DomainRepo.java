@@ -28,19 +28,19 @@ public class DomainRepo implements DomainRepoContract {
         if (local.size() == 0) {
             return remote.getDomains()
                     .flatMap(domains -> local.saveDomain(domains))
-                    .flatMap(o -> local.getDomains());
+                    .flatMap(aBoolean -> local.getDomains());
         } else {
             return local.getDomains();
         }
     }
 
     @Override
-    public Observable<String> deleteDomain(Domain domain) {
+    public Observable<Void> deleteDomain(String domain) {
         return remote.deleteDomain(domain);
     }
 
     @Override
-    public Observable<String> createDomain(Domain domain) {
+    public Observable<Void> createDomain(Domain domain) {
         return remote.createDomain(domain);
     }
 

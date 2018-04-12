@@ -20,18 +20,17 @@ public class DomainRemote extends BaseRemote implements DomainRemoteContract {
     }
 
     @Override
-    public Observable<String> createDomain(Domain domain) {
+    public Observable<Void> createDomain(Domain domain) {
         return BaseRemote.domainService.createDomain(domain);
     }
 
     @Override
-    public Observable<String> deleteDomain(Domain domain) {
+    public Observable<Void> deleteDomain(String domain) {
         return BaseRemote.domainService.deleteDomain(domain);
     }
 
     @Override
     public Observable<List<Domain>> getDomains() {
-        //TODO there is problem here causing crash
         return BaseRemote.domainService.getDomains();
     }
 }

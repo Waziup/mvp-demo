@@ -1,6 +1,7 @@
 package com.apps.waziup.data.repo.domain.local;
 
 import com.apps.waziup.data.model.Domain;
+import com.apps.waziup.data.model.Domain_;
 
 import java.util.List;
 
@@ -24,15 +25,15 @@ public class DomainLocal implements DomainLocalContract {
     public Observable<Boolean> saveDomain(List<Domain> domains) {
         for (int i = 0; i < domains.size(); i++) {
             Domain newDomain = domains.get(i);
-            Domain found = box.query().build().findFirst();
+            Domain found = box.query().equal(Domain_.id, newDomain.id).build().findFirst();
             if (found == null) {
                 box.put(newDomain);
             } else {
                 newDomain._id = found._id;
                 box.put(newDomain);
             }
-        }
 
+        }
         return Observable.just(true);
     }
 
@@ -43,8 +44,14 @@ public class DomainLocal implements DomainLocalContract {
     }
 
     @Override
-    public Observable<Boolean> deleteDomain(Domain domain) {
-        return null;
+    public Observable<Boolean> deleteDomain(String domain) {
+        Domain found = box.query().equal(Domain_.id, domain).build().findFirst();
+        if (found == null) {
+            return Observable.just(false);
+        } else {
+            box.remove(found._id);
+            return Observable.just(true);
+        }
     }
 
     @Override

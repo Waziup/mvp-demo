@@ -45,7 +45,7 @@ public class ProjectActivity extends BaseActivity implements LifecycleRegistryOw
 
     RecyclerView recyclerView;
     ProgressWheel progressWheel;
-    ProjectContract.Presenter presenter;
+    ProjectPresenter presenter;
     @BindView(R.id.projectToolbar)
     Toolbar toolbar;
     @BindView(R.id.project_refresh)
@@ -109,7 +109,7 @@ public class ProjectActivity extends BaseActivity implements LifecycleRegistryOw
     @Override
     protected void onResume() {
         super.onResume();
-        presenter.attachView(this);//has to be called again or will crash for some scenarios
+        presenter.attachView(this);//has to be called in onStart and onResume or will crash for some scenarios
         presenter.start();
     }
 
@@ -171,6 +171,7 @@ public class ProjectActivity extends BaseActivity implements LifecycleRegistryOw
 
     @Override
     public void showDomains(List<Domain> domains) {
+        Utils.toastLong(this, ""+domains.size());
         recyclerViewAdapter.updateProjectList(domains);
     }
 
@@ -198,17 +199,15 @@ public class ProjectActivity extends BaseActivity implements LifecycleRegistryOw
     }
 
     @Override
-    public boolean showDeleteDomain() {
-        final boolean[] value = {false};
+    public void showDeleteDomain(Domain domain) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage(R.string.dialog_delete_project)
-                .setPositiveButton(R.string.dialog_ok, (dialog, id) -> value[0] = true)
+                .setPositiveButton(R.string.dialog_ok, (dialog, id) -> presenter.deleteDomain(domain))
                 .setNegativeButton(R.string.dialog_cancel, (dialog, id) -> {
                     // User cancelled the dialog
-                    value[0] = false;
                     dialog.dismiss();
                 });
         builder.create();
-        return value[0];
+        builder.show();
     }
 }

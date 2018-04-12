@@ -17,6 +17,7 @@ import com.apps.waziup.waziup.R;
 public class TabActivityFragment extends BaseFragment implements TabActivityContract.View {
 
 //    private RecyclerView recyclerView;
+    TabActivityContract.Presenter presenter;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

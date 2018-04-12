@@ -5,7 +5,10 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.apps.waziup.data.model.Domain;
 import com.apps.waziup.waziup.R;
+
+import java.util.List;
 
 /**
  * Created by KidusMT on 4/12/2018.
@@ -24,5 +27,11 @@ public class ProjectViewHolder extends RecyclerView.ViewHolder {
         projectMarkerLocation = itemView.findViewById(R.id.project_map_location);
         projectEdit = itemView.findViewById(R.id.project_edit);
         projectDelete = itemView.findViewById(R.id.project_delete);
+    }
+
+    public void update(List<Domain> domains){
+        Domain domain = domains.get(getAdapterPosition());
+        projectTitle.setText(domain.id);
+        location.setText(domain.type);
     }
 }

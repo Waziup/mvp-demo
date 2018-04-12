@@ -1,6 +1,7 @@
 package com.apps.waziup.ui.create;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
@@ -17,6 +18,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.apps.waziup.base.view.BaseActivity;
+import com.apps.waziup.ui.project.ProjectActivity;
 import com.apps.waziup.util.Utils;
 import com.apps.waziup.waziup.R;
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -45,7 +47,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import timber.log.Timber;
 
-public class CreateProjectActivity extends BaseActivity implements OnMapReadyCallback, CreateProjectContract.View{
+public class CreateProjectActivity extends BaseActivity implements OnMapReadyCallback, CreateProjectContract.View {
 
     int DEFAULT_ZOOM = 8;
 
@@ -115,8 +117,7 @@ public class CreateProjectActivity extends BaseActivity implements OnMapReadyCal
 
     @OnClick(R.id.btn_create)
     void createProject() {
-        Toast.makeText(this, "Created Project", Toast.LENGTH_SHORT).show();
-        finish();
+        presenter.onCreateProjectClicked();
     }
 
     /**
@@ -124,7 +125,7 @@ public class CreateProjectActivity extends BaseActivity implements OnMapReadyCal
      */
     @OnClick(R.id.fab_zoom_out_location)
     void onZoomOut() {
-
+        presenter.onZoomOutClicked();
     }
 
     /**
@@ -132,7 +133,7 @@ public class CreateProjectActivity extends BaseActivity implements OnMapReadyCal
      */
     @OnClick(R.id.fab_zoom_in_location)
     void onZoomIn() {
-        googleMap.animateCamera(CameraUpdateFactory.zoomIn());
+        presenter.onZoomInClicked();
     }
 
     /**
@@ -140,7 +141,7 @@ public class CreateProjectActivity extends BaseActivity implements OnMapReadyCal
      */
     @OnClick(R.id.fab_current_location)
     void currentLocation() {
-        getDeviceLocation();
+        presenter.onCurrentLocationClicked();
     }
 
     /**
@@ -233,8 +234,7 @@ public class CreateProjectActivity extends BaseActivity implements OnMapReadyCal
         if (mLocationPermissionGranted) {
             // Get the likely places - that is, the businesses and other points of interest that
             // are the best match for the device's current btnLocation.
-            @SuppressWarnings("MissingPermission")
-            final Task<PlaceLikelihoodBufferResponse> placeResult =
+            @SuppressWarnings("MissingPermission") final Task<PlaceLikelihoodBufferResponse> placeResult =
                     mPlaceDetectionClient.getCurrentPlace(null);
             placeResult.addOnCompleteListener
                     (task -> {
@@ -339,18 +339,19 @@ public class CreateProjectActivity extends BaseActivity implements OnMapReadyCal
 //                                new LatLng(mLastKnownLocation.getLatitude(),
 //                                        mLastKnownLocation.getLongitude()), DEFAULT_ZOOM));
                         //CameraUpdateFactory.zoomIn()
-                        googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(mLastKnownLocation.getLatitude(),
-                                mLastKnownLocation.getLongitude()),10), 2000, null);
+                        if (mLastKnownLocation!=null){
+                            googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(
+                                            mLastKnownLocation.getLatitude(),
+                                            mLastKnownLocation.getLongitude()),
+                                    10), 2000, null);
+                        }
 
                     } else {
                         Timber.d("Current btnLocation is null. Using defaults.");
                         Timber.e("Exception:" + task.getException());
-//                        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(mDefaultLocation,
-//                                DEFAULT_ZOOM));
                         //animate the camera slowly
                         googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(mLastKnownLocation.getLatitude(),
-                                mLastKnownLocation.getLongitude()),10), 2000, null);
-//                        googleMap.animateCamera(CameraUpdateFactory.zoomTo(10), 2000, null);
+                                mLastKnownLocation.getLongitude()), 10), 2000, null);
                         googleMap.getUiSettings().setMyLocationButtonEnabled(false);
                     }
                 });
@@ -363,11 +364,11 @@ public class CreateProjectActivity extends BaseActivity implements OnMapReadyCal
     /**
      * for adding the marker on a specific lat and long with a title and snippet description
      *
-     * @param map
-     * @param lat
-     * @param lon
-     * @param title
-     * @param snippet
+     * @param map (required)
+     * @param lat (required)
+     * @param lon (required)
+     * @param title (required)
+     * @param snippet (required)
      */
     private void addMarker(GoogleMap map, double lat, double lon, int title, int snippet) {
         map.addMarker(new MarkerOptions().position(new LatLng(lat, lon))
@@ -403,7 +404,7 @@ public class CreateProjectActivity extends BaseActivity implements OnMapReadyCal
             }
 
             // Position the map's camera at the btnLocation of the marker.
-            googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(markerLatLng,DEFAULT_ZOOM), 1000, null);
+            googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(markerLatLng, DEFAULT_ZOOM), 1000, null);
 //            googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(markerLatLng, DEFAULT_ZOOM));
         };
 
@@ -420,7 +421,7 @@ public class CreateProjectActivity extends BaseActivity implements OnMapReadyCal
      * is destroyed or get back to a background for next time retrieving and displaying from
      * where the User has left of the map
      *
-     * @param outState
+     * @param outState  (required)
      */
     @Override
     protected void onSaveInstanceState(Bundle outState) {
@@ -433,18 +434,21 @@ public class CreateProjectActivity extends BaseActivity implements OnMapReadyCal
 
     @Override
     protected void onPause() {
+        presenter.detachView();
         super.onPause();
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-
+        presenter.attachView(this);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
+        presenter.attachView(this);
+        presenter.start();
     }
 
     @Override
@@ -499,17 +503,18 @@ public class CreateProjectActivity extends BaseActivity implements OnMapReadyCal
 
     @Override
     public void openProjectList() {
-
+        startActivity(new Intent(CreateProjectActivity.this, ProjectActivity.class));
+        finish();
     }
 
     @Override
     public void showCurrentLocation() {
-
+        getDeviceLocation();
     }
 
     @Override
     public void showZoomIn() {
-
+        googleMap.animateCamera(CameraUpdateFactory.zoomIn());
     }
 
     @Override

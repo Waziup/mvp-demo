@@ -1,7 +1,5 @@
 package com.apps.waziup.data.repo.user.local;
 
-import com.apps.waziup.data.model.User;
-
 import io.reactivex.Observable;
 
 /**

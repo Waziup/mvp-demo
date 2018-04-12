@@ -34,7 +34,7 @@ public class CreateProjectPresenter implements CreateProjectContract.Presenter {
 
     @Override
     public void onCreateProjectClicked() {
-
+        view.openProjectList();
     }
 
     @Override
