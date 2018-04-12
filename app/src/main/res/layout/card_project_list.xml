@@ -24,7 +24,7 @@
             android:layout_gravity="center"
             android:layout_marginStart="8dp"
             android:contentDescription="@string/contentDescription"
-            android:src="@drawable/sensor_5" />
+            android:src="@drawable/agri" />
 
         <LinearLayout
             style="@style/normal.with_margin"
