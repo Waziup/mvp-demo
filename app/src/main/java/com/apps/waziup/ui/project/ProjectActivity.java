@@ -19,7 +19,7 @@ import com.apps.waziup.data.repo.domain.DomainRepo;
 import com.apps.waziup.data.repo.domain.local.DomainLocal;
 import com.apps.waziup.data.repo.domain.remote.DomainRemote;
 import com.apps.waziup.ui.create.CreateProjectActivity;
-import com.apps.waziup.ui.detail.ProjectDetailContract;
+import com.apps.waziup.ui.detail.ProjectDetailActivity;
 import com.apps.waziup.util.Utils;
 import com.apps.waziup.waziup.R;
 import com.pnikosis.materialishprogress.ProgressWheel;
@@ -30,6 +30,10 @@ import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+
+import static com.apps.waziup.util.Constants.ACTIVITY;
+import static com.apps.waziup.util.Constants.PROJECT;
+import static com.apps.waziup.util.Constants.PROJECT_TYPE;
 
 
 public class ProjectActivity extends BaseActivity implements LifecycleRegistryOwner, ProjectContract.View {
@@ -46,6 +50,7 @@ public class ProjectActivity extends BaseActivity implements LifecycleRegistryOw
     Toolbar toolbar;
     @BindView(R.id.project_refresh)
     SwipeRefreshLayout swipeRefreshLayout;
+    List<Domain> domains;
 
     private ProjectListAdapter recyclerViewAdapter;
     //    private ProjectViewModel viewModel;
@@ -62,6 +67,7 @@ public class ProjectActivity extends BaseActivity implements LifecycleRegistryOw
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_project);
         ButterKnife.bind(this);
+        domains = new ArrayList<>();
 
         presenter = new ProjectPresenter(new DomainRepo(
                 new DomainLocal(BoxStoreProvider.getStore()),
@@ -90,7 +96,7 @@ public class ProjectActivity extends BaseActivity implements LifecycleRegistryOw
 
         RecyclerView.LayoutManager recyclerViewLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(recyclerViewLayoutManager);
-        recyclerViewAdapter = new ProjectListAdapter(new ArrayList<>());
+        recyclerViewAdapter = new ProjectListAdapter(domains, presenter);
         recyclerView.setAdapter(recyclerViewAdapter);
     }
 
@@ -169,12 +175,16 @@ public class ProjectActivity extends BaseActivity implements LifecycleRegistryOw
     }
 
     @Override
-    public void showDomainDetail(int position) {
-        startActivity(new Intent(ProjectActivity.this, ProjectDetailContract.class));
+    public void showDomainDetail(Domain domain) {
+        Intent intent = new Intent(ProjectActivity.this, ProjectDetailActivity.class);
+        intent.putExtra(ACTIVITY, "project");
+        intent.putExtra(PROJECT, domain.id);
+        intent.putExtra(PROJECT_TYPE, domain.type);
+        startActivity(intent);
     }
 
     @Override
-    public void showDomainONMap(int position) {
+    public void showDomainONMap(Domain domain) {
         //this is for routing the method call to open googleMap for showing the project location
         //TODO fix to manual location into automatically form the domain model
         String uri = String.format(Locale.ENGLISH, "geo:%f,%f", 40.482450, -75.178184);
@@ -183,23 +193,22 @@ public class ProjectActivity extends BaseActivity implements LifecycleRegistryOw
     }
 
     @Override
-    public void showEditDomainActivity(int position) {
+    public void showEditDomainActivity(Domain domain) {
         startActivity(new Intent(ProjectActivity.this, CreateProjectActivity.class));
     }
 
     @Override
-    public void showDeleteDomain(Domain domain) {
+    public boolean showDeleteDomain() {
+        final boolean[] value = {false};
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage(R.string.dialog_delete_project)
-                .setPositiveButton(R.string.dialog_ok, (dialog, id) -> {
-                    presenter.onDomainDeleteClicked(domain);
-                    presenter.loadDomains();
-                })
+                .setPositiveButton(R.string.dialog_ok, (dialog, id) -> value[0] = true)
                 .setNegativeButton(R.string.dialog_cancel, (dialog, id) -> {
                     // User cancelled the dialog
+                    value[0] = false;
                     dialog.dismiss();
                 });
         builder.create();
-
+        return value[0];
     }
 }

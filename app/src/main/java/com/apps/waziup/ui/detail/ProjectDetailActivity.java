@@ -22,6 +22,8 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
+import static com.apps.waziup.util.Constants.PROJECT;
+
 public class ProjectDetailActivity extends BaseActivity implements ProjectDetailContract.View {
 
     @BindView(R.id.detail_toolbar)

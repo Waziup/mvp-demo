@@ -14,12 +14,15 @@ import com.apps.waziup.waziup.R;
 public class ProjectViewHolder extends RecyclerView.ViewHolder {
 
     TextView projectTitle, location;
-    ImageView projectImg;
+    ImageView projectImg, projectMarkerLocation, projectEdit, projectDelete;
 
     public ProjectViewHolder(View itemView) {
         super(itemView);
         projectImg = itemView.findViewById(R.id.project_image);
         projectTitle = itemView.findViewById(R.id.project_title);
         location = itemView.findViewById(R.id.location_value);
+        projectMarkerLocation = itemView.findViewById(R.id.project_map_location);
+        projectEdit = itemView.findViewById(R.id.project_edit);
+        projectDelete = itemView.findViewById(R.id.project_delete);
     }
 }

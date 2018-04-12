@@ -14,17 +14,17 @@ public interface ProjectContract {
 
     interface View extends BaseView<Presenter>{
         void showDomains(List<Domain> domains);
-        void showDomainDetail(int position);
-        void showDomainONMap(int position);
-        void showEditDomainActivity(int position);
-        void showDeleteDomain(Domain domain);
+        void showDomainDetail(Domain domain);
+        void showDomainONMap(Domain domain);
+        void showEditDomainActivity(Domain domain);
+        boolean showDeleteDomain();
     }
 
     interface Presenter extends BasePresenter<View>{
         void loadDomains();
-        void onDomainMarkerClicked(int position);
-        void onDomainEditClicked(int position);
+        void onDomainMarkerClicked(Domain domain);
+        void onDomainEditClicked(Domain domain);
         void onDomainDeleteClicked(Domain domain);
-        void onDomainClicked(int position);
+        void onDomainClicked(Domain domain);
     }
 }
