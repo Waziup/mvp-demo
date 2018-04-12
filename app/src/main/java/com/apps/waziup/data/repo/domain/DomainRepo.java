@@ -35,6 +35,16 @@ public class DomainRepo implements DomainRepoContract {
     }
 
     @Override
+    public Observable<String> deleteDomain(Domain domain) {
+        return remote.deleteDomain(domain);
+    }
+
+    @Override
+    public Observable<String> createDomain(Domain domain) {
+        return remote.createDomain(domain);
+    }
+
+    @Override
     public int size() {
         return local.size();
     }

@@ -16,7 +16,7 @@ import io.reactivex.Observable;
 public class DomainRemote extends BaseRemote implements DomainRemoteContract {
 
     public DomainRemote(Context context) {
-        super(context, "user");
+        super(context, "domain");
     }
 
     @Override
@@ -25,7 +25,13 @@ public class DomainRemote extends BaseRemote implements DomainRemoteContract {
     }
 
     @Override
+    public Observable<String> deleteDomain(Domain domain) {
+        return BaseRemote.domainService.deleteDomain(domain);
+    }
+
+    @Override
     public Observable<List<Domain>> getDomains() {
+        //TODO there is problem here causing crash
         return BaseRemote.domainService.getDomains();
     }
 }

@@ -14,13 +14,14 @@ import io.objectbox.annotation.Index;
 @Entity
 public class Domain {
 
+    //TODO should be changed
     @Id
-    public long id;
+    public long _id;
 
     @Index
     @SerializedName("id")
     @Expose
-    public String _id;
+    public String id;
     @SerializedName("type")
     @Expose
     public String type;

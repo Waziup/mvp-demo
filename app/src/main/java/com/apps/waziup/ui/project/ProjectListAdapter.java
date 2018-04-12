@@ -5,8 +5,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.apps.waziup.model.Project;
+import com.apps.waziup.data.model.Domain;
 import com.apps.waziup.waziup.R;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -14,30 +15,26 @@ import timber.log.Timber;
 
 public class ProjectListAdapter extends RecyclerView.Adapter<ProjectViewHolder> {
 
-    private final List<Project> projects;
+    private final List<Domain> projects;
 
-    public ProjectListAdapter(List<Project> projects) {
+    public ProjectListAdapter(List<Domain> projects) {
         this.projects = projects;
     }
 
     @Override
     public ProjectViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.content_create_project, parent, false); //TODO: Fix
+                .inflate(R.layout.card_project_list, parent, false);
 
         return new ProjectViewHolder(v);
     }
 
     @Override
     public void onBindViewHolder(ProjectViewHolder holder, int position) {
-        final Project project = projects.get(position);
-        //TODO: Sync Pending
-//        if (project.isPublic()) {
-//            holder.projectText.setTextColor(Color.LTGRAY);
-//        } else {
-//            holder.projectText.setTextColor(Color.BLACK);
-//        }
-//        holder.projectText.setText(project.getDescription());
+        final Domain project = projects.get(position);
+        holder.projectTitle.setText(project.id);
+        holder.location.setText(project.type);
+//        Picasso.with(holder.projectImg.getContext()).load(project.imge).into(holder.projectImg);
 
     }
 
@@ -46,8 +43,9 @@ public class ProjectListAdapter extends RecyclerView.Adapter<ProjectViewHolder> 
         return projects == null ? 0 : projects.size();
     }
 
-    public void updateProjectList(List<Project> newProjects) {
+    public void updateProjectList(List<Domain> newProjects) {
         Timber.d("Got new projects " + newProjects.size());
+        //TODO get back here and fix this mess here
         this.projects.clear();
         this.projects.addAll(newProjects);
         notifyDataSetChanged();

@@ -353,11 +353,11 @@
       "properties": [
         {
           "id": "1:5581312672484843432",
+          "indexId": "5:106426964081307653",
           "name": "id"
         },
         {
           "id": "2:5753597189707481597",
-          "indexId": "4:2468852456273191659",
           "name": "_id"
         },
         {
@@ -389,13 +389,15 @@
     }
   ],
   "lastEntityId": "8:1202410647462147204",
-  "lastIndexId": "4:2468852456273191659",
+  "lastIndexId": "5:106426964081307653",
   "lastRelationId": "0:0",
   "lastSequenceId": "0:0",
   "modelVersion": 4,
   "modelVersionParserMinimum": 4,
   "retiredEntityUids": [],
-  "retiredIndexUids": [],
+  "retiredIndexUids": [
+    2468852456273191659
+  ],
   "retiredPropertyUids": [],
   "retiredRelationUids": [],
   "version": 1

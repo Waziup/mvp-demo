@@ -28,7 +28,7 @@ public class DomainLocal implements DomainLocalContract {
             if (found == null) {
                 box.put(newDomain);
             } else {
-                newDomain.id = found.id;
+                newDomain._id = found._id;
                 box.put(newDomain);
             }
         }
@@ -40,6 +40,16 @@ public class DomainLocal implements DomainLocalContract {
     public Observable<List<Domain>> getDomains() {
         List<Domain> domains = box.getAll();
         return Observable.just(domains);
+    }
+
+    @Override
+    public Observable<Boolean> deleteDomain(Domain domain) {
+        return null;
+    }
+
+    @Override
+    public Observable<Boolean> updateDomain(Domain domain) {
+        return null;
     }
 
     @Override

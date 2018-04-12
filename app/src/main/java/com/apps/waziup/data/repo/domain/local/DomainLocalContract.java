@@ -16,5 +16,9 @@ public interface DomainLocalContract {
 
     Observable<List<Domain>> getDomains();
 
+    Observable<Boolean> deleteDomain(Domain domain);
+
+    Observable<Boolean> updateDomain(Domain domain);
+
     int size();
 }

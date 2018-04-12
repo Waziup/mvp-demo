@@ -14,5 +14,7 @@ public interface DomainRemoteContract {
 
     Observable<String> createDomain(Domain domain);
 
+    Observable<String> deleteDomain(Domain domain);
+
     Observable<List<Domain>> getDomains();
 }

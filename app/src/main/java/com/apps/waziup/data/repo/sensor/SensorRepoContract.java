@@ -8,7 +8,7 @@ import io.reactivex.Observable;
 
 public interface SensorRepoContract {
 
-    Observable<String>
+//    Observable<String>
 
     int size();
 }

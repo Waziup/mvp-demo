@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">WaZiUp</string>
+    <string name="app_name">WAZIUP</string>
 
     <!--COMMON-->
     <string name="contentDescription">Image Desc?</string>
@@ -89,6 +89,7 @@
     <string name="product_name">project name</string>
     <string name="dialog_cancel">cancel</string>
     <string name="dialog_ok">ok</string>
+    <string name="dialog_delete_project">Are you sure you want to delete this project?</string>
 
 
 </resources>
