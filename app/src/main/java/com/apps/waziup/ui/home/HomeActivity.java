@@ -65,7 +65,7 @@ public class HomeActivity extends BaseActivity implements NavigationView.OnNavig
         setUpDrawer();
     }
 
-    // Initialise ActivityM Data
+    // Initialise Activity Data
     private void initialise() {
         toolbar = findViewById(R.id.toolbar);
         drawerLayout = findViewById(R.id.drawer_layout);

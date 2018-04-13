@@ -1,4 +1,4 @@
-package com.apps.waziup.ui.detail.asset;
+package com.apps.waziup.ui.detail.entity;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -8,10 +8,8 @@ import android.view.ViewGroup;
 import com.apps.waziup.base.view.BaseFragment;
 import com.apps.waziup.ui.create.CreateProjectContract;
 import com.apps.waziup.waziup.R;
-import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.MapView;
 
-public class TabAssetsFragment extends BaseFragment implements TabAssetsContract.View {
+public class TabEntityFragment extends BaseFragment implements TabEntityContract.View {
 
 //    MapView mMapView;
 //    private GoogleMap googleMap;
