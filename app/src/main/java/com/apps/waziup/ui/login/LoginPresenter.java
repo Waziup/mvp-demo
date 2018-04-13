@@ -1,7 +1,5 @@
 package com.apps.waziup.ui.login;
 
-import android.os.Handler;
-
 import com.apps.waziup.data.model.AuthBody;
 import com.apps.waziup.data.repo.user.UserRepoContract;
 import com.apps.waziup.util.ActivityState;

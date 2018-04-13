@@ -17,11 +17,14 @@ public class AuthenticationInterceptor implements Interceptor {
     @Override
     public Response intercept(Chain chain) throws IOException {
 
-        Request request = chain.request()
-                .newBuilder()
-                .addHeader("Authorization", "Bearer " + authToken)
-                .build();
+        Request original = chain.request();
+        Request.Builder requestBuilder = original.newBuilder()
+                .header("Accept", "application/json")
+                .header("Content-type", "application/json")
+                .header("Authorization","Bearer " + authToken)
+                .method(original.method(), original.body());
 
+        Request request = requestBuilder.build();
         return chain.proceed(request);
     }
 }

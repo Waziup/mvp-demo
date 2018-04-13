@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.text.TextUtils;
 
 import com.apps.waziup.data.repo.domain.remote.DomainService;
+import com.apps.waziup.data.repo.sensor.remote.SensorService;
 import com.apps.waziup.data.repo.user.remote.UserService;
 import com.apps.waziup.util.Constants;
 import com.apps.waziup.util.Utils;
@@ -32,6 +33,7 @@ public class BaseRemote {
 
     public static UserService userService;
     public static DomainService domainService;
+    public static SensorService sensorService;
     private Cache cache;
     OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
 
@@ -49,7 +51,7 @@ public class BaseRemote {
 
         final Retrofit retrofit;
 
-        //whenever there is an authorization code from the user
+        //whenever there is token
         if (TextUtils.isEmpty(authToken)) {
 
             retrofit = new Retrofit.Builder()
@@ -58,7 +60,7 @@ public class BaseRemote {
                     .baseUrl(Constants.BASE_URL)
                     .client(createClient())
                     .build();
-        } else {//when there seems to be no authorization code from the user
+        } else {//when there is no token we still allow the user to do some basic request
 
             retrofit = new Retrofit.Builder()
                     .addConverterFactory(GsonConverterFactory.create(gson))
@@ -70,7 +72,7 @@ public class BaseRemote {
 
         switch (identifier) {
             case "sensor":
-//                categoryService = retrofit.create(SensorService.class);
+                sensorService = retrofit.create(SensorService.class);
                 break;
             case "notification":
 //                notificationService = retrofit.create(NotificationService.class);
@@ -91,13 +93,11 @@ public class BaseRemote {
      * @return OkHttpClient.Builder for the retrofit to use it as a client
      */
     private OkHttpClient createClient(String auth) {
+        //for authenticating the request with previous token from the server
+        httpClient.addInterceptor(new AuthenticationInterceptor(auth));
         HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
         logging.setLevel(HttpLoggingInterceptor.Level.BODY);
         httpClient.addInterceptor(logging);
-        AuthenticationInterceptor interceptor = new AuthenticationInterceptor(auth);
-        if (!httpClient.interceptors().contains(interceptor)) {
-            httpClient.addInterceptor(interceptor);
-        }
         return httpClient.
                 cache(cache)
                 .readTimeout(30, TimeUnit.SECONDS)

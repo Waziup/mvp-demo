@@ -168,6 +168,7 @@ public class ProjectActivity extends BaseActivity implements LifecycleRegistryOw
     public void onConnectionError() {
         Utils.toast(this, "connection error");
     }
+
     @Override
     public void showDomains(List<Domain> domains) {
         recyclerViewAdapter.updateProjectList(domains);

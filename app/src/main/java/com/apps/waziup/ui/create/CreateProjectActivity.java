@@ -13,11 +13,17 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.apps.waziup.base.view.BaseActivity;
+import com.apps.waziup.data.BoxStoreProvider;
+import com.apps.waziup.data.model.Domain;
+import com.apps.waziup.data.repo.sensor.SensorRepo;
+import com.apps.waziup.data.repo.sensor.local.SensorLocal;
+import com.apps.waziup.data.repo.sensor.remote.SensorRemote;
 import com.apps.waziup.ui.project.ProjectActivity;
 import com.apps.waziup.util.Utils;
 import com.apps.waziup.waziup.R;
@@ -39,12 +45,13 @@ import com.google.android.gms.tasks.Task;
 import com.pnikosis.materialishprogress.ProgressWheel;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
-import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import io.objectbox.Box;
 import timber.log.Timber;
 
 public class CreateProjectActivity extends BaseActivity implements OnMapReadyCallback, CreateProjectContract.View {
@@ -73,12 +80,13 @@ public class CreateProjectActivity extends BaseActivity implements OnMapReadyCal
     public String[] mLikelyPlaceAttributions;
     public LatLng[] mLikelyPlaceLatLngs;
 
-    @BindView(R.id.create_location)
     EditText btnLocation;
-    @BindView(R.id.create_project_progressWheel)
     ProgressWheel progressWheel;
-
+    Spinner spinner;
+    List<Domain> domains;
+    private Box<Domain> box;
     Geocoder geocoder;
+    String[] items;
 
     private FusedLocationProviderClient mFusedLocationProviderClient;
     CreateProjectContract.Presenter presenter;
@@ -88,15 +96,40 @@ public class CreateProjectActivity extends BaseActivity implements OnMapReadyCal
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_project);
         ButterKnife.bind(this);
+        box = BoxStoreProvider.getStore().boxFor(Domain.class);
 
-        presenter = new CreateProjectPresenter();
+        domains = new ArrayList<>();
 
+        presenter = new CreateProjectPresenter(new SensorRepo(
+                new SensorLocal(BoxStoreProvider.getStore()),
+                new SensorRemote(CreateProjectActivity.this)
+        ));
+
+        progressWheel = findViewById(R.id.create_project_progressWheel);
+        btnLocation = findViewById(R.id.create_location);
+        spinner = findViewById(R.id.create_spinner);
         geocoder = new Geocoder(this, Locale.getDefault());
 
-//        if (savedInstanceState != null) {
-//            mCurrentLocation = savedInstanceState.getParcelable(KEY_LOCATION);
-//            mCameraPosition = savedInstanceState.getParcelable(KEY_CAMERA_POSITION);
-//        }
+        domains = box.getAll();
+
+        if (domains.size() == 0) {
+            items = new String[]{"no domain found"};
+        } else {
+            items = new String[domains.size()];
+            for (int i = 0; i < domains.size(); i++) {
+                items[i] = domains.get(i).id;
+            }
+        }
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items);
+
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setPrompt("select a domain");
+        spinner.setAdapter(new NothingSelectedSpinnerAdapter(
+                adapter,
+                this,
+                R.layout.contact_spinner_row_nothing_selected));
+
         //hides the keyboard till the User selects to an edit text
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
 
@@ -339,7 +372,7 @@ public class CreateProjectActivity extends BaseActivity implements OnMapReadyCal
 //                                new LatLng(mLastKnownLocation.getLatitude(),
 //                                        mLastKnownLocation.getLongitude()), DEFAULT_ZOOM));
                         //CameraUpdateFactory.zoomIn()
-                        if (mLastKnownLocation!=null){
+                        if (mLastKnownLocation != null) {
                             googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(
                                             mLastKnownLocation.getLatitude(),
                                             mLastKnownLocation.getLongitude()),
@@ -364,10 +397,10 @@ public class CreateProjectActivity extends BaseActivity implements OnMapReadyCal
     /**
      * for adding the marker on a specific lat and long with a title and snippet description
      *
-     * @param map (required)
-     * @param lat (required)
-     * @param lon (required)
-     * @param title (required)
+     * @param map     (required)
+     * @param lat     (required)
+     * @param lon     (required)
+     * @param title   (required)
      * @param snippet (required)
      */
     private void addMarker(GoogleMap map, double lat, double lon, int title, int snippet) {
@@ -421,7 +454,7 @@ public class CreateProjectActivity extends BaseActivity implements OnMapReadyCal
      * is destroyed or get back to a background for next time retrieving and displaying from
      * where the User has left of the map
      *
-     * @param outState  (required)
+     * @param outState (required)
      */
     @Override
     protected void onSaveInstanceState(Bundle outState) {
