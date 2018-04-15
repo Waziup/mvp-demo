@@ -8,6 +8,8 @@ import com.apps.waziup.data.repo.BaseRemote;
 import java.util.List;
 
 import io.reactivex.Observable;
+import io.reactivex.schedulers.Schedulers;
+import retrofit2.Call;
 
 /**
  * Created by KidusMT on 4/4/2018.
@@ -32,5 +34,13 @@ public class DomainRemote extends BaseRemote implements DomainRemoteContract {
     @Override
     public Observable<List<Domain>> getDomains() {
         return BaseRemote.domainService.getDomains();
+    }
+
+    @Override
+    public int size() {
+        return BaseRemote.domainService.getDomains()
+                .subscribeOn(Schedulers.computation())
+                .blockingSingle()
+                .size();
     }
 }

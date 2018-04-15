@@ -1,6 +1,7 @@
 package com.apps.waziup.data.repo;
 
 import android.content.Context;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.text.TextUtils;
 
@@ -94,7 +95,14 @@ public class BaseRemote {
      */
     private OkHttpClient createClient(String auth) {
         //for authenticating the request with previous token from the server
-        httpClient.addInterceptor(new AuthenticationInterceptor(auth));
+
+        if (!TextUtils.isEmpty(auth)){
+            AuthenticationInterceptor interceptor = new AuthenticationInterceptor(auth);
+            if (!httpClient.interceptors().contains(interceptor)){
+                httpClient.addInterceptor(interceptor);
+            }
+        }
+
         HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
         logging.setLevel(HttpLoggingInterceptor.Level.BODY);
         httpClient.addInterceptor(logging);

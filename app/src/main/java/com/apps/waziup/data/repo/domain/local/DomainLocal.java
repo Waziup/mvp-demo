@@ -23,6 +23,18 @@ public class DomainLocal implements DomainLocalContract {
 
     @Override
     public Observable<Boolean> saveDomain(List<Domain> domains) {
+        int newDomainSize = domains.size();
+        int localDomainSize = size();
+        if (newDomainSize > localDomainSize) {//there is a new domain to be stored in locally
+
+        } else if (localDomainSize > newDomainSize) {//there is a deleted domain store in local which needs to be deleted before saved
+            for (int i = 0; i < domains.size(); i++) {
+
+            }
+        } else {//means they are the same and nothing should happen
+
+        }
+
         for (int i = 0; i < domains.size(); i++) {
             Domain newDomain = domains.get(i);
             Domain found = box.query().equal(Domain_.id, newDomain.id).build().findFirst();
@@ -32,7 +44,6 @@ public class DomainLocal implements DomainLocalContract {
                 newDomain._id = found._id;
                 box.put(newDomain);
             }
-
         }
         return Observable.just(true);
     }
@@ -52,6 +63,12 @@ public class DomainLocal implements DomainLocalContract {
             box.remove(found._id);
             return Observable.just(true);
         }
+    }
+
+    @Override
+    public Observable<Boolean> deleteAllDomains() {
+        box.removeAll();
+        return Observable.just(true);
     }
 
     @Override

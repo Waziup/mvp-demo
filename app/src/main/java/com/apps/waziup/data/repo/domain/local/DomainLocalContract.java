@@ -18,6 +18,8 @@ public interface DomainLocalContract {
 
     Observable<Boolean> deleteDomain(String domain);
 
+    Observable<Boolean> deleteAllDomains();
+
     Observable<Boolean> updateDomain(Domain domain);
 
     int size();

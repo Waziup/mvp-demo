@@ -19,33 +19,29 @@
         android:supportsRtl="true"
         android:theme="@style/app_theme">
         <activity android:name="com.apps.waziup.ui.splash.SplashActivity">
-
-        </activity>
-        <activity android:name="com.apps.waziup.ui.detail.ProjectDetailActivity">
-
-        </activity>
-        <activity
-            android:name="com.apps.waziup.ui.create.CreateProjectActivity"
-            android:theme="@style/app_theme.no_toolbar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name="com.apps.waziup.ui.home.HomeActivity"
+        <activity android:name="com.apps.waziup.ui.detail.ProjectDetailActivity">
+
+        </activity>
+        <activity android:name="com.apps.waziup.ui.create.CreateProjectActivity"
+            android:theme="@style/app_theme.no_toolbar">
+
+        </activity>
+        <activity android:name="com.apps.waziup.ui.home.HomeActivity"
             android:theme="@style/app_theme">
 
         </activity>
-        <activity
-            android:name="com.apps.waziup.ui.registration.RegistrationActivity"
+        <activity android:name="com.apps.waziup.ui.registration.RegistrationActivity"
             android:screenOrientation="portrait"
             android:theme="@style/app_theme.no_toolbar">
 
         </activity>
-        <activity
-            android:name="com.apps.waziup.ui.login.LoginActivity"
+        <activity android:name="com.apps.waziup.ui.login.LoginActivity"
             android:theme="@style/app_theme.no_toolbar">
 
         </activity>
@@ -54,11 +50,9 @@
 
         </activity>
 
-        <meta-data
-            android:name="com.google.android.gms.version"
+        <meta-data android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
-        <meta-data
-            android:name="com.google.android.geo.API_KEY"
+        <meta-data android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
     </application>

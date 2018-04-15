@@ -29,6 +29,11 @@ public class DomainRepo implements DomainRepoContract {
             return remote.getDomains()
                     .flatMap(domains -> local.saveDomain(domains))
                     .flatMap(aBoolean -> local.getDomains());
+        } else if (local.size() > remote.size()) {
+            local.deleteAllDomains();//first delete all the local data
+            return remote.getDomains()
+                    .flatMap(domains -> local.saveDomain(domains))//save the new entries
+                    .flatMap(aBoolean -> local.getDomains());//load them out to from the locally saved data
         } else {
             return local.getDomains();
         }

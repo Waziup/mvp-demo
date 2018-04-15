@@ -19,11 +19,17 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.apps.waziup.base.view.BaseActivity;
+import com.apps.waziup.data.BoxStoreProvider;
+import com.apps.waziup.data.model.Domain;
+import com.apps.waziup.data.repo.domain.DomainRepo;
+import com.apps.waziup.data.repo.domain.DomainRepoContract;
+import com.apps.waziup.data.repo.domain.local.DomainLocal;
+import com.apps.waziup.data.repo.domain.remote.DomainRemote;
 import com.apps.waziup.ui.login.LoginActivity;
 import com.apps.waziup.ui.project.ProjectActivity;
-import com.apps.waziup.util.Utils;
 import com.apps.waziup.waziup.R;
 
 import butterknife.BindView;
@@ -93,9 +99,34 @@ public class HomeActivity extends BaseActivity implements NavigationView.OnNavig
         Button cancel = dialogView.findViewById(R.id.btn_dialog_cancel);
         Button ok = dialogView.findViewById(R.id.btn_dialog_ok);
         cancel.setOnClickListener(v -> alertDialog.dismiss());
-        ok.setOnClickListener(v -> Utils.toast(HomeActivity.this, editText.getText().toString().trim()));
+        ok.setOnClickListener(v -> {
+            //TODO should be called from the presenter
+            //if validate DialogInput is not null
+            if (validateDialogInput(editText)) {
+                Domain domain = new Domain();
+                DomainRepoContract domainRepoContract = new DomainRepo(
+                        new DomainLocal(BoxStoreProvider.getStore()),
+                        new DomainRemote(this));
+                domainRepoContract.createDomain(domain);
+                domain.id = editText.getText().toString().trim();
+                alertDialog.dismiss();
+            } else {
+                //TODO should be corrected
+                Toast.makeText(this, "correct your input and try again", Toast.LENGTH_SHORT).show();
+                alertDialog.dismiss();
+            }
+        });
         alertDialog.show();
 
+    }
+
+    public boolean validateDialogInput(EditText editText) {
+        String edDomainName = editText.getText().toString().trim();
+        if (edDomainName.isEmpty()) {
+            return false;
+        } else {
+            return true;
+        }
     }
 
     private void setUpDrawer() {
