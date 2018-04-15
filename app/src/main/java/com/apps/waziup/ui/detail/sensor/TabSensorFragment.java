@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 import com.apps.waziup.base.view.BaseFragment;
 import com.apps.waziup.ui.create.CreateProjectContract;
 import com.apps.waziup.ui.detail.SensorMock;
-import com.apps.waziup.ui.detail.asset.TabAssetsContract;
+import com.apps.waziup.ui.detail.entity.TabEntityContract;
 import com.apps.waziup.waziup.R;
 
 import java.util.ArrayList;
@@ -20,7 +20,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
-public class TabSensorFragment extends BaseFragment implements TabAssetsContract.View{
+public class TabSensorFragment extends BaseFragment implements TabEntityContract.View{
 
     @BindView(R.id.recycler_view_sensor)
     RecyclerView recyclerView;

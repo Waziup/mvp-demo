@@ -13,5 +13,7 @@ public class Constants {
     public static final String VERIFIED = "VERIFIED";
     public static final String APP_NAME = "WAZIUP";
     public static final String ACTIVITY = "activity";
+    public static final String PROJECT = "project";
+    public static final String PROJECT_TYPE = "project_type";
     public static final String USER_TOKEN = "token";
 }

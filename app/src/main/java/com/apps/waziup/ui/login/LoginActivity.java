@@ -9,6 +9,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.apps.waziup.base.view.BaseActivity;
+import com.apps.waziup.data.BoxStoreProvider;
 import com.apps.waziup.data.model.AuthBody;
 import com.apps.waziup.data.repo.user.UserRepo;
 import com.apps.waziup.data.repo.user.local.UserLocal;
@@ -63,7 +64,7 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
         pref = getSharedPreferences(APP_NAME, MODE_PRIVATE);
 
         presenter = new LoginPresenter(new UserRepo(
-                new UserLocal(this),
+                new UserLocal(BoxStoreProvider.getStore()),
                 new UserRemote(this)
         ));
 
@@ -182,6 +183,7 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
     @Override
     protected void onResume() {
         super.onResume();
+        presenter.attachView(this);
         presenter.start();
     }
 

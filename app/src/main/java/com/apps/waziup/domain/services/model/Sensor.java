@@ -19,6 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+import io.objectbox.annotation.Convert;
 import io.swagger.annotations.ApiModelProperty;
 
 /**

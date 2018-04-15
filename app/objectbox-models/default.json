@@ -345,16 +345,127 @@
         }
       ],
       "relations": []
+    },
+    {
+      "id": "7:2654718257588829355",
+      "lastPropertyId": "3:7998245648611194933",
+      "name": "Domain",
+      "properties": [
+        {
+          "id": "1:5581312672484843432",
+          "indexId": "5:106426964081307653",
+          "name": "id"
+        },
+        {
+          "id": "2:5753597189707481597",
+          "name": "_id"
+        },
+        {
+          "id": "3:7998245648611194933",
+          "name": "type"
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "8:1202410647462147204",
+      "lastPropertyId": "3:7747183995211131146",
+      "name": "User",
+      "properties": [
+        {
+          "id": "1:9043388001315370611",
+          "name": "id"
+        },
+        {
+          "id": "2:6691465511360576310",
+          "name": "username"
+        },
+        {
+          "id": "3:7747183995211131146",
+          "name": "password"
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "9:3730809821992418335",
+      "lastPropertyId": "3:7369531369357166710",
+      "name": "Location",
+      "properties": [
+        {
+          "id": "1:8931948340066078238",
+          "name": "_id"
+        },
+        {
+          "id": "2:3869676924065810464",
+          "name": "latitude"
+        },
+        {
+          "id": "3:7369531369357166710",
+          "name": "longitude"
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "10:4938561472186138345",
+      "lastPropertyId": "10:2464840428131802666",
+      "name": "Sensor",
+      "properties": [
+        {
+          "id": "1:1359299309551630877",
+          "name": "_id"
+        },
+        {
+          "id": "2:729636930271213554",
+          "name": "id"
+        },
+        {
+          "id": "3:6136349387137798635",
+          "name": "gatewayId"
+        },
+        {
+          "id": "4:1987970777319703226",
+          "name": "name"
+        },
+        {
+          "id": "5:4067966144771954160",
+          "name": "owner"
+        },
+        {
+          "id": "6:5738886362592739026",
+          "name": "location"
+        },
+        {
+          "id": "7:6443790061433451576",
+          "name": "dateCreated"
+        },
+        {
+          "id": "8:995674052020002484",
+          "name": "dateModified"
+        },
+        {
+          "id": "9:8215683786870973347",
+          "name": "domain"
+        },
+        {
+          "id": "10:2464840428131802666",
+          "name": "measurements"
+        }
+      ],
+      "relations": []
     }
   ],
-  "lastEntityId": "6:5130821455097380434",
-  "lastIndexId": "3:5628804410273844633",
+  "lastEntityId": "10:4938561472186138345",
+  "lastIndexId": "5:106426964081307653",
   "lastRelationId": "0:0",
   "lastSequenceId": "0:0",
   "modelVersion": 4,
   "modelVersionParserMinimum": 4,
   "retiredEntityUids": [],
-  "retiredIndexUids": [],
+  "retiredIndexUids": [
+    2468852456273191659
+  ],
   "retiredPropertyUids": [],
   "retiredRelationUids": [],
   "version": 1

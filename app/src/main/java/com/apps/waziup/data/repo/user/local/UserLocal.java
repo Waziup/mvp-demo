@@ -1,13 +1,12 @@
 package com.apps.waziup.data.repo.user.local;
 
-import android.content.Context;
-
 import com.apps.waziup.data.model.User;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import io.objectbox.Box;
+import io.objectbox.BoxStore;
 import io.reactivex.Observable;
 
 /**
@@ -19,8 +18,8 @@ public class UserLocal implements UserLocalContract {
     private Box<User> box;
     private List<User> users = new ArrayList<>();
 
-    public UserLocal(Context context){
-//        users =
+    public UserLocal(BoxStore store){
+        box = store.boxFor(User.class);
     }
 
     @Override

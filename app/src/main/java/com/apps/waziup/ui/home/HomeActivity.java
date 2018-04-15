@@ -1,6 +1,5 @@
 package com.apps.waziup.ui.home;
 
-import android.app.Dialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -9,20 +8,22 @@ import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.Window;
 import android.widget.Button;
-import android.widget.TextView;
-import android.widget.Toast;
+import android.widget.EditText;
+import android.widget.LinearLayout;
 
 import com.apps.waziup.base.view.BaseActivity;
-import com.apps.waziup.ui.create.CreateProjectActivity;
 import com.apps.waziup.ui.login.LoginActivity;
+import com.apps.waziup.ui.project.ProjectActivity;
+import com.apps.waziup.util.Utils;
 import com.apps.waziup.waziup.R;
 
 import butterknife.BindView;
@@ -32,8 +33,7 @@ import butterknife.OnClick;
 import static com.apps.waziup.util.Constants.APP_NAME;
 import static com.apps.waziup.util.Constants.USER_TOKEN;
 
-
-public class HomeActivity extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class HomeActivity extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener, HomeContract.View {
 
     private ActionBarDrawerToggle drawerToggle;
 
@@ -47,6 +47,7 @@ public class HomeActivity extends BaseActivity implements NavigationView.OnNavig
     NavigationView navigationView;
     public SharedPreferences pref;
     public SharedPreferences.Editor editor;
+    LinearLayout linearLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,12 +57,15 @@ public class HomeActivity extends BaseActivity implements NavigationView.OnNavig
 
         pref = getSharedPreferences(APP_NAME, MODE_PRIVATE);
 
+        linearLayout = findViewById(R.id.top_layout);
+        linearLayout.setOnClickListener(v ->
+                startActivity(new Intent(HomeActivity.this, ProjectActivity.class)));
         initialise();
         setUpToolbar();
         setUpDrawer();
     }
 
-    // Initialise ActivityM Data
+    // Initialise Activity Data
     private void initialise() {
         toolbar = findViewById(R.id.toolbar);
         drawerLayout = findViewById(R.id.drawer_layout);
@@ -78,30 +82,21 @@ public class HomeActivity extends BaseActivity implements NavigationView.OnNavig
 
     @OnClick(R.id.fab)
     void OnFabClicked() {
-        startActivity(new Intent(this, CreateProjectActivity.class));
+
+        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
+        LayoutInflater inflater = this.getLayoutInflater();
+        View dialogView = inflater.inflate(R.layout.dialog_fragment_create_project, null);
+        dialogBuilder.setView(dialogView);
+        AlertDialog alertDialog = dialogBuilder.create();
+
+        EditText editText = dialogView.findViewById(R.id.dialog_project_name);
+        Button cancel = dialogView.findViewById(R.id.btn_dialog_cancel);
+        Button ok = dialogView.findViewById(R.id.btn_dialog_ok);
+        cancel.setOnClickListener(v -> alertDialog.dismiss());
+        ok.setOnClickListener(v -> Utils.toast(HomeActivity.this, editText.getText().toString().trim()));
+        alertDialog.show();
+
     }
-
-    public void createDialog() {
-        // custom dialog
-        final Dialog dialog = new Dialog(this);
-        //Hides the title of dialog
-        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        dialog.setContentView(R.layout.dialog_fragment_create_project);
-
-        // set the custom dialog components - text, image and button
-        TextView btnClose = dialog.findViewById(R.id.tv_create_close);
-        btnClose.setOnClickListener(v1 -> dialog.dismiss());
-
-        Button btnCreate = dialog.findViewById(R.id.btn_create_project);
-        // if button is clicked, close the custom dialog
-        btnCreate.setOnClickListener(u -> {
-            Toast.makeText(this, "project created", Toast.LENGTH_SHORT).show();
-            dialog.dismiss();
-        });
-
-        dialog.show();
-    }
-
 
     private void setUpDrawer() {
         drawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.drawer_open, R.string.drawer_close) {
@@ -192,5 +187,70 @@ public class HomeActivity extends BaseActivity implements NavigationView.OnNavig
                 return true;
             }
         });
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
+
+    @Override
+    public void attachPresenter(HomeContract.Presenter presenter) {
+
+    }
+
+    @Override
+    public void close() {
+        finish();
+    }
+
+    @Override
+    public void showLoading(String message) {
+
+    }
+
+    @Override
+    public void showLoading() {
+
+    }
+
+    @Override
+    public void hideLoading() {
+
+    }
+
+    @Override
+    public void onUnknownError(String error) {
+
+    }
+
+    @Override
+    public void onTimeout() {
+
+    }
+
+    @Override
+    public void onNetworkError() {
+
+    }
+
+    @Override
+    public boolean isNetworkConnected() {
+        return false;
+    }
+
+    @Override
+    public void onConnectionError() {
+
     }
 }

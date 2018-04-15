@@ -1,6 +1,7 @@
 package com.apps.waziup.ui.create;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
@@ -12,11 +13,19 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.apps.waziup.base.view.BaseActivity;
+import com.apps.waziup.data.BoxStoreProvider;
+import com.apps.waziup.data.model.Domain;
+import com.apps.waziup.data.repo.sensor.SensorRepo;
+import com.apps.waziup.data.repo.sensor.local.SensorLocal;
+import com.apps.waziup.data.repo.sensor.remote.SensorRemote;
+import com.apps.waziup.ui.project.ProjectActivity;
+import com.apps.waziup.util.Utils;
 import com.apps.waziup.waziup.R;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
@@ -33,17 +42,19 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.Task;
+import com.pnikosis.materialishprogress.ProgressWheel;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
-import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import io.objectbox.Box;
 import timber.log.Timber;
 
-public class CreateProjectActivity extends BaseActivity implements OnMapReadyCallback, CreateProjectContract.View{
+public class CreateProjectActivity extends BaseActivity implements OnMapReadyCallback, CreateProjectContract.View {
 
     int DEFAULT_ZOOM = 8;
 
@@ -55,8 +66,6 @@ public class CreateProjectActivity extends BaseActivity implements OnMapReadyCal
 
     GeoDataClient mGeoDataClient;
     PlaceDetectionClient mPlaceDetectionClient;
-
-    public static final String TAG = "CREATE.PROJECT.ACTIVITY";
 
     public static final int PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 99;
 
@@ -71,25 +80,56 @@ public class CreateProjectActivity extends BaseActivity implements OnMapReadyCal
     public String[] mLikelyPlaceAttributions;
     public LatLng[] mLikelyPlaceLatLngs;
 
-    @BindView(R.id.create_location)
     EditText btnLocation;
-
+    ProgressWheel progressWheel;
+    Spinner spinner;
+    List<Domain> domains;
+    private Box<Domain> box;
     Geocoder geocoder;
+    String[] items;
 
     private FusedLocationProviderClient mFusedLocationProviderClient;
+    CreateProjectContract.Presenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_project);
         ButterKnife.bind(this);
+        box = BoxStoreProvider.getStore().boxFor(Domain.class);
 
+        domains = new ArrayList<>();
+
+        presenter = new CreateProjectPresenter(new SensorRepo(
+                new SensorLocal(BoxStoreProvider.getStore()),
+                new SensorRemote(CreateProjectActivity.this)
+        ));
+
+        progressWheel = findViewById(R.id.create_project_progressWheel);
+        btnLocation = findViewById(R.id.create_location);
+        spinner = findViewById(R.id.create_spinner);
         geocoder = new Geocoder(this, Locale.getDefault());
 
-//        if (savedInstanceState != null) {
-//            mCurrentLocation = savedInstanceState.getParcelable(KEY_LOCATION);
-//            mCameraPosition = savedInstanceState.getParcelable(KEY_CAMERA_POSITION);
-//        }
+        domains = box.getAll();
+
+        if (domains.size() == 0) {
+            items = new String[]{"no domain found"};
+        } else {
+            items = new String[domains.size()];
+            for (int i = 0; i < domains.size(); i++) {
+                items[i] = domains.get(i).id;
+            }
+        }
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items);
+
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setPrompt("select a domain");
+        spinner.setAdapter(new NothingSelectedSpinnerAdapter(
+                adapter,
+                this,
+                R.layout.contact_spinner_row_nothing_selected));
+
         //hides the keyboard till the User selects to an edit text
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
 
@@ -110,8 +150,7 @@ public class CreateProjectActivity extends BaseActivity implements OnMapReadyCal
 
     @OnClick(R.id.btn_create)
     void createProject() {
-        Toast.makeText(this, "Created Project", Toast.LENGTH_SHORT).show();
-        finish();
+        presenter.onCreateProjectClicked();
     }
 
     /**
@@ -119,7 +158,7 @@ public class CreateProjectActivity extends BaseActivity implements OnMapReadyCal
      */
     @OnClick(R.id.fab_zoom_out_location)
     void onZoomOut() {
-        googleMap.animateCamera(CameraUpdateFactory.zoomOut());
+        presenter.onZoomOutClicked();
     }
 
     /**
@@ -127,7 +166,7 @@ public class CreateProjectActivity extends BaseActivity implements OnMapReadyCal
      */
     @OnClick(R.id.fab_zoom_in_location)
     void onZoomIn() {
-        googleMap.animateCamera(CameraUpdateFactory.zoomIn());
+        presenter.onZoomInClicked();
     }
 
     /**
@@ -135,7 +174,7 @@ public class CreateProjectActivity extends BaseActivity implements OnMapReadyCal
      */
     @OnClick(R.id.fab_current_location)
     void currentLocation() {
-        getDeviceLocation();
+        presenter.onCurrentLocationClicked();
     }
 
     /**
@@ -228,8 +267,7 @@ public class CreateProjectActivity extends BaseActivity implements OnMapReadyCal
         if (mLocationPermissionGranted) {
             // Get the likely places - that is, the businesses and other points of interest that
             // are the best match for the device's current btnLocation.
-            @SuppressWarnings("MissingPermission")
-            final Task<PlaceLikelihoodBufferResponse> placeResult =
+            @SuppressWarnings("MissingPermission") final Task<PlaceLikelihoodBufferResponse> placeResult =
                     mPlaceDetectionClient.getCurrentPlace(null);
             placeResult.addOnCompleteListener
                     (task -> {
@@ -334,18 +372,19 @@ public class CreateProjectActivity extends BaseActivity implements OnMapReadyCal
 //                                new LatLng(mLastKnownLocation.getLatitude(),
 //                                        mLastKnownLocation.getLongitude()), DEFAULT_ZOOM));
                         //CameraUpdateFactory.zoomIn()
-                        googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(mLastKnownLocation.getLatitude(),
-                                mLastKnownLocation.getLongitude()),10), 2000, null);
+                        if (mLastKnownLocation != null) {
+                            googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(
+                                            mLastKnownLocation.getLatitude(),
+                                            mLastKnownLocation.getLongitude()),
+                                    10), 2000, null);
+                        }
 
                     } else {
                         Timber.d("Current btnLocation is null. Using defaults.");
                         Timber.e("Exception:" + task.getException());
-//                        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(mDefaultLocation,
-//                                DEFAULT_ZOOM));
                         //animate the camera slowly
                         googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(mLastKnownLocation.getLatitude(),
-                                mLastKnownLocation.getLongitude()),10), 2000, null);
-//                        googleMap.animateCamera(CameraUpdateFactory.zoomTo(10), 2000, null);
+                                mLastKnownLocation.getLongitude()), 10), 2000, null);
                         googleMap.getUiSettings().setMyLocationButtonEnabled(false);
                     }
                 });
@@ -358,11 +397,11 @@ public class CreateProjectActivity extends BaseActivity implements OnMapReadyCal
     /**
      * for adding the marker on a specific lat and long with a title and snippet description
      *
-     * @param map
-     * @param lat
-     * @param lon
-     * @param title
-     * @param snippet
+     * @param map     (required)
+     * @param lat     (required)
+     * @param lon     (required)
+     * @param title   (required)
+     * @param snippet (required)
      */
     private void addMarker(GoogleMap map, double lat, double lon, int title, int snippet) {
         map.addMarker(new MarkerOptions().position(new LatLng(lat, lon))
@@ -398,7 +437,7 @@ public class CreateProjectActivity extends BaseActivity implements OnMapReadyCal
             }
 
             // Position the map's camera at the btnLocation of the marker.
-            googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(markerLatLng,DEFAULT_ZOOM), 1000, null);
+            googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(markerLatLng, DEFAULT_ZOOM), 1000, null);
 //            googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(markerLatLng, DEFAULT_ZOOM));
         };
 
@@ -415,7 +454,7 @@ public class CreateProjectActivity extends BaseActivity implements OnMapReadyCal
      * is destroyed or get back to a background for next time retrieving and displaying from
      * where the User has left of the map
      *
-     * @param outState
+     * @param outState (required)
      */
     @Override
     protected void onSaveInstanceState(Bundle outState) {
@@ -424,6 +463,25 @@ public class CreateProjectActivity extends BaseActivity implements OnMapReadyCal
             outState.putParcelable(KEY_LOCATION, mLastKnownLocation);
             super.onSaveInstanceState(outState);
         }
+    }
+
+    @Override
+    protected void onPause() {
+        presenter.detachView();
+        super.onPause();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        presenter.attachView(this);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        presenter.attachView(this);
+        presenter.start();
     }
 
     @Override
@@ -438,32 +496,32 @@ public class CreateProjectActivity extends BaseActivity implements OnMapReadyCal
 
     @Override
     public void showLoading(String message) {
-
+        progressWheel.setVisibility(View.VISIBLE);
     }
 
     @Override
     public void showLoading() {
-
+        progressWheel.setVisibility(View.VISIBLE);
     }
 
     @Override
     public void hideLoading() {
-
+        progressWheel.setVisibility(View.VISIBLE);
     }
 
     @Override
     public void onUnknownError(String error) {
-
+        Utils.toast(this, error);
     }
 
     @Override
     public void onTimeout() {
-
+        Utils.toast(this, "connection timeout");
     }
 
     @Override
     public void onNetworkError() {
-
+        Utils.toast(this, "network error");
     }
 
     @Override
@@ -473,6 +531,27 @@ public class CreateProjectActivity extends BaseActivity implements OnMapReadyCal
 
     @Override
     public void onConnectionError() {
+        Utils.toast(this, "connection error");
+    }
 
+    @Override
+    public void openProjectList() {
+        startActivity(new Intent(CreateProjectActivity.this, ProjectActivity.class));
+        finish();
+    }
+
+    @Override
+    public void showCurrentLocation() {
+        getDeviceLocation();
+    }
+
+    @Override
+    public void showZoomIn() {
+        googleMap.animateCamera(CameraUpdateFactory.zoomIn());
+    }
+
+    @Override
+    public void showZoomOut() {
+        googleMap.animateCamera(CameraUpdateFactory.zoomOut());
     }
 }

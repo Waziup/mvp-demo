@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.WindowManager;
 
+import com.apps.waziup.data.BoxStoreProvider;
 import com.apps.waziup.data.repo.user.UserRepo;
 import com.apps.waziup.data.repo.user.local.UserLocal;
 import com.apps.waziup.data.repo.user.remote.UserRemote;
@@ -33,7 +34,7 @@ public class RegistrationActivity extends AppCompatActivity implements Registrat
         ButterKnife.bind(this);
 
         presenter = new RegistrationPresenter(new UserRepo(
-                new UserLocal(this),
+                new UserLocal(BoxStoreProvider.getStore()),
                 new UserRemote(this)
         ));
 

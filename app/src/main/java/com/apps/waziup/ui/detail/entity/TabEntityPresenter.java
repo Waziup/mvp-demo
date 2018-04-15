@@ -1,4 +1,4 @@
-package com.apps.waziup.ui.detail.activity;
+package com.apps.waziup.ui.detail.entity;
 
 import com.apps.waziup.ui.create.CreateProjectContract;
 
@@ -6,7 +6,7 @@ import com.apps.waziup.ui.create.CreateProjectContract;
  * Created by KidusMT on 4/1/2018.
  */
 
-public class TabActivityPresenter implements TabActivityContract.Presenter {
+public class TabEntityPresenter implements TabEntityContract.Presenter {
     @Override
     public void start() {
 

@@ -5,87 +5,49 @@ package com.apps.waziup.data.model;
  */
 
 import java.util.List;
+
+import com.apps.waziup.data.converter.LocationConverter;
+import com.apps.waziup.data.converter.MeasurementListConverter;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import io.objectbox.annotation.*;
+import io.objectbox.annotation.Entity;
+
+@Entity
 public class Sensor {
+
+    @Id
+    public long _id;
 
     @SerializedName("id")
     @Expose
-    private String id;
+    public String id;
     @SerializedName("gateway_id")
     @Expose
-    private String gatewayId;
+    public String gatewayId;
     @SerializedName("name")
     @Expose
-    private String name;
+    public String name;
     @SerializedName("owner")
     @Expose
-    private String owner;
-    @SerializedName("measurements")
-    @Expose
-    private List<Measurement> measurements = null;
+    public String owner;
     @SerializedName("location")
     @Expose
-    private Location location;
+    @Convert(converter = LocationConverter.class, dbType = String.class)
+    public Location location;
+    @SerializedName("dateCreated")
+    @Expose
+    public String dateCreated;
+    @SerializedName("dateModified")
+    @Expose
+    public String dateModified;
     @SerializedName("domain")
     @Expose
-    private String domain;
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getGatewayId() {
-        return gatewayId;
-    }
-
-    public void setGatewayId(String gatewayId) {
-        this.gatewayId = gatewayId;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getOwner() {
-        return owner;
-    }
-
-    public void setOwner(String owner) {
-        this.owner = owner;
-    }
-
-    public List<Measurement> getMeasurements() {
-        return measurements;
-    }
-
-    public void setMeasurements(List<Measurement> measurements) {
-        this.measurements = measurements;
-    }
-
-    public Location getLocation() {
-        return location;
-    }
-
-    public void setLocation(Location location) {
-        this.location = location;
-    }
-
-    public String getDomain() {
-        return domain;
-    }
-
-    public void setDomain(String domain) {
-        this.domain = domain;
-    }
+    public String domain;
+    @SerializedName("measurements")
+    @Expose
+    @Convert(converter = MeasurementListConverter.class, dbType = String.class)
+    public List<Measurement> measurements = null;
 
 }

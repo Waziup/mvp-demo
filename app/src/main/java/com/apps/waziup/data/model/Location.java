@@ -7,30 +7,20 @@ package com.apps.waziup.data.model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import io.objectbox.annotation.*;
+import io.objectbox.annotation.Entity;
+
+@Entity
 public class Location {
+
+    @Id
+    public long _id;
 
     @SerializedName("latitude")
     @Expose
-    private Double latitude;
+    public Double latitude;
     @SerializedName("longitude")
     @Expose
-    private Double longitude;
-
-    public Double getLatitude() {
-        return latitude;
-    }
-
-    public void setLatitude(Double latitude) {
-        this.latitude = latitude;
-    }
-
-    public Double getLongitude() {
-        return longitude;
-    }
-
-    public void setLongitude(Double longitude) {
-        this.longitude = longitude;
-    }
-
+    public Double longitude;
 }
 

@@ -10,8 +10,7 @@ import android.support.v7.app.AppCompatDelegate;
 import android.support.v7.widget.Toolbar;
 
 import com.apps.waziup.base.view.BaseActivity;
-import com.apps.waziup.ui.detail.activity.TabActivityFragment;
-import com.apps.waziup.ui.detail.asset.TabAssetsFragment;
+import com.apps.waziup.ui.detail.entity.TabEntityFragment;
 import com.apps.waziup.ui.detail.sensor.TabSensorFragment;
 import com.apps.waziup.ui.detail.summary.TabSummaryFragment;
 import com.apps.waziup.waziup.R;
@@ -43,7 +42,8 @@ public class ProjectDetailActivity extends BaseActivity implements ProjectDetail
         ButterKnife.bind(this);
 
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        if (getSupportActionBar() != null)
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         setupViewPager(mViewPager);
         mTabLayout.setupWithViewPager(mViewPager);
@@ -67,8 +67,7 @@ public class ProjectDetailActivity extends BaseActivity implements ProjectDetail
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
         adapter.addFragment(new TabSummaryFragment(), "summary");
         adapter.addFragment(new TabSensorFragment(), "sensors");
-        adapter.addFragment(new TabActivityFragment(), "activities");
-        adapter.addFragment(new TabAssetsFragment(), "assets");
+        adapter.addFragment(new TabEntityFragment(), "entity");
 
         viewPager.setAdapter(adapter);
     }

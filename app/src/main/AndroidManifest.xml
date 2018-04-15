@@ -11,6 +11,7 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <application
+        android:name="com.apps.waziup.App"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -18,11 +19,7 @@
         android:supportsRtl="true"
         android:theme="@style/app_theme">
         <activity android:name="com.apps.waziup.ui.splash.SplashActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name="com.apps.waziup.ui.detail.ProjectDetailActivity">
 
@@ -30,7 +27,11 @@
         <activity
             android:name="com.apps.waziup.ui.create.CreateProjectActivity"
             android:theme="@style/app_theme.no_toolbar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name="com.apps.waziup.ui.home.HomeActivity"
@@ -46,6 +47,10 @@
         <activity
             android:name="com.apps.waziup.ui.login.LoginActivity"
             android:theme="@style/app_theme.no_toolbar">
+
+        </activity>
+        <activity android:name="com.apps.waziup.ui.project.ProjectActivity"
+            android:theme="@style/app_theme">
 
         </activity>
 

@@ -9,10 +9,16 @@ import com.apps.waziup.base.mvp.BaseView;
 
 public interface CreateProjectContract {
     interface View extends BaseView<Presenter> {
-
+        void openProjectList();
+        void showCurrentLocation();
+        void showZoomIn();
+        void showZoomOut();
     }
 
     interface Presenter extends BasePresenter<View> {
-
+        void onCreateProjectClicked();
+        void onZoomInClicked();
+        void onZoomOutClicked();
+        void onCurrentLocationClicked();
     }
 }
