@@ -5,7 +5,9 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.TabLayout;
 import android.support.v4.view.GravityCompat;
+import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
@@ -43,11 +45,20 @@ public class HomeActivity extends BaseActivity implements NavigationView.OnNavig
     @BindView(R.id.toolbar)
     Toolbar toolbar;
 
+    @BindView(R.id.tab_layout)
+    TabLayout tabLayout;
+
+    @BindView(R.id.pager)
+    ViewPager mViewPager;
+
+
     @BindView(R.id.navView)
     NavigationView navigationView;
     public SharedPreferences pref;
     public SharedPreferences.Editor editor;
     LinearLayout linearLayout;
+
+    private HomePagerAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,6 +89,18 @@ public class HomeActivity extends BaseActivity implements NavigationView.OnNavig
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setLogo(R.drawable.humberger);
+
+        adapter.setCount(2);
+        mViewPager.setAdapter(adapter);
+
+        mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+
+        tabLayout.addTab(tabLayout.newTab().setText("Home"));
+        tabLayout.addTab(tabLayout.newTab().setText("Projects"));
+        mViewPager.setOffscreenPageLimit(tabLayout.getTabCount());
+        tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
+
+
     }
 
     @OnClick(R.id.fab)
