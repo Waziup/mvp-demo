@@ -7,14 +7,6 @@
     android:orientation="vertical"
     tools:context="com.apps.waziup.ui.project.ProjectActivity">
 
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/projectToolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/primary"
-        app:subtitleTextColor="@color/white"
-        app:titleTextColor="@color/white" />
-
     <android.support.v4.widget.SwipeRefreshLayout
         android:id="@+id/project_refresh"
         android:layout_width="match_parent"

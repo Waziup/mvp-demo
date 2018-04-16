@@ -62,7 +62,6 @@ public class HomeActivity extends BaseActivity implements NavigationView.OnNavig
     NavigationView navigationView;
     public SharedPreferences pref;
     public SharedPreferences.Editor editor;
-    LinearLayout linearLayout;
 
     private HomePagerAdapter adapter;
 
@@ -74,9 +73,6 @@ public class HomeActivity extends BaseActivity implements NavigationView.OnNavig
 
         pref = getSharedPreferences(APP_NAME, MODE_PRIVATE);
 
-        linearLayout = findViewById(R.id.top_layout);
-        linearLayout.setOnClickListener(v ->
-                startActivity(new Intent(HomeActivity.this, ProjectActivity.class)));
         initialise();
         setUpToolbar();
         setUpDrawer();
@@ -96,6 +92,7 @@ public class HomeActivity extends BaseActivity implements NavigationView.OnNavig
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setLogo(R.drawable.humberger);
 
+        adapter = new HomePagerAdapter(getSupportFragmentManager());
         adapter.setCount(2);
         mViewPager.setAdapter(adapter);
 
