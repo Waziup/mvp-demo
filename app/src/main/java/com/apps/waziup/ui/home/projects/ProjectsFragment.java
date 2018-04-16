@@ -1,7 +1,5 @@
 package com.apps.waziup.ui.home.projects;
 
-import android.arch.lifecycle.LifecycleRegistry;
-import android.arch.lifecycle.LifecycleRegistryOwner;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -10,7 +8,6 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,9 +20,6 @@ import com.apps.waziup.data.repo.domain.local.DomainLocal;
 import com.apps.waziup.data.repo.domain.remote.DomainRemote;
 import com.apps.waziup.ui.create.CreateProjectActivity;
 import com.apps.waziup.ui.detail.ProjectDetailActivity;
-import com.apps.waziup.ui.project.*;
-import com.apps.waziup.ui.project.ProjectListAdapter;
-import com.apps.waziup.ui.project.ProjectPresenter;
 import com.apps.waziup.util.Utils;
 import com.apps.waziup.waziup.R;
 import com.pnikosis.materialishprogress.ProgressWheel;
@@ -45,7 +39,7 @@ import static com.apps.waziup.util.Constants.PROJECT_TYPE;
 /**
  * Created by yehuala on 4/16/18
  */
-public class ProjectsFragment extends BaseFragment implements LifecycleRegistryOwner, ProjectContract.View {
+public class ProjectsFragment extends BaseFragment implements ProjectContract.View {
 
     RecyclerView recyclerView;
     ProgressWheel progressWheel;
@@ -57,12 +51,6 @@ public class ProjectsFragment extends BaseFragment implements LifecycleRegistryO
     Unbinder unbinder ;
 
     private ProjectListAdapter recyclerViewAdapter;
-    private LifecycleRegistry registry = new LifecycleRegistry(this);
-
-    @Override
-    public LifecycleRegistry getLifecycle() {
-        return registry;
-    }
 
     public static ProjectsFragment newInstance() {
         Bundle args = new Bundle();
@@ -104,7 +92,7 @@ public class ProjectsFragment extends BaseFragment implements LifecycleRegistryO
 
         RecyclerView.LayoutManager recyclerViewLayoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(recyclerViewLayoutManager);
-        recyclerViewAdapter = new com.apps.waziup.ui.project.ProjectListAdapter(domains, presenter);
+        recyclerViewAdapter = new ProjectListAdapter(domains, presenter);
         recyclerView.setAdapter(recyclerViewAdapter);
     }
 
@@ -128,7 +116,7 @@ public class ProjectsFragment extends BaseFragment implements LifecycleRegistryO
     }
 
     @Override
-    public void attachPresenter(com.apps.waziup.ui.project.ProjectContract.Presenter presenter) {
+    public void attachPresenter(ProjectContract.Presenter presenter) {
 
     }
 

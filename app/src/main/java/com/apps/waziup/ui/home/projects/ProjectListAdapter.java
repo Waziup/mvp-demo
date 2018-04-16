@@ -6,7 +6,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.apps.waziup.data.model.Domain;
-import com.apps.waziup.ui.project.ProjectContract;
 import com.apps.waziup.waziup.R;
 
 import java.util.List;
@@ -16,7 +15,7 @@ import timber.log.Timber;
 public class ProjectListAdapter extends RecyclerView.Adapter<ProjectViewHolder> {
 
     private final List<Domain> projects;
-    private com.apps.waziup.ui.project.ProjectContract.Presenter presenter;
+    private ProjectContract.Presenter presenter;
 
     public ProjectListAdapter(List<Domain> projects, ProjectContract.Presenter presenter) {
         this.projects = projects;

@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 
+import com.apps.waziup.base.mvp.BasePresenter;
 import com.apps.waziup.util.Utils;
 
 
@@ -15,7 +16,7 @@ public class BaseFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        d("< -------------------- onCreate(Bundle) -------------------- >");
+        d("< -------------------- onCreate(Bundle) ------------ >");
     }
 
     @Override

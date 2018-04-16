@@ -1,16 +1,12 @@
 package com.apps.waziup.di;
 
 
-import android.support.v7.app.AppCompatActivity;
-
 import com.apps.waziup.di.scopes.ActivityScope;
 import com.apps.waziup.domain.project.LocalProjectRepository;
 import com.apps.waziup.domain.project.ProjectUseCase;
 import com.apps.waziup.domain.project.RemoteProjectRepository;
 import com.apps.waziup.domain.services.SyncProjectLifecycleObserver;
-import com.apps.waziup.ui.project.ProjectActivity;
 
-import dagger.Binds;
 import dagger.Module;
 import dagger.Provides;
 
@@ -38,9 +34,9 @@ public abstract class ProjectActivityModule {
         return new ProjectUseCase(localProjectRepository, remoteProjectRepository);
     }
 
-    @Binds
-    abstract AppCompatActivity activity(ProjectActivity activity);
-
+//    @Binds
+//    abstract AppCompatActivity activity(ProjectActivity activity);
+//
 
     //@Provides
     //SyncProjectUseCase provideSyncProjectUseCase(RemoteProjectRepository remoteProjectRepository) {

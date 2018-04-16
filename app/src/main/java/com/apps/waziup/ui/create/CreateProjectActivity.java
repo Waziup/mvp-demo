@@ -24,7 +24,7 @@ import com.apps.waziup.data.model.Domain;
 import com.apps.waziup.data.repo.sensor.SensorRepo;
 import com.apps.waziup.data.repo.sensor.local.SensorLocal;
 import com.apps.waziup.data.repo.sensor.remote.SensorRemote;
-import com.apps.waziup.ui.project.ProjectActivity;
+import com.apps.waziup.ui.home.HomeActivity;
 import com.apps.waziup.util.Utils;
 import com.apps.waziup.waziup.R;
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -536,7 +536,7 @@ public class CreateProjectActivity extends BaseActivity implements OnMapReadyCal
 
     @Override
     public void openProjectList() {
-        startActivity(new Intent(CreateProjectActivity.this, ProjectActivity.class));
+        startActivity(new Intent(CreateProjectActivity.this, HomeActivity.class));
         finish();
     }
 

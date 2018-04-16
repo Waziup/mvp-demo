@@ -2,7 +2,6 @@ package com.apps.waziup.ui.home.projects;
 
 import com.apps.waziup.data.model.Domain;
 import com.apps.waziup.data.repo.domain.DomainRepoContract;
-import com.apps.waziup.ui.project.ProjectContract;
 import com.apps.waziup.util.ActivityState;
 
 import org.json.JSONException;
@@ -22,9 +21,9 @@ import retrofit2.HttpException;
  * Created by KidusMT on 4/12/2018.
  */
 
-public class ProjectPresenter implements com.apps.waziup.ui.project.ProjectContract.Presenter {
+public class ProjectPresenter implements ProjectContract.Presenter {
 
-    private com.apps.waziup.ui.project.ProjectContract.View view;
+    private ProjectContract.View view;
     private DomainRepoContract repository;
     private ActivityState state;
 
@@ -40,7 +39,7 @@ public class ProjectPresenter implements com.apps.waziup.ui.project.ProjectContr
     }
 
     @Override
-    public void attachView(com.apps.waziup.ui.project.ProjectContract.View view) {
+    public void attachView(ProjectContract.View view) {
         this.view = view;
     }
 

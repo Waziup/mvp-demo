@@ -4,21 +4,19 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import com.apps.waziup.ui.home.Dashboard.DashBordFragment;
-import com.apps.waziup.ui.home.projects.ProjectsFragment;
-
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by yehuala on 4/16/18
+ * Created by KidusMT on 4/10/2018.
  */
-public class HomePagerAdapter extends FragmentPagerAdapter {
+
+public class HomeViewPager extends FragmentPagerAdapter {
 
     private final List<Fragment> mFragmentList = new ArrayList<>();
     private final List<String> mFragmentTitleList = new ArrayList<>();
 
-    public HomePagerAdapter(FragmentManager manager) {
+    public HomeViewPager(FragmentManager manager) {
         super(manager);
     }
 

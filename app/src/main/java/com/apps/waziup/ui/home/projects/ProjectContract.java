@@ -11,7 +11,8 @@ import java.util.List;
  */
 
 public interface ProjectContract {
-    interface View extends BaseView<com.apps.waziup.ui.project.ProjectContract.Presenter> {
+
+    interface View extends BaseView<Presenter> {
         void showDomains(List<Domain> domains);
         void showDomainDetail(Domain domain);
         void showDomainONMap(Domain domain);
@@ -19,7 +20,7 @@ public interface ProjectContract {
         void showDeleteDomain(Domain domain);
     }
 
-    interface Presenter extends BasePresenter<com.apps.waziup.ui.project.ProjectContract.View> {
+    interface Presenter extends BasePresenter<View> {
         void loadDomains();
         void onDomainMarkerClicked(Domain domain);
         void onDomainEditClicked(Domain domain);

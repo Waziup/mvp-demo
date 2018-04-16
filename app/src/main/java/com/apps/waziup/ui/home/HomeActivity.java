@@ -20,7 +20,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.apps.waziup.base.view.BaseActivity;
@@ -30,13 +29,13 @@ import com.apps.waziup.data.repo.domain.DomainRepo;
 import com.apps.waziup.data.repo.domain.DomainRepoContract;
 import com.apps.waziup.data.repo.domain.local.DomainLocal;
 import com.apps.waziup.data.repo.domain.remote.DomainRemote;
+import com.apps.waziup.ui.home.Dashboard.DashBordFragment;
+import com.apps.waziup.ui.home.projects.ProjectsFragment;
 import com.apps.waziup.ui.login.LoginActivity;
-import com.apps.waziup.ui.project.ProjectActivity;
 import com.apps.waziup.waziup.R;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 
 import static com.apps.waziup.util.Constants.APP_NAME;
 import static com.apps.waziup.util.Constants.USER_TOKEN;
@@ -89,21 +88,15 @@ public class HomeActivity extends BaseActivity implements NavigationView.OnNavig
     private void setUpToolbar() {
         toolbar.setTitle(getString(R.string.app_name));
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setLogo(R.drawable.humberger);
+        if (getSupportActionBar()!=null){
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
 
         adapter = new HomePagerAdapter(getSupportFragmentManager());
-        adapter.setCount(2);
+        adapter.addFragment(new DashBordFragment(), "Home");
+        adapter.addFragment(new ProjectsFragment(), "Project");
         mViewPager.setAdapter(adapter);
-
-        mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
-
-        tabLayout.addTab(tabLayout.newTab().setText("Home"));
-        tabLayout.addTab(tabLayout.newTab().setText("Projects"));
-        mViewPager.setOffscreenPageLimit(tabLayout.getTabCount());
-        tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
-
-
+        tabLayout.setupWithViewPager(mViewPager);
     }
 
     void OnFabClicked() {
