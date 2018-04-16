@@ -109,7 +109,6 @@ public class HomeActivity extends BaseActivity implements NavigationView.OnNavig
 
     }
 
-    @OnClick(R.id.fab)
     void OnFabClicked() {
 
         AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
