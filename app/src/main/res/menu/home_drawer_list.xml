@@ -6,20 +6,16 @@
         android:checkableBehavior="single" >
         <item
             android:id="@+id/home_list"
-            android:icon="@drawable/ic_redeem_black_48dp"
+            android:icon="@drawable/nav_home"
             android:title="@string/home_list"
             />
         <item
             android:id="@+id/field_list"
-            android:icon="@drawable/ic_redeem_black_48dp"
+            android:icon="@drawable/nav_field"
             android:title="@string/field_list" />
         <item android:id="@+id/weather_list"
-            android:icon="@drawable/ic_redeem_black_48dp"
+            android:icon="@drawable/nav_weather"
             android:title="@string/weather_list"/>
-        <item
-            android:id="@+id/activity_list"
-            android:icon="@drawable/ic_redeem_black_48dp"
-            android:title="@string/activity_list" />
     </group>
     <group
         android:id="@+id/group_two"
@@ -27,24 +23,24 @@
 
         <item
             android:id="@+id/notification_list"
-            android:icon="@drawable/ic_redeem_black_48dp"
+            android:icon="@drawable/nav_weather"
             android:title="@string/notification_list" />
         <item
             android:id="@+id/profile_list"
-            android:icon="@drawable/ic_redeem_black_48dp"
+            android:icon="@drawable/nav_profile"
             android:title="@string/profile_list" />
 
         <item
             android:id="@+id/setting_lsit"
-            android:icon="@drawable/ic_redeem_black_48dp"
+            android:icon="@drawable/nav_settings"
             android:title="@string/setting_list" />
         <item
             android:id="@+id/about_list"
-            android:icon="@drawable/ic_redeem_black_48dp"
+            android:icon="@drawable/nav_about"
             android:title="@string/about_list" />
         <item
             android:id="@+id/logout_list"
-            android:icon="@drawable/ic_redeem_black_48dp"
+            android:icon="@drawable/nav_logout"
             android:title="@string/logout_list" />
     </group>
 
