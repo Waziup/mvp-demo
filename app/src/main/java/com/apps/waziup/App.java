@@ -39,7 +39,7 @@ public class App extends MultiDexApplication implements HasActivityInjector {
 //                .build()
 //                .inject(this);
 
-        JobManagerFactory.getJobManager(this);
+//        JobManagerFactory.getJobManager(this);
     }
 
     @Override
