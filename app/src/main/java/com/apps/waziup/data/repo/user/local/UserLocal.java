@@ -1,5 +1,6 @@
 package com.apps.waziup.data.repo.user.local;
 
+import com.apps.waziup.data.model.AuthBody;
 import com.apps.waziup.data.model.User;
 
 import java.util.ArrayList;
@@ -15,11 +16,11 @@ import io.reactivex.Observable;
 
 public class UserLocal implements UserLocalContract {
 
-    private Box<User> box;
-    private List<User> users = new ArrayList<>();
+    private Box<AuthBody> box;
+    private List<AuthBody> users = new ArrayList<>();
 
     public UserLocal(BoxStore store){
-        box = store.boxFor(User.class);
+        box = store.boxFor(AuthBody.class);
     }
 
     @Override

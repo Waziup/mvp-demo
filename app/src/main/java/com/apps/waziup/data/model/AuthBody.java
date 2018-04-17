@@ -3,10 +3,18 @@ package com.apps.waziup.data.model;
 /**
  * Created by KidusMT on 4/3/2018.
  */
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import io.objectbox.annotation.Entity;
+import io.objectbox.annotation.Id;
+
+@Entity
 public class AuthBody {
+
+    @Id
+    public long id;
 
     @SerializedName("username")
     @Expose
