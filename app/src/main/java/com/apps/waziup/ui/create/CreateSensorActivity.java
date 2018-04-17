@@ -54,7 +54,7 @@ import butterknife.OnClick;
 import io.objectbox.Box;
 import timber.log.Timber;
 
-public class CreateProjectActivity extends BaseActivity implements OnMapReadyCallback, CreateProjectContract.View {
+public class CreateSensorActivity extends BaseActivity implements OnMapReadyCallback, CreateSensorContract.View {
 
     int DEFAULT_ZOOM = 8;
 
@@ -89,7 +89,7 @@ public class CreateProjectActivity extends BaseActivity implements OnMapReadyCal
     String[] items;
 
     private FusedLocationProviderClient mFusedLocationProviderClient;
-    CreateProjectContract.Presenter presenter;
+    CreateSensorContract.Presenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -100,9 +100,9 @@ public class CreateProjectActivity extends BaseActivity implements OnMapReadyCal
 
         domains = new ArrayList<>();
 
-        presenter = new CreateProjectPresenter(new SensorRepo(
+        presenter = new CreateSensorPresenter(new SensorRepo(
                 new SensorLocal(BoxStoreProvider.getStore()),
-                new SensorRemote(CreateProjectActivity.this)
+                new SensorRemote(CreateSensorActivity.this)
         ));
 
         progressWheel = findViewById(R.id.create_project_progressWheel);
@@ -485,7 +485,7 @@ public class CreateProjectActivity extends BaseActivity implements OnMapReadyCal
     }
 
     @Override
-    public void attachPresenter(CreateProjectContract.Presenter presenter) {
+    public void attachPresenter(CreateSensorContract.Presenter presenter) {
 
     }
 
@@ -536,7 +536,7 @@ public class CreateProjectActivity extends BaseActivity implements OnMapReadyCal
 
     @Override
     public void openProjectList() {
-        startActivity(new Intent(CreateProjectActivity.this, HomeActivity.class));
+        startActivity(new Intent(CreateSensorActivity.this, HomeActivity.class));
         finish();
     }
 

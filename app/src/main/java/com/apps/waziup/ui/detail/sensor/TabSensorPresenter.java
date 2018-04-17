@@ -1,6 +1,6 @@
 package com.apps.waziup.ui.detail.sensor;
 
-import com.apps.waziup.ui.create.CreateProjectContract;
+import com.apps.waziup.ui.create.CreateSensorContract;
 
 /**
  * Created by KidusMT on 4/1/2018.
@@ -13,7 +13,7 @@ public class TabSensorPresenter implements TabSensorContract.Presenter {
     }
 
     @Override
-    public void attachView(CreateProjectContract.View view) {
+    public void attachView(CreateSensorContract.View view) {
 
     }
 
@@ -23,7 +23,7 @@ public class TabSensorPresenter implements TabSensorContract.Presenter {
     }
 
     @Override
-    public CreateProjectContract.View getView() {
+    public CreateSensorContract.View getView() {
         return null;
     }
 }

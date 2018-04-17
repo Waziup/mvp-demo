@@ -6,7 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.apps.waziup.base.view.BaseFragment;
-import com.apps.waziup.ui.create.CreateProjectContract;
+import com.apps.waziup.ui.create.CreateSensorContract;
 import com.apps.waziup.waziup.R;
 
 public class TabEntityFragment extends BaseFragment implements TabEntityContract.View {
@@ -31,7 +31,7 @@ public class TabEntityFragment extends BaseFragment implements TabEntityContract
 
 
     @Override
-    public void attachPresenter(CreateProjectContract.Presenter presenter) {
+    public void attachPresenter(CreateSensorContract.Presenter presenter) {
 
     }
 

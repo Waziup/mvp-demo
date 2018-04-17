@@ -14,7 +14,6 @@ import io.reactivex.Observable;
 
 public class DomainRepo implements DomainRepoContract {
 
-
     private DomainLocalContract local;
     private DomainRemoteContract remote;
 

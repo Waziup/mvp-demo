@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.apps.waziup.base.view.BaseFragment;
-import com.apps.waziup.ui.create.CreateProjectContract;
+import com.apps.waziup.ui.create.CreateSensorContract;
 import com.apps.waziup.waziup.R;
 
 import static com.apps.waziup.util.Constants.PROJECT;
@@ -42,7 +42,7 @@ public class TabSummaryFragment extends BaseFragment implements TabSummaryContra
     }
 
     @Override
-    public void attachPresenter(CreateProjectContract.Presenter presenter) {
+    public void attachPresenter(CreateSensorContract.Presenter presenter) {
 
     }
 

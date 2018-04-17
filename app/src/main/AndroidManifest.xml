@@ -28,7 +28,7 @@
         <activity android:name="com.apps.waziup.ui.detail.ProjectDetailActivity">
 
         </activity>
-        <activity android:name="com.apps.waziup.ui.create.CreateProjectActivity"
+        <activity android:name="com.apps.waziup.ui.create.CreateSensorActivity"
             android:theme="@style/app_theme.no_toolbar">
 
         </activity>

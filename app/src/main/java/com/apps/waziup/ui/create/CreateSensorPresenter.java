@@ -7,12 +7,12 @@ import com.apps.waziup.util.ActivityState;
  * Created by KidusMT on 4/1/2018.
  */
 
-public class CreateProjectPresenter implements CreateProjectContract.Presenter {
+public class CreateSensorPresenter implements CreateSensorContract.Presenter {
 
-    CreateProjectContract.View view;
+    CreateSensorContract.View view;
     SensorRepoContract repository;
     ActivityState state;
-    public CreateProjectPresenter(SensorRepoContract repository){
+    public CreateSensorPresenter(SensorRepoContract repository){
         this.repository = repository;
         state = ActivityState.getInstance();
     }
@@ -24,7 +24,7 @@ public class CreateProjectPresenter implements CreateProjectContract.Presenter {
     }
 
     @Override
-    public void attachView(CreateProjectContract.View view) {
+    public void attachView(CreateSensorContract.View view) {
         this.view = view;
     }
 
@@ -34,7 +34,7 @@ public class CreateProjectPresenter implements CreateProjectContract.Presenter {
     }
 
     @Override
-    public CreateProjectContract.View getView() {
+    public CreateSensorContract.View getView() {
         return this.view;
     }
 

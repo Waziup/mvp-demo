@@ -7,7 +7,7 @@ import com.apps.waziup.base.mvp.BaseView;
  * Created by KidusMT on 4/1/2018.
  */
 
-public interface CreateProjectContract {
+public interface CreateSensorContract {
     interface View extends BaseView<Presenter> {
         void openProjectList();
         void showCurrentLocation();

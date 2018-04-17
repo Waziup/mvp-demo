@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:padding="10dp"
-    tools:context="com.apps.waziup.ui.create.CreateProjectActivity"
+    tools:context="com.apps.waziup.ui.create.CreateSensorActivity"
     tools:showIn="@layout/activity_create_project">
 
     <LinearLayout

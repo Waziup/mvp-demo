@@ -18,7 +18,7 @@ import com.apps.waziup.data.model.Domain;
 import com.apps.waziup.data.repo.domain.DomainRepo;
 import com.apps.waziup.data.repo.domain.local.DomainLocal;
 import com.apps.waziup.data.repo.domain.remote.DomainRemote;
-import com.apps.waziup.ui.create.CreateProjectActivity;
+import com.apps.waziup.ui.create.CreateSensorActivity;
 import com.apps.waziup.ui.detail.ProjectDetailActivity;
 import com.apps.waziup.util.Utils;
 import com.apps.waziup.waziup.R;
@@ -189,7 +189,7 @@ public class ProjectsFragment extends BaseFragment implements ProjectContract.Vi
 
     @Override
     public void showEditDomainActivity(Domain domain) {
-        startActivity(new Intent(getActivity(), CreateProjectActivity.class));
+        startActivity(new Intent(getActivity(), CreateSensorActivity.class));
     }
 
     @Override
