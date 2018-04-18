@@ -20,6 +20,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
+
 public class TabSensorFragment extends BaseFragment implements TabEntityContract.View{
 
     @BindView(R.id.recycler_view_sensor)
@@ -56,40 +57,23 @@ public class TabSensorFragment extends BaseFragment implements TabEntityContract
     private void prepareSensors() {
         int[] covers = new int[]{
                 R.drawable.sensor_1,
-                R.drawable.sensor_2,
-                R.drawable.sensor_3,
-                R.drawable.sensor_4,
-                R.drawable.sensor_5,
-                R.drawable.sensor_6};
+                R.drawable.decagon_sensor,
+                R.drawable.emb5_sensor,
+               };
 
-        SensorMock a = new SensorMock("PheNode",
-                "PheNode is a tool for researchers, farmers and horticulturists that can monitor environmental conditions and transmits the data to the cloud where growers can track their plants in real-time in order to facilitate data-driven decision support.",
-                "Temprature", covers[0], "40.482450, -75.178184");
+        SensorMock a = new SensorMock("ML3 ThetaProbe ",
+                "soil moisture measurements.",
+                "soil moisture", covers[0], "-40.482450, 40.178184"+getString(R.string.celsius));
         sensorList.add(a);
 
-        a = new SensorMock("PheNode",
-                "PheNode is a tool for researchers, farmers and horticulturists that can monitor environmental conditions and transmits the data to the cloud where growers can track their plants in real-time in order to facilitate data-driven decision support.",
-                "Temprature", covers[1], "40.482450, -75.178184");
+        a = new SensorMock("Decagon 5TE Sensor",
+                "Measure the water  content , electrical  conductivity and temperature  of the soil",
+                "Soil", covers[1], "-40.482450, 60.178184"+getString(R.string.celsius));
         sensorList.add(a);
 
-        a = new SensorMock("PheNode",
-                "PheNode is a tool for researchers, farmers and horticulturists that can monitor environmental conditions and transmits the data to the cloud where growers can track their plants in real-time in order to facilitate data-driven decision support.",
-                "Temprature", covers[2], "40.482450, -75.178184");
-        sensorList.add(a);
-
-        a = new SensorMock("PheNode",
-                "PheNode is a tool for researchers, farmers and horticulturists that can monitor environmental conditions and transmits the data to the cloud where growers can track their plants in real-time in order to facilitate data-driven decision support.",
-                "Temprature", covers[3], "40.482450, -75.178184");
-        sensorList.add(a);
-
-        a = new SensorMock("PheNode",
-                "PheNode is a tool for researchers, farmers and horticulturists that can monitor environmental conditions and transmits the data to the cloud where growers can track their plants in real-time in order to facilitate data-driven decision support.",
-                "Temprature", covers[4], "40.482450, -75.178184");
-        sensorList.add(a);
-
-        a = new SensorMock("PheNode",
-                "PheNode is a tool for researchers, farmers and horticulturists that can monitor environmental conditions and transmits the data to the cloud where growers can track their plants in real-time in order to facilitate data-driven decision support.",
-                "Temprature", covers[5], "40.482450, -75.178184");
+        a = new SensorMock("Em5B Analog Data Logger",
+                "add inexpensive peripheral sites to a study.Perfect for a season’s worth of basic soil moisture data",
+                "Soil", covers[2], "-45.184, 5.00 "+getString(R.string.celsius));
         sensorList.add(a);
 
         adapter.notifyDataSetChanged();

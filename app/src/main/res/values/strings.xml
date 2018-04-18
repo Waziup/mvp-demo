@@ -63,6 +63,10 @@
     <string name="create_insert_location">locate project</string>
     <string name="login_redirect">have an account? Login</string>
 
+    <!--temperature-->
+
+    <string name="celsius">&#8451;</string>
+    <string name="fahrenheit">&#8457;</string>
 
     <!--Font  icons-->
 
