@@ -10,7 +10,7 @@ import io.reactivex.Observable;
 
 public interface UserRepoContract {
 
-    Observable<String> createUser(AuthBody request);
+    Observable<String> logUserIn(AuthBody request);
 
     Observable<Boolean> saveToken(String token);
 

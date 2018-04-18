@@ -1,7 +1,6 @@
 package com.apps.waziup.data.repo;
 
 import android.content.Context;
-import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.text.TextUtils;
 
@@ -9,7 +8,6 @@ import com.apps.waziup.data.repo.domain.remote.DomainService;
 import com.apps.waziup.data.repo.sensor.remote.SensorService;
 import com.apps.waziup.data.repo.user.remote.UserService;
 import com.apps.waziup.util.Constants;
-import com.apps.waziup.util.Utils;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -52,16 +50,8 @@ public class BaseRemote {
 
         final Retrofit retrofit;
 
-        //whenever there is token
+        //when there is no token we still allow the user to do some basic request
         if (TextUtils.isEmpty(authToken)) {
-
-            retrofit = new Retrofit.Builder()
-                    .addConverterFactory(GsonConverterFactory.create(gson))
-                    .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                    .baseUrl(Constants.BASE_URL)
-                    .client(createClient())
-                    .build();
-        } else {//when there is no token we still allow the user to do some basic request
 
             retrofit = new Retrofit.Builder()
                     .addConverterFactory(GsonConverterFactory.create(gson))
@@ -69,6 +59,15 @@ public class BaseRemote {
                     .baseUrl(Constants.BASE_URL)
                     .client(createClient(authToken))
                     .build();
+
+        } else {   //whenever there is token
+            retrofit = new Retrofit.Builder()
+                    .addConverterFactory(GsonConverterFactory.create(gson))
+                    .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                    .baseUrl(Constants.BASE_URL)
+                    .client(createClient())
+                    .build();
+
         }
 
         switch (identifier) {
@@ -96,20 +95,21 @@ public class BaseRemote {
     private OkHttpClient createClient(String auth) {
         //for authenticating the request with previous token from the server
 
-        if (!TextUtils.isEmpty(auth)){
+        if (!TextUtils.isEmpty(auth)) {
             AuthenticationInterceptor interceptor = new AuthenticationInterceptor(auth);
-            if (!httpClient.interceptors().contains(interceptor)){
+            if (!httpClient.interceptors().contains(interceptor)) {
                 httpClient.addInterceptor(interceptor);
             }
         }
 
         HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
         logging.setLevel(HttpLoggingInterceptor.Level.BODY);
-        httpClient.addInterceptor(logging);
         return httpClient.
                 cache(cache)
-                .readTimeout(30, TimeUnit.SECONDS)
-                .writeTimeout(30, TimeUnit.SECONDS)
+                .connectTimeout(60, TimeUnit.SECONDS)
+                .readTimeout(60, TimeUnit.SECONDS)
+                .writeTimeout(10, TimeUnit.MINUTES)
+                .addInterceptor(logging)
                 .build();
     }
 
@@ -123,9 +123,10 @@ public class BaseRemote {
         interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
         return new OkHttpClient.Builder()
                 .cache(cache)
+                .connectTimeout(60, TimeUnit.SECONDS)
+                .readTimeout(60, TimeUnit.SECONDS)
+                .writeTimeout(10, TimeUnit.MINUTES)
                 .addInterceptor(interceptor)
-                .readTimeout(30, TimeUnit.SECONDS)
-                .writeTimeout(30, TimeUnit.SECONDS)
                 .build();
     }
 

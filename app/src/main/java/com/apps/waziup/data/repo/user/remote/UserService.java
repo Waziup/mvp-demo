@@ -15,8 +15,8 @@ public interface UserService {
 
     /**
      * for authenticating the user to the services: for letting the user in to the app
-     * @param authBody
-     * @return
+     * @param authBody (required)
+     * @return Observable<String>
      */
     @Headers("Content-Type: application/json")
     @POST("/api/v1/auth/token")

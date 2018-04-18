@@ -1,5 +1,6 @@
 package com.apps.waziup;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.support.multidex.MultiDex;
@@ -20,6 +21,7 @@ import timber.log.Timber;
 public class App extends MultiDexApplication implements HasActivityInjector {
     @Inject
     DispatchingAndroidInjector<Activity> dispatchingAndroidInjector;
+    @SuppressLint("StaticFieldLeak")
     static Context context;
     @Override
     public void onCreate() {

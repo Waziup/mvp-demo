@@ -155,11 +155,6 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
     }
 
     @Override
-    public void showValidationError() {
-        Utils.toast(this, "validation error");
-    }
-
-    @Override
     public void openRegistration() {
         Intent intent = new Intent(LoginActivity.this, RegistrationActivity.class);
         intent.putExtra(ACTIVITY, "login");

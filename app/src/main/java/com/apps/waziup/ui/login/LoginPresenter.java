@@ -53,10 +53,11 @@ public class LoginPresenter implements LoginContract.Presenter {
 
     @Override
     public void loginClicked(AuthBody authBody) {
-        view.showLoading();
-
+        if (view != null) {
+            view.showLoading();
+        }
         repository
-                .createUser(authBody)
+                .logUserIn(authBody)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new DisposableObserver<String>() {
@@ -71,7 +72,7 @@ public class LoginPresenter implements LoginContract.Presenter {
 
                     @Override
                     public void onError(Throwable e) {
-                        state.setError(e);
+                        e.printStackTrace();
 
                         if (view == null) return;
                         view.showLoading();
