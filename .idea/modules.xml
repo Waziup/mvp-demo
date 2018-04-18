@@ -3,8 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/KidusNEW.iml" filepath="$PROJECT_DIR$/KidusNEW.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Waziup.iml" filepath="$PROJECT_DIR$/Waziup.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://C:\Users\KidusMT\OneDrive\AndroidStudioProjects\Git\KidusNEW\mvp-demo.iml" filepath="C:\Users\KidusMT\OneDrive\AndroidStudioProjects\Git\KidusNEW\mvp-demo.iml" />
+      <module fileurl="file://C:/Users/KidusMT/OneDrive/AndroidStudioProjects/Git/KidusNEW/mvp-demo.iml" filepath="C:/Users/KidusMT/OneDrive/AndroidStudioProjects/Git/KidusNEW/mvp-demo.iml" />
     </modules>
   </component>
 </project>
