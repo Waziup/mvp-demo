@@ -67,9 +67,7 @@ public class ProjectsFragment extends BaseFragment implements ProjectContract.Vi
         View v = inflater.inflate(R.layout.activity_project, container, false);
 
         unbinder = ButterKnife.bind(this, v);
-
         domains = new ArrayList<>();
-
         presenter = new ProjectPresenter(new DomainRepo(
                 new DomainLocal(BoxStoreProvider.getStore()),
                 new DomainRemote(getActivity())

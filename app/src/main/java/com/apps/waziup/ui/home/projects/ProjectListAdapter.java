@@ -34,11 +34,14 @@ public class ProjectListAdapter extends RecyclerView.Adapter<ProjectViewHolder> 
     public void onBindViewHolder(ProjectViewHolder holder, int position) {
         final Domain project = projects.get(position);
         holder.update(projects);
-        Timber.d("Got new projects " + projects.size());
         holder.projectDelete.setOnClickListener(v -> presenter.onDomainDeleteClicked(project));
         holder.projectEdit.setOnClickListener(v -> presenter.onDomainEditClicked(project));
         holder.projectMarkerLocation.setOnClickListener(v -> presenter.onDomainMarkerClicked(project));
-        holder.itemView.setOnClickListener(v -> presenter.onDomainClicked(project));
+        holder.itemView.setOnClickListener(v -> {
+            presenter.onDomainClicked(project);
+            Timber.d("Project " + project.id);
+        });
+
     }
 
     @Override
@@ -51,17 +54,4 @@ public class ProjectListAdapter extends RecyclerView.Adapter<ProjectViewHolder> 
         this.projects.addAll(newProjects);
         notifyDataSetChanged();
     }
-
-    /**
-     * View holder for shopping list items of this adapter
-     */
-//    public static class ViewHolder extends RecyclerView.ViewHolder {
-//
-//        private TextView projectText;
-//
-//        public ViewHolder(final TextView projectText) {
-//            super(projectText);
-//            this.projectText = projectText;
-//        }
-//    }
 }

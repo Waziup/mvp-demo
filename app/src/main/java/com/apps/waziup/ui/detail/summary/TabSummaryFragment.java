@@ -28,8 +28,7 @@ public class TabSummaryFragment extends BaseFragment implements TabSummaryContra
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_summary, container, false);
         TextView title = v.findViewById(R.id.project_summary_title);
         title.setText((!projectTitle.equals("")) ? projectTitle : "Location");

@@ -23,7 +23,7 @@
 
         <item
             android:id="@+id/notification_list"
-            android:icon="@drawable/nav_weather"
+            android:icon="@drawable/nav_notification"
             android:title="@string/notification_list" />
         <item
             android:id="@+id/profile_list"

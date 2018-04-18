@@ -57,7 +57,7 @@ public class ProjectPresenter implements ProjectContract.Presenter {
     public void loadDomains() {
         view.showLoading();
         repository.getDomains()
-                .subscribeOn(Schedulers.io())
+                .subscribeOn(Schedulers.computation())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new DisposableObserver<List<Domain>>() {
                     @Override
@@ -85,18 +85,12 @@ public class ProjectPresenter implements ProjectContract.Presenter {
                             if (code >= 400 && code < 404) {
                                 view.onUnknownError("Unauthorized! Login again.");
                             } else {
-                                ResponseBody responseBody = ((HttpException) e).response().errorBody();
-                                try {//should display the correct error message form the http protocol
-                                    if (responseBody != null) {
-                                        JSONObject jObjError = new JSONObject(responseBody.toString());
-                                        view.onUnknownError(jObjError.toString());
-                                    }
-                                } catch (JSONException e1) {
-                                    e1.printStackTrace();
-                                }
+                                view.onUnknownError(e.getMessage());
+                                e.printStackTrace();
                             }
                         } else {
                             view.onUnknownError(e.getMessage());
+                            e.printStackTrace();
                         }
                         e.printStackTrace();
                     }
