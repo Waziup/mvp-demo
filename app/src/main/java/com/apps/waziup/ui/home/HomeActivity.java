@@ -33,10 +33,12 @@ import com.apps.waziup.ui.home.Dashboard.DashBordFragment;
 import com.apps.waziup.ui.home.projects.ProjectsFragment;
 import com.apps.waziup.ui.login.LoginActivity;
 import com.apps.waziup.waziup.R;
+import com.novoda.merlin.Merlin;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
+import static com.apps.waziup.App.context;
 import static com.apps.waziup.util.Constants.APP_NAME;
 import static com.apps.waziup.util.Constants.USER_TOKEN;
 
@@ -63,6 +65,7 @@ public class HomeActivity extends BaseActivity implements NavigationView.OnNavig
     public SharedPreferences.Editor editor;
 
     private HomePagerAdapter adapter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

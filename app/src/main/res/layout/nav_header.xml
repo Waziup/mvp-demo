@@ -15,7 +15,7 @@
         android:layout_height="120dp"
         android:layout_gravity="center"
         android:layout_marginTop="40dp"
-        android:src="@drawable/profile" />
+        android:src="@drawable/african_farmer" />
     <TextView
         android:id="@+id/profileName"
         android:layout_width="wrap_content"

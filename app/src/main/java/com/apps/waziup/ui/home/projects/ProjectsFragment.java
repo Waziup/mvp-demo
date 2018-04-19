@@ -22,6 +22,7 @@ import com.apps.waziup.ui.create.CreateSensorActivity;
 import com.apps.waziup.ui.detail.ProjectDetailActivity;
 import com.apps.waziup.util.Utils;
 import com.apps.waziup.waziup.R;
+import com.novoda.merlin.Merlin;
 import com.pnikosis.materialishprogress.ProgressWheel;
 
 import java.util.ArrayList;
@@ -32,6 +33,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
+import static com.apps.waziup.App.context;
 import static com.apps.waziup.util.Constants.ACTIVITY;
 import static com.apps.waziup.util.Constants.PROJECT;
 import static com.apps.waziup.util.Constants.PROJECT_TYPE;
@@ -48,9 +50,10 @@ public class ProjectsFragment extends BaseFragment implements ProjectContract.Vi
     SwipeRefreshLayout swipeRefreshLayout;
     List<Domain> domains;
 
-    Unbinder unbinder ;
+    Unbinder unbinder;
 
     private ProjectListAdapter recyclerViewAdapter;
+//    private Merlin merlin;
 
     public static ProjectsFragment newInstance() {
         Bundle args = new Bundle();
@@ -65,6 +68,8 @@ public class ProjectsFragment extends BaseFragment implements ProjectContract.Vi
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.activity_project, container, false);
+
+//        merlin = new Merlin.Builder().withConnectableCallbacks().build(context);
 
         unbinder = ButterKnife.bind(this, v);
         domains = new ArrayList<>();
@@ -104,13 +109,16 @@ public class ProjectsFragment extends BaseFragment implements ProjectContract.Vi
     public void onResume() {
         super.onResume();
         presenter.attachView(this);
+//        merlin.registerConnectable(() -> presenter.start());
         presenter.start();
+//        merlin.bind();
     }
 
     @Override
     public void onPause() {
         presenter.detachView();
         super.onPause();
+//        merlin.unbind();
     }
 
     @Override

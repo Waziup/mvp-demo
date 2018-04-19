@@ -22,8 +22,6 @@ import static android.net.ConnectivityManager.CONNECTIVITY_ACTION;
 
 public class App extends MultiDexApplication implements HasActivityInjector {
 
-    private static final String WIFI_STATE_CHANGE_ACTION = "android.net.wifi.WIFI_STATE_CHANGED";
-
     @Inject
     DispatchingAndroidInjector<Activity> dispatchingAndroidInjector;
     @SuppressLint("StaticFieldLeak")
@@ -33,7 +31,6 @@ public class App extends MultiDexApplication implements HasActivityInjector {
         super.onCreate();
 
         BoxStoreProvider.create(this);
-        registerForNetworkChangeEvents(this);
         context = getApplicationContext();
 
         if (BuildConfig.DEBUG) {
@@ -68,12 +65,6 @@ public class App extends MultiDexApplication implements HasActivityInjector {
 
     public static Context getContext(){
         return context;
-    }
-
-    public static void registerForNetworkChangeEvents(final Context context) {
-        NetworkStateChangeReceiver networkStateChangeReceiver = new NetworkStateChangeReceiver();
-        context.registerReceiver(networkStateChangeReceiver, new IntentFilter(CONNECTIVITY_ACTION));
-        context.registerReceiver(networkStateChangeReceiver, new IntentFilter(WIFI_STATE_CHANGE_ACTION));
     }
 
 }
