@@ -103,7 +103,7 @@ public class ProjectsFragment extends BaseFragment implements ProjectContract.Vi
     @Override
     public void onResume() {
         super.onResume();
-        presenter.attachView(this);//has to be called in onStart and onResume or will crash for some scenarios
+        presenter.attachView(this);
         presenter.start();
     }
 

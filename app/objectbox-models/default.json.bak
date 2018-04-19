@@ -368,26 +368,6 @@
       "relations": []
     },
     {
-      "id": "8:1202410647462147204",
-      "lastPropertyId": "3:7747183995211131146",
-      "name": "User",
-      "properties": [
-        {
-          "id": "1:9043388001315370611",
-          "name": "id"
-        },
-        {
-          "id": "2:6691465511360576310",
-          "name": "username"
-        },
-        {
-          "id": "3:7747183995211131146",
-          "name": "password"
-        }
-      ],
-      "relations": []
-    },
-    {
       "id": "9:3730809821992418335",
       "lastPropertyId": "3:7369531369357166710",
       "name": "Location",
@@ -454,19 +434,45 @@
         }
       ],
       "relations": []
+    },
+    {
+      "id": "11:8560590987963123675",
+      "lastPropertyId": "3:9191085656805903646",
+      "name": "AuthBody",
+      "properties": [
+        {
+          "id": "1:5874217496046645859",
+          "name": "id"
+        },
+        {
+          "id": "2:5162179418798834266",
+          "name": "username"
+        },
+        {
+          "id": "3:9191085656805903646",
+          "name": "password"
+        }
+      ],
+      "relations": []
     }
   ],
-  "lastEntityId": "10:4938561472186138345",
+  "lastEntityId": "11:8560590987963123675",
   "lastIndexId": "5:106426964081307653",
   "lastRelationId": "0:0",
   "lastSequenceId": "0:0",
   "modelVersion": 4,
   "modelVersionParserMinimum": 4,
-  "retiredEntityUids": [],
+  "retiredEntityUids": [
+    1202410647462147204
+  ],
   "retiredIndexUids": [
     2468852456273191659
   ],
-  "retiredPropertyUids": [],
+  "retiredPropertyUids": [
+    9043388001315370611,
+    6691465511360576310,
+    7747183995211131146
+  ],
   "retiredRelationUids": [],
   "version": 1
 }

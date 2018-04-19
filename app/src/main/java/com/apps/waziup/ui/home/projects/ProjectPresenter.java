@@ -63,11 +63,9 @@ public class ProjectPresenter implements ProjectContract.Presenter {
                     @Override
                     public void onNext(List<Domain> domains) {
                         state.setCompleted();
-
                         if (view == null) return;
                         view.hideLoading();
                         view.showDomains(domains);
-
                         state.reset();
                     }
 
@@ -81,13 +79,7 @@ public class ProjectPresenter implements ProjectContract.Presenter {
                         } else if (e instanceof IOException) {
                             view.onNetworkError();
                         } else if (e instanceof HttpException) {
-                            int code = ((HttpException) e).response().code();
-                            if (code >= 400 && code < 404) {
-                                view.onUnknownError("Unauthorized! Login again.");
-                            } else {
-                                view.onUnknownError(e.getMessage());
-                                e.printStackTrace();
-                            }
+                            view.onNetworkError();
                         } else {
                             view.onUnknownError(e.getMessage());
                             e.printStackTrace();

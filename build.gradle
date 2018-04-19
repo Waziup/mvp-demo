@@ -86,6 +86,7 @@ repositories {
 }
 dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+    implementation 'com.novoda:merlin:1.1.7'
 }
 compileKotlin {
     kotlinOptions {
