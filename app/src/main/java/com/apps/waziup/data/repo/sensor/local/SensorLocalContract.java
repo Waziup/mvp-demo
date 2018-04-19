@@ -16,6 +16,8 @@ public interface SensorLocalContract {
 
     Observable<Boolean> deleteSensor(String sensor_id);
 
+    Observable<Boolean> deleteAllSensors();
+
     Observable<Boolean> saveSensors(List<Sensor> sensors);
 
     Observable<Sensor> getSensor(String sensor_id);

@@ -39,6 +39,12 @@ public class SensorLocal implements SensorLocalContract{
     }
 
     @Override
+    public Observable<Boolean> deleteAllSensors() {
+        box.removeAll();
+        return Observable.just(true);
+    }
+
+    @Override
     public Observable<Boolean> saveSensors(List<Sensor> sensors) {
         for (int i = 0; i < sensors.size(); i++) {
             Sensor newSensor = sensors.get(i);

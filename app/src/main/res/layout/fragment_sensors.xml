@@ -24,6 +24,14 @@
                 android:scrollbars="vertical"
                 tools:listitem="@layout/card_sensor" />
 
+            <com.pnikosis.materialishprogress.ProgressWheel
+                android:id="@+id/tab_sensor_progress_wheel"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_centerInParent="true"
+                app:matProg_barColor="@color/primary"
+                app:matProg_progressIndeterminate="true" />
+
         </RelativeLayout>
 
     </android.support.v4.widget.NestedScrollView>

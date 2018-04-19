@@ -6,6 +6,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.apps.waziup.data.model.Domain;
+import com.apps.waziup.data.model.Sensor;
 import com.apps.waziup.ui.detail.SensorMock;
 import com.apps.waziup.waziup.R;
 import com.squareup.picasso.Picasso;
@@ -18,10 +20,10 @@ import java.util.List;
 
 public class TabSensorAdapter extends RecyclerView.Adapter<TabSensorViewHolder> {
 
-    private List<SensorMock> sensors;
+    private List<Sensor> sensors;
     public Context context;
 
-    public TabSensorAdapter(List<SensorMock> sensorList, Context context) {
+    public TabSensorAdapter(List<Sensor> sensorList, Context context) {
         this.sensors = sensorList;
         this.context = context;
     }
@@ -36,11 +38,17 @@ public class TabSensorAdapter extends RecyclerView.Adapter<TabSensorViewHolder> 
     @Override
     public void onBindViewHolder(TabSensorViewHolder holder, int position) {
 
-        SensorMock sensor = this.sensors.get(position);
-        holder.sensorReading.setText(String.valueOf(sensor.position));
+        Sensor sensor = this.sensors.get(position);
+        holder.sensorReading.setText(String.valueOf(sensor.measurements.size()));
         holder.sensorName.setText(sensor.name);
-        holder.sensorType.setText(sensor.type);
+        holder.sensorType.setText(sensor.dateCreated);
 //        Picasso.with(context).load(sensor.image).into(holder.sensorImg);
+    }
+
+    public void updateSensorList(List<Sensor> sensors) {
+        this.sensors.clear();
+        this.sensors.addAll(sensors);
+        notifyDataSetChanged();
     }
 
     @Override

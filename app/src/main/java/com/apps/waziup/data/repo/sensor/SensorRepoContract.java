@@ -1,5 +1,9 @@
 package com.apps.waziup.data.repo.sensor;
 
+import com.apps.waziup.data.model.Sensor;
+
+import java.util.List;
+
 import io.reactivex.Observable;
 
 /**
@@ -8,7 +12,7 @@ import io.reactivex.Observable;
 
 public interface SensorRepoContract {
 
-//    Observable<String>
+    Observable<List<Sensor>> getAllSensors(String domain, String q, String limit, String offset);
 
     int size();
 }

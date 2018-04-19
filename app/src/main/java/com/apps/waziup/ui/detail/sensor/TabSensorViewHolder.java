@@ -8,6 +8,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.apps.waziup.util.Utils;
 import com.apps.waziup.waziup.R;
 
 import java.util.Locale;
@@ -38,9 +39,7 @@ public class TabSensorViewHolder extends RecyclerView.ViewHolder {
     public TabSensorViewHolder(View itemView) {
         super(itemView);
         unbinder = ButterKnife.bind(this, itemView);
-        sensorImg.setOnClickListener(
-                v -> Toast.makeText(itemView.getContext(), "Sensor detail", Toast.LENGTH_SHORT).show());
-        //40.482450, -75.178184
+        sensorImg.setOnClickListener( v -> Utils.toast(itemView.getContext(), "sensor detail"));
         sensorLocation.setOnClickListener(u -> {
             String uri = String.format(Locale.ENGLISH, "geo:%f,%f", 40.482450, -75.178184);
             Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
