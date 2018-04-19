@@ -67,7 +67,7 @@ public class ProjectDetailActivity extends BaseActivity implements ProjectDetail
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
         adapter.addFragment(new TabSummaryFragment(), "summary");
         adapter.addFragment(new TabSensorFragment(), "sensors");
-        adapter.addFragment(new TabEntityFragment(), "entity");
+        adapter.addFragment(new TabEntityFragment(), "activity");
 
         viewPager.setAdapter(adapter);
     }

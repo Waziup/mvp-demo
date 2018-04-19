@@ -25,30 +25,20 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.apps.waziup.ui.detail.ProjectDetailActivity">
-
-        </activity>
+        <activity android:name="com.apps.waziup.ui.detail.ProjectDetailActivity"></activity>
         <activity
             android:name="com.apps.waziup.ui.create.CreateSensorActivity"
-            android:theme="@style/app_theme.no_toolbar">
-
-        </activity>
+            android:theme="@style/app_theme.no_toolbar"></activity>
         <activity
             android:name="com.apps.waziup.ui.home.HomeActivity"
-            android:theme="@style/app_theme">
-
-        </activity>
+            android:theme="@style/app_theme"></activity>
         <activity
             android:name="com.apps.waziup.ui.registration.RegistrationActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/app_theme.no_toolbar">
-
-        </activity>
+            android:theme="@style/app_theme.no_toolbar"></activity>
         <activity
             android:name="com.apps.waziup.ui.login.LoginActivity"
-            android:theme="@style/app_theme.no_toolbar">
-
-        </activity>
+            android:theme="@style/app_theme.no_toolbar"></activity>
 
         <meta-data
             android:name="com.google.android.gms.version"
@@ -56,6 +46,8 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
+
+        <activity android:name="com.apps.waziup.ui.sensor.SensorActivity"></activity>
     </application>
 
 </manifest>
