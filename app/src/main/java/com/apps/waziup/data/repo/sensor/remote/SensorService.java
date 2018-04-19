@@ -28,20 +28,21 @@ public interface SensorService {
      * Sensor data
      *
      * @param domain (required)
-     * @param q      filter the results (optional)
-     * @param limit  In case of pagination, number of entris per page (optional)
-     * @param offset In case of pagination, offset for the starting entry (optional)
-     * @return Call&lt;List&lt;Sensor&gt;&gt;
+//     * @param q      filter the results (optional)
+//     * @param limit  In case of pagination, number of entris per page (optional)
+//     * @param offset In case of pagination, offset for the starting entry (optional)
+//     * @return Call&lt;List&lt;Sensor&gt;&gt;
      */
     @Headers({
             "Content-Type:application/json"
     })
-    @GET("domains/{domain}/sensors")
+    @GET("/api/v1/domains/{domain}/sensors")
     Observable<List<Sensor>> domainsDomainSensorsGet(
-            @Path("domain") String domain,
-            @Query("q") String q,
-            @Query("limit") String limit,
-            @Query("offset") String offset
+            @Path("domain") String domain
+//            ,
+//            @Query("q") String q,
+//            @Query("limit") String limit,
+//            @Query("offset") String offset
     );
 
     /**
@@ -55,7 +56,7 @@ public interface SensorService {
     @Headers({
             "Content-Type:application/json"
     })
-    @POST("domains/{domain}/sensors")
+    @POST("/api/v1/domains/{domain}/sensors")
     Observable<Void> domainsDomainSensorsPost(
             @Body Sensor body,
             @Path("domain") String domain
@@ -71,7 +72,7 @@ public interface SensorService {
     @Headers({
             "Content-Type:application/json"
     })
-    @DELETE("domains/{domain}/sensors/{sensor_id}")
+    @DELETE("/api/v1/domains/{domain}/sensors/{sensor_id}")
     Observable<Void> domainsDomainSensorsSensorIdDelete(
             @Path("domain") String domain,
             @Path("sensor_id") String sensorId
@@ -87,7 +88,7 @@ public interface SensorService {
     @Headers({
             "Content-Type:application/json"
     })
-    @GET("domains/{domain}/sensors/{sensor_id}")
+    @GET("/api/v1/domains/{domain}/sensors/{sensor_id}")
     Observable<Sensor> domainsDomainSensorsSensorIdGet(
             @Path("domain") String domain,
             @Path("sensor_id") String sensorId
@@ -104,7 +105,7 @@ public interface SensorService {
     @Headers({
             "Content-Type:application/json"
     })
-    @PUT("domains/{domain}/sensors/{sensor_id}/location")
+    @PUT("/api/v1/domains/{domain}/sensors/{sensor_id}/location")
     Observable<Void> domainsDomainSensorsSensorIdLocationPut(
             @Path("domain") String domain,
             @Path("sensor_id") String sensorId,
@@ -121,7 +122,7 @@ public interface SensorService {
     @Headers({
             "Content-Type:application/json"
     })
-    @GET("domains/{domain}/sensors/{sensor_id}/measurements")
+    @GET("/api/v1/domains/{domain}/sensors/{sensor_id}/measurements")
     Observable<List<Measurement>> domainsDomainSensorsSensorIdMeasurementsGet(
             @Path("domain") String domain,
             @Path("sensor_id") String sensorId
@@ -138,7 +139,7 @@ public interface SensorService {
     @Headers({
             "Content-Type:application/json"
     })
-    @DELETE("domains/{domain}/sensors/{sensor_id}/measurements/{measurement_id}")
+    @DELETE("/api/v1/domains/{domain}/sensors/{sensor_id}/measurements/{measurement_id}")
     Observable<Void> domainsDomainSensorsSensorIdMeasurementsMeasurementIdDelete(
             @Path("domain") String domain,
             @Path("sensor_id") String sensorId,
@@ -156,7 +157,7 @@ public interface SensorService {
     @Headers({
             "Content-Type:application/json"
     })
-    @GET("domains/{domain}/sensors/{sensor_id}/measurements/{measurement_id}")
+    @GET("/api/v1/domains/{domain}/sensors/{sensor_id}/measurements/{measurement_id}")
     Observable<Measurement> domainsDomainSensorsSensorIdMeasurementsMeasurementIdGet(
             @Path("domain") String domain,
             @Path("sensor_id") String sensorId,
@@ -175,7 +176,7 @@ public interface SensorService {
     @Headers({
             "Content-Type:text/plain"
     })
-    @PUT("domains/{domain}/sensors/{sensor_id}/measurements/{measurement_id}/name")
+    @PUT("/api/v1/domains/{domain}/sensors/{sensor_id}/measurements/{measurement_id}/name")
     Observable<Void> domainsDomainSensorsSensorIdMeasurementsMeasurementIdNamePut(
             @Path("domain") String domain,
             @Path("sensor_id") String sensorId,
@@ -195,7 +196,7 @@ public interface SensorService {
     @Headers({
             "Content-Type:text/plain"
     })
-    @PUT("domains/{domain}/sensors/{sensor_id}/measurements/{measurement_id}/quantity_kind")
+    @PUT("/api/v1/domains/{domain}/sensors/{sensor_id}/measurements/{measurement_id}/quantity_kind")
     Observable<Void> domainsDomainSensorsSensorIdMeasurementsMeasurementIdQuantityKindPut(
             @Path("domain") String domain,
             @Path("sensor_id") String sensorId,
@@ -215,7 +216,7 @@ public interface SensorService {
     @Headers({
             "Content-Type:text/plain"
     })
-    @PUT("domains/{domain}/sensors/{sensor_id}/measurements/{measurement_id}/sensing_device")
+    @PUT("/api/v1/domains/{domain}/sensors/{sensor_id}/measurements/{measurement_id}/sensing_device")
     Observable<Void> domainsDomainSensorsSensorIdMeasurementsMeasurementIdSensingDevicePut(
             @Path("domain") String domain,
             @Path("sensor_id") String sensorId,
@@ -235,7 +236,7 @@ public interface SensorService {
     @Headers({
             "Content-Type:text/plain"
     })
-    @PUT("domains/{domain}/sensors/{sensor_id}/measurements/{measurement_id}/unit")
+    @PUT("/api/v1/domains/{domain}/sensors/{sensor_id}/measurements/{measurement_id}/unit")
     Observable<Void> domainsDomainSensorsSensorIdMeasurementsMeasurementIdUnitPut(
             @Path("domain") String domain,
             @Path("sensor_id") String sensorId,
@@ -259,7 +260,7 @@ public interface SensorService {
     @Headers({
             "Content-Type:application/json"
     })
-    @GET("domains/{domain}/sensors/{sensor_id}/measurements/{measurement_id}/values")
+    @GET("/api/v1/domains/{domain}/sensors/{sensor_id}/measurements/{measurement_id}/values")
     Observable<List<MeasurementValue>> domainsDomainSensorsSensorIdMeasurementsMeasurementIdValuesGet(
             @Path("domain") String domain,
             @Path("sensor_id") String sensorId,
@@ -283,7 +284,7 @@ public interface SensorService {
     @Headers({
             "Content-Type:application/json"
     })
-    @POST("domains/{domain}/sensors/{sensor_id}/measurements/{measurement_id}/values")
+    @POST("/api/v1/domains/{domain}/sensors/{sensor_id}/measurements/{measurement_id}/values")
     Observable<Void> domainsDomainSensorsSensorIdMeasurementsMeasurementIdValuesPost(
             @Path("domain") String domain,
             @Path("sensor_id") String sensorId,
@@ -302,7 +303,7 @@ public interface SensorService {
     @Headers({
             "Content-Type:application/json"
     })
-    @POST("domains/{domain}/sensors/{sensor_id}/measurements")
+    @POST("/api/v1/domains/{domain}/sensors/{sensor_id}/measurements")
     Observable<Void> domainsDomainSensorsSensorIdMeasurementsPost(
             @Path("domain") String domain,
             @Path("sensor_id") String sensorId,
@@ -320,7 +321,7 @@ public interface SensorService {
     @Headers({
             "Content-Type:text/plain"
     })
-    @PUT("domains/{domain}/sensors/{sensor_id}/name")
+    @PUT("/api/v1/domains/{domain}/sensors/{sensor_id}/name")
     Observable<Void> domainsDomainSensorsSensorIdNamePut(
             @Path("domain") String domain,
             @Path("sensor_id") String sensorId,
@@ -338,7 +339,7 @@ public interface SensorService {
     @Headers({
             "Content-Type:text/plain"
     })
-    @PUT("domains/{domain}/sensors/{sensor_id}/owner")
+    @PUT("/api/v1/domains/{domain}/sensors/{sensor_id}/owner")
     Observable<Void> domainsDomainSensorsSensorIdOwnerPut(
             @Path("domain") String domain,
             @Path("sensor_id") String sensorId,

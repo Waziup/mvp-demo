@@ -1,5 +1,6 @@
 package com.apps.waziup.ui.detail;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -13,6 +14,7 @@ import com.apps.waziup.base.view.BaseActivity;
 import com.apps.waziup.ui.detail.entity.TabEntityFragment;
 import com.apps.waziup.ui.detail.sensor.TabSensorFragment;
 import com.apps.waziup.ui.detail.summary.TabSummaryFragment;
+import com.apps.waziup.util.Utils;
 import com.apps.waziup.waziup.R;
 
 import java.util.ArrayList;
@@ -20,6 +22,10 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+
+import static com.apps.waziup.util.Constants.ACTIVITY;
+import static com.apps.waziup.util.Constants.PROJECT;
+import static com.apps.waziup.util.Constants.PROJECT_TYPE;
 
 public class ProjectDetailActivity extends BaseActivity implements ProjectDetailContract.View {
 
@@ -29,6 +35,9 @@ public class ProjectDetailActivity extends BaseActivity implements ProjectDetail
     ViewPager mViewPager;
     @BindView(R.id.detail_tabs)
     TabLayout mTabLayout;
+
+    Intent intent;
+    public static String domain_id = "";
 
     static {
         AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
@@ -44,6 +53,14 @@ public class ProjectDetailActivity extends BaseActivity implements ProjectDetail
         setSupportActionBar(toolbar);
         if (getSupportActionBar() != null)
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        intent = getIntent();
+        if (intent.hasExtra("activity")) {
+            if (intent.getStringExtra(ACTIVITY).equals("projectTab")) {
+                domain_id = intent.getStringExtra(PROJECT);
+                Utils.toast(this, domain_id);
+            }
+        }
 
         setupViewPager(mViewPager);
         mTabLayout.setupWithViewPager(mViewPager);

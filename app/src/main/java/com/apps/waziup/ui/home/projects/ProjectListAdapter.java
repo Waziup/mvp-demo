@@ -37,10 +37,7 @@ public class ProjectListAdapter extends RecyclerView.Adapter<ProjectViewHolder> 
         holder.projectDelete.setOnClickListener(v -> presenter.onDomainDeleteClicked(project));
         holder.projectEdit.setOnClickListener(v -> presenter.onDomainEditClicked(project));
         holder.projectMarkerLocation.setOnClickListener(v -> presenter.onDomainMarkerClicked(project));
-        holder.itemView.setOnClickListener(v -> {
-            presenter.onDomainClicked(project);
-            Timber.d("Project " + project.id);
-        });
+        holder.itemView.setOnClickListener(v -> presenter.onDomainClicked(project));
 
     }
 

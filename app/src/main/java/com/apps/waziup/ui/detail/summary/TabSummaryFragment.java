@@ -8,23 +8,19 @@ import android.widget.TextView;
 
 import com.apps.waziup.base.view.BaseFragment;
 import com.apps.waziup.ui.create.CreateSensorContract;
+import com.apps.waziup.ui.detail.ProjectDetailActivity;
 import com.apps.waziup.waziup.R;
-
-import static com.apps.waziup.util.Constants.PROJECT;
-import static com.apps.waziup.util.Constants.PROJECT_TYPE;
 
 public class TabSummaryFragment extends BaseFragment implements TabSummaryContract.View {
 
     String projectTitle = "";
-    String projectType = "";
+    String project_id = "";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getActivity().getIntent().getStringExtra(PROJECT).equals("project")) {
-            projectTitle = getActivity().getIntent().getStringExtra(PROJECT);
-            projectType = getActivity().getIntent().getStringExtra(PROJECT_TYPE);
-        }
+        project_id = ProjectDetailActivity.domain_id;
+        projectTitle = project_id;
     }
 
     @Override

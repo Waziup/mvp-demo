@@ -14,6 +14,7 @@ import com.apps.waziup.data.model.Sensor;
 import com.apps.waziup.data.repo.sensor.SensorRepo;
 import com.apps.waziup.data.repo.sensor.local.SensorLocal;
 import com.apps.waziup.data.repo.sensor.remote.SensorRemote;
+import com.apps.waziup.ui.detail.ProjectDetailActivity;
 import com.apps.waziup.ui.detail.SensorMock;
 import com.apps.waziup.ui.sensor.SensorActivity;
 import com.apps.waziup.util.Utils;
@@ -40,9 +41,12 @@ public class TabSensorFragment extends BaseFragment implements TabSensorContract
 
     private Unbinder unbinder;
 
+    public String domain_id = "";
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        domain_id = ProjectDetailActivity.domain_id;
     }
 
     @Override
@@ -97,7 +101,20 @@ public class TabSensorFragment extends BaseFragment implements TabSensorContract
     @Override
     public void onResume() {
         super.onResume();
-        adapter.notifyDataSetChanged();
+        presenter.attachView(this);
+        presenter.start();
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        presenter.attachView(this);
+    }
+
+    @Override
+    public void onPause() {
+        presenter.detachView();
+        super.onPause();
     }
 
     @Override
@@ -163,8 +180,9 @@ public class TabSensorFragment extends BaseFragment implements TabSensorContract
 
     @Override
     public void showSensorDetailActivity(int sensorPosition) {
-        Intent intent = new Intent(getActivity(), SensorActivity.class);
-        intent.putExtra("sensor", sensorPosition);
-        startActivity(intent);
+        //TODO uncomment after checking everything is working fine
+//        Intent intent = new Intent(getActivity(), SensorActivity.class);
+//        intent.putExtra("sensor", sensorPosition);
+//        startActivity(intent);
     }
 }

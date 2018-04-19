@@ -178,9 +178,8 @@ public class ProjectsFragment extends BaseFragment implements ProjectContract.Vi
     @Override
     public void showDomainDetail(Domain domain) {
         Intent intent = new Intent(getActivity(), ProjectDetailActivity.class);
-        intent.putExtra(ACTIVITY, "project");
+        intent.putExtra(ACTIVITY, "projectTab");
         intent.putExtra(PROJECT, domain.id);
-        intent.putExtra(PROJECT_TYPE, domain.type);
         startActivity(intent);
     }
 

@@ -25,7 +25,7 @@ public class SensorRemote extends BaseRemote implements SensorRemoteContract {
 
     @Override
     public Observable<List<Sensor>> domainsDomainSensorsGet(String domain, String q, String limit, String offset) {
-        return BaseRemote.sensorService.domainsDomainSensorsGet(domain, q, limit, offset);
+        return BaseRemote.sensorService.domainsDomainSensorsGet(domain);
     }
 
     @Override
